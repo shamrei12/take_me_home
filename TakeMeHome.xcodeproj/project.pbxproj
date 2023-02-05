@@ -12,6 +12,13 @@
 		D820C690298C24DA001B11B7 /* TakeMeHome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D820C68E298C24DA001B11B7 /* TakeMeHome.xcdatamodeld */; };
 		D820C692298C24DC001B11B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D820C691298C24DC001B11B7 /* Assets.xcassets */; };
 		D820C695298C24DC001B11B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D820C693298C24DC001B11B7 /* LaunchScreen.storyboard */; };
+		D820C6AD298EA0CC001B11B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6AC298EA0CC001B11B7 /* Extensions.swift */; };
+		D820C6AF298EA13B001B11B7 /* AdvertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6AE298EA13B001B11B7 /* AdvertViewController.xib */; };
+		D820C6B1298EA157001B11B7 /* AdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6B0298EA157001B11B7 /* AdvertViewController.swift */; };
+		D820C6B7298EAC90001B11B7 /* AdvertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6B6298EAC90001B11B7 /* AdvertTableViewCell.xib */; };
+		D820C6B9298EACA5001B11B7 /* AdvertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */; };
+		D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */; };
+		D820C6BD298F96E3001B11B7 /* AdvertCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,13 @@
 		D820C691298C24DC001B11B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D820C694298C24DC001B11B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D820C696298C24DC001B11B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D820C6AC298EA0CC001B11B7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D820C6AE298EA13B001B11B7 /* AdvertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvertViewController.xib; sourceTree = "<group>"; };
+		D820C6B0298EA157001B11B7 /* AdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertViewController.swift; sourceTree = "<group>"; };
+		D820C6B6298EAC90001B11B7 /* AdvertTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvertTableViewCell.xib; sourceTree = "<group>"; };
+		D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertTableViewCell.swift; sourceTree = "<group>"; };
+		D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertCollectionViewCell.swift; sourceTree = "<group>"; };
+		D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvertCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +68,12 @@
 		D820C684298C24DA001B11B7 /* TakeMeHome */ = {
 			isa = PBXGroup;
 			children = (
+				D820C6AB298C4000001B11B7 /* Controller */,
+				D820C6AA298C3F72001B11B7 /* Model */,
+				D820C6A9298C3F5C001B11B7 /* Helpers */,
+				D820C6A8298C3F51001B11B7 /* Network */,
 				D820C6A4298C285C001B11B7 /* Resources */,
-				D820C6A3298C284A001B11B7 /* Helpers */,
-				D820C6A2298C283F001B11B7 /* Controller */,
-				D820C6A1298C2651001B11B7 /* Network */,
 				D820C6A0298C264A001B11B7 /* Storage */,
-				D820C69F298C263A001B11B7 /* Model */,
 				D820C69C298C2600001B11B7 /* View */,
 				D820C685298C24DA001B11B7 /* AppDelegate.swift */,
 				D820C687298C24DA001B11B7 /* SceneDelegate.swift */,
@@ -71,32 +85,11 @@
 		D820C69C298C2600001B11B7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D820C6A7298C3F4B001B11B7 /* Cells */,
+				D820C6A6298C3F43001B11B7 /* Xibs */,
 				D820C6A5298C2881001B11B7 /* Storyboards */,
-				D820C69E298C2627001B11B7 /* Xibs */,
-				D820C69D298C260E001B11B7 /* Cells */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		D820C69D298C260E001B11B7 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		D820C69E298C2627001B11B7 /* Xibs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Xibs;
-			sourceTree = "<group>";
-		};
-		D820C69F298C263A001B11B7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		D820C6A0298C264A001B11B7 /* Storage */ = {
@@ -105,27 +98,6 @@
 				D820C68E298C24DA001B11B7 /* TakeMeHome.xcdatamodeld */,
 			);
 			path = Storage;
-			sourceTree = "<group>";
-		};
-		D820C6A1298C2651001B11B7 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		D820C6A2298C283F001B11B7 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		D820C6A3298C284A001B11B7 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		D820C6A4298C285C001B11B7 /* Resources */ = {
@@ -142,6 +114,55 @@
 				D820C693298C24DC001B11B7 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D820C6A6298C3F43001B11B7 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				D820C6AE298EA13B001B11B7 /* AdvertViewController.xib */,
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
+		D820C6A7298C3F4B001B11B7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D820C6B6298EAC90001B11B7 /* AdvertTableViewCell.xib */,
+				D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D820C6A8298C3F51001B11B7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D820C6A9298C3F5C001B11B7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D820C6AC298EA0CC001B11B7 /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D820C6AA298C3F72001B11B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D820C6AB298C4000001B11B7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */,
+				D820C6B0298EA157001B11B7 /* AdvertViewController.swift */,
+				D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,7 +224,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D820C695298C24DC001B11B7 /* LaunchScreen.storyboard in Resources */,
+				D820C6B7298EAC90001B11B7 /* AdvertTableViewCell.xib in Resources */,
+				D820C6AF298EA13B001B11B7 /* AdvertViewController.xib in Resources */,
 				D820C692298C24DC001B11B7 /* Assets.xcassets in Resources */,
+				D820C6BD298F96E3001B11B7 /* AdvertCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,9 +238,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */,
 				D820C686298C24DA001B11B7 /* AppDelegate.swift in Sources */,
 				D820C688298C24DA001B11B7 /* SceneDelegate.swift in Sources */,
+				D820C6B1298EA157001B11B7 /* AdvertViewController.swift in Sources */,
+				D820C6B9298EACA5001B11B7 /* AdvertTableViewCell.swift in Sources */,
 				D820C690298C24DA001B11B7 /* TakeMeHome.xcdatamodeld in Sources */,
+				D820C6AD298EA0CC001B11B7 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +388,7 @@
 				INFOPLIST_FILE = TakeMeHome/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -388,7 +416,7 @@
 				INFOPLIST_FILE = TakeMeHome/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
