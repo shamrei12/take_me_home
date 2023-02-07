@@ -17,50 +17,54 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="BTI-QL-xd7">
-                        <rect key="frame" x="5" y="64" width="383" height="38"/>
+                        <rect key="frame" x="15" y="64" width="363" height="38"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBU-ve-pfw">
                                 <rect key="frame" x="0.0" y="0.0" width="48" height="38"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="menu">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JlJ-H1-91a">
-                                <rect key="frame" x="335" y="0.0" width="48" height="38"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="315" y="0.0" width="48" height="38"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
                                     <imageReference key="image" image="map" symbolScale="large"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="signOut:" destination="kLc-2g-meH" eventType="touchUpInside" id="nga-O1-TVk"/>
+                                </connections>
                             </button>
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Upb-dj-Ann">
                         <rect key="frame" x="10" y="132" width="373" height="56"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y05-Ut-IJY">
+                            <searchBar contentMode="redraw" barStyle="blackTranslucent" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y05-Ut-IJY">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="jG1-LK-od7"/>
                                 </constraints>
-                                <color key="barTintColor" systemColor="systemYellowColor"/>
+                                <color key="barTintColor" red="0.96797166710000004" green="0.96841138599999999" blue="0.75755349920000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="kLc-2g-meH" id="nLr-vf-EsF"/>
                                 </connections>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAu-b9-U13">
-                                <rect key="frame" x="308" y="11" width="65" height="34.333333333333336"/>
+                                <rect key="frame" x="308" y="9" width="65" height="38"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="checklist.unchecked" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="check"/>
                             </button>
                         </subviews>
                     </stackView>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abo-Hn-ujJ">
                         <rect key="frame" x="0.0" y="308" width="393" height="510"/>
-                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <connections>
                             <outlet property="dataSource" destination="kLc-2g-meH" id="gM8-Re-GKn"/>
                             <outlet property="delegate" destination="kLc-2g-meH" id="JNc-A9-OGU"/>
@@ -68,7 +72,7 @@
                     </tableView>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xUV-MZ-9Od">
                         <rect key="frame" x="10" y="208" width="373" height="70"/>
-                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="FJj-kE-9ei"/>
                         </constraints>
@@ -84,24 +88,25 @@
                     </collectionView>
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="rYx-GE-JZT"/>
-                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                 <constraints>
                     <constraint firstItem="abo-Hn-ujJ" firstAttribute="top" secondItem="xUV-MZ-9Od" secondAttribute="bottom" constant="30" id="67l-4k-Ia7"/>
                     <constraint firstItem="Upb-dj-Ann" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" constant="10" id="8mn-hr-5tT"/>
                     <constraint firstItem="Upb-dj-Ann" firstAttribute="top" secondItem="BTI-QL-xd7" secondAttribute="bottom" constant="30" id="Mu5-3l-I2W"/>
                     <constraint firstItem="rYx-GE-JZT" firstAttribute="trailing" secondItem="Upb-dj-Ann" secondAttribute="trailing" constant="10" id="OlV-KS-ajQ"/>
-                    <constraint firstItem="rYx-GE-JZT" firstAttribute="trailing" secondItem="BTI-QL-xd7" secondAttribute="trailing" constant="5" id="PDd-4r-zNw"/>
+                    <constraint firstItem="rYx-GE-JZT" firstAttribute="trailing" secondItem="BTI-QL-xd7" secondAttribute="trailing" constant="15" id="PDd-4r-zNw"/>
                     <constraint firstItem="xUV-MZ-9Od" firstAttribute="top" secondItem="Upb-dj-Ann" secondAttribute="bottom" constant="20" id="eNO-r7-BBY"/>
                     <constraint firstItem="rYx-GE-JZT" firstAttribute="trailing" secondItem="xUV-MZ-9Od" secondAttribute="trailing" constant="10" id="egC-tY-lQV"/>
                     <constraint firstItem="BTI-QL-xd7" firstAttribute="top" secondItem="rYx-GE-JZT" secondAttribute="top" constant="5" id="lyw-Su-7la"/>
                     <constraint firstItem="rYx-GE-JZT" firstAttribute="bottom" secondItem="abo-Hn-ujJ" secondAttribute="bottom" id="mPD-2R-WUi"/>
                     <constraint firstItem="abo-Hn-ujJ" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" id="oPZ-FF-hcf"/>
                     <constraint firstItem="xUV-MZ-9Od" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" constant="10" id="vqs-Sx-nTB"/>
-                    <constraint firstItem="BTI-QL-xd7" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" constant="5" id="xq5-EO-vQW"/>
+                    <constraint firstItem="BTI-QL-xd7" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" constant="15" id="xq5-EO-vQW"/>
                     <constraint firstItem="rYx-GE-JZT" firstAttribute="trailing" secondItem="abo-Hn-ujJ" secondAttribute="trailing" id="yBV-dJ-96O"/>
                 </constraints>
             </view>
             <connections>
+                <outlet property="checkList" destination="EAu-b9-U13" id="b5D-YC-pRG"/>
                 <outlet property="collectionView" destination="xUV-MZ-9Od" id="jFW-tp-vcO"/>
                 <outlet property="mapButton" destination="JlJ-H1-91a" id="5Kc-BT-pxQ"/>
                 <outlet property="menuButton" destination="pBU-ve-pfw" id="UyW-zn-KKU"/>
@@ -111,11 +116,14 @@
         </viewController>
     </objects>
     <resources>
-        <image name="checklist.unchecked" catalog="system" width="128" height="107"/>
+        <image name="check" width="24" height="24"/>
         <image name="map" width="24" height="24"/>
         <image name="menu" width="24" height="24"/>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

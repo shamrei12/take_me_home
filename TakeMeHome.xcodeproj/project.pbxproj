@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9AE7CD845E854C068D9E8DD3 /* Pods_TakeMeHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0944295DDEA66127DD51E253 /* Pods_TakeMeHome.framework */; };
 		D820C686298C24DA001B11B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C685298C24DA001B11B7 /* AppDelegate.swift */; };
 		D820C688298C24DA001B11B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C687298C24DA001B11B7 /* SceneDelegate.swift */; };
 		D820C690298C24DA001B11B7 /* TakeMeHome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D820C68E298C24DA001B11B7 /* TakeMeHome.xcdatamodeld */; };
@@ -19,9 +20,17 @@
 		D820C6B9298EACA5001B11B7 /* AdvertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */; };
 		D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */; };
 		D820C6BD298F96E3001B11B7 /* AdvertCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */; };
+		D8A0FB8F299231EE0051C9F7 /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0FB8D299231EE0051C9F7 /* EnterViewController.swift */; };
+		D8A0FB90299231EE0051C9F7 /* EnterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FB8E299231EE0051C9F7 /* EnterViewController.xib */; };
+		D8A0FB932992515B0051C9F7 /* RergisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0FB912992515B0051C9F7 /* RergisterViewController.swift */; };
+		D8A0FB942992515B0051C9F7 /* RergisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FB922992515B0051C9F7 /* RergisterViewController.xib */; };
+		D8A0FB9A2992558C0051C9F7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FB992992558C0051C9F7 /* Podfile */; };
+		D8A0FBA0299279BB0051C9F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FB9F299279BB0051C9F7 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08C352DBB6DCF69AB12526CE /* Pods-TakeMeHome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome.release.xcconfig"; path = "Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome.release.xcconfig"; sourceTree = "<group>"; };
+		0944295DDEA66127DD51E253 /* Pods_TakeMeHome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TakeMeHome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D820C682298C24DA001B11B7 /* TakeMeHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMeHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D820C685298C24DA001B11B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D820C687298C24DA001B11B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +45,13 @@
 		D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertTableViewCell.swift; sourceTree = "<group>"; };
 		D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertCollectionViewCell.swift; sourceTree = "<group>"; };
 		D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvertCollectionViewCell.xib; sourceTree = "<group>"; };
+		D8A0FB8D299231EE0051C9F7 /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
+		D8A0FB8E299231EE0051C9F7 /* EnterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnterViewController.xib; sourceTree = "<group>"; };
+		D8A0FB912992515B0051C9F7 /* RergisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RergisterViewController.swift; sourceTree = "<group>"; };
+		D8A0FB922992515B0051C9F7 /* RergisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RergisterViewController.xib; sourceTree = "<group>"; };
+		D8A0FB992992558C0051C9F7 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D8A0FB9F299279BB0051C9F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DB30E3F0652F68E81AB8BC6A /* Pods-TakeMeHome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome.debug.xcconfig"; path = "Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +59,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AE7CD845E854C068D9E8DD3 /* Pods_TakeMeHome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A1D9E262187B68BAE535F56 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DB30E3F0652F68E81AB8BC6A /* Pods-TakeMeHome.debug.xcconfig */,
+				08C352DBB6DCF69AB12526CE /* Pods-TakeMeHome.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D820C679298C24DA001B11B7 = {
 			isa = PBXGroup;
 			children = (
+				D8A0FB992992558C0051C9F7 /* Podfile */,
 				D820C684298C24DA001B11B7 /* TakeMeHome */,
 				D820C683298C24DA001B11B7 /* Products */,
+				2A1D9E262187B68BAE535F56 /* Pods */,
+				E410D4EB86A9D099A7028C54 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +107,7 @@
 				D820C685298C24DA001B11B7 /* AppDelegate.swift */,
 				D820C687298C24DA001B11B7 /* SceneDelegate.swift */,
 				D820C696298C24DC001B11B7 /* Info.plist */,
+				D8A0FB9F299279BB0051C9F7 /* GoogleService-Info.plist */,
 			);
 			path = TakeMeHome;
 			sourceTree = "<group>";
@@ -120,6 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				D820C6AE298EA13B001B11B7 /* AdvertViewController.xib */,
+				D8A0FB8E299231EE0051C9F7 /* EnterViewController.xib */,
+				D8A0FB922992515B0051C9F7 /* RergisterViewController.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -159,10 +191,20 @@
 			isa = PBXGroup;
 			children = (
 				D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */,
+				D8A0FB8D299231EE0051C9F7 /* EnterViewController.swift */,
+				D8A0FB912992515B0051C9F7 /* RergisterViewController.swift */,
 				D820C6B0298EA157001B11B7 /* AdvertViewController.swift */,
 				D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		E410D4EB86A9D099A7028C54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0944295DDEA66127DD51E253 /* Pods_TakeMeHome.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,9 +214,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D820C699298C24DC001B11B7 /* Build configuration list for PBXNativeTarget "TakeMeHome" */;
 			buildPhases = (
+				D09798D45E3C1AD666E49E23 /* [CP] Check Pods Manifest.lock */,
 				D820C67E298C24DA001B11B7 /* Sources */,
 				D820C67F298C24DA001B11B7 /* Frameworks */,
 				D820C680298C24DA001B11B7 /* Resources */,
+				EAADBE5E363BECCF6920DB9E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -201,7 +245,7 @@
 				};
 			};
 			buildConfigurationList = D820C67D298C24DA001B11B7 /* Build configuration list for PBXProject "TakeMeHome" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -225,13 +269,59 @@
 			files = (
 				D820C695298C24DC001B11B7 /* LaunchScreen.storyboard in Resources */,
 				D820C6B7298EAC90001B11B7 /* AdvertTableViewCell.xib in Resources */,
+				D8A0FBA0299279BB0051C9F7 /* GoogleService-Info.plist in Resources */,
 				D820C6AF298EA13B001B11B7 /* AdvertViewController.xib in Resources */,
 				D820C692298C24DC001B11B7 /* Assets.xcassets in Resources */,
 				D820C6BD298F96E3001B11B7 /* AdvertCollectionViewCell.xib in Resources */,
+				D8A0FB9A2992558C0051C9F7 /* Podfile in Resources */,
+				D8A0FB942992515B0051C9F7 /* RergisterViewController.xib in Resources */,
+				D8A0FB90299231EE0051C9F7 /* EnterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D09798D45E3C1AD666E49E23 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TakeMeHome-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAADBE5E363BECCF6920DB9E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D820C67E298C24DA001B11B7 /* Sources */ = {
@@ -239,10 +329,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */,
+				D8A0FB8F299231EE0051C9F7 /* EnterViewController.swift in Sources */,
 				D820C686298C24DA001B11B7 /* AppDelegate.swift in Sources */,
 				D820C688298C24DA001B11B7 /* SceneDelegate.swift in Sources */,
 				D820C6B1298EA157001B11B7 /* AdvertViewController.swift in Sources */,
 				D820C6B9298EACA5001B11B7 /* AdvertTableViewCell.swift in Sources */,
+				D8A0FB932992515B0051C9F7 /* RergisterViewController.swift in Sources */,
 				D820C690298C24DA001B11B7 /* TakeMeHome.xcdatamodeld in Sources */,
 				D820C6AD298EA0CC001B11B7 /* Extensions.swift in Sources */,
 			);
@@ -378,6 +470,7 @@
 		};
 		D820C69A298C24DC001B11B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB30E3F0652F68E81AB8BC6A /* Pods-TakeMeHome.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -389,8 +482,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -406,6 +498,7 @@
 		};
 		D820C69B298C24DC001B11B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08C352DBB6DCF69AB12526CE /* Pods-TakeMeHome.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -417,8 +510,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

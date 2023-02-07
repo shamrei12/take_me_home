@@ -61,7 +61,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="huI-tm-g0C" firstAttribute="leading" secondItem="edM-Va-qPy" secondAttribute="leading" constant="5" id="94q-Rs-NqI"/>
                             <constraint firstAttribute="bottom" secondItem="huI-tm-g0C" secondAttribute="bottom" constant="5" id="9im-ek-S5f"/>
@@ -71,13 +71,11 @@
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWp-j6-KZb">
                         <rect key="frame" x="0.0" y="180" width="376" height="20"/>
-                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="atc-Pu-m2Y"/>
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" systemColor="systemYellowColor"/>
                 <constraints>
                     <constraint firstItem="eWp-j6-KZb" firstAttribute="leading" secondItem="NZD-dk-v7r" secondAttribute="leading" id="AD9-mj-X5Z"/>
                     <constraint firstItem="edM-Va-qPy" firstAttribute="top" secondItem="NZD-dk-v7r" secondAttribute="top" constant="10" id="Fgh-6U-ZBk"/>
@@ -88,7 +86,7 @@
                     <constraint firstAttribute="trailing" secondItem="eWp-j6-KZb" secondAttribute="trailing" id="yue-qb-g2Y"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" systemColor="systemYellowColor"/>
+            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
             <connections>
                 <outlet property="mainView" destination="edM-Va-qPy" id="Sii-iU-ajR"/>
             </connections>
@@ -96,11 +94,11 @@
         </tableViewCell>
     </objects>
     <resources>
-        <systemColor name="systemGray6Color">
+        <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

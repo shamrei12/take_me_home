@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseCore
 
 class AdvertViewController: UIViewController {
 
@@ -14,14 +16,27 @@ class AdvertViewController: UIViewController {
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var mapButton: UIButton!
     
+    @IBOutlet weak var checkList: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         menuButton.layer.cornerRadius = 5
         mapButton.layer.cornerRadius = 5
+        checkList.layer.cornerRadius = 5
         tableView.register(UINib(nibName: "AdvertTableViewCell", bundle: nil), forCellReuseIdentifier: "AdvertTableViewCell")
         collectionView.register(UINib(nibName: "AdvertCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AdvertCollectionViewCell")
         
     }
+    
+    @IBAction func signOut(_ sender: UIButton) {
+        do {
+            try  Auth.auth().signOut()
+        } catch {
+            print(error)
+        }
+       
+    }
+    
 }
 
 extension AdvertViewController: UITableViewDataSource {

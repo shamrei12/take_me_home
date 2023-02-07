@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseAuth
+
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -15,13 +18,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.windowScene = windowScene
-        
-        let homeVC = AdvertViewController.instantiate()
-        window?.rootViewController = homeVC
-        window?.makeKeyAndVisible()
+        FirebaseApp.configure()
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user == nil {
+                self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+                self.window?.windowScene = windowScene
+
+                let homeVC = EnterViewController.instantiate()
+                self.window?.rootViewController = homeVC
+                self.window?.makeKeyAndVisible()
+            } else {
+                self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+                self.window?.windowScene = windowScene
+                let homeVC = AdvertViewController.instantiate()
+                self.window?.rootViewController = homeVC
+                self.window?.makeKeyAndVisible()
+            }
+                
+    }
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

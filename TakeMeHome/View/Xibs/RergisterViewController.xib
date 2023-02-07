@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RergisterViewController" customModule="TakeMeHome" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController id="Xyh-Th-cue" customClass="RergisterViewController" customModule="TakeMeHome" customModuleProvider="target">
+            <view key="view" contentMode="scaleToFill" id="Lh1-qb-ynn">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take me Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1c6-Jj-1MI">
+                        <rect key="frame" x="20" y="209" width="353" height="80"/>
+                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="50"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="l8c-Bd-F9z">
+                        <rect key="frame" x="21" y="363" width="350" height="322.33333333333326"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Имя" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPE-2l-Cla">
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="20.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Иван" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xd7-NP-mN8">
+                                <rect key="frame" x="0.0" y="35.333333333333314" width="350" height="34"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="AM4-Q0-azG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Почта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxb-H5-F4P">
+                                <rect key="frame" x="0.0" y="84.333333333333314" width="350" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="example@gmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q2s-Cf-TOe">
+                                <rect key="frame" x="0.0" y="119.66666666666669" width="350" height="34"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="2yo-rT-PPW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bE9-l6-bbP">
+                                <rect key="frame" x="0.0" y="168.66666666666663" width="350" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ba4-Th-1Xx">
+                                <rect key="frame" x="0.0" y="204" width="350" height="34"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="24e-Mx-PiW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Повторить пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpd-Ge-yTl">
+                                <rect key="frame" x="0.0" y="253.00000000000003" width="350" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nfk-pe-OSk">
+                                <rect key="frame" x="0.0" y="288.33333333333337" width="350" height="34"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="oQC-Se-3Wf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                        </subviews>
+                    </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOH-0O-dG4">
+                        <rect key="frame" x="100" y="725.33333333333337" width="193" height="38"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <color key="tintColor" systemColor="labelColor"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Регистрация">
+                            <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="20"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="registrationTapped:" destination="Xyh-Th-cue" eventType="touchUpInside" id="uvG-2T-nF0"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <viewLayoutGuide key="safeArea" id="4In-e9-lUN"/>
+                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="VOH-0O-dG4" firstAttribute="leading" secondItem="4In-e9-lUN" secondAttribute="leading" constant="100" id="D1g-fC-PyM"/>
+                    <constraint firstItem="1c6-Jj-1MI" firstAttribute="top" secondItem="4In-e9-lUN" secondAttribute="top" constant="150" id="LfM-jQ-CzT"/>
+                    <constraint firstItem="4In-e9-lUN" firstAttribute="trailing" secondItem="VOH-0O-dG4" secondAttribute="trailing" constant="100" id="PZw-jh-goE"/>
+                    <constraint firstItem="l8c-Bd-F9z" firstAttribute="top" secondItem="1c6-Jj-1MI" secondAttribute="bottom" constant="74" id="Yvp-tX-goN"/>
+                    <constraint firstItem="1c6-Jj-1MI" firstAttribute="leading" secondItem="4In-e9-lUN" secondAttribute="leading" constant="20" id="iz2-Dz-iOM"/>
+                    <constraint firstItem="VOH-0O-dG4" firstAttribute="top" secondItem="l8c-Bd-F9z" secondAttribute="bottom" constant="40" id="ldg-A2-uei"/>
+                    <constraint firstItem="4In-e9-lUN" firstAttribute="trailing" secondItem="1c6-Jj-1MI" secondAttribute="trailing" constant="20" id="sfy-a4-ygB"/>
+                    <constraint firstItem="l8c-Bd-F9z" firstAttribute="leading" secondItem="4In-e9-lUN" secondAttribute="leading" constant="21" id="viZ-xW-duS"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="emailText" destination="q2s-Cf-TOe" id="qCn-L2-fvK"/>
+                <outlet property="nameText" destination="Xd7-NP-mN8" id="l2J-D8-kW7"/>
+                <outlet property="passwordText" destination="ba4-Th-1Xx" id="9re-ST-xOc"/>
+                <outlet property="repeatPasswordText" destination="Nfk-pe-OSk" id="93U-RK-cnK"/>
+            </connections>
+            <point key="canvasLocation" x="145" y="-15"/>
+        </viewController>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

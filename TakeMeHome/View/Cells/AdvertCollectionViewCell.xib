@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,7 +29,7 @@
                                 <rect key="frame" x="5" y="5" width="122" height="93"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2c7-0y-QcS" firstAttribute="leading" secondItem="wa9-x6-j2g" secondAttribute="leading" id="Sr2-Fn-U42"/>
                             <constraint firstAttribute="bottom" secondItem="2c7-0y-QcS" secondAttribute="bottom" constant="5" id="TEK-6G-WLF"/>
@@ -59,5 +60,8 @@
     </objects>
     <resources>
         <image name="dog_example" width="64" height="64"/>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
