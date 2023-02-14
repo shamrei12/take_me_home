@@ -20,12 +20,20 @@
 		D820C6B9298EACA5001B11B7 /* AdvertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */; };
 		D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */; };
 		D820C6BD298F96E3001B11B7 /* AdvertCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */; };
+		D86F5822299C3101000A9170 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */; };
+		D86F5823299C3101000A9170 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */; };
+		D89640E0299C43F400DF968C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640DF299C43F400DF968C /* ProfileViewController.swift */; };
+		D89640E2299C440D00DF968C /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89640E1299C440D00DF968C /* ProfileViewController.xib */; };
 		D8A0FB8F299231EE0051C9F7 /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0FB8D299231EE0051C9F7 /* EnterViewController.swift */; };
 		D8A0FB90299231EE0051C9F7 /* EnterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FB8E299231EE0051C9F7 /* EnterViewController.xib */; };
 		D8A0FB932992515B0051C9F7 /* RergisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0FB912992515B0051C9F7 /* RergisterViewController.swift */; };
 		D8A0FB942992515B0051C9F7 /* RergisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FB922992515B0051C9F7 /* RergisterViewController.xib */; };
 		D8A0FB9A2992558C0051C9F7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FB992992558C0051C9F7 /* Podfile */; };
 		D8A0FBA0299279BB0051C9F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FB9F299279BB0051C9F7 /* GoogleService-Info.plist */; };
+		D8A0FBA3299385060051C9F7 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0FBA1299385050051C9F7 /* ForgotPasswordViewController.swift */; };
+		D8A0FBA4299385060051C9F7 /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FBA2299385050051C9F7 /* ForgotPasswordViewController.xib */; };
+		D8A0FBA729943E8E0051C9F7 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0FBA529943E8E0051C9F7 /* SideMenuViewController.swift */; };
+		D8A0FBA829943E8E0051C9F7 /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FBA629943E8E0051C9F7 /* SideMenuViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,12 +53,20 @@
 		D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertTableViewCell.swift; sourceTree = "<group>"; };
 		D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertCollectionViewCell.swift; sourceTree = "<group>"; };
 		D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvertCollectionViewCell.xib; sourceTree = "<group>"; };
+		D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
+		D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
+		D89640DF299C43F400DF968C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D89640E1299C440D00DF968C /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		D8A0FB8D299231EE0051C9F7 /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
 		D8A0FB8E299231EE0051C9F7 /* EnterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnterViewController.xib; sourceTree = "<group>"; };
 		D8A0FB912992515B0051C9F7 /* RergisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RergisterViewController.swift; sourceTree = "<group>"; };
 		D8A0FB922992515B0051C9F7 /* RergisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RergisterViewController.xib; sourceTree = "<group>"; };
 		D8A0FB992992558C0051C9F7 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D8A0FB9F299279BB0051C9F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D8A0FBA1299385050051C9F7 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		D8A0FBA2299385050051C9F7 /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordViewController.xib; sourceTree = "<group>"; };
+		D8A0FBA529943E8E0051C9F7 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		D8A0FBA629943E8E0051C9F7 /* SideMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
 		DB30E3F0652F68E81AB8BC6A /* Pods-TakeMeHome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome.debug.xcconfig"; path = "Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +168,9 @@
 				D820C6AE298EA13B001B11B7 /* AdvertViewController.xib */,
 				D8A0FB8E299231EE0051C9F7 /* EnterViewController.xib */,
 				D8A0FB922992515B0051C9F7 /* RergisterViewController.xib */,
+				D8A0FBA2299385050051C9F7 /* ForgotPasswordViewController.xib */,
+				D89640E1299C440D00DF968C /* ProfileViewController.xib */,
+				D8A0FBA629943E8E0051C9F7 /* SideMenuViewController.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -160,7 +179,11 @@
 			isa = PBXGroup;
 			children = (
 				D820C6B6298EAC90001B11B7 /* AdvertTableViewCell.xib */,
+				D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */,
+				D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */,
 				D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */,
+				D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */,
+				D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -190,11 +213,12 @@
 		D820C6AB298C4000001B11B7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */,
 				D8A0FB8D299231EE0051C9F7 /* EnterViewController.swift */,
+				D8A0FBA529943E8E0051C9F7 /* SideMenuViewController.swift */,
 				D8A0FB912992515B0051C9F7 /* RergisterViewController.swift */,
 				D820C6B0298EA157001B11B7 /* AdvertViewController.swift */,
-				D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */,
+				D8A0FBA1299385050051C9F7 /* ForgotPasswordViewController.swift */,
+				D89640DF299C43F400DF968C /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -270,7 +294,11 @@
 				D820C695298C24DC001B11B7 /* LaunchScreen.storyboard in Resources */,
 				D820C6B7298EAC90001B11B7 /* AdvertTableViewCell.xib in Resources */,
 				D8A0FBA0299279BB0051C9F7 /* GoogleService-Info.plist in Resources */,
+				D89640E2299C440D00DF968C /* ProfileViewController.xib in Resources */,
+				D86F5823299C3101000A9170 /* SideMenuTableViewCell.xib in Resources */,
 				D820C6AF298EA13B001B11B7 /* AdvertViewController.xib in Resources */,
+				D8A0FBA829943E8E0051C9F7 /* SideMenuViewController.xib in Resources */,
+				D8A0FBA4299385060051C9F7 /* ForgotPasswordViewController.xib in Resources */,
 				D820C692298C24DC001B11B7 /* Assets.xcassets in Resources */,
 				D820C6BD298F96E3001B11B7 /* AdvertCollectionViewCell.xib in Resources */,
 				D8A0FB9A2992558C0051C9F7 /* Podfile in Resources */,
@@ -331,10 +359,14 @@
 				D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */,
 				D8A0FB8F299231EE0051C9F7 /* EnterViewController.swift in Sources */,
 				D820C686298C24DA001B11B7 /* AppDelegate.swift in Sources */,
+				D86F5822299C3101000A9170 /* SideMenuTableViewCell.swift in Sources */,
 				D820C688298C24DA001B11B7 /* SceneDelegate.swift in Sources */,
+				D8A0FBA729943E8E0051C9F7 /* SideMenuViewController.swift in Sources */,
 				D820C6B1298EA157001B11B7 /* AdvertViewController.swift in Sources */,
 				D820C6B9298EACA5001B11B7 /* AdvertTableViewCell.swift in Sources */,
+				D8A0FBA3299385060051C9F7 /* ForgotPasswordViewController.swift in Sources */,
 				D8A0FB932992515B0051C9F7 /* RergisterViewController.swift in Sources */,
+				D89640E0299C43F400DF968C /* ProfileViewController.swift in Sources */,
 				D820C690298C24DA001B11B7 /* TakeMeHome.xcdatamodeld in Sources */,
 				D820C6AD298EA0CC001B11B7 /* Extensions.swift in Sources */,
 			);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -13,11 +13,11 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <viewController id="kLc-2g-meH" customClass="AdvertViewController" customModule="TakeMeHome" customModuleProvider="target">
             <view key="view" contentMode="scaleToFill" id="JDj-lP-gQB">
-                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="BTI-QL-xd7">
-                        <rect key="frame" x="15" y="64" width="363" height="38"/>
+                        <rect key="frame" x="15" y="64" width="400" height="38"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBU-ve-pfw">
                                 <rect key="frame" x="0.0" y="0.0" width="48" height="38"/>
@@ -26,22 +26,22 @@
                                 <buttonConfiguration key="configuration" style="plain" image="menu">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="menuTapped:" destination="kLc-2g-meH" eventType="touchUpInside" id="Uig-j1-FHC"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JlJ-H1-91a">
-                                <rect key="frame" x="315" y="0.0" width="48" height="38"/>
+                                <rect key="frame" x="352" y="0.0" width="48" height="38"/>
                                 <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
                                     <imageReference key="image" image="map" symbolScale="large"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="signOut:" destination="kLc-2g-meH" eventType="touchUpInside" id="nga-O1-TVk"/>
-                                </connections>
                             </button>
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Upb-dj-Ann">
-                        <rect key="frame" x="10" y="132" width="373" height="56"/>
+                        <rect key="frame" x="10" y="132" width="410" height="56"/>
                         <subviews>
                             <searchBar contentMode="redraw" barStyle="blackTranslucent" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y05-Ut-IJY">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="56"/>
@@ -55,7 +55,7 @@
                                 </connections>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAu-b9-U13">
-                                <rect key="frame" x="308" y="9" width="65" height="38"/>
+                                <rect key="frame" x="308" y="9" width="102" height="38"/>
                                 <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="check"/>
@@ -63,7 +63,7 @@
                         </subviews>
                     </stackView>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abo-Hn-ujJ">
-                        <rect key="frame" x="0.0" y="308" width="393" height="510"/>
+                        <rect key="frame" x="0.0" y="308" width="430" height="590"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <connections>
                             <outlet property="dataSource" destination="kLc-2g-meH" id="gM8-Re-GKn"/>
@@ -71,7 +71,7 @@
                         </connections>
                     </tableView>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xUV-MZ-9Od">
-                        <rect key="frame" x="10" y="208" width="373" height="70"/>
+                        <rect key="frame" x="10" y="208" width="410" height="70"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="FJj-kE-9ei"/>
@@ -89,6 +89,7 @@
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="rYx-GE-JZT"/>
                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                <gestureRecognizers/>
                 <constraints>
                     <constraint firstItem="abo-Hn-ujJ" firstAttribute="top" secondItem="xUV-MZ-9Od" secondAttribute="bottom" constant="30" id="67l-4k-Ia7"/>
                     <constraint firstItem="Upb-dj-Ann" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" constant="10" id="8mn-hr-5tT"/>
@@ -104,6 +105,9 @@
                     <constraint firstItem="BTI-QL-xd7" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" constant="15" id="xq5-EO-vQW"/>
                     <constraint firstItem="rYx-GE-JZT" firstAttribute="trailing" secondItem="abo-Hn-ujJ" secondAttribute="trailing" id="yBV-dJ-96O"/>
                 </constraints>
+                <connections>
+                    <outletCollection property="gestureRecognizers" destination="Qb2-Du-wnE" appends="YES" id="2bX-cb-pEd"/>
+                </connections>
             </view>
             <connections>
                 <outlet property="checkList" destination="EAu-b9-U13" id="b5D-YC-pRG"/>
@@ -114,6 +118,11 @@
             </connections>
             <point key="canvasLocation" x="176.33587786259542" y="45.774647887323944"/>
         </viewController>
+        <swipeGestureRecognizer direction="left" id="Qb2-Du-wnE">
+            <connections>
+                <action selector="swipeLeftTapped:" destination="kLc-2g-meH" id="G05-yL-qe5"/>
+            </connections>
+        </swipeGestureRecognizer>
     </objects>
     <resources>
         <image name="check" width="24" height="24"/>

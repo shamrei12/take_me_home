@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SideMenuViewController" customModule="TakeMeHome" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController id="yM2-Jo-Pu2" customClass="SideMenuViewController" customModule="TakeMeHome" customModuleProvider="target">
+            <view key="view" contentMode="scaleToFill" id="GB6-aP-YBY">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="852"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take Me Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbE-FH-Z1M">
+                        <rect key="frame" x="10" y="50" width="280" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9CL-Fd-LFg">
+                        <rect key="frame" x="30" y="141" width="240" height="592"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="yM2-Jo-Pu2" id="Stu-ew-Gwm"/>
+                            <outlet property="delegate" destination="yM2-Jo-Pu2" id="kFk-1V-fUB"/>
+                        </connections>
+                    </tableView>
+                </subviews>
+                <viewLayoutGuide key="safeArea" id="YdE-9o-Ydm"/>
+                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="9CL-Fd-LFg" firstAttribute="leading" secondItem="YdE-9o-Ydm" secondAttribute="leading" constant="30" id="4Wh-Q7-Y9R"/>
+                    <constraint firstAttribute="trailing" secondItem="qbE-FH-Z1M" secondAttribute="trailing" constant="10" id="65l-gu-QAK"/>
+                    <constraint firstItem="YdE-9o-Ydm" firstAttribute="bottom" secondItem="9CL-Fd-LFg" secondAttribute="bottom" constant="85" id="IXt-Z0-Z0U"/>
+                    <constraint firstItem="qbE-FH-Z1M" firstAttribute="top" secondItem="GB6-aP-YBY" secondAttribute="top" constant="50" id="Tvf-f4-wQU"/>
+                    <constraint firstItem="qbE-FH-Z1M" firstAttribute="leading" secondItem="GB6-aP-YBY" secondAttribute="leading" constant="10" id="dOh-cX-dhC"/>
+                    <constraint firstItem="YdE-9o-Ydm" firstAttribute="trailing" secondItem="9CL-Fd-LFg" secondAttribute="trailing" constant="30" id="gbz-X6-adp"/>
+                    <constraint firstItem="9CL-Fd-LFg" firstAttribute="top" secondItem="qbE-FH-Z1M" secondAttribute="bottom" constant="70" id="qNf-GZ-1NK"/>
+                </constraints>
+            </view>
+            <size key="freeformSize" width="300" height="852"/>
+            <connections>
+                <outlet property="tableSideMenu" destination="9CL-Fd-LFg" id="v2n-cm-ECj"/>
+            </connections>
+            <point key="canvasLocation" x="67.175572519083971" y="-15.492957746478874"/>
+        </viewController>
+    </objects>
+    <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

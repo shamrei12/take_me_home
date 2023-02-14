@@ -11,30 +11,79 @@ import FirebaseCore
 
 class AdvertViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var menuButton: UIButton!
-    @IBOutlet weak var mapButton: UIButton!
-    
-    @IBOutlet weak var checkList: UIButton!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var menuButton: UIButton!
+    @IBOutlet private weak var mapButton: UIButton!
+    @IBOutlet private weak var checkList: UIButton!
+    private var sideMenuShadowView: UIView!
+    private var sideMenuViewController: SideMenuViewController!
+    private var sideMenuTrailingConstraint: NSLayoutConstraint!
+    private var revealSideMenuOnTop: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.sideMenuShadowView = UIView(frame: self.view.bounds)
+        self.sideMenuShadowView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.sideMenuShadowView.backgroundColor = .black
+        self.sideMenuShadowView.alpha = 0.0
         menuButton.layer.cornerRadius = 5
         mapButton.layer.cornerRadius = 5
         checkList.layer.cornerRadius = 5
         tableView.register(UINib(nibName: "AdvertTableViewCell", bundle: nil), forCellReuseIdentifier: "AdvertTableViewCell")
         collectionView.register(UINib(nibName: "AdvertCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AdvertCollectionViewCell")
-        
     }
     
-    @IBAction func signOut(_ sender: UIButton) {
-        do {
-            try  Auth.auth().signOut()
-        } catch {
-            print(error)
+    override func viewWillAppear(_ animated: Bool) {
+        SideMenuViewController().viewDidDisappear(true)
+    }
+
+    func configureMenuViewController() {
+        if sideMenuViewController == nil {
+            sideMenuViewController = SideMenuViewController.instantiate()
+            view.insertSubview(sideMenuViewController.view, at: 5)
+            addChild(sideMenuViewController)
+            sideMenuViewController.view.frame.size.width = 0
         }
-       
+    }
+    
+    @IBAction func menuTapped(_ sender: UIButton) {
+        configureMenuViewController()
+        showBulletinViewController(shouldMove: true)
+    }
+    
+    func showBulletinViewController(shouldMove: Bool ) {
+         if shouldMove {
+             // show
+             UIView.animate(withDuration: 0.5,
+                            delay: 0,
+                            usingSpringWithDamping: 0.8,
+                            initialSpringVelocity: 0,
+                            options: .curveEaseInOut,
+                            animations: {
+                 self.sideMenuViewController.view.frame.size.width = 300
+                 self.sideMenuViewController.viewWillAppear(true)
+
+
+             })
+         } else {
+             UIView.animate(withDuration: 0.5,
+                            delay: 0,
+                            usingSpringWithDamping: 0.8,
+                            initialSpringVelocity: 0,
+                            options: .curveEaseInOut,
+                            animations: {
+                 self.sideMenuViewController.view.frame.size.width = 0
+                 self.sideMenuViewController.viewDidDisappear(true)
+
+             })
+         }
+     }
+    
+    
+    @IBAction func swipeLeftTapped(_ sender: UISwipeGestureRecognizer) {
+        configureMenuViewController()
+        showBulletinViewController(shouldMove: false)
     }
     
 }
@@ -62,6 +111,7 @@ extension AdvertViewController: UITableViewDataSource {
 
 
 extension AdvertViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         5
     }

@@ -52,7 +52,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="2yo-rT-PPW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bE9-l6-bbP">
                                 <rect key="frame" x="0.0" y="168.66666666666663" width="350" height="20.333333333333343"/>
@@ -67,7 +67,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="24e-Mx-PiW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Повторить пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpd-Ge-yTl">
                                 <rect key="frame" x="0.0" y="253.00000000000003" width="350" height="20.333333333333343"/>
@@ -82,7 +82,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="oQC-Se-3Wf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                         </subviews>
                     </stackView>
@@ -113,6 +113,7 @@
                 </constraints>
             </view>
             <connections>
+                <outlet property="bottomConstraint" destination="LfM-jQ-CzT" id="TUk-xo-t91"/>
                 <outlet property="emailText" destination="q2s-Cf-TOe" id="qCn-L2-fvK"/>
                 <outlet property="nameText" destination="Xd7-NP-mN8" id="l2J-D8-kW7"/>
                 <outlet property="passwordText" destination="ba4-Th-1Xx" id="9re-ST-xOc"/>
