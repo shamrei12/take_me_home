@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class SideMenuViewController: UIViewController {
     
@@ -18,14 +20,6 @@ class SideMenuViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    
-    //    @IBAction func signOut(_ sender: UIButton) {
-    //        do {
-    //            try  Auth.auth().signOut()
-    //        } catch {
-    //            print(error)
-    //        }
-    //    }
     
 }
 
@@ -80,8 +74,24 @@ extension SideMenuViewController: UITableViewDelegate {
             let profile = ProfileViewController.instantiate()
             profile.modalPresentationStyle = .fullScreen
             present(profile, animated: true)
+        } else if indexPath.row == 5 {
+            print("setting")
+            let ref = Database.database().reference().child("users")
+            
+            ref.observe(.value) { snapshot  in
+                guard let value = snapshot.value else {
+                    return
+                }
+                var closure = snapshot.value!
+                print(closure)
+            }
+            
+        } else if indexPath.row == 0 {
+            let createAD = CreateAdvertViewController.instantiate()
+            createAD.modalPresentationStyle = .fullScreen
+            present(createAD, animated: true)
         }
+        
     }
+    
 }
-
-

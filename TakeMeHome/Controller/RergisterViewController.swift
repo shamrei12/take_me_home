@@ -88,9 +88,8 @@ class RergisterViewController: UIViewController {
             Auth.auth().createUser(withEmail: emailText.text ?? "", password: passwordText.text ?? "") { [self] (result, error) in
                 if error == nil {
                     if let res = result {
-                        print(res.user.uid)
                         let ref = Database.database().reference().child("users")
-                        ref.child(res.user.uid).updateChildValues(["name": nameText.text ?? "", "email" : emailText.text ?? "" ])
+                        ref.child(res.user.uid).updateChildValues(["name": nameText.text ?? "", "email" : emailText.text ?? "", "password": passwordText.text ?? "" ])
                         self.dismiss(animated: true)
                     }
                 } else {

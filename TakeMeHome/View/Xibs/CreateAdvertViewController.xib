@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateAdvertViewController" customModule="TakeMeHome" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController id="TaD-wX-xiC" customClass="CreateAdvertViewController" customModule="FindMyPets" customModuleProvider="target">
+            <view key="view" contentMode="scaleToFill" id="Gdj-d8-HkS">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="1300"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSp-8f-Nbu">
+                        <rect key="frame" x="0.0" y="47" width="393" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="U4a-tU-zYc"/>
+                        </constraints>
+                        <items>
+                            <navigationItem id="C1s-kp-569">
+                                <barButtonItem key="leftBarButtonItem" title="Отмена" id="f1W-jf-Dz6">
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <connections>
+                                        <action selector="backTapped:" destination="TaD-wX-xiC" id="Hn8-dL-tkg"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem key="rightBarButtonItem" title="Сохранить" id="vrA-4Y-Q5Z">
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <connections>
+                                        <action selector="savePostTapped:" destination="TaD-wX-xiC" id="2lt-4h-VqZ"/>
+                                    </connections>
+                                </barButtonItem>
+                            </navigationItem>
+                        </items>
+                    </navigationBar>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGM-Mo-i9D">
+                        <rect key="frame" x="0.0" y="97" width="393" height="1203"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="US6-ie-coW">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="1203"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qwE-vg-6PZ">
+                                        <rect key="frame" x="10" y="10" width="373" height="32"/>
+                                        <segments>
+                                            <segment title="Пропажа"/>
+                                            <segment title="Находка"/>
+                                            <segment title="Из рук в руки"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="choseTipePost:" destination="TaD-wX-xiC" eventType="valueChanged" id="5Ta-gf-t7X"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Kgf-y3-wDF">
+                                        <rect key="frame" x="10" y="71.000000000000014" width="373" height="144.33333333333337"/>
+                                        <subviews>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kif-YX-R8N">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="100"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="ufD-l7-81k"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2N2-R5-mh6">
+                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                            </collectionView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPc-e6-dQy">
+                                                <rect key="frame" x="0.0" y="110" width="373" height="34.333333333333343"/>
+                                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Добавить фото"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SIc-YQ-zSN">
+                                        <rect key="frame" x="10" y="245.33333333333334" width="373" height="62.333333333333343"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название объявления" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARm-Qw-0Xd">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Укажите название" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yLf-mm-L7o">
+                                                <rect key="frame" x="0.0" y="28.333333333333371" width="373" height="34"/>
+                                                <attributedString key="attributedText"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JVl-sX-WHB">
+                                        <rect key="frame" x="10" y="327.66666666666669" width="373" height="62.333333333333314"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Порода" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9r-bv-SSf">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Укажите породу" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qU4-fE-88x">
+                                                <rect key="frame" x="0.0" y="28.333333333333314" width="373" height="34"/>
+                                                <attributedString key="attributedText"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XxG-gb-aR8">
+                                        <rect key="frame" x="10" y="410" width="373" height="62.333333333333314"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Возраст" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWH-mE-zyM">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Укажите возраст" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OhL-9g-qa5">
+                                                <rect key="frame" x="0.0" y="28.333333333333371" width="373" height="34"/>
+                                                <attributedString key="attributedText"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="TaD-wX-xiC" id="omn-cS-Tjc"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9ci-ai-vfe">
+                                        <rect key="frame" x="10" y="502.33333333333331" width="373" height="62.333333333333314"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Укажите адрес пропажи или находки" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4X-wt-tuM">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Укажите адрес" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aiw-JW-dda">
+                                                <rect key="frame" x="0.0" y="28.333333333333258" width="373" height="34"/>
+                                                <attributedString key="attributedText"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="TaD-wX-xiC" id="Rbq-xd-hr5"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aPo-j7-Egv">
+                                        <rect key="frame" x="10" y="594.66666666666663" width="373" height="62.333333333333371"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Связь с вами" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7O-hx-EKW">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Укажите номер телефона" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vo6-FE-7Ap">
+                                                <rect key="frame" x="0.0" y="28.333333333333371" width="373" height="34"/>
+                                                <attributedString key="attributedText"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="TaD-wX-xiC" id="yUR-dy-idq"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zAk-qI-kit">
+                                        <rect key="frame" x="10" y="697" width="373" height="62.333333333333371"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLV-Na-S9y">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Укажите подробности пропажи или находки" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DfF-L5-ESz">
+                                                <rect key="frame" x="0.0" y="28.333333333333371" width="373" height="34"/>
+                                                <attributedString key="attributedText"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="TaD-wX-xiC" id="tcQ-Q0-wtP"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="zAk-qI-kit" firstAttribute="top" secondItem="aPo-j7-Egv" secondAttribute="bottom" constant="40" id="1As-oM-5kH"/>
+                                    <constraint firstItem="aPo-j7-Egv" firstAttribute="top" secondItem="9ci-ai-vfe" secondAttribute="bottom" constant="30" id="4MK-hI-dpv"/>
+                                    <constraint firstItem="XxG-gb-aR8" firstAttribute="leading" secondItem="US6-ie-coW" secondAttribute="leading" constant="10" id="4U5-IK-7aW"/>
+                                    <constraint firstAttribute="trailing" secondItem="aPo-j7-Egv" secondAttribute="trailing" constant="10" id="5CP-SL-qBA"/>
+                                    <constraint firstAttribute="trailing" secondItem="zAk-qI-kit" secondAttribute="trailing" constant="10" id="6qp-nq-3Cv"/>
+                                    <constraint firstItem="qwE-vg-6PZ" firstAttribute="leading" secondItem="US6-ie-coW" secondAttribute="leading" constant="10" id="94J-zj-4Mb"/>
+                                    <constraint firstAttribute="trailing" secondItem="qwE-vg-6PZ" secondAttribute="trailing" constant="10" id="AVy-Ce-Cc6"/>
+                                    <constraint firstItem="JVl-sX-WHB" firstAttribute="top" secondItem="SIc-YQ-zSN" secondAttribute="bottom" constant="20" id="FJC-oL-Iwm"/>
+                                    <constraint firstItem="SIc-YQ-zSN" firstAttribute="top" secondItem="Kgf-y3-wDF" secondAttribute="bottom" constant="29.999999999999943" id="GYh-sL-eLp"/>
+                                    <constraint firstItem="XxG-gb-aR8" firstAttribute="top" secondItem="JVl-sX-WHB" secondAttribute="bottom" constant="20" id="Hal-J7-xwf"/>
+                                    <constraint firstItem="SIc-YQ-zSN" firstAttribute="leading" secondItem="US6-ie-coW" secondAttribute="leading" constant="10" id="LJk-W7-9IH"/>
+                                    <constraint firstItem="aPo-j7-Egv" firstAttribute="leading" secondItem="US6-ie-coW" secondAttribute="leading" constant="10" id="O6T-T7-292"/>
+                                    <constraint firstItem="9ci-ai-vfe" firstAttribute="leading" secondItem="US6-ie-coW" secondAttribute="leading" constant="10" id="SbG-PQ-GCv"/>
+                                    <constraint firstAttribute="trailing" secondItem="9ci-ai-vfe" secondAttribute="trailing" constant="10" id="SgW-zL-fy6"/>
+                                    <constraint firstItem="Kgf-y3-wDF" firstAttribute="top" secondItem="qwE-vg-6PZ" secondAttribute="bottom" constant="30" id="VAR-jX-3dY"/>
+                                    <constraint firstItem="zAk-qI-kit" firstAttribute="leading" secondItem="US6-ie-coW" secondAttribute="leading" constant="10" id="W1T-cX-2pu"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kgf-y3-wDF" secondAttribute="trailing" constant="10" id="YG2-IX-dxj"/>
+                                    <constraint firstAttribute="trailing" secondItem="XxG-gb-aR8" secondAttribute="trailing" constant="10" id="ZqO-QY-3qY"/>
+                                    <constraint firstItem="JVl-sX-WHB" firstAttribute="leading" secondItem="US6-ie-coW" secondAttribute="leading" constant="10" id="baI-o1-FWR"/>
+                                    <constraint firstAttribute="trailing" secondItem="JVl-sX-WHB" secondAttribute="trailing" constant="10" id="cO2-0S-ehC"/>
+                                    <constraint firstItem="9ci-ai-vfe" firstAttribute="top" secondItem="XxG-gb-aR8" secondAttribute="bottom" constant="30" id="nS0-Z0-tzD"/>
+                                    <constraint firstItem="Kgf-y3-wDF" firstAttribute="leading" secondItem="US6-ie-coW" secondAttribute="leading" constant="10" id="u7Z-yV-Txd"/>
+                                    <constraint firstAttribute="trailing" secondItem="SIc-YQ-zSN" secondAttribute="trailing" constant="10" id="xTv-VV-ZEu"/>
+                                    <constraint firstItem="qwE-vg-6PZ" firstAttribute="top" secondItem="US6-ie-coW" secondAttribute="top" constant="10" id="yRy-NX-KJ0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="US6-ie-coW" firstAttribute="leading" secondItem="UGM-Mo-i9D" secondAttribute="leading" id="0bi-GJ-bB1"/>
+                            <constraint firstItem="US6-ie-coW" firstAttribute="top" secondItem="UGM-Mo-i9D" secondAttribute="top" id="0if-uf-WsW"/>
+                            <constraint firstAttribute="bottom" secondItem="US6-ie-coW" secondAttribute="bottom" constant="100" id="EDs-dH-xDY"/>
+                            <constraint firstItem="US6-ie-coW" firstAttribute="width" secondItem="UGM-Mo-i9D" secondAttribute="width" id="Oyn-VQ-FXq"/>
+                            <constraint firstAttribute="trailing" secondItem="US6-ie-coW" secondAttribute="trailing" id="j1k-yp-rhG"/>
+                            <constraint firstItem="US6-ie-coW" firstAttribute="height" secondItem="UGM-Mo-i9D" secondAttribute="height" id="ma4-EJ-RNJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="contentLayoutGuide" id="eBa-U7-p63"/>
+                        <viewLayoutGuide key="frameLayoutGuide" id="Bav-UF-Zz6"/>
+                    </scrollView>
+                </subviews>
+                <viewLayoutGuide key="safeArea" id="eeA-b0-pfg"/>
+                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="hSp-8f-Nbu" firstAttribute="leading" secondItem="eeA-b0-pfg" secondAttribute="leading" id="8OD-Rd-8Vd"/>
+                    <constraint firstItem="UGM-Mo-i9D" firstAttribute="top" secondItem="hSp-8f-Nbu" secondAttribute="bottom" id="Fck-59-2o9"/>
+                    <constraint firstAttribute="bottom" secondItem="UGM-Mo-i9D" secondAttribute="bottom" id="Nzi-tv-FF6"/>
+                    <constraint firstItem="hSp-8f-Nbu" firstAttribute="top" secondItem="eeA-b0-pfg" secondAttribute="top" id="Qi8-7y-cap"/>
+                    <constraint firstItem="UGM-Mo-i9D" firstAttribute="leading" secondItem="eeA-b0-pfg" secondAttribute="leading" id="axX-Gx-gJ1"/>
+                    <constraint firstItem="hSp-8f-Nbu" firstAttribute="trailing" secondItem="eeA-b0-pfg" secondAttribute="trailing" id="oEA-Lr-v7k"/>
+                    <constraint firstItem="UGM-Mo-i9D" firstAttribute="trailing" secondItem="eeA-b0-pfg" secondAttribute="trailing" id="xRX-cC-zZK"/>
+                </constraints>
+            </view>
+            <size key="freeformSize" width="393" height="1300"/>
+            <connections>
+                <outlet property="adress" destination="Aiw-JW-dda" id="jZl-eh-Qh1"/>
+                <outlet property="breed" destination="qU4-fE-88x" id="CPx-he-Qmm"/>
+                <outlet property="descriptionText" destination="DfF-L5-ESz" id="ZuL-X6-8GO"/>
+                <outlet property="number" destination="Vo6-FE-7Ap" id="i7X-NA-na9"/>
+                <outlet property="old" destination="OhL-9g-qa5" id="cbj-37-gV2"/>
+                <outlet property="postName" destination="yLf-mm-L7o" id="i83-Pf-PiB"/>
+                <outlet property="postType" destination="qwE-vg-6PZ" id="Eiz-Fx-fTR"/>
+                <outlet property="scrollView" destination="UGM-Mo-i9D" id="Asy-iF-h9D"/>
+            </connections>
+            <point key="canvasLocation" x="516.79389312977094" y="116.90140845070422"/>
+        </viewController>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

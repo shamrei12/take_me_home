@@ -34,6 +34,14 @@ class AdvertViewController: UIViewController {
         collectionView.register(UINib(nibName: "AdvertCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AdvertCollectionViewCell")
     }
     
+        @IBAction func signOut(_ sender: UIButton) {
+            do {
+                try  Auth.auth().signOut()
+            } catch {
+                print(error)
+            }
+        }
+    
     override func viewWillAppear(_ animated: Bool) {
         SideMenuViewController().viewDidDisappear(true)
     }
