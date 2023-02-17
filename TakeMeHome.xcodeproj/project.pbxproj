@@ -39,6 +39,8 @@
 		D8A0FBA829943E8E0051C9F7 /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FBA629943E8E0051C9F7 /* SideMenuViewController.xib */; };
 		D8D1EA0B299D272800F24D34 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EA0A299D272800F24D34 /* TimeManager.swift */; };
 		D8D1EA0D299D2AC900F24D34 /* FirebaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EA0C299D2AC900F24D34 /* FirebaseData.swift */; };
+		D8D1EA10299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EA0E299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift */; };
+		D8D1EA11299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8D1EA0F299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		D8A0FBA629943E8E0051C9F7 /* SideMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
 		D8D1EA0A299D272800F24D34 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		D8D1EA0C299D2AC900F24D34 /* FirebaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseData.swift; sourceTree = "<group>"; };
+		D8D1EA0E299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		D8D1EA0F299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		DB30E3F0652F68E81AB8BC6A /* Pods-TakeMeHome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome.debug.xcconfig"; path = "Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -196,6 +200,8 @@
 				D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */,
 				D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */,
 				D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */,
+				D8D1EA0E299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift */,
+				D8D1EA0F299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 				D820C692298C24DC001B11B7 /* Assets.xcassets in Resources */,
 				D820C6BD298F96E3001B11B7 /* AdvertCollectionViewCell.xib in Resources */,
 				D8A0FB9A2992558C0051C9F7 /* Podfile in Resources */,
+				D8D1EA11299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib in Resources */,
 				D8A0FB942992515B0051C9F7 /* RergisterViewController.xib in Resources */,
 				D8A0FB90299231EE0051C9F7 /* EnterViewController.xib in Resources */,
 			);
@@ -382,6 +389,7 @@
 			files = (
 				D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */,
 				D8A0FB8F299231EE0051C9F7 /* EnterViewController.swift in Sources */,
+				D8D1EA10299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift in Sources */,
 				D820C686298C24DA001B11B7 /* AppDelegate.swift in Sources */,
 				D86F5822299C3101000A9170 /* SideMenuTableViewCell.swift in Sources */,
 				D820C688298C24DA001B11B7 /* SceneDelegate.swift in Sources */,

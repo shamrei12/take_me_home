@@ -10,9 +10,12 @@ protocol AdvertProtocol {
     var curentDate: String { get set }
     var breed: String { get set }
     var typePost: String { get set }
+    var linkImage: String { get set }
 }
 
 struct AdvertPost: AdvertProtocol {
+    var linkImage: String
+    
     var typePost: String
     var breed: String
     var postName: String

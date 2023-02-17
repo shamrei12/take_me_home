@@ -10,4 +10,6 @@ target 'TakeMeHome' do
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
   pod 'FirebaseDatabase'
+  pod 'FirebaseStorage'
+  pod 'Kingfisher'
 end

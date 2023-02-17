@@ -38,7 +38,7 @@
                                     <imageReference key="image" image="map" symbolScale="large"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="signOut:" destination="kLc-2g-meH" eventType="touchUpInside" id="sTJ-ja-RkS"/>
+                                    <action selector="mapTapped:" destination="kLc-2g-meH" eventType="touchUpInside" id="FaF-0D-yDN"/>
                                 </connections>
                             </button>
                         </subviews>

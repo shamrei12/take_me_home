@@ -10,6 +10,7 @@ import FirebaseCore
 import FirebaseAuth
 
 
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?

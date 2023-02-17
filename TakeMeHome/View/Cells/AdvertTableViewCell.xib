@@ -38,7 +38,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кличка: Цуми" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8Q-ML-uLf">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Возраст: до 1 года" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8Q-ML-uLf">
                                                 <rect key="frame" x="0.0" y="63" width="191" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -88,7 +88,11 @@
             </tableViewCellContentView>
             <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
             <connections>
+                <outlet property="breed" destination="cs6-FL-zOk" id="eUE-rV-dtN"/>
+                <outlet property="lostAdress" destination="Mqe-1e-dXf" id="gMJ-Uo-7pi"/>
                 <outlet property="mainView" destination="edM-Va-qPy" id="Sii-iU-ajR"/>
+                <outlet property="oldPet" destination="W8Q-ML-uLf" id="AKP-ct-eda"/>
+                <outlet property="postName" destination="4CP-GD-2Ww" id="hMN-xf-EQc"/>
             </connections>
             <point key="canvasLocation" x="200" y="9.8591549295774659"/>
         </tableViewCell>

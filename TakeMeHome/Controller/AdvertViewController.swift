@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseCore
+import Kingfisher
 
 class AdvertViewController: UIViewController {
 
@@ -20,6 +21,8 @@ class AdvertViewController: UIViewController {
     private var sideMenuViewController: SideMenuViewController!
     private var sideMenuTrailingConstraint: NSLayoutConstraint!
     private var revealSideMenuOnTop: Bool = true
+    private var fbManager: FirebaseData!
+    var advertMass: [AdvertProtocol] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,7 @@ class AdvertViewController: UIViewController {
         checkList.layer.cornerRadius = 5
         tableView.register(UINib(nibName: "AdvertTableViewCell", bundle: nil), forCellReuseIdentifier: "AdvertTableViewCell")
         collectionView.register(UINib(nibName: "AdvertCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AdvertCollectionViewCell")
+        fbManager = FirebaseData()
     }
     
         @IBAction func signOut(_ sender: UIButton) {
@@ -43,7 +47,7 @@ class AdvertViewController: UIViewController {
         }
     
     override func viewWillAppear(_ animated: Bool) {
-        SideMenuViewController().viewDidDisappear(true)
+        getData()
     }
 
     func configureMenuViewController() {
@@ -88,6 +92,21 @@ class AdvertViewController: UIViewController {
          }
      }
     
+    @IBAction func mapTapped(_ sender: UIButton) {
+
+    }
+    
+    func getData() {
+        advertMass.removeAll()
+        fbManager.load() { data in
+            if data.count > 0 {
+                for i in 0...data.count - 1 {
+                    self.advertMass.append(AdvertPost(linkImage: data[i].linkImage, typePost: data[i].typePost, breed: data[i].breed, postName: data[i].postName, descriptionName: data[i].descriptionName, typePet: data[i].typePet, oldPet: data[i].oldPet, lostAdress: data[i].lostAdress, curentDate: data[i].curentDate))
+                }
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     @IBAction func swipeLeftTapped(_ sender: UISwipeGestureRecognizer) {
         configureMenuViewController()
@@ -98,7 +117,7 @@ class AdvertViewController: UIViewController {
 
 extension AdvertViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        advertMass.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,6 +132,21 @@ extension AdvertViewController: UITableViewDataSource {
     }
     
     private func configure(cell: AdvertTableViewCell, for indexPath: IndexPath) -> UITableViewCell {
+        
+        DispatchQueue.global().async { [self] in
+//            let resurse = ImageResource(downloadURL: URL(string: advertMass[indexPath.row].linkImage, cacheKey: advertMass[indexPath.row].linkImage)
+            let resurse = ImageResource(downloadURL: URL(string: advertMass[indexPath.row].linkImage)!)
+            let processor = DownsamplingImageProcessor(size: CGSize(width: 128, height: 128))
+                DispatchQueue.main.async {
+                    cell.imageView!.kf.setImage(with: resurse, options: [.processor(processor)])
+                    cell.postName.text = advertMass[indexPath.row].postName
+                    cell.oldPet.text = "Возраст: \(advertMass[indexPath.row].oldPet)"
+                    cell.breed.text = "Порода: \(advertMass[indexPath.row].breed)"
+                    cell.lostAdress.text = advertMass[indexPath.row].lostAdress
+                }
+            }
+        
+
         return cell
     }
 }

@@ -10,6 +10,13 @@ import UIKit
 class AdvertTableViewCell: UITableViewCell {
 
     @IBOutlet weak var mainView: UIView!
+    
+    @IBOutlet weak var postName: UILabel!
+    
+    @IBOutlet weak var oldPet: UILabel!
+    
+    @IBOutlet weak var lostAdress: UILabel!
+    @IBOutlet weak var breed: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         mainView.layer.cornerRadius = 10
