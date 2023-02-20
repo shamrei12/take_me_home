@@ -41,6 +41,8 @@
 		D8D1EA0D299D2AC900F24D34 /* FirebaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EA0C299D2AC900F24D34 /* FirebaseData.swift */; };
 		D8D1EA10299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EA0E299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift */; };
 		D8D1EA11299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8D1EA0F299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib */; };
+		D8D1EA1429A0C49C00F24D34 /* AdvertPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EA1229A0C49C00F24D34 /* AdvertPageViewController.swift */; };
+		D8D1EA1529A0C49C00F24D34 /* AdvertPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8D1EA1329A0C49C00F24D34 /* AdvertPageViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +83,8 @@
 		D8D1EA0C299D2AC900F24D34 /* FirebaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseData.swift; sourceTree = "<group>"; };
 		D8D1EA0E299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8D1EA0F299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		D8D1EA1229A0C49C00F24D34 /* AdvertPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertPageViewController.swift; sourceTree = "<group>"; };
+		D8D1EA1329A0C49C00F24D34 /* AdvertPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvertPageViewController.xib; sourceTree = "<group>"; };
 		DB30E3F0652F68E81AB8BC6A /* Pods-TakeMeHome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome.debug.xcconfig"; path = "Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +191,7 @@
 				D89640E1299C440D00DF968C /* ProfileViewController.xib */,
 				D8A0FBA629943E8E0051C9F7 /* SideMenuViewController.xib */,
 				D89640E6299CCF0700DF968C /* CreateAdvertViewController.xib */,
+				D8D1EA1329A0C49C00F24D34 /* AdvertPageViewController.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 				D820C6B0298EA157001B11B7 /* AdvertViewController.swift */,
 				D8A0FBA1299385050051C9F7 /* ForgotPasswordViewController.swift */,
 				D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */,
+				D8D1EA1229A0C49C00F24D34 /* AdvertPageViewController.swift */,
 				D89640DF299C43F400DF968C /* ProfileViewController.swift */,
 			);
 			path = Controller;
@@ -335,6 +341,7 @@
 				D8D1EA11299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib in Resources */,
 				D8A0FB942992515B0051C9F7 /* RergisterViewController.xib in Resources */,
 				D8A0FB90299231EE0051C9F7 /* EnterViewController.xib in Resources */,
+				D8D1EA1529A0C49C00F24D34 /* AdvertPageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +397,7 @@
 				D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */,
 				D8A0FB8F299231EE0051C9F7 /* EnterViewController.swift in Sources */,
 				D8D1EA10299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift in Sources */,
+				D8D1EA1429A0C49C00F24D34 /* AdvertPageViewController.swift in Sources */,
 				D820C686298C24DA001B11B7 /* AppDelegate.swift in Sources */,
 				D86F5822299C3101000A9170 /* SideMenuTableViewCell.swift in Sources */,
 				D820C688298C24DA001B11B7 /* SceneDelegate.swift in Sources */,

@@ -39,11 +39,6 @@ class AdvertViewController: UIViewController {
     }
     
         @IBAction func signOut(_ sender: UIButton) {
-            do {
-                try  Auth.auth().signOut()
-            } catch {
-                print(error)
-            }
         }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,7 +96,7 @@ class AdvertViewController: UIViewController {
         fbManager.load() { data in
             if data.count > 0 {
                 for i in 0...data.count - 1 {
-                    self.advertMass.append(AdvertPost(linkImage: data[i].linkImage, typePost: data[i].typePost, breed: data[i].breed, postName: data[i].postName, descriptionName: data[i].descriptionName, typePet: data[i].typePet, oldPet: data[i].oldPet, lostAdress: data[i].lostAdress, curentDate: data[i].curentDate))
+                    self.advertMass.append(AdvertPost(phoneNumber: data[i].phoneNumber, linkImage: data[i].linkImage, typePost: data[i].typePost, breed: data[i].breed, postName: data[i].postName, descriptionName: data[i].descriptionName, typePet: data[i].typePet, oldPet: data[i].oldPet, lostAdress: data[i].lostAdress, curentDate: data[i].curentDate))
                 }
                 self.tableView.reloadData()
             }
@@ -115,7 +110,18 @@ class AdvertViewController: UIViewController {
     
 }
 
+extension AdvertViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let adverpage = AdvertPageViewController.instantiate()
+        adverpage.modalPresentationStyle = .fullScreen
+        adverpage.updateUIElements([advertMass[indexPath.row]])
+        present(adverpage, animated: true)
+    }
+}
+
 extension AdvertViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         advertMass.count
     }

@@ -39,6 +39,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="mapTapped:" destination="kLc-2g-meH" eventType="touchUpInside" id="FaF-0D-yDN"/>
+                                    <action selector="signOut:" destination="kLc-2g-meH" eventType="touchUpInside" id="K92-wW-mPX"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -12,12 +12,12 @@ import FirebaseFirestore
 import FirebaseStorage
 
 protocol FirebaseProtocol {
-//    func save(posts: [AdvertProtocol])
+    //    func save(posts: [AdvertProtocol])
     //    func load() -> [AdvertProtocol]
 }
 
 class FirebaseData: FirebaseProtocol {
-
+    
     
     //
     //    func load(completion: @escaping ([String:String]) -> Void) {
@@ -31,7 +31,7 @@ class FirebaseData: FirebaseProtocol {
             if let snapshots = snap.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
                     if let post = snap.value as? Dictionary<String,String>  {
-                        resultMass.append(AdvertPost(linkImage: post["listLinks"] ?? "", typePost: post["typePost"] ?? "", breed: post["breed"] ?? "", postName: post["postName"] ?? "", descriptionName: post["description"] ?? "", typePet: post["typePet"] ?? "", oldPet: post["oldPet"] ?? "", lostAdress: post["lostAdress"] ?? "", curentDate: post["curentDate"] ?? ""))
+                        resultMass.append(AdvertPost(phoneNumber: post["phoneNumber"] ?? "", linkImage: post["listLinks"] ?? "", typePost: post["typePost"] ?? "", breed: post["breed"] ?? "", postName: post["postName"] ?? "", descriptionName: post["description"] ?? "", typePet: post["typePet"] ?? "", oldPet: post["oldPet"] ?? "", lostAdress: post["lostAdress"] ?? "", curentDate: post["curentDate"] ?? ""))
                     }
                 }
                 completion(resultMass)
@@ -39,10 +39,10 @@ class FirebaseData: FirebaseProtocol {
         }
     }
     
-    func saveImage(_ stroage: Data, completion: @escaping (String) -> Void) {
+    func saveImage(_ stroage: [Data],  completion: @escaping (String) -> Void) {
         let storageRef = Storage.storage().reference().child("postImages")
-
-            storageRef.putData(stroage) { (_, err) in
+//        for data in stroage { dispatchGroup read
+        storageRef.putData(stroage.first!) { (_, err) in
                 guard err == nil else {
                     print("error")
                     return
@@ -56,17 +56,20 @@ class FirebaseData: FirebaseProtocol {
                     completion(urlString)
                 }
             }
-        }
+//        }
+    }
     
-    func save(posts: [AdvertProtocol], stroage: Data) {
+    func save(posts: [AdvertProtocol], stroage: [Data]) {
         let ref = Database.database().reference().child("posts")
-        saveImage(stroage) { data in
+        
+        self.saveImage(stroage) { data in
             ref.getData { (err, snap) in
-                ref.child("\(snap!.childrenCount + 1)").setValue(["postName": posts.first?.postName, "description": posts.first?.descriptionName, "typePet": posts.first?.typePet, "oldPet": posts.first?.oldPet, "lostAdress": posts.first?.lostAdress, "curentDate": posts.first?.curentDate, "breed": posts.first?.breed, "typePost": posts.first?.typePost, "listLinks": data])
+                ref.child("\(snap!.childrenCount + 1)").setValue(["postName": posts.first?.postName, "description": posts.first?.descriptionName, "typePet": posts.first?.typePet, "oldPet": posts.first?.oldPet, "lostAdress": posts.first?.lostAdress, "curentDate": posts.first?.curentDate, "breed": posts.first?.breed, "typePost": posts.first?.typePost, "listLinks": data, "phoneNumber": posts.first?.phoneNumber])
+
             }
         }
-
     }
+    
 }
 
 

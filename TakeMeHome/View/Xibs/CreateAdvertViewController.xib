@@ -165,13 +165,10 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Укажите номер телефона" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vo6-FE-7Ap">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Укажите номер телефона" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vo6-FE-7Ap" customClass="JMMaskTextField" customModule="JMMaskTextField_Swift">
                                                 <rect key="frame" x="0.0" y="28.333333333333371" width="373" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="TaD-wX-xiC" id="yUR-dy-idq"/>
-                                                </connections>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -256,8 +253,8 @@
                 <outlet property="breed" destination="qU4-fE-88x" id="CPx-he-Qmm"/>
                 <outlet property="collectionView" destination="kif-YX-R8N" id="ihH-tO-gdE"/>
                 <outlet property="descriptionText" destination="DfF-L5-ESz" id="ZuL-X6-8GO"/>
-                <outlet property="number" destination="Vo6-FE-7Ap" id="i7X-NA-na9"/>
                 <outlet property="old" destination="OhL-9g-qa5" id="cbj-37-gV2"/>
+                <outlet property="phoneNumber" destination="Vo6-FE-7Ap" id="oQN-kn-5Cp"/>
                 <outlet property="postName" destination="yLf-mm-L7o" id="i83-Pf-PiB"/>
                 <outlet property="postType" destination="qwE-vg-6PZ" id="Eiz-Fx-fTR"/>
                 <outlet property="scrollView" destination="UGM-Mo-i9D" id="Asy-iF-h9D"/>

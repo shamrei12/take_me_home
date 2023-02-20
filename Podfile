@@ -12,4 +12,6 @@ target 'TakeMeHome' do
   pod 'FirebaseDatabase'
   pod 'FirebaseStorage'
   pod 'Kingfisher'
+  pod "JMMaskTextField-Swift"
+  
 end

@@ -11,9 +11,12 @@ protocol AdvertProtocol {
     var breed: String { get set }
     var typePost: String { get set }
     var linkImage: String { get set }
+    var phoneNumber: String { get set }
 }
 
 struct AdvertPost: AdvertProtocol {
+    var phoneNumber: String
+    
     var linkImage: String
     
     var typePost: String
