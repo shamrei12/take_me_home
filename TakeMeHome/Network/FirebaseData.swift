@@ -17,7 +17,7 @@ protocol FirebaseProtocol {
 }
 
 class FirebaseData: FirebaseProtocol {
-    
+    var currentUploadTask: StorageUploadTask?
     
     //
     //    func load(completion: @escaping ([String:String]) -> Void) {
@@ -30,8 +30,8 @@ class FirebaseData: FirebaseProtocol {
         ref.observe(.value) { snap in
             if let snapshots = snap.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
-                    if let post = snap.value as? Dictionary<String,String>  {
-                        resultMass.append(AdvertPost(phoneNumber: post["phoneNumber"] ?? "", linkImage: post["listLinks"] ?? "", typePost: post["typePost"] ?? "", breed: post["breed"] ?? "", postName: post["postName"] ?? "", descriptionName: post["description"] ?? "", typePet: post["typePet"] ?? "", oldPet: post["oldPet"] ?? "", lostAdress: post["lostAdress"] ?? "", curentDate: post["curentDate"] ?? ""))
+                    if let post = snap.value as? Dictionary<String, String>  {
+                        resultMass.append(AdvertPost(postId: post["postID"] ?? "", phoneNumber: post["phoneNumber"] ?? "", linkImage: post["listLinks"] ?? "", typePost: post["typePost"] ?? "", breed: post["breed"] ?? "", postName: post["postName"] ?? "", descriptionName: post["description"] ?? "", typePet: post["typePet"] ?? "", oldPet: post["oldPet"] ?? "", lostAdress: post["lostAdress"] ?? "", curentDate: post["curentDate"] ?? ""))
                     }
                 }
                 completion(resultMass)
@@ -39,15 +39,30 @@ class FirebaseData: FirebaseProtocol {
         }
     }
     
-    func saveImage(_ stroage: [Data],  completion: @escaping (String) -> Void) {
+    func loadSinglePost (id: String ,completion: @escaping ([AdvertProtocol]) -> Void) {
+        var resultMass: [AdvertProtocol] = []
+        let ref = Database.database().reference().child("posts").child(id)
+        ref.observe(.value) { snap in
+            if let snapshots = snap.children.allObjects as? [DataSnapshot] {
+                    if let post = snap.value as? Dictionary<String, String>  {
+                        resultMass.append(AdvertPost(postId: post["postID"] ?? "", phoneNumber: post["phoneNumber"] ?? "", linkImage: post["listLinks"] ?? "", typePost: post["typePost"] ?? "", breed: post["breed"] ?? "", postName: post["postName"] ?? "", descriptionName: post["description"] ?? "", typePet: post["typePet"] ?? "", oldPet: post["oldPet"] ?? "", lostAdress: post["lostAdress"] ?? "", curentDate: post["curentDate"] ?? ""))
+                    }
+                completion(resultMass)
+            }
+        }
+    }
+    
+    func saveImage(_ storage: [Data],_ userID: String,  completion: @escaping (String) -> Void) {
         let storageRef = Storage.storage().reference().child("postImages")
-//        for data in stroage { dispatchGroup read
-        storageRef.putData(stroage.first!) { (_, err) in
+        //        for data in stroage { dispatchGroup read
+        for data in 0...storage.count - 1 {
+            storageRef.child("\(userID)_\(data)").putData(storage[data]) { (metadata, err) in
                 guard err == nil else {
                     print("error")
                     return
                 }
-                storageRef.downloadURL { (url, err) in
+                storageRef.child("\(userID)_\(data)").downloadURL { (url, err) in
+
                     guard let url = url, err == nil else {
                         print("error")
                         return
@@ -56,15 +71,20 @@ class FirebaseData: FirebaseProtocol {
                     completion(urlString)
                 }
             }
-//        }
+        }
     }
     
     func save(posts: [AdvertProtocol], stroage: [Data]) {
         let ref = Database.database().reference().child("posts")
-        
-        self.saveImage(stroage) { data in
-            ref.getData { (err, snap) in
-                ref.child("\(snap!.childrenCount + 1)").setValue(["postName": posts.first?.postName, "description": posts.first?.descriptionName, "typePet": posts.first?.typePet, "oldPet": posts.first?.oldPet, "lostAdress": posts.first?.lostAdress, "curentDate": posts.first?.curentDate, "breed": posts.first?.breed, "typePost": posts.first?.typePost, "listLinks": data, "phoneNumber": posts.first?.phoneNumber])
+        var list = String()
+        ref.getData { (err, snap) in
+            self.saveImage(stroage, "\(snap!.childrenCount + 1)") { data in
+                DispatchQueue.global().async {
+                    list += "\(data) "
+                    DispatchQueue.main.async {
+                        ref.child("\(snap!.childrenCount + 1)").setValue(["postName": posts.first?.postName, "description": posts.first?.descriptionName, "typePet": posts.first?.typePet, "oldPet": posts.first?.oldPet, "lostAdress": posts.first?.lostAdress, "curentDate": posts.first?.curentDate, "breed": posts.first?.breed, "typePost": posts.first?.typePost, "listLinks": list, "phoneNumber": posts.first?.phoneNumber, "postID": "\(snap!.childrenCount + 1)"])
+                    }
+                }
 
             }
         }

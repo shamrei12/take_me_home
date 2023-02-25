@@ -75,7 +75,6 @@ extension SideMenuViewController: UITableViewDelegate {
             profile.modalPresentationStyle = .fullScreen
             present(profile, animated: true)
         } else if indexPath.row == 5 {
-            print("setting")
 //            let ref = Database.database().reference().child("users")
 //
 //            ref.observe(.value) { snapshot  in
@@ -83,7 +82,6 @@ extension SideMenuViewController: UITableViewDelegate {
 //                    return
 //                }
 //                var closure = snapshot.value!
-//                print(closure)
 //            }
             do {
                 try  Auth.auth().signOut()

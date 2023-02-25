@@ -96,7 +96,7 @@ class AdvertViewController: UIViewController {
         fbManager.load() { data in
             if data.count > 0 {
                 for i in 0...data.count - 1 {
-                    self.advertMass.append(AdvertPost(phoneNumber: data[i].phoneNumber, linkImage: data[i].linkImage, typePost: data[i].typePost, breed: data[i].breed, postName: data[i].postName, descriptionName: data[i].descriptionName, typePet: data[i].typePet, oldPet: data[i].oldPet, lostAdress: data[i].lostAdress, curentDate: data[i].curentDate))
+                    self.advertMass.append(AdvertPost(postId: data[i].postId, phoneNumber: data[i].phoneNumber, linkImage:  ConverterLinks.shared.getFirstLinks(data[i].linkImage), typePost: data[i].typePost, breed: data[i].breed, postName: data[i].postName, descriptionName: data[i].descriptionName, typePet: data[i].typePet, oldPet: data[i].oldPet, lostAdress: data[i].lostAdress, curentDate: data[i].curentDate))
                 }
                 self.tableView.reloadData()
             }
@@ -115,7 +115,7 @@ extension AdvertViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let adverpage = AdvertPageViewController.instantiate()
         adverpage.modalPresentationStyle = .fullScreen
-        adverpage.updateUIElements([advertMass[indexPath.row]])
+        adverpage.updateUIElements(advertMass[indexPath.row].postId)
         present(adverpage, animated: true)
     }
 }
@@ -140,10 +140,9 @@ extension AdvertViewController: UITableViewDataSource {
     private func configure(cell: AdvertTableViewCell, for indexPath: IndexPath) -> UITableViewCell {
         
         DispatchQueue.global().async { [self] in
-//            let resurse = ImageResource(downloadURL: URL(string: advertMass[indexPath.row].linkImage, cacheKey: advertMass[indexPath.row].linkImage)
-            let resurse = ImageResource(downloadURL: URL(string: advertMass[indexPath.row].linkImage)!)
+            let resurse = ImageResource(downloadURL: URL(string: advertMass[indexPath.row].linkImage)!, cacheKey: advertMass[indexPath.row].linkImage)
             let processor = DownsamplingImageProcessor(size: CGSize(width: 128, height: 128))
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [self] in
                     cell.imageView!.kf.setImage(with: resurse, options: [.processor(processor)])
                     cell.postName.text = advertMass[indexPath.row].postName
                     cell.oldPet.text = "Возраст: \(advertMass[indexPath.row].oldPet)"
@@ -152,7 +151,6 @@ extension AdvertViewController: UITableViewDataSource {
                 }
             }
         
-
         return cell
     }
 }

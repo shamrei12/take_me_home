@@ -66,7 +66,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     
     func showPhotoLibrary() {
         var config = PHPickerConfiguration()
-        config.selectionLimit = 1
+        config.selectionLimit = 5
         config.filter = .images
         
         let picker = PHPickerViewController(configuration: config)
@@ -135,7 +135,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             typePostText = "Из рук в Руки"
         }
         
-        print(typePostText)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -166,8 +165,8 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         if typePostText == "" {
             typePostText = "Пропажа"
         }
-        posts.append(AdvertPost(phoneNumber: phoneNumber.text ?? "", linkImage: "", typePost: typePostText , breed: breed.text ?? "", postName: postName.text ?? "", descriptionName: descriptionText.text ?? "", typePet: "Dog", oldPet: old.text ?? "", lostAdress: adress.text ?? "", curentDate: TimeManager.shared.currentDate()))
-        fireBase?.save(posts: posts, stroage: imageStorage )
+        posts.append(AdvertPost(postId: "", phoneNumber: phoneNumber.text ?? "", linkImage: "", typePost: typePostText , breed: breed.text ?? "", postName: postName.text ?? "", descriptionName: descriptionText.text ?? "", typePet: "Dog", oldPet: old.text ?? "", lostAdress: adress.text ?? "", curentDate: TimeManager.shared.currentDate()))
+        fireBase?.save(posts: posts, stroage: imageStorage)
         dismiss(animated: true)
     }
     
