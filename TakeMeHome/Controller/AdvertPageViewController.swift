@@ -28,25 +28,57 @@ class AdvertPageViewController: UIViewController {
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollViewImage: UIScrollView!
+    private var moveTextField = true
     
 
     @IBOutlet weak var collectionView: UICollectionView!
     private var listResourse = [ImageResource]()
+    private var commentsPost = [Comments]()
     
+    @IBOutlet weak var bottonScrollviewConstraint: NSLayoutConstraint!
     
     private var fbManager: FirebaseData!
+    private var stringPostID: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         pageControl.hidesForSinglePage = true
         fbManager = FirebaseData()
         collectionView.register(UINib(nibName: "ImagePostCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ImagePostCollectionViewCell")
         tableview.register(UINib(nibName: "CommentsPostTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentsPostTableViewCell")
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         // Do any additional setup after loading the view.
 //        updateFrame()
+        
 
     }
 //
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if moveTextField {
+            moveTextField = false
+            if messageField.isEditing {
+                guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+                let keyboardHeight = keyboardSize.height
+                let safeAreaExists = (self.view?.window?.safeAreaInsets.bottom != 0)
+                let bottomConstant: CGFloat = 20
+                bottonScrollviewConstraint.constant -= keyboardHeight / 2.1
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        //        if self.view.frame.origin.y != 0 {
+        //            self.view.frame.origin.y = 0
+        //        }
+        moveTextField = true
+        bottonScrollviewConstraint.constant = 0
+        
+    }
+    
+    
+    
 //    func updateFrame() {
 //        self.scrollView.contentSize = CGSize(width: self.contentView.frame.width, height: self.contentView.frame.height)
 //
@@ -63,12 +95,28 @@ class AdvertPageViewController: UIViewController {
     }
     
     @IBAction func sendMessageTapped(_ sender: UIButton) {
+        if messageField.text?.count != 0 {
+            fbManager.getUserName(completion: { [self] user in
+                fbManager.SaveComment(id: stringPostID , key: user, value: messageField.text ?? "")
+                DispatchQueue.main.async {
+                    self.messageField.text = ""
+                }
+            })
+            }
     }
     
     func updateUIElements(_ id: String) {
         var list = [String]()
         
-        
+        fbManager.loadComments(id: id) { dataComments in
+            DispatchQueue.main.async {
+                self.commentsPost.removeAll()
+                self.commentsPost = dataComments
+                self.tableview.reloadData()
+            }
+            
+            
+        }
         fbManager.loadSinglePost(id: id) { data in
             DispatchQueue.global().async { [self] in
                 list = ConverterLinks.shared.getListLinks(data.first?.linkImage ?? "")
@@ -93,6 +141,7 @@ class AdvertPageViewController: UIViewController {
                     self.breedPet.text = "Порода: \(data.first?.breed ?? "")"
                     self.lostAdress.text = "Адрес: \(data.first?.lostAdress ?? "")"
                     self.numberPhone.text = data.first?.phoneNumber
+                    stringPostID = data.first?.postId ?? ""
                 }
             }
         }
@@ -150,7 +199,7 @@ extension AdvertPageViewController: UICollectionViewDelegate, UICollectionViewDa
 
 extension AdvertPageViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        commentsPost.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -165,6 +214,8 @@ extension AdvertPageViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func configure(cell: CommentsPostTableViewCell, for indexPath: IndexPath) -> UITableViewCell {
+        cell.nameUser.text = commentsPost[indexPath.row].name
+        cell.textComment.text = commentsPost[indexPath.row].comment
         return cell
     }
 }

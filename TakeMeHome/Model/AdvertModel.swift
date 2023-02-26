@@ -17,11 +17,8 @@ protocol AdvertProtocol {
 
 struct AdvertPost: AdvertProtocol {
     var postId: String
-    
     var phoneNumber: String
-    
     var linkImage: String
-    
     var typePost: String
     var breed: String
     var postName: String

@@ -261,6 +261,7 @@
             </view>
             <size key="freeformSize" width="393" height="1500"/>
             <connections>
+                <outlet property="bottonScrollviewConstraint" destination="7hU-gB-qa7" id="rpC-Qd-HNS"/>
                 <outlet property="breedPet" destination="qC4-we-s2m" id="6Cf-70-vj2"/>
                 <outlet property="collectionView" destination="qO7-Zx-rah" id="wP5-w1-4DU"/>
                 <outlet property="contentView" destination="O4P-Sj-lqM" id="t6c-Cz-MlT"/>
