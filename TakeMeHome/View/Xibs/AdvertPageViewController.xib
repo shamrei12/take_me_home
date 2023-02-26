@@ -194,6 +194,9 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z5I-Vz-U1h">
                                                         <rect key="frame" x="0.0" y="0.0" width="329.66666666666669" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="xTd-dA-vpq"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -219,7 +222,6 @@
                                     <constraint firstAttribute="bottom" secondItem="SUd-Gr-9wM" secondAttribute="bottom" constant="815.66666666666663" id="J7o-Zg-FO4"/>
                                     <constraint firstItem="MgB-wD-G1h" firstAttribute="top" secondItem="2Am-7u-QUU" secondAttribute="bottom" constant="30" id="OVK-rg-gMY"/>
                                     <constraint firstItem="Y0b-Zc-HYG" firstAttribute="leading" secondItem="O4P-Sj-lqM" secondAttribute="leading" constant="10" id="Wvb-wX-5Ej"/>
-                                    <constraint firstItem="Teu-I1-LzM" firstAttribute="top" secondItem="O4P-Sj-lqM" secondAttribute="top" constant="734.33333333333348" id="YFq-Wb-bh7"/>
                                     <constraint firstAttribute="trailing" secondItem="Y0b-Zc-HYG" secondAttribute="trailing" constant="10" id="aB6-oK-3I7"/>
                                     <constraint firstAttribute="trailing" secondItem="2Am-7u-QUU" secondAttribute="trailing" constant="10" id="cvu-vt-fo8"/>
                                     <constraint firstAttribute="trailing" secondItem="Teu-I1-LzM" secondAttribute="trailing" constant="10" id="fp1-wk-wjW"/>
@@ -240,8 +242,8 @@
                             <constraint firstItem="O4P-Sj-lqM" firstAttribute="width" secondItem="X0Q-Rr-vfh" secondAttribute="width" id="1vh-Re-7ZD"/>
                             <constraint firstItem="O4P-Sj-lqM" firstAttribute="leading" secondItem="X0Q-Rr-vfh" secondAttribute="leading" id="efq-VG-mJ5"/>
                             <constraint firstItem="O4P-Sj-lqM" firstAttribute="top" secondItem="X0Q-Rr-vfh" secondAttribute="top" id="is1-03-W7C"/>
-                            <constraint firstAttribute="bottom" secondItem="O4P-Sj-lqM" secondAttribute="bottom" constant="-143" id="qcW-tt-VUF"/>
-                            <constraint firstItem="O4P-Sj-lqM" firstAttribute="height" secondItem="X0Q-Rr-vfh" secondAttribute="height" multiplier="0.7" priority="250" constant="550.10000000000002" id="vCB-cw-opD"/>
+                            <constraint firstAttribute="bottom" secondItem="O4P-Sj-lqM" secondAttribute="bottom" id="qcW-tt-VUF"/>
+                            <constraint firstItem="O4P-Sj-lqM" firstAttribute="height" secondItem="X0Q-Rr-vfh" secondAttribute="height" multiplier="1.1" priority="250" id="vCB-cw-opD"/>
                             <constraint firstAttribute="trailing" secondItem="O4P-Sj-lqM" secondAttribute="trailing" id="vu4-GL-oJR"/>
                         </constraints>
                     </scrollView>
@@ -261,7 +263,6 @@
             </view>
             <size key="freeformSize" width="393" height="1500"/>
             <connections>
-                <outlet property="bottonScrollviewConstraint" destination="7hU-gB-qa7" id="rpC-Qd-HNS"/>
                 <outlet property="breedPet" destination="qC4-we-s2m" id="6Cf-70-vj2"/>
                 <outlet property="collectionView" destination="qO7-Zx-rah" id="wP5-w1-4DU"/>
                 <outlet property="contentView" destination="O4P-Sj-lqM" id="t6c-Cz-MlT"/>

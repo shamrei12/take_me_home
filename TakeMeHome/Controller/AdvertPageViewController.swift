@@ -59,22 +59,24 @@ class AdvertPageViewController: UIViewController {
         if moveTextField {
             moveTextField = false
             if messageField.isEditing {
-                guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-                let keyboardHeight = keyboardSize.height
-                let safeAreaExists = (self.view?.window?.safeAreaInsets.bottom != 0)
-                let bottomConstant: CGFloat = 20
-                bottonScrollviewConstraint.constant -= keyboardHeight / 2.1
+//                guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+//                let keyboardHeight = keyboardSize.height
+//                let safeAreaExists = (self.view?.window?.safeAreaInsets.bottom != 0)
+                let bottomConstant: CGFloat = 150
+                scrollView.scrollToTop()
+//                bottonScrollviewConstraint.constant -= keyboardHeight / 2.1
             }
         }
     }
-    
+
     @objc func keyboardWillHide(notification: NSNotification) {
         //        if self.view.frame.origin.y != 0 {
         //            self.view.frame.origin.y = 0
         //        }
         moveTextField = true
-        bottonScrollviewConstraint.constant = 0
-        
+        scrollView.scrollToDown()
+//        bottonScrollviewConstraint.constant = 0
+
     }
     
     
@@ -111,7 +113,7 @@ class AdvertPageViewController: UIViewController {
         fbManager.loadComments(id: id) { dataComments in
             DispatchQueue.main.async {
                 self.commentsPost.removeAll()
-                self.commentsPost = dataComments
+                self.commentsPost = dataComments 
                 self.tableview.reloadData()
             }
             
