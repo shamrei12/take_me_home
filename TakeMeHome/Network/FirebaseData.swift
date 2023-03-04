@@ -103,6 +103,8 @@ class FirebaseData: FirebaseProtocol {
     func saveImage(_ storage: [Data],_ userID: String,  completion: @escaping (String) -> Void) {
         let storageRef = Storage.storage().reference().child("postImages")
         //        for data in stroage { dispatchGroup read
+        
+        if  storage.count > 0 {
         for data in 0...storage.count - 1 {
             storageRef.child("\(userID)_\(data)").putData(storage[data]) { (metadata, err) in
                 guard err == nil else {
@@ -118,6 +120,7 @@ class FirebaseData: FirebaseProtocol {
                     let urlString = url.absoluteString
                     completion(urlString)
                 }
+            }
             }
         }
     }

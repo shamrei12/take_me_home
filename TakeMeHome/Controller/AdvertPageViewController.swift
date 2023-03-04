@@ -10,7 +10,6 @@ import Kingfisher
 
 class AdvertPageViewController: UIViewController {
     
-    
     @IBOutlet weak var postID: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var postName: UILabel!
@@ -22,21 +21,15 @@ class AdvertPageViewController: UIViewController {
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var sendMessage: UIButton!
-    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
-    
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var scrollViewImage: UIScrollView!
-    private var moveTextField = true
     
-
+    private var moveTextField = true
+    private var idPost = ""
     @IBOutlet weak var collectionView: UICollectionView!
     private var listResourse = [ImageResource]()
     private var commentsPost = [Comments]()
-    
-    @IBOutlet weak var bottonScrollviewConstraint: NSLayoutConstraint!
-    
     private var fbManager: FirebaseData!
     private var stringPostID: String = ""
     
@@ -49,47 +42,37 @@ class AdvertPageViewController: UIViewController {
         tableview.register(UINib(nibName: "CommentsPostTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentsPostTableViewCell")
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        // Do any additional setup after loading the view.
-//        updateFrame()
-        
-
     }
-//
+
     @objc func keyboardWillShow(notification: NSNotification) {
         if moveTextField {
             moveTextField = false
             if messageField.isEditing {
-//                guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-//                let keyboardHeight = keyboardSize.height
-//                let safeAreaExists = (self.view?.window?.safeAreaInsets.bottom != 0)
-                let bottomConstant: CGFloat = 150
+
                 scrollView.scrollToTop()
-//                bottonScrollviewConstraint.constant -= keyboardHeight / 2.1
             }
         }
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-        //        if self.view.frame.origin.y != 0 {
-        //            self.view.frame.origin.y = 0
-        //        }
         moveTextField = true
         scrollView.scrollToDown()
-//        bottonScrollviewConstraint.constant = 0
 
     }
     
-    
-    
-//    func updateFrame() {
-//        self.scrollView.contentSize = CGSize(width: self.contentView.frame.width, height: self.contentView.frame.height)
-//
-//        self.contentView.translatesAutoresizingMaskIntoConstraints = false
-//        self.contentView.clipsToBounds = true
-//    }
-    
     @IBAction func callTapped(_ sender: UIButton) {
     
+    }
+    
+    func updateComments(id: String) {
+        fbManager.loadComments(id: id) { dataComments in
+            DispatchQueue.main.async {
+                self.commentsPost.removeAll()
+                self.commentsPost = dataComments
+                self.tableview.reloadData()
+            }
+        }
+        
     }
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
@@ -102,6 +85,8 @@ class AdvertPageViewController: UIViewController {
                 fbManager.SaveComment(id: stringPostID , key: user, value: messageField.text ?? "")
                 DispatchQueue.main.async {
                     self.messageField.text = ""
+                    self.updateComments(id: idPost)
+                    
                 }
             })
             }
@@ -109,32 +94,19 @@ class AdvertPageViewController: UIViewController {
     
     func updateUIElements(_ id: String) {
         var list = [String]()
-        
-        fbManager.loadComments(id: id) { dataComments in
-            DispatchQueue.main.async {
-                self.commentsPost.removeAll()
-                self.commentsPost = dataComments 
-                self.tableview.reloadData()
-            }
-            
-            
-        }
+        idPost = id
+        updateComments(id: id)
         fbManager.loadSinglePost(id: id) { data in
             DispatchQueue.global().async { [self] in
                 list = ConverterLinks.shared.getListLinks(data.first?.linkImage ?? "")
                 for i in list {
                     self.listResourse.append(ImageResource(downloadURL: URL(string: i)!))
                     }
-               
                 }
-                
-//                let resurse = ImageResource(downloadURL: URL(string: data.first?.linkImage ?? "")!)
+
                 DispatchQueue.main.async { [self] in
-                    
                     collectionView.reloadData()
                     pageControl.numberOfPages = listResourse.count
-//                    self.pageControll.numberOfPages = list.count
-    //                self.advertImage.kf.setImage(with: resurse)
                     self.postID.text = data.first?.typePost
                     self.date.text = data.first?.curentDate
                     self.postName.text = data.first?.postName
@@ -148,14 +120,6 @@ class AdvertPageViewController: UIViewController {
             }
         }
 }
-
-//extension AdvertPageViewController: UIScrollViewDelegate {
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let page = scrollViewImage.contentOffset.x/scrollViewImage.frame.width
-//        pageControll.currentPage = Int(page)
-//    }
-//
-//}
 
 extension AdvertPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

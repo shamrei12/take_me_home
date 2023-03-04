@@ -16,14 +16,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var navBar: UINavigationBar!
-//    private var user: UserDefaultsModel!
-//    var imagePicker = UIImagePickerController()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        imagePicker.delegate = self
         imageProfile.layer.cornerRadius = 1000
-//        user = UserDefaultsModel()
         updateUI()
         
     }

@@ -11,54 +11,40 @@ import FirebaseDatabase
 import PhotosUI
 
 class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPickerViewControllerDelegate {
-    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        for item in results {
-            item.itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
-                if let image = image as? UIImage {
-                    DispatchQueue.global().async {
-                        self.imageStorage.append(Data(image.pngData()!))
-                        DispatchQueue.main.async {
-                            self.collectionView.reloadData()
-                        }
-                        
-                    }
-                }
-            }
-        }
-        dismiss(animated: true)
-    }
-    
-    
+
     
     @IBOutlet weak private var postName: UITextField!
     @IBOutlet weak private var breed: UITextField!
-    @IBOutlet weak private var old: UITextField!
-    @IBOutlet weak private var adress: UITextField!
+    @IBOutlet weak private var cityName: UITextField!
+    @IBOutlet weak private var countryPicker: UIButton!
+    @IBOutlet weak private var streetName: UITextField!
+    @IBOutlet weak private var houseNumber: UITextField!
+    @IBOutlet weak private var buildLabel: UITextField!
+    
     @IBOutlet weak private var phoneNumber: UITextField!
     @IBOutlet weak private var descriptionText: UITextField!
+    @IBOutlet weak private var collectionView: UICollectionView!
+    @IBOutlet weak private var postType: UISegmentedControl!
+    @IBOutlet weak private var addPhothoButton: UIButton!
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var postType: UISegmentedControl!
-    
-    @IBOutlet weak var addPhothoButton: UIButton!
+    @IBOutlet weak var choiseAge: UISegmentedControl!
     
     private var height: Double = 0.0
     private var userDefaults: UserDefaults?
     private var key: String = "id"
     private var fireBase: FirebaseData?
     private var typePostText: String = ""
+    private var agePet: String = ""
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet private weak var scrollView: UIScrollView!
     private var imageStorage: [Data] = []
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         addPhothoButton.layer.cornerRadius = 10
         fireBase = FirebaseData()
-        
+        choiceType()
         collectionView.register(UINib(nibName: "AddPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AddPhotoCollectionViewCell")
         askPermision()
         phoneNumber.delegate = self
@@ -86,7 +72,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             
         })
     }
-    
     
     func formattedNumber(number: String) -> String {
         
@@ -134,21 +119,41 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         } else {
             typePostText = "Из рук в Руки"
         }
-        
     }
+    
+    @IBAction func choiseAge(_ sender: UISegmentedControl) {
+        
+        if sender.selectedSegmentIndex == 0 {
+            agePet = "До 1 года"
+        } else if sender.selectedSegmentIndex == 1 {
+            agePet = "От 1 до 3 лет"
+        } else if sender.selectedSegmentIndex == 2 {
+            agePet = "3 года и старше"
+        }
+    }
+    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
-        if old.isEditing {
-            height = 90
-        } else if adress.isEditing {
-            height = 170
+        if cityName.isEditing {
+            height = 190
+        } else if houseNumber.isEditing || streetName.isEditing || buildLabel.isEditing {
+            height = 220
         } else if phoneNumber.isEditing {
-            height = 260
+            height = 300
         } else if descriptionText.isEditing {
-            height = 380
+            height = 480
         }
         scrollView.setContentOffset(CGPointMake(0, height), animated: true)
+    }
+    
+    func createAdress() -> String {
+        
+        if buildLabel.text!.count > 0 {
+            return "\(countryPicker.titleLabel?.text ?? ""), г. \(cityName.text ?? ""), ул. \(streetName.text ?? ""), д. \(houseNumber.text ?? ""), к\(buildLabel.text ?? "")"
+        } else {
+            return "\(countryPicker.titleLabel?.text ?? ""), г. \(cityName.text ?? ""), ул. \(streetName.text ?? ""), д. \(houseNumber.text ?? "")"
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -165,9 +170,39 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         if typePostText == "" {
             typePostText = "Пропажа"
         }
-        posts.append(AdvertPost(postId: "", phoneNumber: phoneNumber.text ?? "", linkImage: "", typePost: typePostText , breed: breed.text ?? "", postName: postName.text ?? "", descriptionName: descriptionText.text ?? "", typePet: "Dog", oldPet: old.text ?? "", lostAdress: adress.text ?? "", curentDate: TimeManager.shared.currentDate()))
+        posts.append(AdvertPost(postId: "", phoneNumber: phoneNumber.text ?? "", linkImage: "", typePost: typePostText , breed: breed.text ?? "", postName: postName.text ?? "", descriptionName: descriptionText.text ?? "", typePet: "", oldPet: agePet , lostAdress: createAdress() , curentDate: TimeManager.shared.currentDate()))
         fireBase?.save(posts: posts, stroage: imageStorage)
         dismiss(animated: true)
+    }
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        for item in results {
+            item.itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
+                if let image = image as? UIImage {
+                    DispatchQueue.global().async {
+                        self.imageStorage.append(Data(image.pngData()!))
+                        DispatchQueue.main.async {
+                            self.collectionView.reloadData()
+                        }
+                        
+                    }
+                }
+            }
+        }
+        dismiss(animated: true)
+    }
+    
+    func choiceType() {
+        let optionClousure = {(action: UIAction) in
+            print(action.title)
+        }
+        countryPicker.menu = UIMenu(children: [
+            UIAction(title: "Выберете страну", state: .on, handler: optionClousure),
+                        UIAction(title: "Беларусь", handler: optionClousure)
+        ])
+        
+        countryPicker.showsMenuAsPrimaryAction = true
+        countryPicker.changesSelectionAsPrimaryAction = true
     }
     
 }

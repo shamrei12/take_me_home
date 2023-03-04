@@ -28,12 +28,12 @@ extension UIViewController {
 
 extension UIScrollView {
     func scrollToTop() {
-        let desiredOffset = CGPoint(x: 0, y: contentInset.bottom + 530)
+        let desiredOffset = CGPoint(x: 0, y: contentInset.bottom + 750)
         setContentOffset(desiredOffset, animated: true)
    }
     
     func scrollToDown() {
-        let desiredOffset = CGPoint(x: 0, y: contentInset.bottom + 250)
+        let desiredOffset = CGPoint(x: 0, y: contentInset.bottom + 450)
         setContentOffset(desiredOffset, animated: true)
     }
 }
