@@ -13,9 +13,11 @@ protocol AdvertProtocol {
     var linkImage: String { get set }
     var phoneNumber: String { get set }
     var postId: String { get set}
+    var countComments: String { get set }
 }
 
 struct AdvertPost: AdvertProtocol {
+    var countComments: String
     var postId: String
     var phoneNumber: String
     var linkImage: String

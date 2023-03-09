@@ -33,8 +33,10 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     private var userDefaults: UserDefaults?
     private var key: String = "id"
     private var fireBase: FirebaseData?
+    private var coreData: CoreDataClass!
     private var typePostText: String = ""
     private var agePet: String = ""
+    private var typePet: String = ""
     
     @IBOutlet private weak var scrollView: UIScrollView!
     private var imageStorage: [Data] = []
@@ -44,6 +46,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         self.hideKeyboardWhenTappedAround()
         addPhothoButton.layer.cornerRadius = 10
         fireBase = FirebaseData()
+        coreData = CoreDataClass()
         choiceType()
         collectionView.register(UINib(nibName: "AddPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AddPhotoCollectionViewCell")
         askPermision()
@@ -121,6 +124,17 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         }
     }
     
+    @IBAction func choiseTypePet(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            typePet = "Собака"
+        } else if sender.selectedSegmentIndex == 1 {
+            typePet = "Кошка"
+        } else if sender.selectedSegmentIndex == 2 {
+            typePet = "Другое"
+        }
+    }
+    
+    
     @IBAction func choiseAge(_ sender: UISegmentedControl) {
         
         if sender.selectedSegmentIndex == 0 {
@@ -136,13 +150,15 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         if cityName.isEditing {
-            height = 190
+            height = 250
+        } else if breed.isEditing {
+            height = 80
         } else if houseNumber.isEditing || streetName.isEditing || buildLabel.isEditing {
-            height = 220
+            height = 330
         } else if phoneNumber.isEditing {
-            height = 300
+            height = 380
         } else if descriptionText.isEditing {
-            height = 480
+            height = 520
         }
         scrollView.setContentOffset(CGPointMake(0, height), animated: true)
     }
@@ -157,7 +173,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        height = 0
+        height /= 2
         scrollView.setContentOffset(CGPointMake(0, height), animated: true)
     }
     
@@ -170,8 +186,16 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         if typePostText == "" {
             typePostText = "Пропажа"
         }
-        posts.append(AdvertPost(postId: "", phoneNumber: phoneNumber.text ?? "", linkImage: "", typePost: typePostText , breed: breed.text ?? "", postName: postName.text ?? "", descriptionName: descriptionText.text ?? "", typePet: "", oldPet: agePet , lostAdress: createAdress() , curentDate: TimeManager.shared.currentDate()))
-        fireBase?.save(posts: posts, stroage: imageStorage)
+        
+        if typePet == "" {
+            typePet = "Собака"
+        }
+        
+        posts.append(AdvertPost(countComments: "0", postId: "", phoneNumber: phoneNumber.text ?? "", linkImage: "", typePost: typePostText , breed: breed.text ?? "", postName: postName.text ?? "", descriptionName: descriptionText.text ?? "", typePet: typePet, oldPet: agePet , lostAdress: createAdress() , curentDate: TimeManager.shared.currentDate()))
+        let postID = coreData.getUUID()
+        coreData.saveID(postID)
+        fireBase?.saveIDPostUser(id: postID)
+        fireBase?.save(posts: posts, id: postID, stroage: imageStorage)
         dismiss(animated: true)
     }
     

@@ -25,6 +25,9 @@
 		D836824F29AA9862005AB64B /* CommentsPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836824D29AA9862005AB64B /* CommentsPostTableViewCell.swift */; };
 		D836825029AA9862005AB64B /* CommentsPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D836824E29AA9862005AB64B /* CommentsPostTableViewCell.xib */; };
 		D836825229ABBF06005AB64B /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836825129ABBF06005AB64B /* CommentModel.swift */; };
+		D836825429B4808F005AB64B /* CoredataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836825329B4808F005AB64B /* CoredataModel.swift */; };
+		D836825729B49644005AB64B /* UserPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836825529B49644005AB64B /* UserPostTableViewCell.swift */; };
+		D836825829B49644005AB64B /* UserPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D836825629B49644005AB64B /* UserPostTableViewCell.xib */; };
 		D8544B0E29A6654D00B63EF8 /* ConverterLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8544B0D29A6654D00B63EF8 /* ConverterLinks.swift */; };
 		D86F5822299C3101000A9170 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */; };
 		D86F5823299C3101000A9170 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */; };
@@ -73,6 +76,9 @@
 		D836824D29AA9862005AB64B /* CommentsPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsPostTableViewCell.swift; sourceTree = "<group>"; };
 		D836824E29AA9862005AB64B /* CommentsPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsPostTableViewCell.xib; sourceTree = "<group>"; };
 		D836825129ABBF06005AB64B /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		D836825329B4808F005AB64B /* CoredataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataModel.swift; sourceTree = "<group>"; };
+		D836825529B49644005AB64B /* UserPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostTableViewCell.swift; sourceTree = "<group>"; };
+		D836825629B49644005AB64B /* UserPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserPostTableViewCell.xib; sourceTree = "<group>"; };
 		D8544B0D29A6654D00B63EF8 /* ConverterLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterLinks.swift; sourceTree = "<group>"; };
 		D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -223,6 +229,8 @@
 				D836824A29AA8DD3005AB64B /* ImagePostCollectionViewCell.xib */,
 				D836824D29AA9862005AB64B /* CommentsPostTableViewCell.swift */,
 				D836824E29AA9862005AB64B /* CommentsPostTableViewCell.xib */,
+				D836825529B49644005AB64B /* UserPostTableViewCell.swift */,
+				D836825629B49644005AB64B /* UserPostTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -249,6 +257,7 @@
 			children = (
 				D89640E3299CCE3B00DF968C /* AdvertModel.swift */,
 				D836825129ABBF06005AB64B /* CommentModel.swift */,
+				D836825329B4808F005AB64B /* CoredataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -346,6 +355,7 @@
 			files = (
 				D820C695298C24DC001B11B7 /* LaunchScreen.storyboard in Resources */,
 				D820C6B7298EAC90001B11B7 /* AdvertTableViewCell.xib in Resources */,
+				D836825829B49644005AB64B /* UserPostTableViewCell.xib in Resources */,
 				D89640E8299CCF0700DF968C /* CreateAdvertViewController.xib in Resources */,
 				D8A0FBA0299279BB0051C9F7 /* GoogleService-Info.plist in Resources */,
 				D89640E2299C440D00DF968C /* ProfileViewController.xib in Resources */,
@@ -424,6 +434,7 @@
 				D86F5822299C3101000A9170 /* SideMenuTableViewCell.swift in Sources */,
 				D820C688298C24DA001B11B7 /* SceneDelegate.swift in Sources */,
 				D8A0FBA729943E8E0051C9F7 /* SideMenuViewController.swift in Sources */,
+				D836825429B4808F005AB64B /* CoredataModel.swift in Sources */,
 				D836825229ABBF06005AB64B /* CommentModel.swift in Sources */,
 				D8D1EA0B299D272800F24D34 /* TimeManager.swift in Sources */,
 				D836824F29AA9862005AB64B /* CommentsPostTableViewCell.swift in Sources */,
@@ -437,6 +448,7 @@
 				D89640E0299C43F400DF968C /* ProfileViewController.swift in Sources */,
 				D820C690298C24DA001B11B7 /* TakeMeHome.xcdatamodeld in Sources */,
 				D820C6AD298EA0CC001B11B7 /* Extensions.swift in Sources */,
+				D836825729B49644005AB64B /* UserPostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

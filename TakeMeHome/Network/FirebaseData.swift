@@ -19,11 +19,6 @@ protocol FirebaseProtocol {
 class FirebaseData: FirebaseProtocol {
     var currentUploadTask: StorageUploadTask?
     
-    //
-    //    func load(completion: @escaping ([String:String]) -> Void) {
-    //            let ref = Database.database().reference().child("postsList")
-    //        }
-    
     func load(completion: @escaping ([AdvertProtocol]) -> Void) {
         var resultMass: [AdvertProtocol] = []
         let ref = Database.database().reference().child("posts")
@@ -31,7 +26,7 @@ class FirebaseData: FirebaseProtocol {
             if let snapshots = snap.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
                     if let post = snap.value as? Dictionary<String, String>  {
-                        resultMass.append(AdvertPost(postId: post["postID"] ?? "", phoneNumber: post["phoneNumber"] ?? "", linkImage: post["listLinks"] ?? "", typePost: post["typePost"] ?? "", breed: post["breed"] ?? "", postName: post["postName"] ?? "", descriptionName: post["description"] ?? "", typePet: post["typePet"] ?? "", oldPet: post["oldPet"] ?? "", lostAdress: post["lostAdress"] ?? "", curentDate: post["curentDate"] ?? ""))
+                        resultMass.append(AdvertPost(countComments: post["countComments"] ?? "", postId: post["postID"] ?? "", phoneNumber: post["phoneNumber"] ?? "", linkImage: post["listLinks"] ?? "", typePost: post["typePost"] ?? "", breed: post["breed"] ?? "", postName: post["postName"] ?? "", descriptionName: post["description"] ?? "", typePet: post["typePet"] ?? "", oldPet: post["oldPet"] ?? "", lostAdress: post["lostAdress"] ?? "", curentDate: post["curentDate"] ?? ""))
                     }
                 }
                 completion(resultMass)
@@ -60,28 +55,62 @@ class FirebaseData: FirebaseProtocol {
         
     }
     
+    func saveIDPostUser(id: String) {
+        let userID = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference().child("users").child(userID!)
+        
+        ref.child("idPosts").getData { (err, snap) in
+            ref.child("idPosts").child("\(snap!.childrenCount + 1)").setValue("\(id)")
+        }
+    }
+    
+    func loadUserPostsLinks(completion: @escaping (([String]) -> Void)) {
+        var list = [String]()
+        let userID = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference().child("users").child(userID!).child("idPosts")
+        
+        ref.observe(.value) { snap in
+            if let snapshot = snap.children.allObjects as? [DataSnapshot] {
+                for idPost in snapshot {
+                    if idPost.value is String {
+                        list.append(idPost.value as! String)
+                    }
+                    
+                }
+                completion(list)
+            }
+        }
+    }
+    
     func getUserName(completion: @escaping (String) -> Void) {
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users")
         
-        ref.child(userID!).observeSingleEvent(of: .value) { snap in
-            let value = snap.value as? Dictionary< String, String>
-            let username = value?["name"] ?? ""
-            completion(username)
+//        ref.child(userID!).observeSingleEvent(of: .value) { snap in
+//            let value = snap.value as? Dictionary<String, Any>
+//            let username = value?["name"] ?? ""
+//            completion(username)
+//        }
+        
+        ref.child(userID!).observe(.value) { snap in
+            if let snapshot = snap.children.allObjects as? [DataSnapshot] {
+                let value = snap.value as? Dictionary<String, AnyObject>
+
+                completion(value!["name"]! as! String)
+            }
         }
     }
     
     func SaveComment(id: String, key: String, value: String) {
+        let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("comments")
         let refChild = Database.database().reference().child("comments").child(id)
-        //
-        //        ref.getData { (err, snap) in
-        //            ref.child("\(id)").setValue(["\(snap!.childrenCount + 1)":[key:value]])
-        //        }
-        
+        let refPostComments = Database.database().reference().child("posts").child(id)
         ref.getData { (errMain, snapMain) in
             refChild.getData { (err, snap) in
                 ref.child("\(id)").child("\(snap!.childrenCount + 1)").setValue([key:value])
+
+                refPostComments.child("countComments").setValue("\(snap!.childrenCount + 1)")
             }
         }
         
@@ -93,7 +122,7 @@ class FirebaseData: FirebaseProtocol {
         ref.observe(.value) { snap in
             if let snapshots = snap.children.allObjects as? [DataSnapshot] {
                 if let post = snap.value as? Dictionary<String, String>  {
-                    resultMass.append(AdvertPost(postId: post["postID"] ?? "", phoneNumber: post["phoneNumber"] ?? "", linkImage: post["listLinks"] ?? "", typePost: post["typePost"] ?? "", breed: post["breed"] ?? "", postName: post["postName"] ?? "", descriptionName: post["description"] ?? "", typePet: post["typePet"] ?? "", oldPet: post["oldPet"] ?? "", lostAdress: post["lostAdress"] ?? "", curentDate: post["curentDate"] ?? ""))
+                    resultMass.append(AdvertPost(countComments: post["countComments"] ?? "", postId: post["postID"] ?? "", phoneNumber: post["phoneNumber"] ?? "", linkImage: post["listLinks"] ?? "", typePost: post["typePost"] ?? "", breed: post["breed"] ?? "", postName: post["postName"] ?? "", descriptionName: post["description"] ?? "", typePet: post["typePet"] ?? "", oldPet: post["oldPet"] ?? "", lostAdress: post["lostAdress"] ?? "", curentDate: post["curentDate"] ?? ""))
                 }
                 completion(resultMass)
             }
@@ -101,44 +130,44 @@ class FirebaseData: FirebaseProtocol {
     }
     
     func saveImage(_ storage: [Data],_ userID: String,  completion: @escaping (String) -> Void) {
-        let storageRef = Storage.storage().reference().child("postImages")
+        let storageRef = Storage.storage().reference().child("postImages").child(userID)
         //        for data in stroage { dispatchGroup read
         
         if  storage.count > 0 {
-        for data in 0...storage.count - 1 {
-            storageRef.child("\(userID)_\(data)").putData(storage[data]) { (metadata, err) in
-                guard err == nil else {
-                    print("error")
-                    return
-                }
-                storageRef.child("\(userID)_\(data)").downloadURL { (url, err) in
-                    
-                    guard let url = url, err == nil else {
+            for data in 0...storage.count - 1 {
+                storageRef.child("\(userID)_\(data)").putData(storage[data]) { (metadata, err) in
+                    guard err == nil else {
                         print("error")
                         return
                     }
-                    let urlString = url.absoluteString
-                    completion(urlString)
-                }
-            }
-            }
-        }
-    }
-    
-    func save(posts: [AdvertProtocol], stroage: [Data]) {
-        let ref = Database.database().reference().child("posts")
-        var list = String()
-        ref.getData { (err, snap) in
-            self.saveImage(stroage, "\(snap!.childrenCount + 1)") { data in
-                DispatchQueue.global().async {
-                    list += "\(data) "
-                    DispatchQueue.main.async {
-                        ref.child("\(snap!.childrenCount + 1)").setValue(["postName": posts.first?.postName, "description": posts.first?.descriptionName, "typePet": posts.first?.typePet, "oldPet": posts.first?.oldPet, "lostAdress": posts.first?.lostAdress, "curentDate": posts.first?.curentDate, "breed": posts.first?.breed, "typePost": posts.first?.typePost, "listLinks": list, "phoneNumber": posts.first?.phoneNumber, "postID": "\(snap!.childrenCount + 1)"])
+                    storageRef.child("\(userID)_\(data)").downloadURL { (url, err) in
+                        
+                        guard let url = url, err == nil else {
+                            print("error")
+                            return
+                        }
+                        let urlString = url.absoluteString
+                        completion(urlString)
                     }
                 }
-                
             }
         }
     }
-    
-}
+        
+    func save(posts: [AdvertProtocol], id: String,  stroage: [Data]) {
+            let ref = Database.database().reference().child("posts")
+            var list = String()
+            ref.getData { (err, snap) in
+                self.saveImage(stroage, "\(id)") { data in
+                    DispatchQueue.global().async {
+                        list += "\(data) "
+                        DispatchQueue.main.async {
+                            ref.child("\(id)").setValue(["postName": posts.first?.postName, "description": posts.first?.descriptionName, "typePet": posts.first?.typePet, "oldPet": posts.first?.oldPet, "lostAdress": posts.first?.lostAdress, "curentDate": posts.first?.curentDate, "breed": posts.first?.breed, "typePost": posts.first?.typePost, "listLinks": list, "phoneNumber": posts.first?.phoneNumber, "postID": "\(id)", "countComments": posts.first?.countComments])
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
+    }

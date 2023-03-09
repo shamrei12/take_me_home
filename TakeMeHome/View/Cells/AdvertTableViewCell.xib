@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AdvertTableViewCell" rowHeight="200" id="6AK-SD-fFa" customClass="AdvertTableViewCell" customModule="TakeMeHome" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AdvertTableViewCell" rowHeight="220" id="6AK-SD-fFa" customClass="AdvertTableViewCell" customModule="TakeMeHome" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="376" height="250"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6AK-SD-fFa" id="NZD-dk-v7r">
@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edM-Va-qPy">
-                        <rect key="frame" x="10" y="10" width="356" height="220"/>
+                        <rect key="frame" x="10" y="10" width="356" height="225"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="huI-tm-g0C">
                                 <rect key="frame" x="5" y="5" width="346" height="210"/>
@@ -30,7 +30,7 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6F3-GK-pFj">
-                                        <rect key="frame" x="155" y="39" width="191" height="132"/>
+                                        <rect key="frame" x="155" y="30" width="191" height="150"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пропала собака отличной породы" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CP-GD-2Ww">
                                                 <rect key="frame" x="0.0" y="0.0" width="191" height="48"/>
@@ -50,8 +50,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="г. Лида, ул. Мицкевича, 38" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqe-1e-dXf">
-                                                <rect key="frame" x="0.0" y="114" width="191" height="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="г. Лида, ул. Мицкевича, 38, к1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqe-1e-dXf">
+                                                <rect key="frame" x="0.0" y="114" width="191" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -64,15 +64,15 @@
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="huI-tm-g0C" firstAttribute="leading" secondItem="edM-Va-qPy" secondAttribute="leading" constant="5" id="94q-Rs-NqI"/>
-                            <constraint firstAttribute="bottom" secondItem="huI-tm-g0C" secondAttribute="bottom" constant="5" id="9im-ek-S5f"/>
+                            <constraint firstAttribute="bottom" secondItem="huI-tm-g0C" secondAttribute="bottom" constant="10" id="9im-ek-S5f"/>
                             <constraint firstItem="huI-tm-g0C" firstAttribute="top" secondItem="edM-Va-qPy" secondAttribute="top" constant="5" id="OLd-AH-uUc"/>
                             <constraint firstAttribute="trailing" secondItem="huI-tm-g0C" secondAttribute="trailing" constant="5" id="XWu-wb-OLZ"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWp-j6-KZb">
-                        <rect key="frame" x="0.0" y="230" width="376" height="20"/>
+                        <rect key="frame" x="0.0" y="235" width="376" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="atc-Pu-m2Y"/>
+                            <constraint firstAttribute="height" constant="15" id="atc-Pu-m2Y"/>
                         </constraints>
                     </view>
                 </subviews>

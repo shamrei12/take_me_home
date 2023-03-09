@@ -43,36 +43,44 @@ class AdvertPageViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if moveTextField {
             moveTextField = false
             if messageField.isEditing {
-
+                
                 scrollView.scrollToTop()
             }
         }
     }
-
+    
     @objc func keyboardWillHide(notification: NSNotification) {
         moveTextField = true
         scrollView.scrollToDown()
-
+        
     }
     
     @IBAction func callTapped(_ sender: UIButton) {
-    
+        
     }
     
-    func updateComments(id: String) {
-        fbManager.loadComments(id: id) { dataComments in
+    func loadComments() {
+        fbManager.loadComments(id: stringPostID) { comments in
+            self.commentsPost = comments
             DispatchQueue.main.async {
-                self.commentsPost.removeAll()
-                self.commentsPost = dataComments
                 self.tableview.reloadData()
             }
         }
-        
+    }
+    
+    func updateComments(comment: Comments) {
+        DispatchQueue.main.async {
+            self.commentsPost.append(comment)
+            let numberOfROws = self.tableview.numberOfRows(inSection: 0)
+            let indexPath = IndexPath(row: numberOfROws, section: 0)
+            self.tableview.insertRows(at: [indexPath], with: .automatic)
+            self.tableview.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
     }
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
@@ -80,45 +88,45 @@ class AdvertPageViewController: UIViewController {
     }
     
     @IBAction func sendMessageTapped(_ sender: UIButton) {
-        if messageField.text?.count != 0 {
+        if let message = messageField.text, !message.isEmpty {
             fbManager.getUserName(completion: { [self] user in
-                fbManager.SaveComment(id: stringPostID , key: user, value: messageField.text ?? "")
+                let comment = UserComments(name: user, comment: message)
+                fbManager.SaveComment(id: stringPostID , key: user, value: message)
                 DispatchQueue.main.async {
                     self.messageField.text = ""
-                    self.updateComments(id: idPost)
-                    
+                    self.updateComments(comment: comment)
                 }
             })
-            }
+        }
     }
     
     func updateUIElements(_ id: String) {
         var list = [String]()
         idPost = id
-        updateComments(id: id)
         fbManager.loadSinglePost(id: id) { data in
             DispatchQueue.global().async { [self] in
                 list = ConverterLinks.shared.getListLinks(data.first?.linkImage ?? "")
                 for i in list {
                     self.listResourse.append(ImageResource(downloadURL: URL(string: i)!))
-                    }
-                }
-
-                DispatchQueue.main.async { [self] in
-                    collectionView.reloadData()
-                    pageControl.numberOfPages = listResourse.count
-                    self.postID.text = data.first?.typePost
-                    self.date.text = data.first?.curentDate
-                    self.postName.text = data.first?.postName
-                    self.descriptionPost.text = data.first?.descriptionName
-                    self.oldPet.text = "Возраст: \(data.first?.oldPet ?? "")"
-                    self.breedPet.text = "Порода: \(data.first?.breed ?? "")"
-                    self.lostAdress.text = "Адрес: \(data.first?.lostAdress ?? "")"
-                    self.numberPhone.text = data.first?.phoneNumber
-                    stringPostID = data.first?.postId ?? ""
                 }
             }
+            
+            DispatchQueue.main.async { [self] in
+                collectionView.reloadData()
+                pageControl.numberOfPages = listResourse.count
+                self.postID.text = data.first?.typePost
+                self.date.text = data.first?.curentDate
+                self.postName.text = data.first?.postName
+                self.descriptionPost.text = data.first?.descriptionName
+                self.oldPet.text = "Возраст: \(data.first?.oldPet ?? "")"
+                self.breedPet.text = "Порода: \(data.first?.breed ?? "")"
+                self.lostAdress.text = "Адрес: \(data.first?.lostAdress ?? "")"
+                self.numberPhone.text = data.first?.phoneNumber
+                stringPostID = data.first?.postId ?? ""
+                loadComments()
+            }
         }
+    }
 }
 
 extension AdvertPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -138,7 +146,7 @@ extension AdvertPageViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     private func configure(cell: ImagePostCollectionViewCell, for indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         cell.imagePost.kf.setImage(with: listResourse[indexPath.row])
         return cell
         
@@ -153,13 +161,13 @@ extension AdvertPageViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 0
+        return 0
     }
     
-     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-         var scrollPos = scrollView.contentOffset.x / view.frame.width
-         scrollPos.round()
-         pageControl.currentPage = Int(scrollPos)
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        var scrollPos = scrollView.contentOffset.x / view.frame.width
+        scrollPos.round()
+        pageControl.currentPage = Int(scrollPos)
     }
 }
 
@@ -170,13 +178,13 @@ extension AdvertPageViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: CommentsPostTableViewCell
-          if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "CommentsPostTableViewCell") as? CommentsPostTableViewCell {
-              cell = reuseCell
-          } else {
-              cell = CommentsPostTableViewCell()
-          }
-          
-          return configure(cell: cell, for: indexPath)
+        if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "CommentsPostTableViewCell") as? CommentsPostTableViewCell {
+            cell = reuseCell
+        } else {
+            cell = CommentsPostTableViewCell()
+        }
+        
+        return configure(cell: cell, for: indexPath)
     }
     
     func configure(cell: CommentsPostTableViewCell, for indexPath: IndexPath) -> UITableViewCell {
