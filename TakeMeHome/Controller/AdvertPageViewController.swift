@@ -32,6 +32,7 @@ class AdvertPageViewController: UIViewController {
     private var commentsPost = [Comments]()
     private var fbManager: FirebaseData!
     private var stringPostID: String = ""
+    private var adresForMap: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +73,14 @@ class AdvertPageViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func openMap(_ sender: UIBarButtonItem) {
+        let mapPage = MapPositionViewController.instantiate()
+        mapPage.modalPresentationStyle = .pageSheet
+        mapPage.updateMap(adress: adresForMap)
+        present(mapPage, animated: true)
+    }
+    
     
     func updateComments(comment: Comments) {
         DispatchQueue.main.async {
@@ -124,6 +133,7 @@ class AdvertPageViewController: UIViewController {
                 self.numberPhone.text = data.first?.phoneNumber
                 stringPostID = data.first?.postId ?? ""
                 loadComments()
+                adresForMap = data.first?.lostAdress ?? ""
             }
         }
     }

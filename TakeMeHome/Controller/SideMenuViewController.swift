@@ -62,7 +62,6 @@ extension SideMenuViewController: UITableViewDataSource {
             cell.imageCell.image = UIImage(named: "settings.png")
             cell.labelCell.text = "Настройки"
         }
-        
         return cell
     }
 }

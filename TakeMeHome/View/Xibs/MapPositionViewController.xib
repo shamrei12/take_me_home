@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapPositionViewController" customModule="TakeMeHome" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController id="27v-9N-d1h" customClass="MapPositionViewController" customModule="TakeMeHome" customModuleProvider="target">
+            <view key="view" contentMode="scaleToFill" id="mtP-w0-G6O">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKl-dA-Scv">
+                        <rect key="frame" x="0.0" y="109" width="393" height="709"/>
+                        <standardMapConfiguration key="preferredConfiguration"/>
+                    </mapView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DCD-ve-ifL">
+                        <rect key="frame" x="297" y="293" width="80" height="300"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgm-Pe-yhh">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="300"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gHW-Je-rTK">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="300"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOA-Db-vxo">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="75"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Моя позиция">
+                                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="10"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JyP-vQ-Ui7">
+                                                <rect key="frame" x="0.0" y="75" width="80" height="75"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                                <connections>
+                                                    <action selector="zoomPlus:" destination="27v-9N-d1h" eventType="touchUpInside" id="QDR-1m-do0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ag5-eE-vUs">
+                                                <rect key="frame" x="0.0" y="150" width="80" height="75"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="minus" catalog="system"/>
+                                                <connections>
+                                                    <action selector="zoomMinus:" destination="27v-9N-d1h" eventType="touchUpInside" id="Hdm-Uy-OJq"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V96-zD-97y">
+                                                <rect key="frame" x="0.0" y="225" width="80" height="75"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Маршрут">
+                                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="10"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="gHW-Je-rTK" secondAttribute="bottom" id="6nu-5L-WAY"/>
+                                    <constraint firstItem="gHW-Je-rTK" firstAttribute="leading" secondItem="tgm-Pe-yhh" secondAttribute="leading" id="7KF-ws-TCJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="gHW-Je-rTK" secondAttribute="trailing" id="Ehm-0W-t6n"/>
+                                    <constraint firstItem="gHW-Je-rTK" firstAttribute="top" secondItem="tgm-Pe-yhh" secondAttribute="top" id="OG3-Op-w7a"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="nKa-lK-Okn"/>
+                            <constraint firstAttribute="height" constant="300" id="ncY-th-dr8"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <viewLayoutGuide key="safeArea" id="9b2-QW-aM3"/>
+                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="bKl-dA-Scv" firstAttribute="trailing" secondItem="9b2-QW-aM3" secondAttribute="trailing" id="1dU-rx-NnU"/>
+                    <constraint firstItem="DCD-ve-ifL" firstAttribute="top" secondItem="9b2-QW-aM3" secondAttribute="top" constant="234" id="AkI-f4-PRO"/>
+                    <constraint firstItem="bKl-dA-Scv" firstAttribute="leading" secondItem="9b2-QW-aM3" secondAttribute="leading" id="FeF-bg-q0k"/>
+                    <constraint firstItem="bKl-dA-Scv" firstAttribute="bottom" secondItem="9b2-QW-aM3" secondAttribute="bottom" id="Nwp-bQ-khk"/>
+                    <constraint firstItem="DCD-ve-ifL" firstAttribute="leading" secondItem="9b2-QW-aM3" secondAttribute="leading" constant="297" id="ZzQ-tp-eWU"/>
+                    <constraint firstItem="bKl-dA-Scv" firstAttribute="top" secondItem="9b2-QW-aM3" secondAttribute="top" constant="50" id="dKw-mr-Hge"/>
+                    <constraint firstItem="9b2-QW-aM3" firstAttribute="trailing" secondItem="DCD-ve-ifL" secondAttribute="trailing" constant="16" id="dfg-T5-hLm"/>
+                    <constraint firstItem="9b2-QW-aM3" firstAttribute="bottom" secondItem="DCD-ve-ifL" secondAttribute="bottom" constant="225" id="fmc-Ig-41B"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="mapView" destination="bKl-dA-Scv" id="Dyi-9m-Qga"/>
+            </connections>
+            <point key="canvasLocation" x="209.92366412213741" y="-29.577464788732396"/>
+        </viewController>
+    </objects>
+    <resources>
+        <image name="minus" catalog="system" width="128" height="26"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

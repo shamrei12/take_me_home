@@ -31,6 +31,9 @@
                                 </barButtonItem>
                                 <barButtonItem key="rightBarButtonItem" image="map" id="gZb-Sl-dwD">
                                     <color key="tintColor" systemColor="labelColor"/>
+                                    <connections>
+                                        <action selector="openMap:" destination="3r6-YS-UbZ" id="4vU-MF-xdI"/>
+                                    </connections>
                                 </barButtonItem>
                             </navigationItem>
                         </items>

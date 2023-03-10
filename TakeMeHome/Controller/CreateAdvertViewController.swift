@@ -166,9 +166,9 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     func createAdress() -> String {
         
         if buildLabel.text!.count > 0 {
-            return "\(countryPicker.titleLabel?.text ?? ""), г. \(cityName.text ?? ""), ул. \(streetName.text ?? ""), д. \(houseNumber.text ?? ""), к\(buildLabel.text ?? "")"
+            return "\(countryPicker.titleLabel?.text ?? ""), \(cityName.text ?? ""), ул. \(streetName.text ?? ""), \(houseNumber.text ?? ""), к\(buildLabel.text ?? "")"
         } else {
-            return "\(countryPicker.titleLabel?.text ?? ""), г. \(cityName.text ?? ""), ул. \(streetName.text ?? ""), д. \(houseNumber.text ?? "")"
+            return "\(countryPicker.titleLabel?.text ?? ""), \(cityName.text ?? ""), ул. \(streetName.text ?? ""), \(houseNumber.text ?? "")"
         }
     }
     
