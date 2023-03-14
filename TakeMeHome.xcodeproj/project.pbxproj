@@ -20,9 +20,7 @@
 		D820C6B9298EACA5001B11B7 /* AdvertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */; };
 		D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */; };
 		D820C6BD298F96E3001B11B7 /* AdvertCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */; };
-		D826A5D929BB43430041ACBC /* MapPositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D826A5D729BB43430041ACBC /* MapPositionViewController.swift */; };
 		D826A5DA29BB43430041ACBC /* MapPositionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D826A5D829BB43430041ACBC /* MapPositionViewController.xib */; };
-		D826A5DC29BB93FB0041ACBC /* Geocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D826A5DB29BB93FB0041ACBC /* Geocoder.swift */; };
 		D836824B29AA8DD3005AB64B /* ImagePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836824929AA8DD3005AB64B /* ImagePostCollectionViewCell.swift */; };
 		D836824C29AA8DD3005AB64B /* ImagePostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D836824A29AA8DD3005AB64B /* ImagePostCollectionViewCell.xib */; };
 		D836824F29AA9862005AB64B /* CommentsPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836824D29AA9862005AB64B /* CommentsPostTableViewCell.swift */; };
@@ -74,9 +72,7 @@
 		D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertTableViewCell.swift; sourceTree = "<group>"; };
 		D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertCollectionViewCell.swift; sourceTree = "<group>"; };
 		D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvertCollectionViewCell.xib; sourceTree = "<group>"; };
-		D826A5D729BB43430041ACBC /* MapPositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPositionViewController.swift; sourceTree = "<group>"; };
 		D826A5D829BB43430041ACBC /* MapPositionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapPositionViewController.xib; sourceTree = "<group>"; };
-		D826A5DB29BB93FB0041ACBC /* Geocoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoder.swift; sourceTree = "<group>"; };
 		D836824929AA8DD3005AB64B /* ImagePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePostCollectionViewCell.swift; sourceTree = "<group>"; };
 		D836824A29AA8DD3005AB64B /* ImagePostCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagePostCollectionViewCell.xib; sourceTree = "<group>"; };
 		D836824D29AA9862005AB64B /* CommentsPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsPostTableViewCell.swift; sourceTree = "<group>"; };
@@ -246,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				D8D1EA0C299D2AC900F24D34 /* FirebaseData.swift */,
-				D826A5DB29BB93FB0041ACBC /* Geocoder.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -281,7 +276,6 @@
 				D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */,
 				D8D1EA1229A0C49C00F24D34 /* AdvertPageViewController.swift */,
 				D89640DF299C43F400DF968C /* ProfileViewController.swift */,
-				D826A5D729BB43430041ACBC /* MapPositionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -458,8 +452,6 @@
 				D89640E0299C43F400DF968C /* ProfileViewController.swift in Sources */,
 				D820C690298C24DA001B11B7 /* TakeMeHome.xcdatamodeld in Sources */,
 				D820C6AD298EA0CC001B11B7 /* Extensions.swift in Sources */,
-				D826A5D929BB43430041ACBC /* MapPositionViewController.swift in Sources */,
-				D826A5DC29BB93FB0041ACBC /* Geocoder.swift in Sources */,
 				D836825729B49644005AB64B /* UserPostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

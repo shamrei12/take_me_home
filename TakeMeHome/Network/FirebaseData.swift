@@ -23,9 +23,10 @@ class FirebaseData: FirebaseProtocol {
         var resultMass: [AdvertProtocol] = []
         let ref = Database.database().reference().child("posts")
         ref.observe(.value) { snap in
+            resultMass.removeAll()
             if let snapshots = snap.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
-                    if let post = snap.value as? Dictionary<String, String>  {
+                    if let post = snap.value as? Dictionary<String, String> {
                         resultMass.append(AdvertPost(countComments: post["countComments"] ?? "", postId: post["postID"] ?? "", phoneNumber: post["phoneNumber"] ?? "", linkImage: post["listLinks"] ?? "", typePost: post["typePost"] ?? "", breed: post["breed"] ?? "", postName: post["postName"] ?? "", descriptionName: post["description"] ?? "", typePet: post["typePet"] ?? "", oldPet: post["oldPet"] ?? "", lostAdress: post["lostAdress"] ?? "", curentDate: post["curentDate"] ?? ""))
                     }
                 }
@@ -86,16 +87,16 @@ class FirebaseData: FirebaseProtocol {
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users")
         
-//        ref.child(userID!).observeSingleEvent(of: .value) { snap in
-//            let value = snap.value as? Dictionary<String, Any>
-//            let username = value?["name"] ?? ""
-//            completion(username)
-//        }
+        //        ref.child(userID!).observeSingleEvent(of: .value) { snap in
+        //            let value = snap.value as? Dictionary<String, Any>
+        //            let username = value?["name"] ?? ""
+        //            completion(username)
+        //        }
         
         ref.child(userID!).observe(.value) { snap in
             if let snapshot = snap.children.allObjects as? [DataSnapshot] {
                 let value = snap.value as? Dictionary<String, AnyObject>
-
+                
                 completion(value!["name"]! as! String)
             }
         }
@@ -109,7 +110,7 @@ class FirebaseData: FirebaseProtocol {
         ref.getData { (errMain, snapMain) in
             refChild.getData { (err, snap) in
                 ref.child("\(id)").child("\(snap!.childrenCount + 1)").setValue([key:value])
-
+                
                 refPostComments.child("countComments").setValue("\(snap!.childrenCount + 1)")
             }
         }
@@ -153,21 +154,20 @@ class FirebaseData: FirebaseProtocol {
             }
         }
     }
-        
+    
     func save(posts: [AdvertProtocol], id: String,  stroage: [Data]) {
-            let ref = Database.database().reference().child("posts")
-            var list = String()
-            ref.getData { (err, snap) in
-                self.saveImage(stroage, "\(id)") { data in
-                    DispatchQueue.global().async {
-                        list += "\(data) "
-                        DispatchQueue.main.async {
-                            ref.child("\(id)").setValue(["postName": posts.first?.postName, "description": posts.first?.descriptionName, "typePet": posts.first?.typePet, "oldPet": posts.first?.oldPet, "lostAdress": posts.first?.lostAdress, "curentDate": posts.first?.curentDate, "breed": posts.first?.breed, "typePost": posts.first?.typePost, "listLinks": list, "phoneNumber": posts.first?.phoneNumber, "postID": "\(id)", "countComments": posts.first?.countComments])
-                        }
+        let ref = Database.database().reference().child("posts")
+        var list = String()
+        ref.getData { (err, snap) in
+            self.saveImage(stroage, "\(id)") { data in
+                DispatchQueue.global().async {
+                    list += "\(data) "
+                    DispatchQueue.main.async {
+                        ref.child("\(id)").setValue(["postName": posts.first?.postName, "description": posts.first?.descriptionName, "typePet": posts.first?.typePet, "oldPet": posts.first?.oldPet, "lostAdress": posts.first?.lostAdress, "curentDate": posts.first?.curentDate, "breed": posts.first?.breed, "typePost": posts.first?.typePost, "listLinks": list, "phoneNumber": posts.first?.phoneNumber, "postID": "\(id)", "countComments": posts.first?.countComments])
                     }
-                    
                 }
             }
         }
-        
     }
+    
+}

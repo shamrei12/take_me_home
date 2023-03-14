@@ -16,7 +16,7 @@ protocol AdvertProtocol {
     var countComments: String { get set }
 }
 
-struct AdvertPost: AdvertProtocol {
+struct AdvertPost: AdvertProtocol, Equatable {
     var countComments: String
     var postId: String
     var phoneNumber: String

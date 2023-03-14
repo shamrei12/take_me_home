@@ -24,6 +24,7 @@ class AdvertViewController: UIViewController {
     private var fbManager: FirebaseData!
     private var coreData: CoreDataClass!
     var advertMass: [AdvertProtocol] = []
+    private var reloadTableView: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,7 @@ class AdvertViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         getData()
+        reloadTableView = true
     }
     
     func configureMenuViewController() {
@@ -94,16 +96,17 @@ class AdvertViewController: UIViewController {
     }
     
     func getData() {
-        fbManager.load() { data in
-            print(data.count)
-            if data.count > 0 {
-
-                DispatchQueue.main.async {
-                    self.advertMass.removeAll()
-                    for i in 0...data.count - 1 {
-                        self.advertMass.append(AdvertPost(countComments: data[i].countComments, postId: data[i].postId, phoneNumber: data[i].phoneNumber, linkImage:  ConverterLinks.shared.getFirstLinks(data[i].linkImage), typePost: data[i].typePost, breed: data[i].breed, postName: data[i].postName, descriptionName: data[i].descriptionName, typePet: data[i].typePet, oldPet: data[i].oldPet, lostAdress: data[i].lostAdress, curentDate: data[i].curentDate))
+        fbManager.load() { [self] data in
+            if data.count > advertMass.count {
+            if reloadTableView {
+                reloadTableView = false
+                    DispatchQueue.main.async {
+                        advertMass.removeAll()
+                        for i in 0...data.count - 1 {
+                            self.advertMass.append(AdvertPost(countComments: data[i].countComments, postId: data[i].postId, phoneNumber: data[i].phoneNumber, linkImage:  ConverterLinks.shared.getFirstLinks(data[i].linkImage), typePost: data[i].typePost, breed: data[i].breed, postName: data[i].postName, descriptionName: data[i].descriptionName, typePet: data[i].typePet, oldPet: data[i].oldPet, lostAdress: data[i].lostAdress, curentDate: data[i].curentDate))
+                        }
+                        self.tableView.reloadData()
                     }
-                    self.tableView.reloadData()
                 }
             }
         }

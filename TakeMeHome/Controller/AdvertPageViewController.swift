@@ -75,10 +75,10 @@ class AdvertPageViewController: UIViewController {
     }
     
     @IBAction func openMap(_ sender: UIBarButtonItem) {
-        let mapPage = MapPositionViewController.instantiate()
-        mapPage.modalPresentationStyle = .pageSheet
-        mapPage.updateMap(adress: adresForMap)
-        present(mapPage, animated: true)
+//        let mapPage = MapPositionViewController.instantiate()
+//        mapPage.modalPresentationStyle = .pageSheet
+//        mapPage.updateMap(adress: adresForMap)
+//        present(mapPage, animated: true)
     }
     
     

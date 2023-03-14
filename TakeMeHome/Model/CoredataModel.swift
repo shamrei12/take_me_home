@@ -21,7 +21,6 @@ class CoreDataClass: CoreDataProtocol {
         case idPost
     }
     
-    
     func getUUID() -> String {
         return UUID().uuidString
     }
