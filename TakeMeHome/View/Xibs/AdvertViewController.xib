@@ -38,8 +38,7 @@
                                     <imageReference key="image" image="map" symbolScale="large"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="mapTapped:" destination="kLc-2g-meH" eventType="touchUpInside" id="FaF-0D-yDN"/>
-                                    <action selector="signOut:" destination="kLc-2g-meH" eventType="touchUpInside" id="K92-wW-mPX"/>
+                                    <action selector="showMap:" destination="kLc-2g-meH" eventType="touchUpInside" id="gAg-uV-su5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -48,22 +47,13 @@
                         <rect key="frame" x="10" y="132" width="410" height="56"/>
                         <subviews>
                             <searchBar contentMode="redraw" barStyle="blackTranslucent" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y05-Ut-IJY">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="jG1-LK-od7"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="0.0" width="410" height="56"/>
                                 <color key="barTintColor" red="0.96797166710000004" green="0.96841138599999999" blue="0.75755349920000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="kLc-2g-meH" id="nLr-vf-EsF"/>
+                                    <outlet property="delegate" destination="kLc-2g-meH" id="LvL-aW-CGv"/>
                                 </connections>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAu-b9-U13">
-                                <rect key="frame" x="308" y="9" width="102" height="38"/>
-                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="check"/>
-                            </button>
                         </subviews>
                     </stackView>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abo-Hn-ujJ">
@@ -114,10 +104,11 @@
                 </connections>
             </view>
             <connections>
-                <outlet property="checkList" destination="EAu-b9-U13" id="b5D-YC-pRG"/>
                 <outlet property="collectionView" destination="xUV-MZ-9Od" id="jFW-tp-vcO"/>
+                <outlet property="mainView" destination="JDj-lP-gQB" id="qv0-7I-tgw"/>
                 <outlet property="mapButton" destination="JlJ-H1-91a" id="5Kc-BT-pxQ"/>
                 <outlet property="menuButton" destination="pBU-ve-pfw" id="UyW-zn-KKU"/>
+                <outlet property="searchBar" destination="y05-Ut-IJY" id="V9H-cM-q9S"/>
                 <outlet property="tableView" destination="abo-Hn-ujJ" id="02V-cZ-8dm"/>
             </connections>
             <point key="canvasLocation" x="176.33587786259542" y="45.774647887323944"/>
@@ -129,7 +120,6 @@
         </swipeGestureRecognizer>
     </objects>
     <resources>
-        <image name="check" width="24" height="24"/>
         <image name="map" width="24" height="24"/>
         <image name="menu" width="24" height="24"/>
         <systemColor name="secondarySystemBackgroundColor">

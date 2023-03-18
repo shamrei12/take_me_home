@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+protocol AlertPresenting {}
+
 extension UIViewController {
     static func instantiate() -> Self {
         let nibName = String(describing: self)
@@ -38,4 +40,8 @@ extension UIScrollView {
     }
 }
 
-
+extension UIView {
+    class func loadFromNib<T:UIView>() -> T {
+        return Bundle.main.loadNibNamed(String(describing: T.self), owner: self, options: nil)![0] as! T
+    }
+}

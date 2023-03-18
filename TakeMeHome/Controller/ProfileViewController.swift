@@ -10,7 +10,6 @@ import Kingfisher
 
 class ProfileViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak private var saveTapped: UIBarButtonItem!
     @IBOutlet weak private var bulletinTupped: UIBarButtonItem!
     private var choiceButton: Bool = false
     @IBOutlet weak var mainView: UIView!
@@ -20,6 +19,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     private var fbManager: FirebaseData!
     private var listIdPost = [String]()
     private var posts = [[AdvertProtocol]]()
+    private var fbData: FirebaseData?
     
     @IBOutlet weak var tableview: UITableView!
     
@@ -28,22 +28,22 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         fbManager = FirebaseData()
-        imageProfile.layer.cornerRadius = 1000
-        updateUI()
         getPosts()
+        fbData = FirebaseData()
         
         tableview.register(UINib(nibName: "UserPostTableViewCell", bundle: nil), forCellReuseIdentifier: "UserPostTableViewCell")
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUI()
+        imageProfile.image = UIImage(named: "appLogo")
     }
     
     func updateUI() {
-        //        let profile = user?.load()
-        //        userName?.text = "\(profile?.first?.name ?? "") \(profile?.first?.surname ?? "")"
+        fbData?.getUserName { name in
+            self.userName.text = name
+        }
         
     }
     
@@ -67,6 +67,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     }
     
     func getPosts() {
+        posts.removeAll()
         fbManager.loadUserPostsLinks { [self] idPosts in
             for id in idPosts {
                 fbManager.loadSinglePost(id: id) { data in
@@ -96,6 +97,8 @@ extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationC
 }
 
 extension ProfileViewController: UITableViewDataSource {
+    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         posts.count
     }
@@ -114,7 +117,7 @@ extension ProfileViewController: UITableViewDataSource {
     private func configure(cell: UserPostTableViewCell, for indexPath: IndexPath) -> UITableViewCell {
         
         DispatchQueue.global().async { [self] in
-            let resurse = ImageResource(downloadURL: URL(string: ConverterLinks.shared.getFirstLinks(posts[indexPath.row].first!.linkImage ?? ""))!)
+            let resurse = ImageResource(downloadURL: URL(string: ConverterLinks.shared.getFirstLinks(posts[indexPath.row].first!.linkImage ))!)
             
             let processor = DownsamplingImageProcessor(size: CGSize(width: 50, height: 50))
             DispatchQueue.main.async {
@@ -127,3 +130,12 @@ extension ProfileViewController: UITableViewDataSource {
     }
 }
 
+
+extension ProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let adverpage = AdvertPageViewController.instantiate()
+        adverpage.modalPresentationStyle = .fullScreen
+        adverpage.updateUIElements(posts[indexPath.row].first!.postId)
+        present(adverpage, animated: true)
+    }
+}

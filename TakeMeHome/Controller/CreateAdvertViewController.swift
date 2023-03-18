@@ -11,7 +11,7 @@ import FirebaseDatabase
 import PhotosUI
 
 class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPickerViewControllerDelegate {
-
+    
     
     @IBOutlet weak private var postName: UITextField!
     @IBOutlet weak private var breed: UITextField!
@@ -20,15 +20,14 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     @IBOutlet weak private var streetName: UITextField!
     @IBOutlet weak private var houseNumber: UITextField!
     @IBOutlet weak private var buildLabel: UITextField!
-    
     @IBOutlet weak private var phoneNumber: UITextField!
     @IBOutlet weak private var descriptionText: UITextField!
     @IBOutlet weak private var collectionView: UICollectionView!
     @IBOutlet weak private var postType: UISegmentedControl!
     @IBOutlet weak private var addPhothoButton: UIButton!
-    
     @IBOutlet weak var choiseAge: UISegmentedControl!
-    
+    @IBOutlet weak var adressBlock: UIStackView!
+    @IBOutlet weak var breedBlock: UIStackView!
     private var height: Double = 0.0
     private var userDefaults: UserDefaults?
     private var key: String = "id"
@@ -41,6 +40,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     @IBOutlet private weak var scrollView: UIScrollView!
     private var imageStorage: [Data] = []
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -51,6 +51,23 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         collectionView.register(UINib(nibName: "AddPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AddPhotoCollectionViewCell")
         askPermision()
         phoneNumber.delegate = self
+        scrollView.contentInset.bottom = -200
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+            var contentInsets = scrollView.contentInset
+            contentInsets.bottom = -(textField.frame.maxY - scrollView.frame.height + 10) / 2
+            scrollView.contentInset = contentInsets
+            scrollView.scrollIndicatorInsets = contentInsets
+            scrollView.setContentOffset(CGPoint(x: 0, y: -contentInsets.bottom), animated: true)
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        var contentInsets = scrollView.contentInset
+        contentInsets.bottom = 0
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+        scrollView.setContentOffset(CGPoint.zero, animated: true)
     }
     
     func showPhotoLibrary() {
@@ -75,7 +92,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             
         })
     }
-    
+
     func formattedNumber(number: String) -> String {
         
         let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
@@ -104,7 +121,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             } else {
                 textField.text = formattedNumber(number: newString)
             }
-           return false
+            return false
         }
         return true
     }
@@ -145,24 +162,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             agePet = "3 года и старше"
         }
     }
-    
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        if cityName.isEditing {
-            height = 250
-        } else if breed.isEditing {
-            height = 80
-        } else if houseNumber.isEditing || streetName.isEditing || buildLabel.isEditing {
-            height = 330
-        } else if phoneNumber.isEditing {
-            height = 380
-        } else if descriptionText.isEditing {
-            height = 520
-        }
-        scrollView.setContentOffset(CGPointMake(0, height), animated: true)
-    }
-    
+
     func createAdress() -> String {
         
         if buildLabel.text!.count > 0 {
@@ -172,10 +172,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         }
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        height /= 2
-        scrollView.setContentOffset(CGPointMake(0, height), animated: true)
-    }
     
     @IBAction func backTapped(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true)
@@ -193,9 +189,8 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         
         posts.append(AdvertPost(countComments: "0", postId: "", phoneNumber: phoneNumber.text ?? "", linkImage: "", typePost: typePostText , breed: breed.text ?? "", postName: postName.text ?? "", descriptionName: descriptionText.text ?? "", typePet: typePet, oldPet: agePet , lostAdress: createAdress() , curentDate: TimeManager.shared.currentDate()))
         let postID = coreData.getUUID()
-        coreData.saveID(postID)
-        fireBase?.saveIDPostUser(id: postID)
         fireBase?.save(posts: posts, id: postID, stroage: imageStorage)
+        fireBase?.saveIDPostUser(id: postID)
         dismiss(animated: true)
     }
     
@@ -222,7 +217,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         }
         countryPicker.menu = UIMenu(children: [
             UIAction(title: "Выберете страну", state: .on, handler: optionClousure),
-                        UIAction(title: "Беларусь", handler: optionClousure)
+            UIAction(title: "Беларусь", handler: optionClousure)
         ])
         
         countryPicker.showsMenuAsPrimaryAction = true

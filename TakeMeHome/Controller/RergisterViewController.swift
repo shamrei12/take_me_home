@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 
 
-class RergisterViewController: UIViewController {
+class RergisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nameText: UITextField!
     @IBOutlet weak var emailText: UITextField!
@@ -19,38 +19,30 @@ class RergisterViewController: UIViewController {
     @IBOutlet weak var repeatPasswordText: UITextField!
     private var moveTextField = true
     
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        passwordText.delegate = self
+        repeatPasswordText.delegate = self
     }
     
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if moveTextField {
-            moveTextField = false
-            if passwordText.isEditing || repeatPasswordText.isEditing {
-                guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-                let keyboardHeight = keyboardSize.height
-                let safeAreaExists = (self.view?.window?.safeAreaInsets.bottom != 0)
-                let bottomConstant: CGFloat = 20
-                bottomConstraint.constant -= keyboardHeight / 2.1
-            }
-        }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        var contentInsets = scrollView.contentInset
+        contentInsets.bottom = -(textField.frame.maxY - scrollView.frame.height + 10) / 1.3
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+        scrollView.setContentOffset(CGPoint(x: 0, y: -contentInsets.bottom), animated: true)
     }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
-        //        if self.view.frame.origin.y != 0 {
-        //            self.view.frame.origin.y = 0
-        //        }
-        moveTextField = true
-        bottomConstraint.constant = 150
-        
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        var contentInsets = scrollView.contentInset
+        contentInsets.bottom = 0
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+        scrollView.setContentOffset(CGPoint.zero, animated: true)
     }
-
     
     @IBAction func registrationTapped(_ sender: UIButton) {
         if !nameText.text!.isEmpty && !emailText.text!.isEmpty && !passwordText.text!.isEmpty && !repeatPasswordText.text!.isEmpty {
@@ -62,20 +54,10 @@ class RergisterViewController: UIViewController {
                         self.dismiss(animated: true)
                     }
                 } else {
-                    print(error)
+                    print(error as Any)
                 }
                 
             }
         }
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

@@ -22,7 +22,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zEk-j8-bnL">
-                        <rect key="frame" x="21" y="363" width="350" height="153.66666666666663"/>
+                        <rect key="frame" x="21" y="339" width="350" height="153.66666666666663"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email or number phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ski-2l-xuf">
                                 <rect key="frame" x="0.0" y="0.0" width="350" height="20.333333333333332"/>
@@ -57,7 +57,7 @@
                         </subviews>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ln-9J-Ras">
-                        <rect key="frame" x="100" y="556.66666666666663" width="193" height="38"/>
+                        <rect key="frame" x="100" y="532.66666666666663" width="193" height="38"/>
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <color key="tintColor" systemColor="labelColor"/>
                         <state key="normal" title="Button"/>
@@ -69,7 +69,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Uj-L5-jkd">
-                        <rect key="frame" x="100" y="609.66666666666663" width="193" height="32"/>
+                        <rect key="frame" x="100" y="585.66666666666663" width="193" height="32"/>
                         <color key="tintColor" systemColor="labelColor"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="Забыли пароль?">
@@ -80,7 +80,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAR-ES-6Ss">
-                        <rect key="frame" x="100" y="651.66666666666663" width="193" height="32"/>
+                        <rect key="frame" x="100" y="627.66666666666663" width="193" height="32"/>
                         <color key="tintColor" systemColor="labelColor"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="Регистрация">
@@ -90,8 +90,8 @@
                             <action selector="reristerButtonTapped:" destination="l89-tk-Klz" eventType="touchUpInside" id="dmx-oS-OXI"/>
                         </connections>
                     </button>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HLC-Aq-WVm">
-                        <rect key="frame" x="10" y="703.66666666666663" width="373" height="38"/>
+                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HLC-Aq-WVm">
+                        <rect key="frame" x="10" y="679.66666666666663" width="373" height="38"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozf-q2-gP3">
                                 <rect key="frame" x="0.0" y="0.0" width="181.66666666666666" height="38"/>
@@ -118,7 +118,7 @@
                     <constraint firstItem="A6o-rd-dJk" firstAttribute="trailing" secondItem="7Uj-L5-jkd" secondAttribute="trailing" constant="100" id="Aao-Dr-mpi"/>
                     <constraint firstItem="A6o-rd-dJk" firstAttribute="trailing" secondItem="khS-W1-T9V" secondAttribute="trailing" constant="20" id="BQh-7m-i3c"/>
                     <constraint firstItem="khS-W1-T9V" firstAttribute="top" secondItem="A6o-rd-dJk" secondAttribute="top" constant="150" id="OUH-p4-pKr"/>
-                    <constraint firstItem="zEk-j8-bnL" firstAttribute="top" secondItem="khS-W1-T9V" secondAttribute="bottom" constant="74" id="QDO-22-10w"/>
+                    <constraint firstItem="zEk-j8-bnL" firstAttribute="top" secondItem="khS-W1-T9V" secondAttribute="bottom" constant="50" id="QDO-22-10w"/>
                     <constraint firstItem="A6o-rd-dJk" firstAttribute="trailing" secondItem="1Ln-9J-Ras" secondAttribute="trailing" constant="100" id="QIu-rL-65X"/>
                     <constraint firstItem="A6o-rd-dJk" firstAttribute="trailing" secondItem="HLC-Aq-WVm" secondAttribute="trailing" constant="10" id="R56-l9-dNZ"/>
                     <constraint firstItem="khS-W1-T9V" firstAttribute="leading" secondItem="A6o-rd-dJk" secondAttribute="leading" constant="20" id="SEx-JD-0lq"/>

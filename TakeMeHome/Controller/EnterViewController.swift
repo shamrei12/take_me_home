@@ -25,6 +25,7 @@ class EnterViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         // Do any additional setup after loading the view.
     }
+
     
     @objc func keyboardWillShow(notification: NSNotification) {
 //            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -32,7 +33,7 @@ class EnterViewController: UIViewController, UITextFieldDelegate {
 //                    self.view.frame.origin.y -= keyboardSize.height
 //                }
 //            }
-        
+
         if emailField.isEditing || passwordField.isEditing {
              moveViewWithKeyboard(notification: notification, viewBottomConstraint: self.bottomConstraint, keyboardWillShow: true)
          }
@@ -43,20 +44,19 @@ class EnterViewController: UIViewController, UITextFieldDelegate {
 //            self.view.frame.origin.y = 0
 //        }
         moveViewWithKeyboard(notification: notification, viewBottomConstraint: self.bottomConstraint, keyboardWillShow: false)
-
     }
     
     func moveViewWithKeyboard(notification: NSNotification, viewBottomConstraint: NSLayoutConstraint, keyboardWillShow: Bool) {
         // Keyboard's size
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         let keyboardHeight = keyboardSize.height
-        
+
         // Keyboard's animation duration
         let keyboardDuration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
-        
+
         // Keyboard's animation curve
         let keyboardCurve = UIView.AnimationCurve(rawValue: notification.userInfo![UIResponder.keyboardAnimationCurveUserInfoKey] as! Int)!
-        
+
         // Change the constant
         if keyboardWillShow {
             let safeAreaExists = (self.view?.window?.safeAreaInsets.bottom != 0) // Check if safe area exists
@@ -65,13 +65,13 @@ class EnterViewController: UIViewController, UITextFieldDelegate {
         } else {
             viewBottomConstraint.constant = 40
         }
-        
+
         // Animate the view the same way the keyboard animates
         let animator = UIViewPropertyAnimator(duration: keyboardDuration, curve: keyboardCurve) { [weak self] in
             // Update Constraints
             self?.view.layoutIfNeeded()
         }
-        
+
         // Perform the animation
         animator.startAnimation()
     }

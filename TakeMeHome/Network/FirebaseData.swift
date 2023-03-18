@@ -84,21 +84,20 @@ class FirebaseData: FirebaseProtocol {
     }
     
     func getUserName(completion: @escaping (String) -> Void) {
-        let userID = Auth.auth().currentUser?.uid
-        let ref = Database.database().reference().child("users")
-        
-        //        ref.child(userID!).observeSingleEvent(of: .value) { snap in
-        //            let value = snap.value as? Dictionary<String, Any>
-        //            let username = value?["name"] ?? ""
-        //            completion(username)
-        //        }
-        
-        ref.child(userID!).observe(.value) { snap in
-            if let snapshot = snap.children.allObjects as? [DataSnapshot] {
-                let value = snap.value as? Dictionary<String, AnyObject>
-                
-                completion(value!["name"]! as! String)
+        guard let userID = Auth.auth().currentUser?.uid else {
+            completion("")
+            return
+        }
+        let ref = Database.database().reference().child("users").child(userID)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            if let value = snapshot.value as? [String: Any], let name = value["name"] as? String {
+                completion(name)
+            } else {
+                completion("")
             }
+        } withCancel: { (error) in
+            print("Error getting user name: \(error.localizedDescription)")
+            completion("")
         }
     }
     
@@ -114,7 +113,6 @@ class FirebaseData: FirebaseProtocol {
                 refPostComments.child("countComments").setValue("\(snap!.childrenCount + 1)")
             }
         }
-        
     }
     
     func loadSinglePost (id: String ,completion: @escaping ([AdvertProtocol]) -> Void) {
@@ -131,9 +129,7 @@ class FirebaseData: FirebaseProtocol {
     }
     
     func saveImage(_ storage: [Data],_ userID: String,  completion: @escaping (String) -> Void) {
-        let storageRef = Storage.storage().reference().child("postImages").child(userID)
-        //        for data in stroage { dispatchGroup read
-        
+        let storageRef = Storage.storage().reference().child("postImages").child(userID)        
         if  storage.count > 0 {
             for data in 0...storage.count - 1 {
                 storageRef.child("\(userID)_\(data)").putData(storage[data]) { (metadata, err) in
@@ -142,7 +138,6 @@ class FirebaseData: FirebaseProtocol {
                         return
                     }
                     storageRef.child("\(userID)_\(data)").downloadURL { (url, err) in
-                        
                         guard let url = url, err == nil else {
                             print("error")
                             return
@@ -159,6 +154,9 @@ class FirebaseData: FirebaseProtocol {
         let ref = Database.database().reference().child("posts")
         var list = String()
         ref.getData { (err, snap) in
+            guard err == nil else {
+                return
+            }
             self.saveImage(stroage, "\(id)") { data in
                 DispatchQueue.global().async {
                     list += "\(data) "

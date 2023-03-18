@@ -278,6 +278,7 @@
                 <outlet property="date" destination="bLA-qg-o1H" id="lPi-KH-spE"/>
                 <outlet property="descriptionPost" destination="aZ7-bT-YkZ" id="MOd-vp-pma"/>
                 <outlet property="lostAdress" destination="M6h-CW-N5V" id="kyg-9m-jNX"/>
+                <outlet property="mainView" destination="obp-Wt-oXD" id="b7n-hj-Ixt"/>
                 <outlet property="messageField" destination="z5I-Vz-U1h" id="gS2-ds-xBE"/>
                 <outlet property="numberPhone" destination="Wyj-hy-Ie5" id="3P0-lD-dHJ"/>
                 <outlet property="oldPet" destination="EoB-5G-b7A" id="3b5-Nt-ypa"/>

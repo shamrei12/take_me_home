@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class AdvertPageViewController: UIViewController {
+class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var postID: UILabel!
     @IBOutlet weak var date: UILabel!
@@ -33,26 +33,46 @@ class AdvertPageViewController: UIViewController {
     private var fbManager: FirebaseData!
     private var stringPostID: String = ""
     private var adresForMap: String = ""
+    private var alertView: AlertInDevelop!
+    
+    @IBOutlet weak var mainView: UIView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         pageControl.hidesForSinglePage = true
+        messageField.delegate = self
         fbManager = FirebaseData()
         collectionView.register(UINib(nibName: "ImagePostCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ImagePostCollectionViewCell")
         tableview.register(UINib(nibName: "CommentsPostTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentsPostTableViewCell")
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if moveTextField {
-            moveTextField = false
-            if messageField.isEditing {
-                
-                scrollView.scrollToTop()
-            }
-        }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+            var contentInsets = scrollView.contentInset
+        contentInsets.bottom = -(textField.frame.maxY - scrollView.frame.height + 10) / 2
+            scrollView.contentInset = contentInsets
+            scrollView.scrollIndicatorInsets = contentInsets
+            scrollView.setContentOffset(CGPoint(x: 0, y: -contentInsets.bottom), animated: true)
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        var contentInsets = scrollView.contentInset
+        contentInsets.bottom = 0
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+        scrollView.setContentOffset(CGPoint.zero, animated: true)
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -75,20 +95,35 @@ class AdvertPageViewController: UIViewController {
     }
     
     @IBAction func openMap(_ sender: UIBarButtonItem) {
-//        let mapPage = MapPositionViewController.instantiate()
-//        mapPage.modalPresentationStyle = .pageSheet
-//        mapPage.updateMap(adress: adresForMap)
-//        present(mapPage, animated: true)
+        //        let mapPage = MapPositionViewController.instantiate()
+        //        mapPage.modalPresentationStyle = .pageSheet
+        //        mapPage.updateMap(adress: adresForMap)
+        //        present(mapPage, animated: true)
+        //        showAlert(self.view)
+        alertView = AlertInDevelop.loadFromNib()
+        alertView.delegate = self
+        UIApplication.shared.keyWindow?.addSubview(alertView)
+        alertView.center = CGPoint(x: mainView.frame.size.width  / 2,
+                                   y: mainView.frame.size.height / 2)
     }
     
+    func cancelScene() {
+
+        alertView.removeFromSuperview()
+
+    }
+    
+    func scrollDown() {
+        let numberOfROws = self.tableview.numberOfRows(inSection: 0)
+        let indexPath = IndexPath(row: numberOfROws, section: 0)
+        self.tableview.insertRows(at: [indexPath], with: .automatic)
+        self.tableview.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
     
     func updateComments(comment: Comments) {
         DispatchQueue.main.async {
             self.commentsPost.append(comment)
-            let numberOfROws = self.tableview.numberOfRows(inSection: 0)
-            let indexPath = IndexPath(row: numberOfROws, section: 0)
-            self.tableview.insertRows(at: [indexPath], with: .automatic)
-            self.tableview.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            self.scrollDown()
         }
     }
     
@@ -175,9 +210,10 @@ extension AdvertPageViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        var scrollPos = scrollView.contentOffset.x / view.frame.width
-        scrollPos.round()
+        var scrollPos = round(scrollView.contentOffset.x / view.frame.width)
         pageControl.currentPage = Int(scrollPos)
+        let contentOffset = CGPoint(x: scrollView.frame.width * CGFloat(pageControl.currentPage) - 20, y: 0)
+        scrollView.setContentOffset(contentOffset, animated: false)
     }
 }
 
@@ -203,3 +239,5 @@ extension AdvertPageViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 }
+
+

@@ -13,19 +13,34 @@ class SideMenuViewController: UIViewController {
     
     @IBOutlet weak var exitButton: UIButton!
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableSideMenu: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableSideMenu.register(UINib(nibName: "SideMenuTableViewCell", bundle: nil), forCellReuseIdentifier: "SideMenuTableViewCell")
-        
-        // Do any additional setup after loading the view.
+        exitButton.layer.cornerRadius = 10
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        imageView.image = UIImage(named: "appLogo")
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        imageView.image = nil
+    }
+    @IBAction func exitTapped(_ sender: UIButton) {
+        do {
+            try  Auth.auth().signOut()
+        } catch {
+            print(error)
+        }
+    }
+    
     
 }
 
 extension SideMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        6
+        3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,56 +59,35 @@ extension SideMenuViewController: UITableViewDataSource {
         if indexPath.row == 0 {
             cell.imageCell.image = UIImage(named: "create.png")
             cell.labelCell.text = "Создать объявление"
-
             cell.constaintSecondView.constant = 50
         } else if indexPath.row == 1 {
             cell.imageCell.image = UIImage(named: "profile.png")
             cell.labelCell.text = "Профиль"
-        } else if indexPath.row == 2 {
-            cell.imageCell.image = UIImage(named: "messages.png")
-            cell.labelCell.text = "Сообщения"
-        } else if indexPath.row == 3 {
-            cell.imageCell.image = UIImage(named: "notifications.png")
-            cell.labelCell.text = "Уведомления"
-        } else if indexPath.row == 4 {
-            cell.imageCell.image = UIImage(named: "help.png")
-            cell.labelCell.text = "Поддержка"
         } else {
-            cell.imageCell.image = UIImage(named: "settings.png")
-            cell.labelCell.text = "Настройки"
+                cell.imageCell.image = UIImage(named: "settings.png")
+                cell.labelCell.text = "Настройки"
+            }
+            return cell
         }
-        return cell
     }
-}
-
-extension SideMenuViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 1 {
-            let profile = ProfileViewController.instantiate()
-            profile.modalPresentationStyle = .fullScreen
-            present(profile, animated: true)
-        } else if indexPath.row == 5 {
-//            let ref = Database.database().reference().child("users")
-//
-//            ref.observe(.value) { snapshot  in
-//                guard let value = snapshot.value else {
-//                    return
-//                }
-//                var closure = snapshot.value!
-//            }
-            do {
-                try  Auth.auth().signOut()
-            } catch {
-                print(error)
+    extension SideMenuViewController: UITableViewDelegate {
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            if indexPath.row == 1 {
+                let profile = ProfileViewController.instantiate()
+                profile.modalPresentationStyle = .fullScreen
+                present(profile, animated: true)
+            } else if indexPath.row == 5 {
+               
             }
             
-        } else if indexPath.row == 0 {
-            let createAD = CreateAdvertViewController.instantiate()
-            createAD.modalPresentationStyle = .fullScreen
-            present(createAD, animated: true)
+            else if indexPath.row == 0 {
+                let createAD = CreateAdvertViewController.instantiate()
+                createAD.modalPresentationStyle = .fullScreen
+                present(createAD, animated: true)
+            }
+            
         }
         
     }
-    
-}
