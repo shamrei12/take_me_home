@@ -17,6 +17,7 @@ class SideMenuViewController: UIViewController {
     @IBOutlet weak var tableSideMenu: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.image = nil
         tableSideMenu.register(UINib(nibName: "SideMenuTableViewCell", bundle: nil), forCellReuseIdentifier: "SideMenuTableViewCell")
         exitButton.layer.cornerRadius = 10
     }
@@ -27,6 +28,7 @@ class SideMenuViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         imageView.image = nil
     }
+    
     @IBAction func exitTapped(_ sender: UIButton) {
         do {
             try  Auth.auth().signOut()
@@ -63,10 +65,7 @@ extension SideMenuViewController: UITableViewDataSource {
         } else if indexPath.row == 1 {
             cell.imageCell.image = UIImage(named: "profile.png")
             cell.labelCell.text = "Профиль"
-        } else {
-                cell.imageCell.image = UIImage(named: "settings.png")
-                cell.labelCell.text = "Настройки"
-            }
+        } 
             return cell
         }
     }

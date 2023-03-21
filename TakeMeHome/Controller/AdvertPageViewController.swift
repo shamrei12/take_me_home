@@ -47,8 +47,16 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDele
         fbManager = FirebaseData()
         collectionView.register(UINib(nibName: "ImagePostCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ImagePostCollectionViewCell")
         tableview.register(UINib(nibName: "CommentsPostTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentsPostTableViewCell")
-
+        pageControl.isEnabled = false
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let sideMenuViewController = SideMenuViewController()
+        sideMenuViewController.imageView?.image = nil
+    }
+
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     
@@ -210,10 +218,17 @@ extension AdvertPageViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        var scrollPos = round(scrollView.contentOffset.x / view.frame.width)
-        pageControl.currentPage = Int(scrollPos)
-        let contentOffset = CGPoint(x: scrollView.frame.width * CGFloat(pageControl.currentPage) - 20, y: 0)
-        scrollView.setContentOffset(contentOffset, animated: false)
+        let pageWidth = collectionView.frame.size.width
+        let currentPage = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
+        pageControl.currentPage = currentPage
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let cellWidth = collectionView.bounds.width / 2
+        let visibleCellsCount = Int(collectionView.bounds.width / cellWidth)
+        let centerCellIndex = Int(collectionView.contentOffset.x / cellWidth) + visibleCellsCount / 2
+        let targetIndex = centerCellIndex - (centerCellIndex % visibleCellsCount)
+        targetContentOffset.pointee = CGPoint(x: CGFloat(targetIndex) * cellWidth, y: 0)
     }
 }
 

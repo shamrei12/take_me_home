@@ -18,7 +18,7 @@ protocol FirebaseProtocol {
 
 class FirebaseData: FirebaseProtocol {
     var currentUploadTask: StorageUploadTask?
-    
+
     func load(completion: @escaping ([AdvertProtocol]) -> Void) {
         var resultMass: [AdvertProtocol] = []
         let ref = Database.database().reference().child("posts")
@@ -26,36 +26,15 @@ class FirebaseData: FirebaseProtocol {
             resultMass.removeAll()
             if let snapshots = snap.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
-                    if let post = snap.value as? Dictionary<String, String> {
-                        resultMass.append(AdvertPost(countComments: post["countComments"] ?? "", postId: post["postID"] ?? "", phoneNumber: post["phoneNumber"] ?? "", linkImage: post["listLinks"] ?? "", typePost: post["typePost"] ?? "", breed: post["breed"] ?? "", postName: post["postName"] ?? "", descriptionName: post["description"] ?? "", typePet: post["typePet"] ?? "", oldPet: post["oldPet"] ?? "", lostAdress: post["lostAdress"] ?? "", curentDate: post["curentDate"] ?? ""))
+                    if let post = snap.value as? Dictionary<String, AnyObject> {
+                        resultMass.append(AdvertPost(countComments: post["countComments"] as? String ?? "", postId: post["postID"] as? String ?? "", phoneNumber: post["phoneNumber"] as? String ?? "", linkImage: post["listLinks"] as? String ?? "", typePost: post["typePost"] as? String ?? "", breed: post["breed"] as? String ?? "", postName: post["postName"] as? String ?? "", descriptionName: post["description"] as? String ?? "", typePet: post["typePet"] as? String ?? "", oldPet: post["oldPet"] as? String ?? "", lostAdress: post["lostAdress"] as? String ?? "", curentDate: post["curentDate"] as? String ?? ""))
                     }
                 }
                 completion(resultMass)
             }
         }
     }
-    
-    func loadComments(id: String, completion: @escaping ([Comments]) -> Void) {
-        let ref = Database.database().reference().child("comments").child(id)
-        var commentsUser = [Comments]()
-        
-        ref.observe(.value) { snap in
-            if let snapshot = snap.children.allObjects as? [DataSnapshot] {
-                for idSnap in snapshot {
-                    if let comments = idSnap.value as? Dictionary <String, AnyObject> {
-                        commentsUser.append(UserComments(name: comments.keys.first as? String ?? "", comment: comments.values.first as? String ?? ""))
-                    } else {
-                        print("error")
-                    }
-                    
-                }
-                completion(commentsUser)
-                
-            }
-        }
-        
-    }
-    
+
     func saveIDPostUser(id: String) {
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users").child(userID!)
@@ -101,18 +80,27 @@ class FirebaseData: FirebaseProtocol {
         }
     }
     
+    //MARK: Comments
     func SaveComment(id: String, key: String, value: String) {
-        let userID = Auth.auth().currentUser?.uid
-        let ref = Database.database().reference().child("comments")
-        let refChild = Database.database().reference().child("comments").child(id)
-        let refPostComments = Database.database().reference().child("posts").child(id)
-        ref.getData { (errMain, snapMain) in
-            refChild.getData { (err, snap) in
-                ref.child("\(id)").child("\(snap!.childrenCount + 1)").setValue([key:value])
-                
-                refPostComments.child("countComments").setValue("\(snap!.childrenCount + 1)")
+        let ref = Database.database().reference().child("posts").child("\(id)")
+        ref.getData { (err, snap) in
+            ref.child("comments").setValue([key:value])
+        }
+    }
+    
+    func loadComments(id: String, completion: @escaping ([Comments]) -> Void) {
+        let ref = Database.database().reference().child("posts").child("\(id)").child("comments")
+        var commentsUser = [Comments]()
+        ref.observe(.value) { snapshot in
+            if let comments = snapshot.value as? Dictionary <String, String> {
+                for comment in comments {
+                    commentsUser.append(UserComments(name: comment.key, comment: comment.value))
+                }
+                completion(commentsUser)
             }
         }
+        
+        
     }
     
     func loadSinglePost (id: String ,completion: @escaping ([AdvertProtocol]) -> Void) {
@@ -120,8 +108,8 @@ class FirebaseData: FirebaseProtocol {
         let ref = Database.database().reference().child("posts").child(id)
         ref.observe(.value) { snap in
             if let snapshots = snap.children.allObjects as? [DataSnapshot] {
-                if let post = snap.value as? Dictionary<String, String>  {
-                    resultMass.append(AdvertPost(countComments: post["countComments"] ?? "", postId: post["postID"] ?? "", phoneNumber: post["phoneNumber"] ?? "", linkImage: post["listLinks"] ?? "", typePost: post["typePost"] ?? "", breed: post["breed"] ?? "", postName: post["postName"] ?? "", descriptionName: post["description"] ?? "", typePet: post["typePet"] ?? "", oldPet: post["oldPet"] ?? "", lostAdress: post["lostAdress"] ?? "", curentDate: post["curentDate"] ?? ""))
+                if let post = snap.value as? Dictionary<String, AnyObject>  {
+                    resultMass.append(AdvertPost(countComments: post["countComments"] as? String ?? "", postId: post["postID"] as? String ?? "", phoneNumber: post["phoneNumber"] as? String ?? "", linkImage: post["listLinks"] as? String ?? "", typePost: post["typePost"] as? String ?? "", breed: post["breed"] as? String ?? "", postName: post["postName"] as? String ?? "", descriptionName: post["description"] as? String ?? "", typePet: post["typePet"] as? String ?? "", oldPet: post["oldPet"] as? String ?? "", lostAdress: post["lostAdress"] as? String ?? "", curentDate: post["curentDate"] as? String ?? ""))
                 }
                 completion(resultMass)
             }

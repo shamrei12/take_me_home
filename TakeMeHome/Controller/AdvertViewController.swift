@@ -38,24 +38,30 @@ class AdvertViewController: UIViewController, AlertDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.sideMenuShadowView = UIView(frame: self.view.bounds)
-        self.sideMenuShadowView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.sideMenuShadowView.backgroundColor = .black
-        self.sideMenuShadowView.alpha = 0.0
         menuButton.layer.cornerRadius = 5
         mapButton.layer.cornerRadius = 5
         tableView.register(UINib(nibName: "AdvertTableViewCell", bundle: nil), forCellReuseIdentifier: "AdvertTableViewCell")
         collectionView.register(UINib(nibName: "AdvertCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AdvertCollectionViewCell")
         fbManager = FirebaseData()
         coreData = CoreDataClass()
+        print()
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         getData()
         reloadTableView = true
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configureMenuViewController()
+        showBulletinViewController(shouldMove: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        sideMenuViewController.view.isHidden = true
+    }
+
     
     @IBAction func showMap(_ sender: UIButton) {
         alertView = AlertInDevelop.loadFromNib()
@@ -70,15 +76,16 @@ class AdvertViewController: UIViewController, AlertDelegate {
     }
 
     func configureMenuViewController() {
-        if sideMenuViewController == nil {
-            sideMenuViewController = SideMenuViewController.instantiate()
-            view.insertSubview(sideMenuViewController.view, at: 5)
-            addChild(sideMenuViewController)
-            sideMenuViewController.view.frame.size.width = 0
-        }
+            if sideMenuViewController == nil {
+                sideMenuViewController = SideMenuViewController.instantiate()
+                view.insertSubview(sideMenuViewController.view, at: 5)
+                addChild(sideMenuViewController)
+                sideMenuViewController.view.frame.size.width = 0
+            }
     }
     
     @IBAction func menuTapped(_ sender: UIButton) {
+        sideMenuViewController.view.isHidden = false
         configureMenuViewController()
         showBulletinViewController(shouldMove: true)
     }
@@ -94,8 +101,6 @@ class AdvertViewController: UIViewController, AlertDelegate {
                            animations: {
                 self.sideMenuViewController.view.frame.size.width = 300
                 self.sideMenuViewController.viewWillAppear(true)
-                
-                
             })
         } else {
             UIView.animate(withDuration: 0.5,
@@ -106,11 +111,9 @@ class AdvertViewController: UIViewController, AlertDelegate {
                            animations: {
                 self.sideMenuViewController.view.frame.size.width = 0
                 self.sideMenuViewController.viewWillDisappear(true)
-                
             })
         }
     }
-    
     
     func getData() {
         fbManager.load() { [self] data in
@@ -167,7 +170,6 @@ extension AdvertViewController: UISearchBarDelegate {
 extension AdvertViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if searching {
             let adverpage = AdvertPageViewController.instantiate()
             adverpage.modalPresentationStyle = .fullScreen
@@ -259,13 +261,13 @@ extension AdvertViewController: UICollectionViewDataSource {
         
         if indexPath.row == 0 {
             cell.categoryImage.image = UIImage(named: "dog")
-            cell.categoryLabel.text = "\(countDog)"
+            cell.categoryLabel.text = "Собаки: \(countDog)"
         } else if indexPath.row == 1 {
             cell.categoryImage.image = UIImage(named: "cat")
-            cell.categoryLabel.text = "\(countCat)"
+            cell.categoryLabel.text = "Кошки: \(countCat)"
         } else {
             cell.categoryImage.image = UIImage(named: "owl")
-            cell.categoryLabel.text = "\(countOther)"
+            cell.categoryLabel.text = "Прочее: \(countOther)"
         }
         return cell
     }
