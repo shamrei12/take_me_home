@@ -11,15 +11,13 @@ import FirebaseDatabase
 
 class SideMenuViewController: UIViewController {
     
-    @IBOutlet weak var exitButton: UIButton!
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableSideMenu: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         imageView.image = nil
         tableSideMenu.register(UINib(nibName: "SideMenuTableViewCell", bundle: nil), forCellReuseIdentifier: "SideMenuTableViewCell")
-        exitButton.layer.cornerRadius = 10
+        tableSideMenu.register(UINib(nibName: "ExitTableViewCell", bundle: nil), forCellReuseIdentifier: "ExitTableViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,28 +44,41 @@ extension SideMenuViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: SideMenuTableViewCell
-        if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "SideMenuTableViewCell") as? SideMenuTableViewCell {
-            cell = reuseCell
+        if indexPath.row == 2 {
+            var cell: ExitTableViewCell
+            if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "ExitTableViewCell") as? ExitTableViewCell {
+                cell = reuseCell
+            } else {
+                cell = ExitTableViewCell()
+            }
+            return configure(cell: cell, for: indexPath)
         } else {
-            cell = SideMenuTableViewCell()
+            var cell: SideMenuTableViewCell
+            if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "SideMenuTableViewCell") as? SideMenuTableViewCell {
+                cell = reuseCell
+            } else {
+                cell = SideMenuTableViewCell()
+            }
+            return configure(cell: cell, for: indexPath)
         }
-        
-        return configure(cell: cell, for: indexPath)
+    }
+    
+    private func configure(cell: ExitTableViewCell, for indexPath: IndexPath) -> UITableViewCell {
+        return cell
     }
     
     private func configure(cell: SideMenuTableViewCell, for indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.row == 0 {
-            cell.imageCell.image = UIImage(named: "create.png")
-            cell.labelCell.text = "Создать объявление"
-            cell.constaintSecondView.constant = 50
-        } else if indexPath.row == 1 {
-            cell.imageCell.image = UIImage(named: "profile.png")
-            cell.labelCell.text = "Профиль"
-        } 
-            return cell
-        }
+           if indexPath.row == 0 {
+               let rowCell = IndexPath(row: 0, section: 0)
+               cell.imageCell.image = UIImage(named: "create.png")
+               cell.labelCell.text = "Создать объявление"
+//               cell.constaintSecondView.constant = 50
+           } else if indexPath.row == 1 {
+               cell.imageCell.image = UIImage(named: "profile.png")
+               cell.labelCell.text = "Профиль"
+           }
+           return cell
+       }
     }
     
     extension SideMenuViewController: UITableViewDelegate {
@@ -77,10 +88,7 @@ extension SideMenuViewController: UITableViewDataSource {
                 let profile = ProfileViewController.instantiate()
                 profile.modalPresentationStyle = .fullScreen
                 present(profile, animated: true)
-            } else if indexPath.row == 5 {
-               
             }
-            
             else if indexPath.row == 0 {
                 let createAD = CreateAdvertViewController.instantiate()
                 createAD.modalPresentationStyle = .fullScreen
@@ -88,5 +96,4 @@ extension SideMenuViewController: UITableViewDataSource {
             }
             
         }
-        
     }

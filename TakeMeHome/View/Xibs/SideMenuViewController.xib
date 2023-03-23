@@ -41,40 +41,21 @@
                             <outlet property="delegate" destination="yM2-Jo-Pu2" id="kFk-1V-fUB"/>
                         </connections>
                     </tableView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpI-LO-OJK">
-                        <rect key="frame" x="10" y="757" width="280" height="40"/>
-                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="LW0-ry-FJS"/>
-                        </constraints>
-                        <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Выход">
-                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
-                        </buttonConfiguration>
-                        <connections>
-                            <action selector="exitTapped:" destination="yM2-Jo-Pu2" eventType="touchUpInside" id="88L-n9-NyN"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="YdE-9o-Ydm"/>
                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                 <constraints>
                     <constraint firstItem="ZE4-cA-8vk" firstAttribute="top" secondItem="GB6-aP-YBY" secondAttribute="topMargin" constant="25" id="0AE-sC-g5w"/>
                     <constraint firstItem="YdE-9o-Ydm" firstAttribute="trailing" secondItem="ZE4-cA-8vk" secondAttribute="trailing" constant="10" id="B9R-lN-Sz7"/>
-                    <constraint firstItem="jpI-LO-OJK" firstAttribute="top" secondItem="9CL-Fd-LFg" secondAttribute="bottom" constant="10" id="Vx0-z2-etg"/>
-                    <constraint firstItem="YdE-9o-Ydm" firstAttribute="trailing" secondItem="jpI-LO-OJK" secondAttribute="trailing" constant="10" id="ZZ7-iq-ZaB"/>
-                    <constraint firstAttribute="bottom" secondItem="jpI-LO-OJK" secondAttribute="bottom" constant="55" id="lPE-j4-Rrz"/>
                     <constraint firstItem="ZE4-cA-8vk" firstAttribute="leading" secondItem="YdE-9o-Ydm" secondAttribute="leading" constant="10" id="na6-7j-Sou"/>
+                    <constraint firstItem="YdE-9o-Ydm" firstAttribute="bottom" secondItem="9CL-Fd-LFg" secondAttribute="bottom" constant="71" id="naH-FY-V9V"/>
                     <constraint firstItem="9CL-Fd-LFg" firstAttribute="top" secondItem="ZE4-cA-8vk" secondAttribute="bottom" constant="35" id="prJ-gD-sSP"/>
                     <constraint firstItem="9CL-Fd-LFg" firstAttribute="leading" secondItem="YdE-9o-Ydm" secondAttribute="leading" constant="30" id="qpa-7e-LtO"/>
                     <constraint firstItem="YdE-9o-Ydm" firstAttribute="trailing" secondItem="9CL-Fd-LFg" secondAttribute="trailing" constant="30" id="vbh-cY-80w"/>
-                    <constraint firstItem="jpI-LO-OJK" firstAttribute="leading" secondItem="YdE-9o-Ydm" secondAttribute="leading" constant="10" id="xCW-xB-kfR"/>
                 </constraints>
             </view>
             <size key="freeformSize" width="300" height="852"/>
             <connections>
-                <outlet property="exitButton" destination="jpI-LO-OJK" id="Nxs-wv-FVG"/>
                 <outlet property="imageView" destination="7mG-Ej-JmM" id="lmG-3t-1id"/>
                 <outlet property="tableSideMenu" destination="9CL-Fd-LFg" id="v2n-cm-ECj"/>
             </connections>

@@ -11,8 +11,6 @@ import FirebaseDatabase
 import PhotosUI
 
 class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPickerViewControllerDelegate {
-    
-    
     @IBOutlet weak private var postName: UITextField!
     @IBOutlet weak private var breed: UITextField!
     @IBOutlet weak private var cityName: UITextField!
@@ -36,11 +34,9 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     private var typePostText: String = ""
     private var agePet: String = ""
     private var typePet: String = ""
-    
     @IBOutlet private weak var scrollView: UIScrollView!
     private var imageStorage: [Data] = []
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -50,18 +46,17 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         choiceType()
         collectionView.register(UINib(nibName: "AddPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AddPhotoCollectionViewCell")
         askPermision()
-        phoneNumber.delegate = self
         scrollView.contentInset.bottom = -200
     }
-
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
-            var contentInsets = scrollView.contentInset
-            contentInsets.bottom = -(textField.frame.maxY - scrollView.frame.height + 10) / 2
-            scrollView.contentInset = contentInsets
-            scrollView.scrollIndicatorInsets = contentInsets
-            scrollView.setContentOffset(CGPoint(x: 0, y: -contentInsets.bottom), animated: true)
+        var contentInsets = scrollView.contentInset
+        contentInsets.bottom = -(textField.frame.maxY - scrollView.frame.height + 10) / 2
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+        scrollView.setContentOffset(CGPoint(x: 0, y: -contentInsets.bottom), animated: true)
     }
-
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         var contentInsets = scrollView.contentInset
         contentInsets.bottom = 0
@@ -89,12 +84,10 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             } else {
                 print("No Access")
             }
-            
         })
     }
-
+    
     func formattedNumber(number: String) -> String {
-        
         let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         let mask = "+###(##)#######"
         var result = ""
@@ -162,7 +155,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             agePet = "3 года и старше"
         }
     }
-
+    
     func createAdress() -> String {
         
         if buildLabel.text!.count > 0 {
@@ -194,22 +187,50 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         dismiss(animated: true)
     }
     
+    //    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+    //        for item in results {
+    //            item.itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
+    //                if let image = image as? UIImage {
+    //                    DispatchQueue.global().async {
+    //                        self.imageStorage.append(Data(image.pngData()!))
+    //                        DispatchQueue.main.async {
+    //                            self.collectionView.reloadData()
+    //                        }
+    //
+    //                    }
+    //                }
+    //            }
+    //        }
+    //        dismiss(animated: true)
+    //    }
+    
+    
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         for item in results {
-            item.itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
-                if let image = image as? UIImage {
+            item.itemProvider.loadFileRepresentation(forTypeIdentifier: "public.image") { (url, error) in
+                if let fileUrl = url {
+                    let imageData = try! Data(contentsOf: fileUrl)
+                    let imageSource = CGImageSourceCreateWithData(imageData as CFData, nil)!
+                    let options: [NSString: Any] = [
+                        kCGImageSourceCreateThumbnailFromImageAlways: true,
+                        kCGImageSourceThumbnailMaxPixelSize: 1280,
+                        kCGImageSourceCreateThumbnailWithTransform: true,
+                    ]
+                    guard let cgImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, options as CFDictionary) else { return }
                     DispatchQueue.global().async {
-                        self.imageStorage.append(Data(image.pngData()!))
+                        self.imageStorage.append(UIImage(cgImage: cgImage).pngData()!)
                         DispatchQueue.main.async {
                             self.collectionView.reloadData()
                         }
-                        
                     }
                 }
             }
         }
         dismiss(animated: true)
     }
+    
+    
+    
     
     func choiceType() {
         let optionClousure = {(action: UIAction) in
@@ -247,5 +268,7 @@ extension CreateAdvertViewController: UICollectionViewDataSource {
     }
     
     
+    
 }
+
 

@@ -44,9 +44,10 @@ class AdvertViewController: UIViewController, AlertDelegate {
         collectionView.register(UINib(nibName: "AdvertCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AdvertCollectionViewCell")
         fbManager = FirebaseData()
         coreData = CoreDataClass()
-        print()
+        self.hideKeyboardWhenTappedAround()
     }
-    
+
+
     override func viewWillAppear(_ animated: Bool) {
         getData()
         reloadTableView = true

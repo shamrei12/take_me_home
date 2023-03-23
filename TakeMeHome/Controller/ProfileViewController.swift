@@ -115,10 +115,8 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     private func configure(cell: UserPostTableViewCell, for indexPath: IndexPath) -> UITableViewCell {
-        
         DispatchQueue.global().async { [self] in
             let resurse = ImageResource(downloadURL: URL(string: ConverterLinks.shared.getFirstLinks(posts[indexPath.row].first!.linkImage ))!)
-            
             let processor = DownsamplingImageProcessor(size: CGSize(width: 50, height: 50))
             DispatchQueue.main.async {
                 cell.imageView!.kf.setImage(with: resurse, options: [.processor(processor)])

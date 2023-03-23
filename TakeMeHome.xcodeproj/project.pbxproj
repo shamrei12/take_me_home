@@ -28,6 +28,8 @@
 		D836825429B4808F005AB64B /* CoredataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836825329B4808F005AB64B /* CoredataModel.swift */; };
 		D836825729B49644005AB64B /* UserPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836825529B49644005AB64B /* UserPostTableViewCell.swift */; };
 		D836825829B49644005AB64B /* UserPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D836825629B49644005AB64B /* UserPostTableViewCell.xib */; };
+		D8416F7C29CB66010058A3D8 /* ExitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8416F7A29CB66010058A3D8 /* ExitTableViewCell.swift */; };
+		D8416F7D29CB66010058A3D8 /* ExitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8416F7B29CB66010058A3D8 /* ExitTableViewCell.xib */; };
 		D8544B0E29A6654D00B63EF8 /* ConverterLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8544B0D29A6654D00B63EF8 /* ConverterLinks.swift */; };
 		D86F5822299C3101000A9170 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */; };
 		D86F5823299C3101000A9170 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */; };
@@ -82,6 +84,8 @@
 		D836825329B4808F005AB64B /* CoredataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataModel.swift; sourceTree = "<group>"; };
 		D836825529B49644005AB64B /* UserPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostTableViewCell.swift; sourceTree = "<group>"; };
 		D836825629B49644005AB64B /* UserPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserPostTableViewCell.xib; sourceTree = "<group>"; };
+		D8416F7A29CB66010058A3D8 /* ExitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitTableViewCell.swift; sourceTree = "<group>"; };
+		D8416F7B29CB66010058A3D8 /* ExitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExitTableViewCell.xib; sourceTree = "<group>"; };
 		D8544B0D29A6654D00B63EF8 /* ConverterLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterLinks.swift; sourceTree = "<group>"; };
 		D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 				D836824E29AA9862005AB64B /* CommentsPostTableViewCell.xib */,
 				D836825529B49644005AB64B /* UserPostTableViewCell.swift */,
 				D836825629B49644005AB64B /* UserPostTableViewCell.xib */,
+				D8416F7A29CB66010058A3D8 /* ExitTableViewCell.swift */,
+				D8416F7B29CB66010058A3D8 /* ExitTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 			files = (
 				D820C695298C24DC001B11B7 /* LaunchScreen.storyboard in Resources */,
 				D820C6B7298EAC90001B11B7 /* AdvertTableViewCell.xib in Resources */,
+				D8416F7D29CB66010058A3D8 /* ExitTableViewCell.xib in Resources */,
 				D836825829B49644005AB64B /* UserPostTableViewCell.xib in Resources */,
 				D89640E8299CCF0700DF968C /* CreateAdvertViewController.xib in Resources */,
 				D8A0FBA0299279BB0051C9F7 /* GoogleService-Info.plist in Resources */,
@@ -449,6 +456,7 @@
 				D8D1EA10299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift in Sources */,
 				D8D1EA1429A0C49C00F24D34 /* AdvertPageViewController.swift in Sources */,
 				D820C686298C24DA001B11B7 /* AppDelegate.swift in Sources */,
+				D8416F7C29CB66010058A3D8 /* ExitTableViewCell.swift in Sources */,
 				D86F5822299C3101000A9170 /* SideMenuTableViewCell.swift in Sources */,
 				D820C688298C24DA001B11B7 /* SceneDelegate.swift in Sources */,
 				D8A0FBA729943E8E0051C9F7 /* SideMenuViewController.swift in Sources */,
@@ -584,6 +592,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -611,6 +620,8 @@
 				DEVELOPMENT_TEAM = 285RFT4HL7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TakeMeHome/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Take me home";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -639,6 +650,8 @@
 				DEVELOPMENT_TEAM = 285RFT4HL7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TakeMeHome/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Take me home";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";

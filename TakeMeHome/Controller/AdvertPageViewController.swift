@@ -66,7 +66,6 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDele
         super.viewDidAppear(animated)
     }
     
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
             var contentInsets = scrollView.contentInset
         contentInsets.bottom = -(textField.frame.maxY - scrollView.frame.height + 10) / 2
@@ -90,7 +89,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDele
     }
     
     @IBAction func callTapped(_ sender: UIButton) {
-        
+        showCallMenu(phoneNumber: numberPhone.text ?? "")
     }
     
     func loadComments() {
@@ -103,11 +102,6 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDele
     }
     
     @IBAction func openMap(_ sender: UIBarButtonItem) {
-        //        let mapPage = MapPositionViewController.instantiate()
-        //        mapPage.modalPresentationStyle = .pageSheet
-        //        mapPage.updateMap(adress: adresForMap)
-        //        present(mapPage, animated: true)
-        //        showAlert(self.view)
         alertView = AlertInDevelop.loadFromNib()
         alertView.delegate = self
         UIApplication.shared.keyWindow?.addSubview(alertView)
@@ -152,6 +146,24 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDele
         }
     }
     
+    
+    func showCallMenu(phoneNumber: String) {
+        let alertController = UIAlertController(title: nil, message: "Позвонить по номеру \(phoneNumber)?", preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let callAction = UIAlertAction(title: "Позвонить", style: .default) { _ in
+            if let url = URL(string: "tel://\(phoneNumber)"), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        alertController.addAction(callAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+
+    
     func updateUIElements(_ id: String) {
         var list = [String]()
         idPost = id
@@ -162,7 +174,6 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDele
                     self.listResourse.append(ImageResource(downloadURL: URL(string: i)!))
                 }
             }
-            
             DispatchQueue.main.async { [self] in
                 collectionView.reloadData()
                 pageControl.numberOfPages = listResourse.count
@@ -202,7 +213,6 @@ extension AdvertPageViewController: UICollectionViewDelegate, UICollectionViewDa
         
         cell.imagePost.kf.setImage(with: listResourse[indexPath.row])
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
