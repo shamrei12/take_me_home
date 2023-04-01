@@ -1,37 +1,41 @@
-
 import Foundation
-import OpenCageSDK
-//
-//protocol Geocoder {
-//    var adress: String { get set }
-//    func adressToСoordinates(adress: String) -> (Double, Double)
-//    func coordinatesToAdress(coordinates: (Double, Double)) -> String
-//}
-class GeocoderModel {
-    var adress: String = ""
-    let ocSDK :OCSDK = OCSDK(apiKey: "6fdde9142f9648378e017befaec8f44c")
-    func adressToСoordinates(adress: String, completion: @escaping (Double, Double) -> Void) {
-        
-        ocSDK.forwardGeocode(address: adress, withAnnotations: true) { (response, success, error) in
-            if success {
-                print(response.locations.first?.latitude ?? 0.0)
-                completion (Double(truncating: response.locations.first?.latitude ?? 0.0),
-                            Double(truncating: response.locations.first?.longitude ?? 0.0))
-            } else {
-                print("Error")
+import Alamofire
+
+class SessionManager {
+    static var shared: SessionManager = {
+        let instance = SessionManager()
+        return instance
+    }()
+    
+    private init() {}
+    
+    func countryRequest(common: (Double, Double), dataResponse: @escaping (GeocoderModel) -> Void) {
+        let urlString = "https://nominatim.openstreetmap.org/reverse?format=geojson&lat=\(common.0)&lon=\(common.1)&accept-language=ru"
+        AF.request(urlString).responseDecodable(of: GeocoderModel.self) { response in
+            switch response.result {
+            case .success(let model):
+                DispatchQueue.main.async {
+                    dataResponse(model)
+                }
+            case .failure(let error):
+                print(error)
             }
         }
     }
+
+
     
-    func coordinatesToAdress(coordinates: (Double, Double), completion: @escaping (String) -> Void) {
-        
-        ocSDK.reverseGeocode(latitude: NSNumber(value: coordinates.0), longitude: NSNumber(value: coordinates.1), withAnnotations: true) { (response, success, error) in
-            if success {
-                print(response.locations.first?.formattedAddress ?? "")
-                completion(response.locations.first?.formattedAddress ?? "")
-            } else {
-                print("Error")
-            }
+    func parseJSON(data: Data) -> GeocoderModel? {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+        do {
+            let main = try decoder.decode(GeocoderModel.self, from: data)
+            return main
+        } catch let error {
+            print("Ошибка при парсинге JSON: \(error.localizedDescription)")
+            print(String(data: data, encoding: .utf8) ?? "")
+            return nil
         }
     }
 }

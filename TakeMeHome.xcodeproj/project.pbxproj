@@ -51,6 +51,10 @@
 		D8A0FBA4299385060051C9F7 /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FBA2299385050051C9F7 /* ForgotPasswordViewController.xib */; };
 		D8A0FBA729943E8E0051C9F7 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0FBA529943E8E0051C9F7 /* SideMenuViewController.swift */; };
 		D8A0FBA829943E8E0051C9F7 /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FBA629943E8E0051C9F7 /* SideMenuViewController.xib */; };
+		D8C9615529D80B2E00D931F8 /* Geocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C9615429D80B2E00D931F8 /* Geocoder.swift */; };
+		D8C9615729D8126A00D931F8 /* GeocoderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C9615629D8126A00D931F8 /* GeocoderProtocol.swift */; };
+		D8C9615929D825E900D931F8 /* GeocoderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C9615829D825E900D931F8 /* GeocoderModel.swift */; };
+		D8C9615B29D8302500D931F8 /* Geoposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C9615A29D8302500D931F8 /* Geoposition.swift */; };
 		D8D1EA0B299D272800F24D34 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EA0A299D272800F24D34 /* TimeManager.swift */; };
 		D8D1EA0D299D2AC900F24D34 /* FirebaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EA0C299D2AC900F24D34 /* FirebaseData.swift */; };
 		D8D1EA10299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EA0E299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift */; };
@@ -107,6 +111,10 @@
 		D8A0FBA2299385050051C9F7 /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordViewController.xib; sourceTree = "<group>"; };
 		D8A0FBA529943E8E0051C9F7 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		D8A0FBA629943E8E0051C9F7 /* SideMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
+		D8C9615429D80B2E00D931F8 /* Geocoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoder.swift; sourceTree = "<group>"; };
+		D8C9615629D8126A00D931F8 /* GeocoderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocoderProtocol.swift; sourceTree = "<group>"; };
+		D8C9615829D825E900D931F8 /* GeocoderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocoderModel.swift; sourceTree = "<group>"; };
+		D8C9615A29D8302500D931F8 /* Geoposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geoposition.swift; sourceTree = "<group>"; };
 		D8D1EA0A299D272800F24D34 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		D8D1EA0C299D2AC900F24D34 /* FirebaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseData.swift; sourceTree = "<group>"; };
 		D8D1EA0E299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -252,6 +260,8 @@
 			isa = PBXGroup;
 			children = (
 				D8D1EA0C299D2AC900F24D34 /* FirebaseData.swift */,
+				D8C9615429D80B2E00D931F8 /* Geocoder.swift */,
+				D8C9615A29D8302500D931F8 /* Geoposition.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -272,6 +282,8 @@
 				D89640E3299CCE3B00DF968C /* AdvertModel.swift */,
 				D836825129ABBF06005AB64B /* CommentModel.swift */,
 				D836825329B4808F005AB64B /* CoredataModel.swift */,
+				D8C9615629D8126A00D931F8 /* GeocoderProtocol.swift */,
+				D8C9615829D825E900D931F8 /* GeocoderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -451,6 +463,7 @@
 			files = (
 				D8544B0E29A6654D00B63EF8 /* ConverterLinks.swift in Sources */,
 				D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */,
+				D8C9615929D825E900D931F8 /* GeocoderModel.swift in Sources */,
 				D8A0FB8F299231EE0051C9F7 /* EnterViewController.swift in Sources */,
 				D836824B29AA8DD3005AB64B /* ImagePostCollectionViewCell.swift in Sources */,
 				D8D1EA10299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift in Sources */,
@@ -459,6 +472,8 @@
 				D8416F7C29CB66010058A3D8 /* ExitTableViewCell.swift in Sources */,
 				D86F5822299C3101000A9170 /* SideMenuTableViewCell.swift in Sources */,
 				D820C688298C24DA001B11B7 /* SceneDelegate.swift in Sources */,
+				D8C9615529D80B2E00D931F8 /* Geocoder.swift in Sources */,
+				D8C9615729D8126A00D931F8 /* GeocoderProtocol.swift in Sources */,
 				D8A0FBA729943E8E0051C9F7 /* SideMenuViewController.swift in Sources */,
 				D836825429B4808F005AB64B /* CoredataModel.swift in Sources */,
 				D836825229ABBF06005AB64B /* CommentModel.swift in Sources */,
@@ -474,6 +489,7 @@
 				D8A0FB932992515B0051C9F7 /* RergisterViewController.swift in Sources */,
 				D89640E0299C43F400DF968C /* ProfileViewController.swift in Sources */,
 				D820C690298C24DA001B11B7 /* TakeMeHome.xcdatamodeld in Sources */,
+				D8C9615B29D8302500D931F8 /* Geoposition.swift in Sources */,
 				D820C6AD298EA0CC001B11B7 /* Extensions.swift in Sources */,
 				D836825729B49644005AB64B /* UserPostTableViewCell.swift in Sources */,
 				D8979E5429C102740083F8D6 /* AlertInDevelop.swift in Sources */,

@@ -36,7 +36,10 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     private var typePet: String = ""
     @IBOutlet private weak var scrollView: UIScrollView!
     private var imageStorage: [Data] = []
-
+    var geoCoder: SessionManager!
+    private var adressElement: [Geocoder] = []
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -46,7 +49,8 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         choiceType()
         collectionView.register(UINib(nibName: "AddPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AddPhotoCollectionViewCell")
         askPermision()
-        scrollView.contentInset.bottom = -200
+//        scrollView.contentInset.bottom = -200
+        scrollView.setContentOffset(CGPoint.zero, animated: true)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -124,6 +128,70 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         showPhotoLibrary()
     }
     
+    func getAdress(type: Int) {
+        
+        switch type {
+        case 0:
+            cityName.text = adressElement.first?.city
+            streetName.text = adressElement.first?.street
+            houseNumber.text = adressElement.first?.houseNumber
+        case 1:
+            cityName.text = ""
+            streetName.text = ""
+            houseNumber.text = ""
+        default:
+            cityName.text = ""
+            streetName.text = ""
+            houseNumber.text = ""
+        }
+    }
+    
+    func adressFormated(street: String) -> String {
+        var str = street
+        str = str.replacingOccurrences(of: "улица", with: "")
+        str = str.trimmingCharacters(in: .whitespaces)
+        return str
+    }
+    
+    func setPullDownButtonValue(button: UIButton, condition: Bool) {
+        if condition {
+            button.setTitle("Беларусь", for: .normal)
+        } else {
+            button.setTitle("Значение 2", for: .normal)
+        }
+    }
+
+    
+    @IBAction func getAdress(_ sender: UISwitch) {
+        if sender.isOn {
+            LocationManager.shared.getUserLocation { coordinate in
+                self.loader.startAnimating()
+                if let coordinate = coordinate {
+                    let latitude = coordinate.latitude
+                    let longitude = coordinate.longitude
+                    SessionManager.shared.countryRequest(common: (latitude, longitude)) { completion in
+                        DispatchQueue.main.async { [self] in
+                            let country = completion.features.first?.properties.address.country ?? ""
+                            let city = completion.features.first?.properties.address.city ?? ""
+                            let street = adressFormated(street: completion.features.first?.properties.address.road ?? "")
+                            let houseNumber = completion.features.first?.properties.address.houseNumber ?? ""
+                            adressElement.append(Geocoder(country: country, city: city, street: street, houseNumber: houseNumber, buildingNumber: ""))
+                            getAdress(type: 0)
+                        }
+                        self.loader.stopAnimating()
+                        self.loader.hidesWhenStopped
+                    }
+                }
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.loader.stopAnimating()
+                self.loader.hidesWhenStopped
+                self.getAdress(type: 1)
+            }
+        }
+    }
+    
     @IBAction func choseTipePost(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             typePostText = "Пропажа"
@@ -164,7 +232,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             return "\(countryPicker.titleLabel?.text ?? ""), \(cityName.text ?? ""), ул. \(streetName.text ?? ""), \(houseNumber.text ?? "")"
         }
     }
-    
     
     @IBAction func backTapped(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true)
@@ -237,8 +304,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             print(action.title)
         }
         countryPicker.menu = UIMenu(children: [
-            UIAction(title: "Выберете страну", state: .on, handler: optionClousure),
-            UIAction(title: "Беларусь", handler: optionClousure)
+            UIAction(title: "Беларусь", state: .on, handler: optionClousure)
         ])
         
         countryPicker.showsMenuAsPrimaryAction = true

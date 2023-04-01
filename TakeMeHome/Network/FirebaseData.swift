@@ -55,7 +55,6 @@ class FirebaseData: FirebaseProtocol {
                     if idPost.value is String {
                         list.append(idPost.value as! String)
                     }
-                    
                 }
                 completion(list)
             }
