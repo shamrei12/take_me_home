@@ -283,7 +283,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
                 typePostText = "Пропажа"
             }
             if agePet == "" {
-                
+                agePet = "До 1 года"
             }
             if typePet == "" {
                 typePet = "Собака"
