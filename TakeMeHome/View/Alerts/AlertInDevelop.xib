@@ -48,6 +48,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="buttonTapped" destination="UXL-Yl-RAE" id="w2v-0k-U3e"/>
+                <outlet property="textAlert" destination="UB8-zh-Cqg" id="6Tm-Lg-U5W"/>
             </connections>
             <point key="canvasLocation" x="103" y="39"/>
         </view>

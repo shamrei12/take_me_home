@@ -12,6 +12,8 @@ class AlertInDevelop: UIView {
     var delegate: AlertDelegate?
     @IBOutlet weak var buttonTapped: UIButton!
     
+    @IBOutlet weak var textAlert: UILabel!
+    
     override func awakeFromNib() {
           super.awakeFromNib()
         buttonTapped.layer.cornerRadius = 10

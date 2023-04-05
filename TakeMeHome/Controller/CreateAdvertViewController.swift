@@ -10,7 +10,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import PhotosUI
 
-class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPickerViewControllerDelegate {
+class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPickerViewControllerDelegate, AlertDelegate {
     @IBOutlet weak private var postName: UITextField!
     @IBOutlet weak private var breed: UITextField!
     @IBOutlet weak private var cityName: UITextField!
@@ -34,22 +34,24 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     private var typePostText: String = ""
     private var agePet: String = ""
     private var typePet: String = ""
+    private var alertView: AlertInDevelop!
     @IBOutlet private weak var scrollView: UIScrollView!
     private var imageStorage: [Data] = []
     var geoCoder: SessionManager!
     private var adressElement: [Geocoder] = []
     @IBOutlet weak var loader: UIActivityIndicatorView!
     
+    @IBOutlet weak var mainView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        phoneNumber.delegate = self
         addPhothoButton.layer.cornerRadius = 10
         fireBase = FirebaseData()
         coreData = CoreDataClass()
         choiceType()
         collectionView.register(UINib(nibName: "AddPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AddPhotoCollectionViewCell")
         askPermision()
-//        scrollView.contentInset.bottom = -200
         scrollView.setContentOffset(CGPoint.zero, animated: true)
     }
     
@@ -66,7 +68,11 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         contentInsets.bottom = 0
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
-        scrollView.setContentOffset(CGPoint.zero, animated: true)
+        
+        if let lastTextField = scrollView.subviews.last as? UITextField, lastTextField == textField {
+            let bottomOffset = CGPoint(x: 0, y: max(scrollView.contentSize.height - scrollView.bounds.size.height, 0))
+            scrollView.setContentOffset(bottomOffset, animated: true)
+        }
     }
     
     func showPhotoLibrary() {
@@ -123,13 +129,41 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         return true
     }
     
+    func showAlert(message: String) {
+        alertView = AlertInDevelop.loadFromNib()
+        alertView.delegate = self
+        alertView.textAlert.text = message
+        UIApplication.shared.keyWindow?.addSubview(alertView)
+        alertView.center = CGPoint(x: mainView.frame.size.width  / 2,
+                                   y: mainView.frame.size.height / 2)
+    }
+    
+    func cancelScene() {
+        alertView.removeFromSuperview()
+    }
+    
+    func checkCorrectPost() -> Bool {
+        
+        if cityName.text?.count == 0 || streetName.text?.count == 0 || houseNumber.text?.count == 0 {
+            return false
+        } else if breed.text?.count == 0 {
+            return false
+        } else if postName.text?.count == 0 {
+            return false
+        } else if descriptionText.text?.count == 0 {
+            return false
+        } else if phoneNumber.text?.count == 0 {
+            return false
+        } else {
+            return true
+        }
+    }
     
     @IBAction func addPhotoTapped(_ sender: UIButton) {
         showPhotoLibrary()
     }
     
     func getAdress(type: Int) {
-        
         switch type {
         case 0:
             cityName.text = adressElement.first?.city
@@ -160,7 +194,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             button.setTitle("Значение 2", for: .normal)
         }
     }
-
+    
     
     @IBAction func getAdress(_ sender: UISwitch) {
         if sender.isOn {
@@ -212,9 +246,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         }
     }
     
-    
     @IBAction func choiseAge(_ sender: UISegmentedControl) {
-        
         if sender.selectedSegmentIndex == 0 {
             agePet = "До 1 года"
         } else if sender.selectedSegmentIndex == 1 {
@@ -225,7 +257,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     }
     
     func createAdress() -> String {
-        
         if buildLabel.text!.count > 0 {
             return "\(countryPicker.titleLabel?.text ?? ""), \(cityName.text ?? ""), ул. \(streetName.text ?? ""), \(houseNumber.text ?? ""), к\(buildLabel.text ?? "")"
         } else {
@@ -238,38 +269,35 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     }
     
     @IBAction func savePostTapped(_ sender: UIBarButtonItem) {
-        var posts: [AdvertProtocol] = []
-        if typePostText == "" {
-            typePostText = "Пропажа"
+        
+        if checkCorrectPost() {
+            var posts: [AdvertProtocol] = []
+            
+            if imageStorage.isEmpty {
+                if let image = UIImage(named: "no_image.png"), let imageData = image.pngData() {
+                    imageStorage.append(imageData)
+                }
+            }
+            
+            if typePostText == "" {
+                typePostText = "Пропажа"
+            }
+            if agePet == "" {
+                
+            }
+            if typePet == "" {
+                typePet = "Собака"
+            }
+            posts.append(AdvertPost(countComments: "0", postId: "", phoneNumber: phoneNumber.text ?? "", linkImage: "", typePost: typePostText , breed: breed.text ?? "", postName: postName.text ?? "", descriptionName: descriptionText.text ?? "", typePet: typePet, oldPet: agePet , lostAdress: createAdress() , curentDate: TimeManager.shared.currentDate()))
+            let postID = coreData.getUUID()
+            fireBase?.save(posts: posts, id: postID, stroage: imageStorage)
+            fireBase?.saveIDPostUser(id: postID)
+            dismiss(animated: true)
+        } else {
+            showAlert(message: "Проверьте заполнены ли все поля и попробуйте еще раз:)")
         }
         
-        if typePet == "" {
-            typePet = "Собака"
-        }
-        
-        posts.append(AdvertPost(countComments: "0", postId: "", phoneNumber: phoneNumber.text ?? "", linkImage: "", typePost: typePostText , breed: breed.text ?? "", postName: postName.text ?? "", descriptionName: descriptionText.text ?? "", typePet: typePet, oldPet: agePet , lostAdress: createAdress() , curentDate: TimeManager.shared.currentDate()))
-        let postID = coreData.getUUID()
-        fireBase?.save(posts: posts, id: postID, stroage: imageStorage)
-        fireBase?.saveIDPostUser(id: postID)
-        dismiss(animated: true)
     }
-    
-    //    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-    //        for item in results {
-    //            item.itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
-    //                if let image = image as? UIImage {
-    //                    DispatchQueue.global().async {
-    //                        self.imageStorage.append(Data(image.pngData()!))
-    //                        DispatchQueue.main.async {
-    //                            self.collectionView.reloadData()
-    //                        }
-    //
-    //                    }
-    //                }
-    //            }
-    //        }
-    //        dismiss(animated: true)
-    //    }
     
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
@@ -296,9 +324,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         dismiss(animated: true)
     }
     
-    
-    
-    
     func choiceType() {
         let optionClousure = {(action: UIAction) in
             print(action.title)
@@ -306,11 +331,9 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         countryPicker.menu = UIMenu(children: [
             UIAction(title: "Беларусь", state: .on, handler: optionClousure)
         ])
-        
         countryPicker.showsMenuAsPrimaryAction = true
         countryPicker.changesSelectionAsPrimaryAction = true
     }
-    
 }
 
 extension CreateAdvertViewController: UICollectionViewDataSource {
@@ -332,9 +355,6 @@ extension CreateAdvertViewController: UICollectionViewDataSource {
         cell.imageView.image = UIImage(data: imageStorage[indexPath.row])
         return cell
     }
-    
-    
-    
 }
 
 

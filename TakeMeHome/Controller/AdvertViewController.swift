@@ -123,10 +123,12 @@ class AdvertViewController: UIViewController, AlertDelegate {
                     reloadTableView = false
                     DispatchQueue.main.async {
                         advertMass.removeAll()
+                        countDog = 0
+                        countCat = 0
+                        countOther = 0
                         for i in 0...data.count - 1 {
                             self.advertMass.append(AdvertPost(countComments: data[i].countComments, postId: data[i].postId, phoneNumber: data[i].phoneNumber, linkImage:  ConverterLinks.shared.getFirstLinks(data[i].linkImage), typePost: data[i].typePost, breed: data[i].breed, postName: data[i].postName, descriptionName: data[i].descriptionName, typePet: data[i].typePet, oldPet: data[i].oldPet, lostAdress: data[i].lostAdress, curentDate: data[i].curentDate))
                             self.countingType(data[i].typePet)
-  
                         }
                         self.tableView.reloadData()
                     }
@@ -134,7 +136,6 @@ class AdvertViewController: UIViewController, AlertDelegate {
             }
         }
     }
-    
     
     func countingType(_ type: String) {
         if type == "Собака" {

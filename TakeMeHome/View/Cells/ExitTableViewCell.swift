@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ExitTableViewCell: UITableViewCell {
     
@@ -22,4 +23,11 @@ class ExitTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func exitTapped(_ sender: UIButton) {
+        do {
+            try  Auth.auth().signOut()
+        } catch {
+            print(error)
+        }
+    }
 }

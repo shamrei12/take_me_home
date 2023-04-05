@@ -22,9 +22,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     private var fbData: FirebaseData?
     
     @IBOutlet weak var tableview: UITableView!
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         fbManager = FirebaseData()
@@ -44,26 +42,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         fbData?.getUserName { name in
             self.userName.text = name
         }
-        
     }
-    
-    @IBAction func iditProfileTapped(_ sender: UIButton) {
-        //        let iditProfile = EditProfileViewController.instantiate()
-        //        iditProfile.modalPresentationStyle = .formSheet
-        //        present(iditProfile, animated: true)
-        
-    }
-    
-    
+
     @IBAction func backtapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
-    }
-    
-    
-    @IBAction func addPhoto(_ sender: UIButton) {
-        //        imagePicker.sourceType = .photoLibrary
-        //        imagePicker.allowsEditing = true
-        //        present(imagePicker, animated: true)
     }
     
     func getPosts() {
@@ -77,23 +59,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
             }
-            
         }
     }
-    
-    
-}
-
-extension ProfileViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-    //    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    //        let image = (
-    //            info[UIImagePickerController.InfoKey.editedImage] as? UIImage ??
-    //                       info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-    //        )
-    //        imageProfile.image = image
-    //        dismiss(animated: true)
-    //    }
-    //
 }
 
 extension ProfileViewController: UITableViewDataSource {
@@ -118,16 +85,16 @@ extension ProfileViewController: UITableViewDataSource {
         DispatchQueue.global().async { [self] in
             let resurse = ImageResource(downloadURL: URL(string: ConverterLinks.shared.getFirstLinks(posts[indexPath.row].first!.linkImage ))!)
             let processor = DownsamplingImageProcessor(size: CGSize(width: 50, height: 50))
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [self] in
                 cell.imageView!.kf.setImage(with: resurse, options: [.processor(processor)])
                 cell.postName.text = posts[indexPath.row].first?.postName
+                print(posts[indexPath.row].first?.countComments)
                 cell.countComments.text = posts[indexPath.row].first?.countComments
             }
         }
         return cell
     }
 }
-
 
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

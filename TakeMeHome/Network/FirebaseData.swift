@@ -18,7 +18,7 @@ protocol FirebaseProtocol {
 
 class FirebaseData: FirebaseProtocol {
     var currentUploadTask: StorageUploadTask?
-
+    
     func load(completion: @escaping ([AdvertProtocol]) -> Void) {
         var resultMass: [AdvertProtocol] = []
         let ref = Database.database().reference().child("posts")
@@ -34,7 +34,7 @@ class FirebaseData: FirebaseProtocol {
             }
         }
     }
-
+    
     func saveIDPostUser(id: String) {
         let userID = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users").child(userID!)
@@ -80,26 +80,29 @@ class FirebaseData: FirebaseProtocol {
     }
     
     //MARK: Comments
-    func SaveComment(id: String, key: String, value: String) {
-        let ref = Database.database().reference().child("posts").child("\(id)")
+    func SaveComment(id: String, key: String, value: String, count: Int) {
+        let ref = Database.database().reference().child("posts").child(id)
+        
         ref.getData { (err, snap) in
-            ref.child("comments").setValue([key:value])
+            ref.child("comments").child("\(count)").setValue([key:value])
+            ref.child("countComments").setValue("\(count)")
+
         }
     }
-    
+
     func loadComments(id: String, completion: @escaping ([Comments]) -> Void) {
         let ref = Database.database().reference().child("posts").child("\(id)").child("comments")
         var commentsUser = [Comments]()
-        ref.observe(.value) { snapshot in
-            if let comments = snapshot.value as? Dictionary <String, String> {
-                for comment in comments {
-                    commentsUser.append(UserComments(name: comment.key, comment: comment.value))
+        ref.observeSingleEvent(of: .value) { snap in
+            if let snapshots = snap.children.allObjects as? [DataSnapshot] {
+                for comments in snapshots {
+                    if let comment = comments.value as? Dictionary<String, String> {
+                        commentsUser.append(UserComments(name: comment.first?.key ?? "", comment: comment.first?.value ?? ""))
+                    }
                 }
                 completion(commentsUser)
             }
         }
-        
-        
     }
     
     func loadSinglePost (id: String ,completion: @escaping ([AdvertProtocol]) -> Void) {

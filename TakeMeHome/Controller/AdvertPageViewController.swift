@@ -24,7 +24,6 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDele
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var pageControl: UIPageControl!
-    
     private var moveTextField = true
     private var idPost = ""
     @IBOutlet weak var collectionView: UICollectionView!
@@ -36,9 +35,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDele
     private var alertView: AlertInDevelop!
     
     @IBOutlet weak var mainView: UIView!
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -55,11 +52,9 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDele
         let sideMenuViewController = SideMenuViewController()
         sideMenuViewController.imageView?.image = nil
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,7 +80,6 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDele
     @objc func keyboardWillHide(notification: NSNotification) {
         moveTextField = true
         scrollView.scrollToDown()
-        
     }
     
     @IBAction func callTapped(_ sender: UIButton) {
@@ -110,9 +104,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDele
     }
     
     func cancelScene() {
-
         alertView.removeFromSuperview()
-
     }
     
     func scrollDown() {
@@ -137,7 +129,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDele
         if let message = messageField.text, !message.isEmpty {
             fbManager.getUserName(completion: { [self] user in
                 let comment = UserComments(name: user, comment: message)
-                fbManager.SaveComment(id: stringPostID , key: user, value: message)
+                fbManager.SaveComment(id: stringPostID, key: user, value: messageField.text ?? "", count: commentsPost.count + 1)
                 DispatchQueue.main.async {
                     self.messageField.text = ""
                     self.updateComments(comment: comment)
@@ -145,7 +137,6 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDele
             })
         }
     }
-    
     
     func showCallMenu(phoneNumber: String) {
         let alertController = UIAlertController(title: nil, message: "Позвонить по номеру \(phoneNumber)?", preferredStyle: .actionSheet)
