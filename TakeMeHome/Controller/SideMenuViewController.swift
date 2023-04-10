@@ -30,19 +30,10 @@ class SideMenuViewController: UIViewController {
 
 extension SideMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 2 {
-            var cell: ExitTableViewCell
-            if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "ExitTableViewCell") as? ExitTableViewCell {
-                cell = reuseCell
-            } else {
-                cell = ExitTableViewCell()
-            }
-            return configure(cell: cell, for: indexPath)
-        } else {
             var cell: SideMenuTableViewCell
             if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "SideMenuTableViewCell") as? SideMenuTableViewCell {
                 cell = reuseCell
@@ -50,12 +41,8 @@ extension SideMenuViewController: UITableViewDataSource {
                 cell = SideMenuTableViewCell()
             }
             return configure(cell: cell, for: indexPath)
-        }
     }
     
-    private func configure(cell: ExitTableViewCell, for indexPath: IndexPath) -> UITableViewCell {
-        return cell
-    }
     
     private func configure(cell: SideMenuTableViewCell, for indexPath: IndexPath) -> UITableViewCell {
            if indexPath.row == 0 {
@@ -65,13 +52,14 @@ extension SideMenuViewController: UITableViewDataSource {
            } else if indexPath.row == 1 {
                cell.imageCell.image = UIImage(named: "profile.png")
                cell.labelCell.text = "Профиль"
-           } else if indexPath.row == 2 {
-               do {
-                   try  Auth.auth().signOut()
-               } catch {
-                   print(error)
-               }
            }
+//        else if indexPath.row == 2 {
+//               do {
+//                   try  Auth.auth().signOut()
+//               } catch {
+//                   print(error)
+//               }
+//           }
            return cell
        }
     }

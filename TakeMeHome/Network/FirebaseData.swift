@@ -11,6 +11,7 @@ import FirebaseDatabase
 import FirebaseFirestore
 import FirebaseStorage
 
+
 protocol FirebaseProtocol {
     //    func save(posts: [AdvertProtocol])
     //    func load() -> [AdvertProtocol]
@@ -18,6 +19,8 @@ protocol FirebaseProtocol {
 
 class FirebaseData: FirebaseProtocol {
     var currentUploadTask: StorageUploadTask?
+    private var storage = UserDefaults.standard
+    private var storageKey = "login"
     
     func load(completion: @escaping ([AdvertProtocol]) -> Void) {
         var resultMass: [AdvertProtocol] = []
@@ -35,9 +38,17 @@ class FirebaseData: FirebaseProtocol {
         }
     }
     
-    func saveIDPostUser(id: String) {
-        let userID = Auth.auth().currentUser?.uid
-        let ref = Database.database().reference().child("users").child(userID!)
+    
+    func registrUser(login: String, name: String) {
+        let ref = Database.database().reference().child("users")
+        ref.child(login).getData { (err, snap) in
+            ref.child(login).setValue(["name": name])
+        }
+        ref.child(login)
+    }
+    
+    func saveIDPostUser(id: String, login: String) {
+        let ref = Database.database().reference().child("users").child(login)
         
         ref.child("idPosts").getData { (err, snap) in
             ref.child("idPosts").child("\(snap!.childrenCount + 1)").setValue("\(id)")
@@ -46,8 +57,9 @@ class FirebaseData: FirebaseProtocol {
     
     func loadUserPostsLinks(completion: @escaping (([String]) -> Void)) {
         var list = [String]()
+        let login = storage.object(forKey: storageKey) as? String ?? ""
         let userID = Auth.auth().currentUser?.uid
-        let ref = Database.database().reference().child("users").child(userID!).child("idPosts")
+        let ref = Database.database().reference().child("users").child(login).child("idPosts")
         
         ref.observe(.value) { snap in
             if let snapshot = snap.children.allObjects as? [DataSnapshot] {
@@ -62,11 +74,7 @@ class FirebaseData: FirebaseProtocol {
     }
     
     func getUserName(completion: @escaping (String) -> Void) {
-        guard let userID = Auth.auth().currentUser?.uid else {
-            completion("")
-            return
-        }
-        let ref = Database.database().reference().child("users").child(userID)
+        let ref = Database.database().reference().child("users").child(storage.object(forKey: storageKey) as! String)
         ref.observeSingleEvent(of: .value) { (snapshot) in
             if let value = snapshot.value as? [String: Any], let name = value["name"] as? String {
                 completion(name)

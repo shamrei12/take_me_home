@@ -28,6 +28,8 @@ class AdvertViewController: UIViewController, AlertDelegate {
     private var reloadTableView: Bool = true
     private var alertView: AlertInDevelop!
     private var searching = false
+    private var storage = UserDefaults.standard
+    private var storageKey = "login"
     
     private var countDog = 0
     private var countCat = 0
@@ -38,16 +40,25 @@ class AdvertViewController: UIViewController, AlertDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        storage.set(nil, forKey: storageKey)
+        fbManager = FirebaseData()
+        coreData = CoreDataClass()
+        firstStart()
         menuButton.layer.cornerRadius = 5
         mapButton.layer.cornerRadius = 5
         tableView.register(UINib(nibName: "AdvertTableViewCell", bundle: nil), forCellReuseIdentifier: "AdvertTableViewCell")
         collectionView.register(UINib(nibName: "AdvertCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AdvertCollectionViewCell")
-        fbManager = FirebaseData()
-        coreData = CoreDataClass()
         self.hideKeyboardWhenTappedAround()
     }
 
-
+    func firstStart() {
+        if storage.object(forKey: storageKey) == nil {
+            storage.set("\(coreData.getUUID())", forKey: storageKey)
+            fbManager.registrUser(login: storage.object(forKey: storageKey) as! String, name: coreData.shortNameUser(login: storage.object(forKey: storageKey) as! String))
+        }
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         getData()
         reloadTableView = true

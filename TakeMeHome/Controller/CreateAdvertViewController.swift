@@ -40,6 +40,8 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     var geoCoder: SessionManager!
     private var adressElement: [Geocoder] = []
     @IBOutlet weak var loader: UIActivityIndicatorView!
+    private var storage = UserDefaults.standard
+    private var storageKey = "login"
     
     @IBOutlet weak var mainView: UIView!
     override func viewDidLoad() {
@@ -269,6 +271,8 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     }
     
     @IBAction func savePostTapped(_ sender: UIBarButtonItem) {
+        let user = storage.object(forKey: storageKey) as? String ?? ""
+        print("user: \(user)")
         
         if checkCorrectPost() {
             var posts: [AdvertProtocol] = []
@@ -291,7 +295,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             posts.append(AdvertPost(countComments: "0", postId: "", phoneNumber: phoneNumber.text ?? "", linkImage: "", typePost: typePostText , breed: breed.text ?? "", postName: postName.text ?? "", descriptionName: descriptionText.text ?? "", typePet: typePet, oldPet: agePet , lostAdress: createAdress() , curentDate: TimeManager.shared.currentDate()))
             let postID = coreData.getUUID()
             fireBase?.save(posts: posts, id: postID, stroage: imageStorage)
-            fireBase?.saveIDPostUser(id: postID)
+            fireBase?.saveIDPostUser(id: postID, login: user)
             dismiss(animated: true)
         } else {
             showAlert(message: "Проверьте заполнены ли все поля и попробуйте еще раз:)")
