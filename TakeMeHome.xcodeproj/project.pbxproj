@@ -7,61 +7,71 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9AE7CD845E854C068D9E8DD3 /* Pods_TakeMeHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0944295DDEA66127DD51E253 /* Pods_TakeMeHome.framework */; };
+		D811A49829E4A0A800F6DE02 /* AlertInDevelop.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8979E5129C102480083F8D6 /* AlertInDevelop.xib */; };
+		D811A49929E4A0A800F6DE02 /* AdvertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6B6298EAC90001B11B7 /* AdvertTableViewCell.xib */; };
+		D811A49A29E4A0A800F6DE02 /* AdvertCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */; };
+		D811A49B29E4A0A800F6DE02 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */; };
+		D811A49C29E4A0A800F6DE02 /* AddPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8D1EA0F299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib */; };
+		D811A49D29E4A0A800F6DE02 /* ImagePostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D836824A29AA8DD3005AB64B /* ImagePostCollectionViewCell.xib */; };
+		D811A49E29E4A0A800F6DE02 /* CommentsPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D836824E29AA9862005AB64B /* CommentsPostTableViewCell.xib */; };
+		D811A49F29E4A0A800F6DE02 /* UserPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D836825629B49644005AB64B /* UserPostTableViewCell.xib */; };
+		D811A4A029E4A0A800F6DE02 /* ExitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8416F7B29CB66010058A3D8 /* ExitTableViewCell.xib */; };
+		D811A4A129E4A0A800F6DE02 /* AdvertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6AE298EA13B001B11B7 /* AdvertViewController.xib */; };
+		D811A4A229E4A0A800F6DE02 /* EnterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FB8E299231EE0051C9F7 /* EnterViewController.xib */; };
+		D811A4A329E4A0A800F6DE02 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89640E1299C440D00DF968C /* ProfileViewController.xib */; };
+		D811A4A429E4A0A800F6DE02 /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FBA629943E8E0051C9F7 /* SideMenuViewController.xib */; };
+		D811A4A529E4A0A800F6DE02 /* CreateAdvertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89640E6299CCF0700DF968C /* CreateAdvertViewController.xib */; };
+		D811A4A629E4A0A800F6DE02 /* AdvertPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8D1EA1329A0C49C00F24D34 /* AdvertPageViewController.xib */; };
+		D811A4A829E4A0E000F6DE02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FB9F299279BB0051C9F7 /* GoogleService-Info.plist */; };
 		D820C686298C24DA001B11B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C685298C24DA001B11B7 /* AppDelegate.swift */; };
 		D820C688298C24DA001B11B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C687298C24DA001B11B7 /* SceneDelegate.swift */; };
 		D820C690298C24DA001B11B7 /* TakeMeHome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D820C68E298C24DA001B11B7 /* TakeMeHome.xcdatamodeld */; };
 		D820C692298C24DC001B11B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D820C691298C24DC001B11B7 /* Assets.xcassets */; };
 		D820C695298C24DC001B11B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D820C693298C24DC001B11B7 /* LaunchScreen.storyboard */; };
 		D820C6AD298EA0CC001B11B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6AC298EA0CC001B11B7 /* Extensions.swift */; };
-		D820C6AF298EA13B001B11B7 /* AdvertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6AE298EA13B001B11B7 /* AdvertViewController.xib */; };
 		D820C6B1298EA157001B11B7 /* AdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6B0298EA157001B11B7 /* AdvertViewController.swift */; };
-		D820C6B7298EAC90001B11B7 /* AdvertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6B6298EAC90001B11B7 /* AdvertTableViewCell.xib */; };
 		D820C6B9298EACA5001B11B7 /* AdvertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */; };
 		D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */; };
-		D820C6BD298F96E3001B11B7 /* AdvertCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */; };
 		D836824B29AA8DD3005AB64B /* ImagePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836824929AA8DD3005AB64B /* ImagePostCollectionViewCell.swift */; };
-		D836824C29AA8DD3005AB64B /* ImagePostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D836824A29AA8DD3005AB64B /* ImagePostCollectionViewCell.xib */; };
 		D836824F29AA9862005AB64B /* CommentsPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836824D29AA9862005AB64B /* CommentsPostTableViewCell.swift */; };
-		D836825029AA9862005AB64B /* CommentsPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D836824E29AA9862005AB64B /* CommentsPostTableViewCell.xib */; };
 		D836825229ABBF06005AB64B /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836825129ABBF06005AB64B /* CommentModel.swift */; };
 		D836825429B4808F005AB64B /* CoredataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836825329B4808F005AB64B /* CoredataModel.swift */; };
 		D836825729B49644005AB64B /* UserPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836825529B49644005AB64B /* UserPostTableViewCell.swift */; };
-		D836825829B49644005AB64B /* UserPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D836825629B49644005AB64B /* UserPostTableViewCell.xib */; };
 		D8416F7C29CB66010058A3D8 /* ExitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8416F7A29CB66010058A3D8 /* ExitTableViewCell.swift */; };
-		D8416F7D29CB66010058A3D8 /* ExitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8416F7B29CB66010058A3D8 /* ExitTableViewCell.xib */; };
 		D8544B0E29A6654D00B63EF8 /* ConverterLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8544B0D29A6654D00B63EF8 /* ConverterLinks.swift */; };
 		D86F5822299C3101000A9170 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */; };
-		D86F5823299C3101000A9170 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */; };
+		D885275D29E48701007CEFEF /* Pods_TakeMeHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0944295DDEA66127DD51E253 /* Pods_TakeMeHome.framework */; };
+		D885275E29E48701007CEFEF /* Pods_TakeMeHome.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0944295DDEA66127DD51E253 /* Pods_TakeMeHome.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D89640E0299C43F400DF968C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640DF299C43F400DF968C /* ProfileViewController.swift */; };
-		D89640E2299C440D00DF968C /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89640E1299C440D00DF968C /* ProfileViewController.xib */; };
 		D89640E4299CCE3B00DF968C /* AdvertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640E3299CCE3B00DF968C /* AdvertModel.swift */; };
 		D89640E7299CCF0700DF968C /* CreateAdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */; };
-		D89640E8299CCF0700DF968C /* CreateAdvertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89640E6299CCF0700DF968C /* CreateAdvertViewController.xib */; };
-		D8979E5229C102480083F8D6 /* AlertInDevelop.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8979E5129C102480083F8D6 /* AlertInDevelop.xib */; };
 		D8979E5429C102740083F8D6 /* AlertInDevelop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8979E5329C102740083F8D6 /* AlertInDevelop.swift */; };
 		D8979E5629C112DC0083F8D6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8979E5529C112DC0083F8D6 /* Protocols.swift */; };
 		D8A0FB8F299231EE0051C9F7 /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0FB8D299231EE0051C9F7 /* EnterViewController.swift */; };
-		D8A0FB90299231EE0051C9F7 /* EnterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FB8E299231EE0051C9F7 /* EnterViewController.xib */; };
-		D8A0FB932992515B0051C9F7 /* RergisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0FB912992515B0051C9F7 /* RergisterViewController.swift */; };
-		D8A0FB942992515B0051C9F7 /* RergisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FB922992515B0051C9F7 /* RergisterViewController.xib */; };
-		D8A0FB9A2992558C0051C9F7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FB992992558C0051C9F7 /* Podfile */; };
-		D8A0FBA0299279BB0051C9F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FB9F299279BB0051C9F7 /* GoogleService-Info.plist */; };
-		D8A0FBA3299385060051C9F7 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0FBA1299385050051C9F7 /* ForgotPasswordViewController.swift */; };
-		D8A0FBA4299385060051C9F7 /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FBA2299385050051C9F7 /* ForgotPasswordViewController.xib */; };
 		D8A0FBA729943E8E0051C9F7 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0FBA529943E8E0051C9F7 /* SideMenuViewController.swift */; };
-		D8A0FBA829943E8E0051C9F7 /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FBA629943E8E0051C9F7 /* SideMenuViewController.xib */; };
 		D8C9615529D80B2E00D931F8 /* Geocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C9615429D80B2E00D931F8 /* Geocoder.swift */; };
-		D8C9615729D8126A00D931F8 /* GeocoderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C9615629D8126A00D931F8 /* GeocoderProtocol.swift */; };
-		D8C9615929D825E900D931F8 /* GeocoderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C9615829D825E900D931F8 /* GeocoderModel.swift */; };
 		D8C9615B29D8302500D931F8 /* Geoposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C9615A29D8302500D931F8 /* Geoposition.swift */; };
 		D8D1EA0B299D272800F24D34 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EA0A299D272800F24D34 /* TimeManager.swift */; };
 		D8D1EA0D299D2AC900F24D34 /* FirebaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EA0C299D2AC900F24D34 /* FirebaseData.swift */; };
 		D8D1EA10299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EA0E299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift */; };
-		D8D1EA11299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8D1EA0F299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib */; };
 		D8D1EA1429A0C49C00F24D34 /* AdvertPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EA1229A0C49C00F24D34 /* AdvertPageViewController.swift */; };
-		D8D1EA1529A0C49C00F24D34 /* AdvertPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8D1EA1329A0C49C00F24D34 /* AdvertPageViewController.xib */; };
+		D8EA7EBE29E31FBD00D27E90 /* GeocoderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA7EBD29E31FBD00D27E90 /* GeocoderModel.swift */; };
+		D8EA7EC229E31FF200D27E90 /* GeocoderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA7EC129E31FF200D27E90 /* GeocoderProtocol.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D885275F29E48701007CEFEF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D885275E29E48701007CEFEF /* Pods_TakeMeHome.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		08C352DBB6DCF69AB12526CE /* Pods-TakeMeHome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome.release.xcconfig"; path = "Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,7 +82,6 @@
 		D820C68F298C24DA001B11B7 /* TakeMeHome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TakeMeHome.xcdatamodel; sourceTree = "<group>"; };
 		D820C691298C24DC001B11B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D820C694298C24DC001B11B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D820C696298C24DC001B11B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D820C6AC298EA0CC001B11B7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D820C6AE298EA13B001B11B7 /* AdvertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvertViewController.xib; sourceTree = "<group>"; };
 		D820C6B0298EA157001B11B7 /* AdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +102,7 @@
 		D8544B0D29A6654D00B63EF8 /* ConverterLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterLinks.swift; sourceTree = "<group>"; };
 		D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
+		D885275529E48412007CEFEF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D89640DF299C43F400DF968C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D89640E1299C440D00DF968C /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		D89640E3299CCE3B00DF968C /* AdvertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertModel.swift; sourceTree = "<group>"; };
@@ -103,17 +113,11 @@
 		D8979E5529C112DC0083F8D6 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		D8A0FB8D299231EE0051C9F7 /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
 		D8A0FB8E299231EE0051C9F7 /* EnterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnterViewController.xib; sourceTree = "<group>"; };
-		D8A0FB912992515B0051C9F7 /* RergisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RergisterViewController.swift; sourceTree = "<group>"; };
-		D8A0FB922992515B0051C9F7 /* RergisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RergisterViewController.xib; sourceTree = "<group>"; };
 		D8A0FB992992558C0051C9F7 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D8A0FB9F299279BB0051C9F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D8A0FBA1299385050051C9F7 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		D8A0FBA2299385050051C9F7 /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordViewController.xib; sourceTree = "<group>"; };
 		D8A0FBA529943E8E0051C9F7 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		D8A0FBA629943E8E0051C9F7 /* SideMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
 		D8C9615429D80B2E00D931F8 /* Geocoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoder.swift; sourceTree = "<group>"; };
-		D8C9615629D8126A00D931F8 /* GeocoderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocoderProtocol.swift; sourceTree = "<group>"; };
-		D8C9615829D825E900D931F8 /* GeocoderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocoderModel.swift; sourceTree = "<group>"; };
 		D8C9615A29D8302500D931F8 /* Geoposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geoposition.swift; sourceTree = "<group>"; };
 		D8D1EA0A299D272800F24D34 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		D8D1EA0C299D2AC900F24D34 /* FirebaseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseData.swift; sourceTree = "<group>"; };
@@ -121,6 +125,9 @@
 		D8D1EA0F299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		D8D1EA1229A0C49C00F24D34 /* AdvertPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertPageViewController.swift; sourceTree = "<group>"; };
 		D8D1EA1329A0C49C00F24D34 /* AdvertPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvertPageViewController.xib; sourceTree = "<group>"; };
+		D8EA7EBC29E31F0200D27E90 /* TakeMeHome.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TakeMeHome.entitlements; sourceTree = "<group>"; };
+		D8EA7EBD29E31FBD00D27E90 /* GeocoderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocoderModel.swift; sourceTree = "<group>"; };
+		D8EA7EC129E31FF200D27E90 /* GeocoderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocoderProtocol.swift; sourceTree = "<group>"; };
 		DB30E3F0652F68E81AB8BC6A /* Pods-TakeMeHome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome.debug.xcconfig"; path = "Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,7 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AE7CD845E854C068D9E8DD3 /* Pods_TakeMeHome.framework in Frameworks */,
+				D885275D29E48701007CEFEF /* Pods_TakeMeHome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +174,7 @@
 		D820C684298C24DA001B11B7 /* TakeMeHome */ = {
 			isa = PBXGroup;
 			children = (
+				D8EA7EBC29E31F0200D27E90 /* TakeMeHome.entitlements */,
 				D8D1EA09299D270E00F24D34 /* Managers */,
 				D820C6AB298C4000001B11B7 /* Controller */,
 				D820C6AA298C3F72001B11B7 /* Model */,
@@ -177,7 +185,7 @@
 				D820C69C298C2600001B11B7 /* View */,
 				D820C685298C24DA001B11B7 /* AppDelegate.swift */,
 				D820C687298C24DA001B11B7 /* SceneDelegate.swift */,
-				D820C696298C24DC001B11B7 /* Info.plist */,
+				D885275529E48412007CEFEF /* Info.plist */,
 				D8A0FB9F299279BB0051C9F7 /* GoogleService-Info.plist */,
 			);
 			path = TakeMeHome;
@@ -223,8 +231,6 @@
 			children = (
 				D820C6AE298EA13B001B11B7 /* AdvertViewController.xib */,
 				D8A0FB8E299231EE0051C9F7 /* EnterViewController.xib */,
-				D8A0FB922992515B0051C9F7 /* RergisterViewController.xib */,
-				D8A0FBA2299385050051C9F7 /* ForgotPasswordViewController.xib */,
 				D89640E1299C440D00DF968C /* ProfileViewController.xib */,
 				D8A0FBA629943E8E0051C9F7 /* SideMenuViewController.xib */,
 				D89640E6299CCF0700DF968C /* CreateAdvertViewController.xib */,
@@ -281,9 +287,9 @@
 			children = (
 				D89640E3299CCE3B00DF968C /* AdvertModel.swift */,
 				D836825129ABBF06005AB64B /* CommentModel.swift */,
+				D8EA7EC129E31FF200D27E90 /* GeocoderProtocol.swift */,
 				D836825329B4808F005AB64B /* CoredataModel.swift */,
-				D8C9615629D8126A00D931F8 /* GeocoderProtocol.swift */,
-				D8C9615829D825E900D931F8 /* GeocoderModel.swift */,
+				D8EA7EBD29E31FBD00D27E90 /* GeocoderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -293,9 +299,7 @@
 			children = (
 				D8A0FB8D299231EE0051C9F7 /* EnterViewController.swift */,
 				D8A0FBA529943E8E0051C9F7 /* SideMenuViewController.swift */,
-				D8A0FB912992515B0051C9F7 /* RergisterViewController.swift */,
 				D820C6B0298EA157001B11B7 /* AdvertViewController.swift */,
-				D8A0FBA1299385050051C9F7 /* ForgotPasswordViewController.swift */,
 				D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */,
 				D8D1EA1229A0C49C00F24D34 /* AdvertPageViewController.swift */,
 				D89640DF299C43F400DF968C /* ProfileViewController.swift */,
@@ -339,13 +343,16 @@
 				D820C67E298C24DA001B11B7 /* Sources */,
 				D820C67F298C24DA001B11B7 /* Frameworks */,
 				D820C680298C24DA001B11B7 /* Resources */,
-				EAADBE5E363BECCF6920DB9E /* [CP] Embed Pods Frameworks */,
+				6252C4A92DE8A37121C7CAFB /* [CP] Embed Pods Frameworks */,
+				D885275F29E48701007CEFEF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = TakeMeHome;
+			packageProductDependencies = (
+			);
 			productName = TakeMeHome;
 			productReference = D820C682298C24DA001B11B7 /* TakeMeHome.app */;
 			productType = "com.apple.product-type.application";
@@ -374,6 +381,8 @@
 				Base,
 			);
 			mainGroup = D820C679298C24DA001B11B7;
+			packageReferences = (
+			);
 			productRefGroup = D820C683298C24DA001B11B7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -388,33 +397,47 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D811A4A829E4A0E000F6DE02 /* GoogleService-Info.plist in Resources */,
+				D811A49829E4A0A800F6DE02 /* AlertInDevelop.xib in Resources */,
+				D811A49929E4A0A800F6DE02 /* AdvertTableViewCell.xib in Resources */,
+				D811A49A29E4A0A800F6DE02 /* AdvertCollectionViewCell.xib in Resources */,
+				D811A49B29E4A0A800F6DE02 /* SideMenuTableViewCell.xib in Resources */,
+				D811A49C29E4A0A800F6DE02 /* AddPhotoCollectionViewCell.xib in Resources */,
+				D811A49D29E4A0A800F6DE02 /* ImagePostCollectionViewCell.xib in Resources */,
+				D811A49E29E4A0A800F6DE02 /* CommentsPostTableViewCell.xib in Resources */,
+				D811A49F29E4A0A800F6DE02 /* UserPostTableViewCell.xib in Resources */,
+				D811A4A029E4A0A800F6DE02 /* ExitTableViewCell.xib in Resources */,
+				D811A4A129E4A0A800F6DE02 /* AdvertViewController.xib in Resources */,
+				D811A4A229E4A0A800F6DE02 /* EnterViewController.xib in Resources */,
+				D811A4A329E4A0A800F6DE02 /* ProfileViewController.xib in Resources */,
+				D811A4A429E4A0A800F6DE02 /* SideMenuViewController.xib in Resources */,
+				D811A4A529E4A0A800F6DE02 /* CreateAdvertViewController.xib in Resources */,
+				D811A4A629E4A0A800F6DE02 /* AdvertPageViewController.xib in Resources */,
 				D820C695298C24DC001B11B7 /* LaunchScreen.storyboard in Resources */,
-				D820C6B7298EAC90001B11B7 /* AdvertTableViewCell.xib in Resources */,
-				D8416F7D29CB66010058A3D8 /* ExitTableViewCell.xib in Resources */,
-				D836825829B49644005AB64B /* UserPostTableViewCell.xib in Resources */,
-				D89640E8299CCF0700DF968C /* CreateAdvertViewController.xib in Resources */,
-				D8A0FBA0299279BB0051C9F7 /* GoogleService-Info.plist in Resources */,
-				D8979E5229C102480083F8D6 /* AlertInDevelop.xib in Resources */,
-				D89640E2299C440D00DF968C /* ProfileViewController.xib in Resources */,
-				D86F5823299C3101000A9170 /* SideMenuTableViewCell.xib in Resources */,
-				D820C6AF298EA13B001B11B7 /* AdvertViewController.xib in Resources */,
-				D836825029AA9862005AB64B /* CommentsPostTableViewCell.xib in Resources */,
-				D8A0FBA829943E8E0051C9F7 /* SideMenuViewController.xib in Resources */,
-				D8A0FBA4299385060051C9F7 /* ForgotPasswordViewController.xib in Resources */,
 				D820C692298C24DC001B11B7 /* Assets.xcassets in Resources */,
-				D820C6BD298F96E3001B11B7 /* AdvertCollectionViewCell.xib in Resources */,
-				D8A0FB9A2992558C0051C9F7 /* Podfile in Resources */,
-				D8D1EA11299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib in Resources */,
-				D836824C29AA8DD3005AB64B /* ImagePostCollectionViewCell.xib in Resources */,
-				D8A0FB942992515B0051C9F7 /* RergisterViewController.xib in Resources */,
-				D8A0FB90299231EE0051C9F7 /* EnterViewController.xib in Resources */,
-				D8D1EA1529A0C49C00F24D34 /* AdvertPageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6252C4A92DE8A37121C7CAFB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D09798D45E3C1AD666E49E23 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -437,23 +460,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EAADBE5E363BECCF6920DB9E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -463,17 +469,17 @@
 			files = (
 				D8544B0E29A6654D00B63EF8 /* ConverterLinks.swift in Sources */,
 				D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */,
-				D8C9615929D825E900D931F8 /* GeocoderModel.swift in Sources */,
 				D8A0FB8F299231EE0051C9F7 /* EnterViewController.swift in Sources */,
 				D836824B29AA8DD3005AB64B /* ImagePostCollectionViewCell.swift in Sources */,
 				D8D1EA10299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift in Sources */,
 				D8D1EA1429A0C49C00F24D34 /* AdvertPageViewController.swift in Sources */,
 				D820C686298C24DA001B11B7 /* AppDelegate.swift in Sources */,
+				D8EA7EBE29E31FBD00D27E90 /* GeocoderModel.swift in Sources */,
 				D8416F7C29CB66010058A3D8 /* ExitTableViewCell.swift in Sources */,
 				D86F5822299C3101000A9170 /* SideMenuTableViewCell.swift in Sources */,
 				D820C688298C24DA001B11B7 /* SceneDelegate.swift in Sources */,
+				D8EA7EC229E31FF200D27E90 /* GeocoderProtocol.swift in Sources */,
 				D8C9615529D80B2E00D931F8 /* Geocoder.swift in Sources */,
-				D8C9615729D8126A00D931F8 /* GeocoderProtocol.swift in Sources */,
 				D8A0FBA729943E8E0051C9F7 /* SideMenuViewController.swift in Sources */,
 				D836825429B4808F005AB64B /* CoredataModel.swift in Sources */,
 				D836825229ABBF06005AB64B /* CommentModel.swift in Sources */,
@@ -484,9 +490,7 @@
 				D820C6B9298EACA5001B11B7 /* AdvertTableViewCell.swift in Sources */,
 				D89640E7299CCF0700DF968C /* CreateAdvertViewController.swift in Sources */,
 				D8D1EA0D299D2AC900F24D34 /* FirebaseData.swift in Sources */,
-				D8A0FBA3299385060051C9F7 /* ForgotPasswordViewController.swift in Sources */,
 				D89640E4299CCE3B00DF968C /* AdvertModel.swift in Sources */,
-				D8A0FB932992515B0051C9F7 /* RergisterViewController.swift in Sources */,
 				D89640E0299C43F400DF968C /* ProfileViewController.swift in Sources */,
 				D820C690298C24DA001B11B7 /* TakeMeHome.xcdatamodeld in Sources */,
 				D8C9615B29D8302500D931F8 /* Geoposition.swift in Sources */,
@@ -631,6 +635,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TakeMeHome/TakeMeHome.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 285RFT4HL7;
@@ -638,6 +643,8 @@
 				INFOPLIST_FILE = TakeMeHome/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Take me home";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Для определения вашего местоположения и предоставления возможности указать адрес с использованием вашей геопозиции, приложению необходим доступ к вашей геопозиции. Пожалуйста, разрешите доступ к геопозиции, чтобы использовать все функции приложения.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Приложение запрашивает доступ к фотографиям, чтобы у вас появилась возмоджность прикрепить фоотографии к данному объявлению.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -649,9 +656,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = alexshamrey.TakeMeHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -661,6 +671,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TakeMeHome/TakeMeHome.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 285RFT4HL7;
@@ -668,6 +679,8 @@
 				INFOPLIST_FILE = TakeMeHome/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Take me home";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Для определения вашего местоположения и предоставления возможности указать адрес с использованием вашей геопозиции, приложению необходим доступ к вашей геопозиции. Пожалуйста, разрешите доступ к геопозиции, чтобы использовать все функции приложения.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Приложение запрашивает доступ к фотографиям, чтобы у вас появилась возмоджность прикрепить фоотографии к данному объявлению.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -679,9 +692,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = alexshamrey.TakeMeHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

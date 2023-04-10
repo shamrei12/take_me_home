@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "no_img.png",
+      "filename" : "icons8-google-30(@1x).png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "icons8-google-60(@2x).png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "icons8-google-90(@3x).png",
       "idiom" : "universal",
       "scale" : "3x"
     }

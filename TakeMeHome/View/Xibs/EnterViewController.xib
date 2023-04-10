@@ -21,127 +21,47 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zEk-j8-bnL">
-                        <rect key="frame" x="21" y="339" width="350" height="153.66666666666663"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email or number phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ski-2l-xuf">
-                                <rect key="frame" x="0.0" y="0.0" width="350" height="20.333333333333332"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6lL-uX-aCd">
-                                <rect key="frame" x="0.0" y="35.333333333333314" width="350" height="34"/>
-                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="3rS-j9-hCa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh3-Gw-ye4">
-                                <rect key="frame" x="0.0" y="84.333333333333314" width="350" height="20.333333333333329"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tCP-jO-OdI">
-                                <rect key="frame" x="0.0" y="119.66666666666669" width="350" height="34"/>
-                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="ww0-HL-yXU"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
-                            </textField>
-                        </subviews>
-                    </stackView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ln-9J-Ras">
-                        <rect key="frame" x="100" y="532.66666666666663" width="193" height="38"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVA-1j-Ou5">
+                        <rect key="frame" x="10" y="409" width="373" height="46"/>
                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <color key="tintColor" systemColor="labelColor"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Вход">
-                            <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="20"/>
-                        </buttonConfiguration>
+                        <buttonConfiguration key="configuration" style="plain" image="appleIcon" title="  Войти с помощью Apple"/>
                         <connections>
-                            <action selector="enterTapped:" destination="l89-tk-Klz" eventType="touchUpInside" id="65F-gh-c2U"/>
+                            <action selector="enterWithApple:" destination="l89-tk-Klz" eventType="touchUpInside" id="zYd-MZ-wIz"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Uj-L5-jkd">
-                        <rect key="frame" x="100" y="585.66666666666663" width="193" height="32"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opN-nD-hbm">
+                        <rect key="frame" x="10" y="485" width="373" height="44"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <color key="tintColor" systemColor="labelColor"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Забыли пароль?">
-                            <fontDescription key="titleFontDescription" type="system" weight="light" pointSize="15"/>
-                        </buttonConfiguration>
+                        <buttonConfiguration key="configuration" style="plain" image="googleIcon" title="  Войти с помощью Google"/>
                         <connections>
-                            <action selector="ForgotPasswordTapped:" destination="l89-tk-Klz" eventType="touchUpInside" id="HLJ-5a-ndI"/>
+                            <action selector="enterWithGoogle:" destination="l89-tk-Klz" eventType="touchUpInside" id="Cd6-iB-8X1"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAR-ES-6Ss">
-                        <rect key="frame" x="100" y="627.66666666666663" width="193" height="32"/>
-                        <color key="tintColor" systemColor="labelColor"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Регистрация">
-                            <fontDescription key="titleFontDescription" type="system" weight="light" pointSize="15"/>
-                        </buttonConfiguration>
-                        <connections>
-                            <action selector="reristerButtonTapped:" destination="l89-tk-Klz" eventType="touchUpInside" id="dmx-oS-OXI"/>
-                        </connections>
-                    </button>
-                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HLC-Aq-WVm">
-                        <rect key="frame" x="10" y="679.66666666666663" width="373" height="38"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozf-q2-gP3">
-                                <rect key="frame" x="0.0" y="0.0" width="181.66666666666666" height="38"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="apple" title="Apple"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrl-Qh-hd5">
-                                <rect key="frame" x="191.66666666666663" y="0.0" width="181.33333333333337" height="38"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="gmail" title=" Gmail"/>
-                            </button>
-                        </subviews>
-                    </stackView>
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="A6o-rd-dJk"/>
                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                 <constraints>
-                    <constraint firstItem="HLC-Aq-WVm" firstAttribute="top" secondItem="ZAR-ES-6Ss" secondAttribute="bottom" constant="20" id="1WR-Ik-wEO"/>
-                    <constraint firstItem="zEk-j8-bnL" firstAttribute="leading" secondItem="A6o-rd-dJk" secondAttribute="leading" constant="21" id="22g-en-WsS"/>
-                    <constraint firstItem="1Ln-9J-Ras" firstAttribute="top" secondItem="zEk-j8-bnL" secondAttribute="bottom" constant="40" id="85n-5c-5UJ"/>
-                    <constraint firstItem="7Uj-L5-jkd" firstAttribute="leading" secondItem="A6o-rd-dJk" secondAttribute="leading" constant="100" id="8EM-OV-hjL"/>
-                    <constraint firstItem="A6o-rd-dJk" firstAttribute="trailing" secondItem="7Uj-L5-jkd" secondAttribute="trailing" constant="100" id="Aao-Dr-mpi"/>
+                    <constraint firstItem="sVA-1j-Ou5" firstAttribute="leading" secondItem="A6o-rd-dJk" secondAttribute="leading" constant="10" id="2Ez-Ty-Hyl"/>
                     <constraint firstItem="A6o-rd-dJk" firstAttribute="trailing" secondItem="khS-W1-T9V" secondAttribute="trailing" constant="20" id="BQh-7m-i3c"/>
+                    <constraint firstItem="opN-nD-hbm" firstAttribute="leading" secondItem="A6o-rd-dJk" secondAttribute="leading" constant="10" id="Eoj-HE-zyB"/>
+                    <constraint firstItem="A6o-rd-dJk" firstAttribute="trailing" secondItem="sVA-1j-Ou5" secondAttribute="trailing" constant="10" id="HiP-Eg-hWG"/>
+                    <constraint firstItem="opN-nD-hbm" firstAttribute="top" secondItem="sVA-1j-Ou5" secondAttribute="bottom" constant="30" id="NjK-jc-9gf"/>
                     <constraint firstItem="khS-W1-T9V" firstAttribute="top" secondItem="A6o-rd-dJk" secondAttribute="top" constant="150" id="OUH-p4-pKr"/>
-                    <constraint firstItem="zEk-j8-bnL" firstAttribute="top" secondItem="khS-W1-T9V" secondAttribute="bottom" constant="50" id="QDO-22-10w"/>
-                    <constraint firstItem="A6o-rd-dJk" firstAttribute="trailing" secondItem="1Ln-9J-Ras" secondAttribute="trailing" constant="100" id="QIu-rL-65X"/>
-                    <constraint firstItem="A6o-rd-dJk" firstAttribute="trailing" secondItem="HLC-Aq-WVm" secondAttribute="trailing" constant="10" id="R56-l9-dNZ"/>
+                    <constraint firstItem="sVA-1j-Ou5" firstAttribute="top" secondItem="khS-W1-T9V" secondAttribute="bottom" constant="120" id="Qqa-TJ-fMl"/>
                     <constraint firstItem="khS-W1-T9V" firstAttribute="leading" secondItem="A6o-rd-dJk" secondAttribute="leading" constant="20" id="SEx-JD-0lq"/>
-                    <constraint firstItem="1Ln-9J-Ras" firstAttribute="leading" secondItem="A6o-rd-dJk" secondAttribute="leading" constant="100" id="fYN-fi-gqT"/>
-                    <constraint firstItem="HLC-Aq-WVm" firstAttribute="leading" secondItem="A6o-rd-dJk" secondAttribute="leading" constant="10" id="gdC-M0-mh3"/>
-                    <constraint firstItem="7Uj-L5-jkd" firstAttribute="top" secondItem="1Ln-9J-Ras" secondAttribute="bottom" constant="15" id="k91-Sc-a8x"/>
-                    <constraint firstItem="ZAR-ES-6Ss" firstAttribute="top" secondItem="7Uj-L5-jkd" secondAttribute="bottom" constant="10" id="rge-rJ-aST"/>
-                    <constraint firstItem="ZAR-ES-6Ss" firstAttribute="leading" secondItem="A6o-rd-dJk" secondAttribute="leading" constant="100" id="sx7-1W-UcL"/>
-                    <constraint firstItem="A6o-rd-dJk" firstAttribute="trailing" secondItem="ZAR-ES-6Ss" secondAttribute="trailing" constant="100" id="tR9-tD-7zJ"/>
+                    <constraint firstItem="A6o-rd-dJk" firstAttribute="trailing" secondItem="opN-nD-hbm" secondAttribute="trailing" constant="10" id="qxS-rE-I92"/>
                 </constraints>
             </view>
-            <connections>
-                <outlet property="bottomConstraint" destination="85n-5c-5UJ" id="ctp-2q-1RL"/>
-                <outlet property="emailField" destination="6lL-uX-aCd" id="dxu-VD-hX5"/>
-                <outlet property="enterButton" destination="1Ln-9J-Ras" id="woa-UR-bTV"/>
-                <outlet property="passwordField" destination="tCP-jO-OdI" id="Yap-Mw-apx"/>
-            </connections>
             <point key="canvasLocation" x="145" y="-15"/>
         </viewController>
     </objects>
     <resources>
-        <image name="apple" width="24" height="24"/>
-        <image name="gmail" width="24" height="24"/>
+        <image name="appleIcon" width="32" height="32"/>
+        <image name="googleIcon" width="30" height="30"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

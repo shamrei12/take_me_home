@@ -20,25 +20,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
         FirebaseApp.configure()
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            if user == nil {
-                self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-                self.window?.windowScene = windowScene
-
-                let homeVC = EnterViewController.instantiate()
-                self.window?.rootViewController = homeVC
-                self.window?.makeKeyAndVisible()
-            } else {
+//        Auth.auth().addStateDidChangeListener { (auth, user) in
+//            if user == nil {
+//                self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+//                self.window?.windowScene = windowScene
+//
+//                let homeVC = EnterViewController.instantiate()
+//                self.window?.rootViewController = homeVC
+//                self.window?.makeKeyAndVisible()
+//            } else {
                 self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
                 self.window?.windowScene = windowScene
                 let homeVC = AdvertViewController.instantiate()
                 self.window?.rootViewController = homeVC
                 self.window?.makeKeyAndVisible()
-            }
-                
+//            }
+//                
     }
 
-    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

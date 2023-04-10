@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Для определения вашего местоположения и предоставления возможности указать адрес с использованием вашей геопозиции, приложению необходим доступ к вашей геопозиции. Пожалуйста, разрешите доступ к геопозиции, чтобы использовать все функции приложения.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Предоставьте разрешение на использование фотографий</string>
+	<string>Приложение запрашивает доступ к фотографиям, чтобы у вас появилась возмоджность прикрепить фоотографии к данному объявлению</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
