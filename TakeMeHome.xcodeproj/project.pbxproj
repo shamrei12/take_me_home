@@ -38,7 +38,6 @@
 		D8544B0E29A6654D00B63EF8 /* ConverterLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8544B0D29A6654D00B63EF8 /* ConverterLinks.swift */; };
 		D86F5822299C3101000A9170 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */; };
 		D885275D29E48701007CEFEF /* Pods_TakeMeHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0944295DDEA66127DD51E253 /* Pods_TakeMeHome.framework */; };
-		D885275E29E48701007CEFEF /* Pods_TakeMeHome.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0944295DDEA66127DD51E253 /* Pods_TakeMeHome.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D89640E0299C43F400DF968C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640DF299C43F400DF968C /* ProfileViewController.swift */; };
 		D89640E4299CCE3B00DF968C /* AdvertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640E3299CCE3B00DF968C /* AdvertModel.swift */; };
 		D89640E7299CCF0700DF968C /* CreateAdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */; };
@@ -54,20 +53,6 @@
 		D8EA7EBE29E31FBD00D27E90 /* GeocoderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA7EBD29E31FBD00D27E90 /* GeocoderModel.swift */; };
 		D8EA7EC229E31FF200D27E90 /* GeocoderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA7EC129E31FF200D27E90 /* GeocoderProtocol.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		D885275F29E48701007CEFEF /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D885275E29E48701007CEFEF /* Pods_TakeMeHome.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		08C352DBB6DCF69AB12526CE /* Pods-TakeMeHome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome.release.xcconfig"; path = "Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome.release.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +104,7 @@
 		D8D1EA1329A0C49C00F24D34 /* AdvertPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvertPageViewController.xib; sourceTree = "<group>"; };
 		D8EA7EBD29E31FBD00D27E90 /* GeocoderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocoderModel.swift; sourceTree = "<group>"; };
 		D8EA7EC129E31FF200D27E90 /* GeocoderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocoderProtocol.swift; sourceTree = "<group>"; };
+		D8FA23E129E5A9FD00EB5C64 /* TakeMeHome.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = TakeMeHome.entitlements; path = ../../TakeMeHome.entitlements; sourceTree = "<group>"; };
 		DB30E3F0652F68E81AB8BC6A /* Pods-TakeMeHome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome.debug.xcconfig"; path = "Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +151,7 @@
 		D820C684298C24DA001B11B7 /* TakeMeHome */ = {
 			isa = PBXGroup;
 			children = (
+				D8FA23E129E5A9FD00EB5C64 /* TakeMeHome.entitlements */,
 				D8D1EA09299D270E00F24D34 /* Managers */,
 				D820C6AB298C4000001B11B7 /* Controller */,
 				D820C6AA298C3F72001B11B7 /* Model */,
@@ -330,7 +317,6 @@
 				D820C67F298C24DA001B11B7 /* Frameworks */,
 				D820C680298C24DA001B11B7 /* Resources */,
 				6252C4A92DE8A37121C7CAFB /* [CP] Embed Pods Frameworks */,
-				D885275F29E48701007CEFEF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
