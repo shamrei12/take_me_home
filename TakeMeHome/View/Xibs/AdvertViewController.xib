@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,33 +16,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="BTI-QL-xd7">
-                        <rect key="frame" x="15" y="64" width="400" height="38"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBU-ve-pfw">
-                                <rect key="frame" x="0.0" y="0.0" width="48" height="38"/>
-                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="menu">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="menuTapped:" destination="kLc-2g-meH" eventType="touchUpInside" id="Uig-j1-FHC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JlJ-H1-91a">
-                                <rect key="frame" x="352" y="0.0" width="48" height="38"/>
-                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="map" symbolScale="large"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="showMap:" destination="kLc-2g-meH" eventType="touchUpInside" id="gAg-uV-su5"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                    </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBU-ve-pfw">
+                        <rect key="frame" x="10" y="69" width="48" height="38"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="menu">
+                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="menuTapped:" destination="kLc-2g-meH" eventType="touchUpInside" id="Uig-j1-FHC"/>
+                        </connections>
+                    </button>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Upb-dj-Ann">
                         <rect key="frame" x="10" y="132" width="410" height="56"/>
                         <subviews>
@@ -87,16 +71,15 @@
                 <constraints>
                     <constraint firstItem="abo-Hn-ujJ" firstAttribute="top" secondItem="xUV-MZ-9Od" secondAttribute="bottom" constant="30" id="67l-4k-Ia7"/>
                     <constraint firstItem="Upb-dj-Ann" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" constant="10" id="8mn-hr-5tT"/>
-                    <constraint firstItem="Upb-dj-Ann" firstAttribute="top" secondItem="BTI-QL-xd7" secondAttribute="bottom" constant="30" id="Mu5-3l-I2W"/>
+                    <constraint firstItem="pBU-ve-pfw" firstAttribute="top" secondItem="rYx-GE-JZT" secondAttribute="top" constant="10" id="JPV-lf-WXi"/>
                     <constraint firstItem="rYx-GE-JZT" firstAttribute="trailing" secondItem="Upb-dj-Ann" secondAttribute="trailing" constant="10" id="OlV-KS-ajQ"/>
-                    <constraint firstItem="rYx-GE-JZT" firstAttribute="trailing" secondItem="BTI-QL-xd7" secondAttribute="trailing" constant="15" id="PDd-4r-zNw"/>
+                    <constraint firstItem="pBU-ve-pfw" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" constant="10" id="VFd-LK-Z0e"/>
                     <constraint firstItem="xUV-MZ-9Od" firstAttribute="top" secondItem="Upb-dj-Ann" secondAttribute="bottom" constant="20" id="eNO-r7-BBY"/>
                     <constraint firstItem="rYx-GE-JZT" firstAttribute="trailing" secondItem="xUV-MZ-9Od" secondAttribute="trailing" constant="10" id="egC-tY-lQV"/>
-                    <constraint firstItem="BTI-QL-xd7" firstAttribute="top" secondItem="rYx-GE-JZT" secondAttribute="top" constant="5" id="lyw-Su-7la"/>
+                    <constraint firstItem="Upb-dj-Ann" firstAttribute="top" secondItem="pBU-ve-pfw" secondAttribute="bottom" constant="25" id="lPa-Bh-7Ar"/>
                     <constraint firstItem="rYx-GE-JZT" firstAttribute="bottom" secondItem="abo-Hn-ujJ" secondAttribute="bottom" id="mPD-2R-WUi"/>
                     <constraint firstItem="abo-Hn-ujJ" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" id="oPZ-FF-hcf"/>
                     <constraint firstItem="xUV-MZ-9Od" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" constant="10" id="vqs-Sx-nTB"/>
-                    <constraint firstItem="BTI-QL-xd7" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" constant="15" id="xq5-EO-vQW"/>
                     <constraint firstItem="rYx-GE-JZT" firstAttribute="trailing" secondItem="abo-Hn-ujJ" secondAttribute="trailing" id="yBV-dJ-96O"/>
                 </constraints>
                 <connections>
@@ -106,7 +89,6 @@
             <connections>
                 <outlet property="collectionView" destination="xUV-MZ-9Od" id="jFW-tp-vcO"/>
                 <outlet property="mainView" destination="JDj-lP-gQB" id="qv0-7I-tgw"/>
-                <outlet property="mapButton" destination="JlJ-H1-91a" id="5Kc-BT-pxQ"/>
                 <outlet property="menuButton" destination="pBU-ve-pfw" id="UyW-zn-KKU"/>
                 <outlet property="searchBar" destination="y05-Ut-IJY" id="V9H-cM-q9S"/>
                 <outlet property="tableView" destination="abo-Hn-ujJ" id="02V-cZ-8dm"/>
@@ -120,7 +102,6 @@
         </swipeGestureRecognizer>
     </objects>
     <resources>
-        <image name="map" width="24" height="24"/>
         <image name="menu" width="24" height="24"/>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

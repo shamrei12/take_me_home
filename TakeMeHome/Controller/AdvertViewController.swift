@@ -10,12 +10,11 @@ import FirebaseAuth
 import FirebaseCore
 import Kingfisher
 
-class AdvertViewController: UIViewController, AlertDelegate {
+class AdvertViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var menuButton: UIButton!
-    @IBOutlet private weak var mapButton: UIButton!
     @IBOutlet private weak var checkList: UIButton!
     private var sideMenuShadowView: UIView!
     private var sideMenuViewController: SideMenuViewController!
@@ -26,7 +25,6 @@ class AdvertViewController: UIViewController, AlertDelegate {
     private var filterMass:  [AdvertProtocol] = []
     private var advertMass: [AdvertProtocol] = []
     private var reloadTableView: Bool = true
-    private var alertView: AlertInDevelop!
     private var searching = false
     private var storage = UserDefaults.standard
     private var storageKey = "login"
@@ -45,7 +43,6 @@ class AdvertViewController: UIViewController, AlertDelegate {
         coreData = CoreDataClass()
         firstStart()
         menuButton.layer.cornerRadius = 5
-        mapButton.layer.cornerRadius = 5
         tableView.register(UINib(nibName: "AdvertTableViewCell", bundle: nil), forCellReuseIdentifier: "AdvertTableViewCell")
         collectionView.register(UINib(nibName: "AdvertCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AdvertCollectionViewCell")
         self.hideKeyboardWhenTappedAround()
@@ -72,19 +69,6 @@ class AdvertViewController: UIViewController, AlertDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sideMenuViewController.view.isHidden = true
-    }
-
-    
-    @IBAction func showMap(_ sender: UIButton) {
-        alertView = AlertInDevelop.loadFromNib()
-        alertView.delegate = self
-        UIApplication.shared.keyWindow?.addSubview(alertView)
-        alertView.center = CGPoint(x: mainView.frame.size.width  / 2,
-                                   y: mainView.frame.size.height / 2)
-    }
-    
-    func cancelScene() {
-        alertView.removeFromSuperview()
     }
 
     func configureMenuViewController() {

@@ -8,8 +8,8 @@
 import UIKit
 import Kingfisher
 
-class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDelegate, UITextFieldDelegate {
-    
+class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFieldDelegate {
+
     @IBOutlet weak var postID: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var postName: UILabel!
@@ -32,7 +32,6 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDele
     private var fbManager: FirebaseData!
     private var stringPostID: String = ""
     private var adresForMap: String = ""
-    private var alertView: AlertInDevelop!
     
     @IBOutlet weak var mainView: UIView!
 
@@ -94,19 +93,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, AlertDele
             }
         }
     }
-    
-    @IBAction func openMap(_ sender: UIBarButtonItem) {
-        alertView = AlertInDevelop.loadFromNib()
-        alertView.delegate = self
-        UIApplication.shared.keyWindow?.addSubview(alertView)
-        alertView.center = CGPoint(x: mainView.frame.size.width  / 2,
-                                   y: mainView.frame.size.height / 2)
-    }
-    
-    func cancelScene() {
-        alertView.removeFromSuperview()
-    }
-    
+
     func scrollDown() {
         let numberOfROws = self.tableview.numberOfRows(inSection: 0)
         let indexPath = IndexPath(row: numberOfROws, section: 0)

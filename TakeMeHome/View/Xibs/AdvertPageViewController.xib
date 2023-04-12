@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -27,12 +28,6 @@
                                     <color key="tintColor" systemColor="labelColor"/>
                                     <connections>
                                         <action selector="cancelTapped:" destination="3r6-YS-UbZ" id="DPy-bl-9cU"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem key="rightBarButtonItem" image="map" id="gZb-Sl-dwD">
-                                    <color key="tintColor" systemColor="labelColor"/>
-                                    <connections>
-                                        <action selector="openMap:" destination="3r6-YS-UbZ" id="4vU-MF-xdI"/>
                                     </connections>
                                 </barButtonItem>
                             </navigationItem>
@@ -294,7 +289,6 @@
     </objects>
     <resources>
         <image name="arrowshape.backward.fill" catalog="system" width="128" height="104"/>
-        <image name="map" width="24" height="24"/>
         <image name="message" catalog="system" width="128" height="116"/>
         <image name="phone.fill" catalog="system" width="128" height="114"/>
         <systemColor name="labelColor">

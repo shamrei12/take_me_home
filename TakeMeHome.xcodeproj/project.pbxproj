@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D811A49829E4A0A800F6DE02 /* AlertInDevelop.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8979E5129C102480083F8D6 /* AlertInDevelop.xib */; };
 		D811A49929E4A0A800F6DE02 /* AdvertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6B6298EAC90001B11B7 /* AdvertTableViewCell.xib */; };
 		D811A49A29E4A0A800F6DE02 /* AdvertCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */; };
 		D811A49B29E4A0A800F6DE02 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */; };
@@ -37,11 +36,12 @@
 		D836825729B49644005AB64B /* UserPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836825529B49644005AB64B /* UserPostTableViewCell.swift */; };
 		D8544B0E29A6654D00B63EF8 /* ConverterLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8544B0D29A6654D00B63EF8 /* ConverterLinks.swift */; };
 		D86F5822299C3101000A9170 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */; };
+		D87BF5F129E67109008FCD71 /* AlertInDevelop.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87BF5EF29E67109008FCD71 /* AlertInDevelop.xib */; };
+		D87BF5F229E67109008FCD71 /* AlertInDevelop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87BF5F029E67109008FCD71 /* AlertInDevelop.swift */; };
 		D885275D29E48701007CEFEF /* Pods_TakeMeHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0944295DDEA66127DD51E253 /* Pods_TakeMeHome.framework */; };
 		D89640E0299C43F400DF968C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640DF299C43F400DF968C /* ProfileViewController.swift */; };
 		D89640E4299CCE3B00DF968C /* AdvertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640E3299CCE3B00DF968C /* AdvertModel.swift */; };
 		D89640E7299CCF0700DF968C /* CreateAdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */; };
-		D8979E5429C102740083F8D6 /* AlertInDevelop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8979E5329C102740083F8D6 /* AlertInDevelop.swift */; };
 		D8979E5629C112DC0083F8D6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8979E5529C112DC0083F8D6 /* Protocols.swift */; };
 		D8A0FBA729943E8E0051C9F7 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0FBA529943E8E0051C9F7 /* SideMenuViewController.swift */; };
 		D8C9615529D80B2E00D931F8 /* Geocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C9615429D80B2E00D931F8 /* Geocoder.swift */; };
@@ -81,14 +81,14 @@
 		D8544B0D29A6654D00B63EF8 /* ConverterLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterLinks.swift; sourceTree = "<group>"; };
 		D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
+		D87BF5EF29E67109008FCD71 /* AlertInDevelop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertInDevelop.xib; sourceTree = "<group>"; };
+		D87BF5F029E67109008FCD71 /* AlertInDevelop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertInDevelop.swift; sourceTree = "<group>"; };
 		D885275529E48412007CEFEF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D89640DF299C43F400DF968C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D89640E1299C440D00DF968C /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		D89640E3299CCE3B00DF968C /* AdvertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertModel.swift; sourceTree = "<group>"; };
 		D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdvertViewController.swift; sourceTree = "<group>"; };
 		D89640E6299CCF0700DF968C /* CreateAdvertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateAdvertViewController.xib; sourceTree = "<group>"; };
-		D8979E5129C102480083F8D6 /* AlertInDevelop.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertInDevelop.xib; sourceTree = "<group>"; };
-		D8979E5329C102740083F8D6 /* AlertInDevelop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertInDevelop.swift; sourceTree = "<group>"; };
 		D8979E5529C112DC0083F8D6 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		D8A0FB992992558C0051C9F7 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D8A0FB9F299279BB0051C9F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 		D820C69C298C2600001B11B7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D826A5DF29C086D50041ACBC /* Alerts */,
+				D87BF5EE29E670E5008FCD71 /* Alert Develop */,
 				D820C6A7298C3F4B001B11B7 /* Cells */,
 				D820C6A6298C3F43001B11B7 /* Xibs */,
 				D820C6A5298C2881001B11B7 /* Storyboards */,
@@ -280,13 +280,13 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		D826A5DF29C086D50041ACBC /* Alerts */ = {
+		D87BF5EE29E670E5008FCD71 /* Alert Develop */ = {
 			isa = PBXGroup;
 			children = (
-				D8979E5129C102480083F8D6 /* AlertInDevelop.xib */,
-				D8979E5329C102740083F8D6 /* AlertInDevelop.swift */,
+				D87BF5F029E67109008FCD71 /* AlertInDevelop.swift */,
+				D87BF5EF29E67109008FCD71 /* AlertInDevelop.xib */,
 			);
-			path = Alerts;
+			path = "Alert Develop";
 			sourceTree = "<group>";
 		};
 		D8D1EA09299D270E00F24D34 /* Managers */ = {
@@ -370,7 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D811A4A829E4A0E000F6DE02 /* GoogleService-Info.plist in Resources */,
-				D811A49829E4A0A800F6DE02 /* AlertInDevelop.xib in Resources */,
+				D87BF5F129E67109008FCD71 /* AlertInDevelop.xib in Resources */,
 				D811A49929E4A0A800F6DE02 /* AdvertTableViewCell.xib in Resources */,
 				D811A49A29E4A0A800F6DE02 /* AdvertCollectionViewCell.xib in Resources */,
 				D811A49B29E4A0A800F6DE02 /* SideMenuTableViewCell.xib in Resources */,
@@ -450,6 +450,7 @@
 				D8C9615529D80B2E00D931F8 /* Geocoder.swift in Sources */,
 				D8A0FBA729943E8E0051C9F7 /* SideMenuViewController.swift in Sources */,
 				D836825429B4808F005AB64B /* CoredataModel.swift in Sources */,
+				D87BF5F229E67109008FCD71 /* AlertInDevelop.swift in Sources */,
 				D836825229ABBF06005AB64B /* CommentModel.swift in Sources */,
 				D8979E5629C112DC0083F8D6 /* Protocols.swift in Sources */,
 				D8D1EA0B299D272800F24D34 /* TimeManager.swift in Sources */,
@@ -464,7 +465,6 @@
 				D8C9615B29D8302500D931F8 /* Geoposition.swift in Sources */,
 				D820C6AD298EA0CC001B11B7 /* Extensions.swift in Sources */,
 				D836825729B49644005AB64B /* UserPostTableViewCell.swift in Sources */,
-				D8979E5429C102740083F8D6 /* AlertInDevelop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,7 +605,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TakeMeHome/TakeMeHome.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 285RFT4HL7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TakeMeHome/Info.plist;
@@ -641,7 +641,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TakeMeHome/TakeMeHome.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 285RFT4HL7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TakeMeHome/Info.plist;
