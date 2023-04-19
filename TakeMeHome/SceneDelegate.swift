@@ -32,7 +32,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
                 self.window?.windowScene = windowScene
                 let homeVC = AdvertViewController.instantiate()
-                self.window?.rootViewController = homeVC
+                let navigationController = UINavigationController(rootViewController: homeVC)
+                self.window?.rootViewController = navigationController
                 self.window?.makeKeyAndVisible()
 //            }
 //                

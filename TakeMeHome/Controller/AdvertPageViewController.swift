@@ -44,12 +44,16 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
         collectionView.register(UINib(nibName: "ImagePostCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ImagePostCollectionViewCell")
         tableview.register(UINib(nibName: "CommentsPostTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentsPostTableViewCell")
         pageControl.isEnabled = false
+        navigationItem.title = "Объявление"
+        navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelTapped))
+    }
+    
+    @objc func cancelTapped() {
+        self.dismiss(animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        let sideMenuViewController = SideMenuViewController()
-        sideMenuViewController.imageView?.image = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,10 +111,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
             self.scrollDown()
         }
     }
-    
-    @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true)
-    }
+
     
     @IBAction func sendMessageTapped(_ sender: UIButton) {
         if let message = messageField.text, !message.isEmpty {

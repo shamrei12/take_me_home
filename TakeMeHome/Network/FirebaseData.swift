@@ -38,7 +38,6 @@ class FirebaseData: FirebaseProtocol {
         }
     }
     
-    
     func registrUser(login: String, name: String) {
         let ref = Database.database().reference().child("users")
         ref.child(login).getData { (err, snap) in

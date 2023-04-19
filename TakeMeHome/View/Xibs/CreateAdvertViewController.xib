@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
@@ -16,32 +16,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSp-8f-Nbu">
-                        <rect key="frame" x="0.0" y="47" width="428" height="50"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="50" id="U4a-tU-zYc"/>
-                        </constraints>
-                        <items>
-                            <navigationItem id="C1s-kp-569">
-                                <barButtonItem key="leftBarButtonItem" title="Отмена" id="f1W-jf-Dz6">
-                                    <color key="tintColor" systemColor="labelColor"/>
-                                    <connections>
-                                        <action selector="backTapped:" destination="TaD-wX-xiC" id="Hn8-dL-tkg"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem key="rightBarButtonItem" title="Сохранить" id="vrA-4Y-Q5Z">
-                                    <color key="tintColor" systemColor="labelColor"/>
-                                    <connections>
-                                        <action selector="savePostTapped:" destination="TaD-wX-xiC" id="2lt-4h-VqZ"/>
-                                    </connections>
-                                </barButtonItem>
-                            </navigationItem>
-                        </items>
-                    </navigationBar>
                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGM-Mo-i9D">
                         <rect key="frame" x="0.0" y="97" width="428" height="829"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="US6-ie-coW">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="US6-ie-coW">
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="1327.6666666666667"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qwE-vg-6PZ">
@@ -88,32 +66,32 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SIc-YQ-zSN" userLabel="Name Advert">
-                                        <rect key="frame" x="10" y="245.33333333333334" width="408" height="62.333333333333343"/>
+                                        <rect key="frame" x="10" y="245.33333333333326" width="408" height="66"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название объявления" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARm-Qw-0Xd">
-                                                <rect key="frame" x="0.0" y="0.0" width="408" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="408" height="24"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Укажите название" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yLf-mm-L7o">
-                                                <rect key="frame" x="0.0" y="28.333333333333371" width="408" height="34"/>
+                                                <rect key="frame" x="0.0" y="32" width="408" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="d5J-Cy-I8w" userLabel="Type Pets">
-                                        <rect key="frame" x="10" y="327.66666666666669" width="408" height="61.333333333333314"/>
+                                        <rect key="frame" x="10" y="331.33333333333326" width="408" height="65"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вид питомца" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7n-Gi-w79">
-                                                <rect key="frame" x="0.0" y="0.0" width="408" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="408" height="24"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CGP-pJ-yGE">
-                                                <rect key="frame" x="0.0" y="30.333333333333314" width="408" height="32"/>
+                                                <rect key="frame" x="0.0" y="34" width="408" height="32"/>
                                                 <segments>
                                                     <segment title="Собака"/>
                                                     <segment title="Кошка"/>
@@ -126,16 +104,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JVl-sX-WHB" userLabel="Breed">
-                                        <rect key="frame" x="10" y="419" width="408" height="62.333333333333314"/>
+                                        <rect key="frame" x="10" y="426.33333333333326" width="408" height="66"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Порода" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9r-bv-SSf">
-                                                <rect key="frame" x="0.0" y="0.0" width="408" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="408" height="24"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Укажите породу" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qU4-fE-88x">
-                                                <rect key="frame" x="0.0" y="28.333333333333371" width="408" height="34"/>
+                                                <rect key="frame" x="0.0" y="32" width="408" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -145,16 +123,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XxG-gb-aR8" userLabel="Old Stack">
-                                        <rect key="frame" x="10" y="501.33333333333331" width="408" height="59.333333333333314"/>
+                                        <rect key="frame" x="10" y="512.33333333333326" width="408" height="63"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Возраст" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWH-mE-zyM">
-                                                <rect key="frame" x="0.0" y="0.0" width="408" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="408" height="24"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CtJ-L0-R7B">
-                                                <rect key="frame" x="0.0" y="28.333333333333258" width="408" height="32"/>
+                                                <rect key="frame" x="0.0" y="32" width="408" height="32"/>
                                                 <segments>
                                                     <segment title="До 1 года"/>
                                                     <segment title="От 1 до 3 лет"/>
@@ -167,16 +145,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9ci-ai-vfe" userLabel="Adress Stack">
-                                        <rect key="frame" x="5" y="590.66666666666663" width="418" height="174.33333333333337"/>
+                                        <rect key="frame" x="5" y="605.33333333333326" width="418" height="178"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Укажите адрес пропажи или находки" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4X-wt-tuM">
-                                                <rect key="frame" x="0.0" y="0.0" width="418" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="418" height="24"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="HSB-B5-grJ">
-                                                <rect key="frame" x="0.0" y="35.333333333333371" width="418" height="93"/>
+                                                <rect key="frame" x="0.0" y="39" width="418" height="93"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="eId-rR-7ZE">
                                                         <rect key="frame" x="0.0" y="0.0" width="418" height="34"/>
@@ -208,7 +186,10 @@
                                                         <rect key="frame" x="0.0" y="59" width="418" height="34"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="247" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Улица *" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fpv-fQ-VkS">
-                                                                <rect key="frame" x="0.0" y="0.0" width="231.66666666666666" height="34"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="230" height="34"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="230" id="3Ri-b1-9ea"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
@@ -216,7 +197,10 @@
                                                                 </connections>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Дом *" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z5b-LJ-MaW">
-                                                                <rect key="frame" x="252.66666666666666" y="0.0" width="67.666666666666657" height="34"/>
+                                                                <rect key="frame" x="251" y="0.0" width="65" height="34"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="65" id="4bv-6f-SEB"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
@@ -224,7 +208,10 @@
                                                                 </connections>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Корпус" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ANG-Kq-NM7">
-                                                                <rect key="frame" x="341.33333333333331" y="0.0" width="76.666666666666686" height="34"/>
+                                                                <rect key="frame" x="337" y="0.0" width="81" height="34"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="80" id="wcH-Tb-oCu"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
@@ -236,28 +223,28 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="rlF-jd-fvR">
-                                                <rect key="frame" x="0.0" y="143.33333333333337" width="418" height="31"/>
+                                                <rect key="frame" x="0.0" y="147" width="337" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* - обязательно" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ew-vM-VmG">
-                                                        <rect key="frame" x="0.0" y="0.0" width="145.33333333333334" height="31"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="119.66666666666667" height="31"/>
+                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Thin" family="Apple SD Gothic Neo" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hNs-7N-Chu">
-                                                        <rect key="frame" x="145.33333333333334" y="0.0" width="272.66666666666663" height="31"/>
+                                                        <rect key="frame" x="119.66666666666667" y="0.0" width="217.33333333333331" height="31"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ваша геопозиция" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TA-Rp-avA">
-                                                                <rect key="frame" x="0.0" y="8.3333333333333712" width="162.33333333333334" height="14.333333333333336"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                                                <rect key="frame" x="0.0" y="6.6666666666667425" width="131.66666666666666" height="18"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Thin" family="Apple SD Gothic Neo" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="AoP-SJ-Tqe">
-                                                                <rect key="frame" x="162.33333333333334" y="5.6666666666666288" width="32" height="20"/>
+                                                                <rect key="frame" x="131.66666666666663" y="5.6666666666667425" width="25" height="20"/>
                                                             </activityIndicatorView>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="c8n-2f-xwN">
-                                                                <rect key="frame" x="194.33333333333334" y="0.0" width="80.333333333333343" height="31"/>
+                                                                <rect key="frame" x="156.66666666666663" y="0.0" width="62.666666666666657" height="31"/>
                                                                 <connections>
                                                                     <action selector="getAdress:" destination="TaD-wX-xiC" eventType="valueChanged" id="HNz-PK-LMc"/>
                                                                 </connections>
@@ -269,32 +256,32 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aPo-j7-Egv" userLabel="Contact stack">
-                                        <rect key="frame" x="10" y="795" width="408" height="62.333333333333371"/>
+                                        <rect key="frame" x="10" y="813.33333333333326" width="408" height="66"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Связь с вами" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7O-hx-EKW">
-                                                <rect key="frame" x="0.0" y="0.0" width="408" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="408" height="24"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Укажите номер телефона" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vo6-FE-7Ap" customClass="JMMaskTextField" customModule="JMMaskTextField_Swift">
-                                                <rect key="frame" x="0.0" y="28.333333333333371" width="408" height="34"/>
+                                                <rect key="frame" x="0.0" y="32" width="408" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zAk-qI-kit" userLabel="Description">
-                                        <rect key="frame" x="10" y="887.33333333333337" width="408" height="62.333333333333371"/>
+                                        <rect key="frame" x="10" y="909.33333333333326" width="408" height="66"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLV-Na-S9y">
-                                                <rect key="frame" x="0.0" y="0.0" width="408" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="408" height="24"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Укажите подробности пропажи или находки" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DfF-L5-ESz">
-                                                <rect key="frame" x="0.0" y="28.333333333333258" width="408" height="34"/>
+                                                <rect key="frame" x="0.0" y="32" width="408" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -352,12 +339,10 @@
                 <viewLayoutGuide key="safeArea" id="eeA-b0-pfg"/>
                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                 <constraints>
-                    <constraint firstItem="hSp-8f-Nbu" firstAttribute="leading" secondItem="eeA-b0-pfg" secondAttribute="leading" id="8OD-Rd-8Vd"/>
-                    <constraint firstItem="UGM-Mo-i9D" firstAttribute="top" secondItem="hSp-8f-Nbu" secondAttribute="bottom" id="Fck-59-2o9"/>
+                    <constraint firstItem="UGM-Mo-i9D" firstAttribute="top" secondItem="eeA-b0-pfg" secondAttribute="top" id="CxV-rb-qGO"/>
                     <constraint firstAttribute="bottom" secondItem="UGM-Mo-i9D" secondAttribute="bottom" id="Nzi-tv-FF6"/>
-                    <constraint firstItem="hSp-8f-Nbu" firstAttribute="top" secondItem="eeA-b0-pfg" secondAttribute="top" id="Qi8-7y-cap"/>
                     <constraint firstItem="UGM-Mo-i9D" firstAttribute="leading" secondItem="eeA-b0-pfg" secondAttribute="leading" id="axX-Gx-gJ1"/>
-                    <constraint firstItem="hSp-8f-Nbu" firstAttribute="trailing" secondItem="eeA-b0-pfg" secondAttribute="trailing" id="oEA-Lr-v7k"/>
+                    <constraint firstItem="UGM-Mo-i9D" firstAttribute="top" secondItem="eeA-b0-pfg" secondAttribute="top" constant="50" id="eYM-tv-FYS"/>
                     <constraint firstItem="UGM-Mo-i9D" firstAttribute="trailing" secondItem="eeA-b0-pfg" secondAttribute="trailing" id="xRX-cC-zZK"/>
                 </constraints>
             </view>
@@ -381,7 +366,7 @@
                 <outlet property="scrollView" destination="UGM-Mo-i9D" id="Asy-iF-h9D"/>
                 <outlet property="streetName" destination="fpv-fQ-VkS" id="w3O-Jr-Dqo"/>
             </connections>
-            <point key="canvasLocation" x="516.79389312977094" y="116.90140845070422"/>
+            <point key="canvasLocation" x="585" y="-19"/>
         </viewController>
     </objects>
     <resources>

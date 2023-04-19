@@ -43,6 +43,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     private var storage = UserDefaults.standard
     private var storageKey = "login"
     
+    
     @IBOutlet weak var mainView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +56,47 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         collectionView.register(UINib(nibName: "AddPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AddPhotoCollectionViewCell")
         askPermision()
         scrollView.setContentOffset(CGPoint.zero, animated: true)
+        navigationItem.title = "Создать объявление"
+        navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
+        navigationItem.rightBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
     }
     
+    @objc func  cancelTapped() {
+        self.dismiss(animated: true)
+    }
+    
+    @objc func  saveTapped() {
+        let user = storage.object(forKey: storageKey) as? String ?? ""
+        print("user: \(user)")
+        
+        if checkCorrectPost() {
+            var posts: [AdvertProtocol] = []
+            
+            if imageStorage.isEmpty {
+                if let image = UIImage(named: "no_image.png"), let imageData = image.pngData() {
+                    imageStorage.append(imageData)
+                }
+            }
+            
+            if typePostText == "" {
+                typePostText = "Пропажа"
+            }
+            if agePet == "" {
+                agePet = "До 1 года"
+            }
+            if typePet == "" {
+                typePet = "Собака"
+            }
+            posts.append(AdvertPost(countComments: "0", postId: "", phoneNumber: phoneNumber.text ?? "", linkImage: "", typePost: typePostText , breed: breed.text ?? "", postName: postName.text ?? "", descriptionName: descriptionText.text ?? "", typePet: typePet, oldPet: agePet , lostAdress: createAdress() , curentDate: TimeManager.shared.currentDate()))
+            let postID = coreData.getUUID()
+            fireBase?.save(posts: posts, id: postID, stroage: imageStorage)
+            fireBase?.saveIDPostUser(id: postID, login: user)
+            dismiss(animated: true)
+        } else {
+            showAlert(message: "Проверьте заполнены ли все поля и попробуйте еще раз:)")
+        }
+        
+    }
     func textFieldDidBeginEditing(_ textField: UITextField) {
         var contentInsets = scrollView.contentInset
         contentInsets.bottom = -(textField.frame.maxY - scrollView.frame.height + 10) / 2
@@ -200,6 +240,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     
     @IBAction func getAdress(_ sender: UISwitch) {
         if sender.isOn {
+            self.loader.startAnimating()
             LocationManager.shared.getUserLocation { coordinate in
                 self.loader.startAnimating()
                 if let coordinate = coordinate {
@@ -207,10 +248,10 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
                     let longitude = coordinate.longitude
                     SessionManager.shared.countryRequest(common: (latitude, longitude)) { completion in
                         DispatchQueue.main.async { [self] in
-                            let country = completion.features.first?.properties.address.country ?? ""
-                            let city = completion.features.first?.properties.address.city ?? ""
-                            let street = adressFormated(street: completion.features.first?.properties.address.road ?? "")
-                            let houseNumber = completion.features.first?.properties.address.houseNumber ?? ""
+                            let country = completion.address.country
+                            let city = completion.address.city
+                            let street = adressFormated(street: completion.address.road)
+                            let houseNumber = completion.address.houseNumber
                             adressElement.append(Geocoder(country: country, city: city, street: street, houseNumber: houseNumber, buildingNumber: ""))
                             getAdress(type: 0)
                         }
@@ -265,44 +306,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             return "\(countryPicker.titleLabel?.text ?? ""), \(cityName.text ?? ""), ул. \(streetName.text ?? ""), \(houseNumber.text ?? "")"
         }
     }
-    
-    @IBAction func backTapped(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true)
-    }
-    
-    @IBAction func savePostTapped(_ sender: UIBarButtonItem) {
-        let user = storage.object(forKey: storageKey) as? String ?? ""
-        print("user: \(user)")
-        
-        if checkCorrectPost() {
-            var posts: [AdvertProtocol] = []
-            
-            if imageStorage.isEmpty {
-                if let image = UIImage(named: "no_image.png"), let imageData = image.pngData() {
-                    imageStorage.append(imageData)
-                }
-            }
-            
-            if typePostText == "" {
-                typePostText = "Пропажа"
-            }
-            if agePet == "" {
-                agePet = "До 1 года"
-            }
-            if typePet == "" {
-                typePet = "Собака"
-            }
-            posts.append(AdvertPost(countComments: "0", postId: "", phoneNumber: phoneNumber.text ?? "", linkImage: "", typePost: typePostText , breed: breed.text ?? "", postName: postName.text ?? "", descriptionName: descriptionText.text ?? "", typePet: typePet, oldPet: agePet , lostAdress: createAdress() , curentDate: TimeManager.shared.currentDate()))
-            let postID = coreData.getUUID()
-            fireBase?.save(posts: posts, id: postID, stroage: imageStorage)
-            fireBase?.saveIDPostUser(id: postID, login: user)
-            dismiss(animated: true)
-        } else {
-            showAlert(message: "Проверьте заполнены ли все поля и попробуйте еще раз:)")
-        }
-        
-    }
-    
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         for item in results {

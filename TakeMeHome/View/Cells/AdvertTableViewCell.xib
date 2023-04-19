@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,43 +16,51 @@
                 <rect key="frame" x="0.0" y="0.0" width="376" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edM-Va-qPy">
-                        <rect key="frame" x="10" y="10" width="356" height="149.33333333333334"/>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edM-Va-qPy">
+                        <rect key="frame" x="10" y="10" width="356" height="175"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="huI-tm-g0C">
-                                <rect key="frame" x="5" y="5" width="346" height="134.33333333333334"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="huI-tm-g0C">
+                                <rect key="frame" x="5" y="10" width="346" height="155"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aSS-0Z-hdg">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="134.33333333333334"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ugV-6t-vgz">
+                                        <rect key="frame" x="0.0" y="0.0" width="168" height="155"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aSS-0Z-hdg">
+                                                <rect key="frame" x="-10" y="-10" width="178" height="175"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="128" id="GkM-8h-CYS"/>
-                                            <constraint firstAttribute="height" constant="128" id="zh5-d3-8wM"/>
+                                            <constraint firstItem="aSS-0Z-hdg" firstAttribute="top" secondItem="ugV-6t-vgz" secondAttribute="top" constant="-10" id="Ga1-DU-xZc"/>
+                                            <constraint firstAttribute="trailing" secondItem="aSS-0Z-hdg" secondAttribute="trailing" id="NE4-65-Ffc"/>
+                                            <constraint firstItem="aSS-0Z-hdg" firstAttribute="leading" secondItem="ugV-6t-vgz" secondAttribute="leading" constant="-10" id="TTB-4F-C2H"/>
+                                            <constraint firstAttribute="bottom" secondItem="aSS-0Z-hdg" secondAttribute="bottom" constant="-10" id="Tin-N1-Ch1"/>
                                         </constraints>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6F3-GK-pFj">
-                                        <rect key="frame" x="152" y="0.0" width="194" height="134.33333333333334"/>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6F3-GK-pFj">
+                                        <rect key="frame" x="178" y="0.0" width="168" height="155"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Верните воду на 3 фото или привезите новую, а то скучно" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CP-GD-2Ww">
-                                                <rect key="frame" x="0.0" y="0.0" width="194" height="57.333333333333336"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="168" height="77"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Возраст: до 1 года" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8Q-ML-uLf">
-                                                <rect key="frame" x="0.0" y="67.333333333333329" width="194" height="15.666666666666671"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                                <rect key="frame" x="0.0" y="82" width="168" height="19.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Порода: Смешанная" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cs6-FL-zOk">
-                                                <rect key="frame" x="0.0" y="93" width="194" height="15.666666666666671"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                                <rect key="frame" x="0.0" y="106.66666666666667" width="168" height="19.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="г. Лида, ул. Мицкевича, 38, к1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqe-1e-dXf">
-                                                <rect key="frame" x="0.0" y="118.66666666666666" width="194" height="15.666666666666657"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                                <rect key="frame" x="0.0" y="131.33333333333334" width="168" height="23.666666666666657"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -65,12 +73,12 @@
                         <constraints>
                             <constraint firstItem="huI-tm-g0C" firstAttribute="leading" secondItem="edM-Va-qPy" secondAttribute="leading" constant="5" id="94q-Rs-NqI"/>
                             <constraint firstAttribute="bottom" secondItem="huI-tm-g0C" secondAttribute="bottom" constant="10" id="9im-ek-S5f"/>
-                            <constraint firstItem="huI-tm-g0C" firstAttribute="top" secondItem="edM-Va-qPy" secondAttribute="top" constant="5" id="OLd-AH-uUc"/>
+                            <constraint firstItem="huI-tm-g0C" firstAttribute="top" secondItem="edM-Va-qPy" secondAttribute="top" constant="10" id="OLd-AH-uUc"/>
                             <constraint firstAttribute="trailing" secondItem="huI-tm-g0C" secondAttribute="trailing" constant="5" id="XWu-wb-OLZ"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWp-j6-KZb">
-                        <rect key="frame" x="0.0" y="159.33333333333334" width="376" height="15"/>
+                        <rect key="frame" x="0.0" y="185" width="376" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="atc-Pu-m2Y"/>
                         </constraints>
@@ -92,6 +100,7 @@
                 <outlet property="lostAdress" destination="Mqe-1e-dXf" id="gMJ-Uo-7pi"/>
                 <outlet property="mainView" destination="edM-Va-qPy" id="Sii-iU-ajR"/>
                 <outlet property="oldPet" destination="W8Q-ML-uLf" id="AKP-ct-eda"/>
+                <outlet property="postImageView" destination="aSS-0Z-hdg" id="mTQ-Qd-C7d"/>
                 <outlet property="postName" destination="4CP-GD-2Ww" id="hMN-xf-EQc"/>
             </connections>
             <point key="canvasLocation" x="200" y="9.8591549295774659"/>
@@ -100,6 +109,9 @@
     <resources>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

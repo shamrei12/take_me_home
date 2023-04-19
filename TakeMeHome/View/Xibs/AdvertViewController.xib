@@ -2,8 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,21 +16,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBU-ve-pfw">
-                        <rect key="frame" x="10" y="69" width="48" height="38"/>
-                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="menu">
-                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
-                        </buttonConfiguration>
-                        <connections>
-                            <action selector="menuTapped:" destination="kLc-2g-meH" eventType="touchUpInside" id="Uig-j1-FHC"/>
-                        </connections>
-                    </button>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Upb-dj-Ann">
-                        <rect key="frame" x="10" y="132" width="410" height="56"/>
+                        <rect key="frame" x="10" y="59" width="410" height="56"/>
                         <subviews>
-                            <searchBar contentMode="redraw" barStyle="blackTranslucent" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y05-Ut-IJY">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y05-Ut-IJY">
                                 <rect key="frame" x="0.0" y="0.0" width="410" height="56"/>
                                 <color key="barTintColor" red="0.96797166710000004" green="0.96841138599999999" blue="0.75755349920000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -40,16 +29,8 @@
                             </searchBar>
                         </subviews>
                     </stackView>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abo-Hn-ujJ">
-                        <rect key="frame" x="0.0" y="308" width="430" height="590"/>
-                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
-                        <connections>
-                            <outlet property="dataSource" destination="kLc-2g-meH" id="gM8-Re-GKn"/>
-                            <outlet property="delegate" destination="kLc-2g-meH" id="JNc-A9-OGU"/>
-                        </connections>
-                    </tableView>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xUV-MZ-9Od">
-                        <rect key="frame" x="10" y="208" width="410" height="70"/>
+                        <rect key="frame" x="10" y="135" width="410" height="70"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="FJj-kE-9ei"/>
@@ -64,6 +45,36 @@
                             <outlet property="dataSource" destination="kLc-2g-meH" id="A3P-af-jxG"/>
                         </connections>
                     </collectionView>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abo-Hn-ujJ">
+                        <rect key="frame" x="0.0" y="235" width="430" height="663"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="kLc-2g-meH" id="gM8-Re-GKn"/>
+                            <outlet property="delegate" destination="kLc-2g-meH" id="JNc-A9-OGU"/>
+                        </connections>
+                    </tableView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMV-Js-0WQ">
+                        <rect key="frame" x="325" y="793" width="55" height="55"/>
+                        <color key="backgroundColor" systemColor="linkColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="55" id="VOc-7N-5YJ"/>
+                            <constraint firstAttribute="width" constant="55" id="zMn-mY-9Dr"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain">
+                            <imageReference key="image" image="plus" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                                <hierarchicalColors>
+                                    <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color systemColor="secondaryLabelColor"/>
+                                    <color systemColor="tertiaryLabelColor"/>
+                                </hierarchicalColors>
+                            </imageReference>
+                            <color key="baseForegroundColor" red="0.87444854439999997" green="0.91910341330000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="showCreateAdvert:" destination="kLc-2g-meH" eventType="touchUpInside" id="r4i-fH-SON"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="rYx-GE-JZT"/>
                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
@@ -71,43 +82,41 @@
                 <constraints>
                     <constraint firstItem="abo-Hn-ujJ" firstAttribute="top" secondItem="xUV-MZ-9Od" secondAttribute="bottom" constant="30" id="67l-4k-Ia7"/>
                     <constraint firstItem="Upb-dj-Ann" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" constant="10" id="8mn-hr-5tT"/>
-                    <constraint firstItem="pBU-ve-pfw" firstAttribute="top" secondItem="rYx-GE-JZT" secondAttribute="top" constant="10" id="JPV-lf-WXi"/>
+                    <constraint firstItem="Upb-dj-Ann" firstAttribute="top" secondItem="rYx-GE-JZT" secondAttribute="top" id="DG0-rC-qkw"/>
                     <constraint firstItem="rYx-GE-JZT" firstAttribute="trailing" secondItem="Upb-dj-Ann" secondAttribute="trailing" constant="10" id="OlV-KS-ajQ"/>
-                    <constraint firstItem="pBU-ve-pfw" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" constant="10" id="VFd-LK-Z0e"/>
+                    <constraint firstItem="rYx-GE-JZT" firstAttribute="trailing" secondItem="IMV-Js-0WQ" secondAttribute="trailing" constant="50" id="dDD-dl-wMH"/>
                     <constraint firstItem="xUV-MZ-9Od" firstAttribute="top" secondItem="Upb-dj-Ann" secondAttribute="bottom" constant="20" id="eNO-r7-BBY"/>
                     <constraint firstItem="rYx-GE-JZT" firstAttribute="trailing" secondItem="xUV-MZ-9Od" secondAttribute="trailing" constant="10" id="egC-tY-lQV"/>
-                    <constraint firstItem="Upb-dj-Ann" firstAttribute="top" secondItem="pBU-ve-pfw" secondAttribute="bottom" constant="25" id="lPa-Bh-7Ar"/>
+                    <constraint firstItem="IMV-Js-0WQ" firstAttribute="bottom" secondItem="rYx-GE-JZT" secondAttribute="bottom" constant="-50" id="kZA-JO-e10"/>
                     <constraint firstItem="rYx-GE-JZT" firstAttribute="bottom" secondItem="abo-Hn-ujJ" secondAttribute="bottom" id="mPD-2R-WUi"/>
                     <constraint firstItem="abo-Hn-ujJ" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" id="oPZ-FF-hcf"/>
                     <constraint firstItem="xUV-MZ-9Od" firstAttribute="leading" secondItem="rYx-GE-JZT" secondAttribute="leading" constant="10" id="vqs-Sx-nTB"/>
                     <constraint firstItem="rYx-GE-JZT" firstAttribute="trailing" secondItem="abo-Hn-ujJ" secondAttribute="trailing" id="yBV-dJ-96O"/>
                 </constraints>
-                <connections>
-                    <outletCollection property="gestureRecognizers" destination="Qb2-Du-wnE" appends="YES" id="2bX-cb-pEd"/>
-                </connections>
             </view>
             <connections>
                 <outlet property="collectionView" destination="xUV-MZ-9Od" id="jFW-tp-vcO"/>
+                <outlet property="createAdvertButton" destination="IMV-Js-0WQ" id="Mg2-cD-Sad"/>
                 <outlet property="mainView" destination="JDj-lP-gQB" id="qv0-7I-tgw"/>
-                <outlet property="menuButton" destination="pBU-ve-pfw" id="UyW-zn-KKU"/>
                 <outlet property="searchBar" destination="y05-Ut-IJY" id="V9H-cM-q9S"/>
                 <outlet property="tableView" destination="abo-Hn-ujJ" id="02V-cZ-8dm"/>
             </connections>
             <point key="canvasLocation" x="176.33587786259542" y="45.774647887323944"/>
         </viewController>
-        <swipeGestureRecognizer direction="left" id="Qb2-Du-wnE">
-            <connections>
-                <action selector="swipeLeftTapped:" destination="kLc-2g-meH" id="G05-yL-qe5"/>
-            </connections>
-        </swipeGestureRecognizer>
     </objects>
     <resources>
-        <image name="menu" width="24" height="24"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="tertiarySystemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

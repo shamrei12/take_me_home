@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "playstore 2.png",
+      "filename" : "cat-3.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "playstore 1.png",
+      "filename" : "cat-3@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "playstore.png",
+      "filename" : "cat-3@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

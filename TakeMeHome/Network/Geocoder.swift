@@ -10,7 +10,8 @@ class SessionManager {
     private init() {}
     
     func countryRequest(common: (Double, Double), dataResponse: @escaping (GeocoderModel) -> Void) {
-        let urlString = "https://nominatim.openstreetmap.org/reverse?format=geojson&lat=\(common.0)&lon=\(common.1)&accept-language=ru"
+        let urlString = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=\(common.0)&lon=\(common.1)&accept-language=ru"
+        print(urlString)
         AF.request(urlString).responseDecodable(of: GeocoderModel.self) { response in
             switch response.result {
             case .success(let model):
@@ -23,8 +24,6 @@ class SessionManager {
         }
     }
 
-
-    
     func parseJSON(data: Data) -> GeocoderModel? {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase

@@ -25,12 +25,6 @@ class CoreDataClass: CoreDataProtocol {
         return UUID().uuidString
     }
     
-    func shortNameUser(login: String) -> String {
-    
-        var userName = "User_\(login.prefix(5))"
-        return userName
-    }
-    
     func saveID(_ id: String) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.newBackgroundContext()

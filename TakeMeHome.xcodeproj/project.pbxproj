@@ -7,16 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D811A49929E4A0A800F6DE02 /* AdvertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6B6298EAC90001B11B7 /* AdvertTableViewCell.xib */; };
 		D811A49A29E4A0A800F6DE02 /* AdvertCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */; };
-		D811A49B29E4A0A800F6DE02 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */; };
 		D811A49C29E4A0A800F6DE02 /* AddPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8D1EA0F299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib */; };
 		D811A49D29E4A0A800F6DE02 /* ImagePostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D836824A29AA8DD3005AB64B /* ImagePostCollectionViewCell.xib */; };
 		D811A49E29E4A0A800F6DE02 /* CommentsPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D836824E29AA9862005AB64B /* CommentsPostTableViewCell.xib */; };
-		D811A49F29E4A0A800F6DE02 /* UserPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D836825629B49644005AB64B /* UserPostTableViewCell.xib */; };
 		D811A4A129E4A0A800F6DE02 /* AdvertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820C6AE298EA13B001B11B7 /* AdvertViewController.xib */; };
-		D811A4A329E4A0A800F6DE02 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89640E1299C440D00DF968C /* ProfileViewController.xib */; };
-		D811A4A429E4A0A800F6DE02 /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FBA629943E8E0051C9F7 /* SideMenuViewController.xib */; };
 		D811A4A529E4A0A800F6DE02 /* CreateAdvertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D89640E6299CCF0700DF968C /* CreateAdvertViewController.xib */; };
 		D811A4A629E4A0A800F6DE02 /* AdvertPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8D1EA1329A0C49C00F24D34 /* AdvertPageViewController.xib */; };
 		D811A4A829E4A0E000F6DE02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8A0FB9F299279BB0051C9F7 /* GoogleService-Info.plist */; };
@@ -27,23 +22,22 @@
 		D820C695298C24DC001B11B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D820C693298C24DC001B11B7 /* LaunchScreen.storyboard */; };
 		D820C6AD298EA0CC001B11B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6AC298EA0CC001B11B7 /* Extensions.swift */; };
 		D820C6B1298EA157001B11B7 /* AdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6B0298EA157001B11B7 /* AdvertViewController.swift */; };
-		D820C6B9298EACA5001B11B7 /* AdvertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */; };
 		D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */; };
 		D836824B29AA8DD3005AB64B /* ImagePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836824929AA8DD3005AB64B /* ImagePostCollectionViewCell.swift */; };
 		D836824F29AA9862005AB64B /* CommentsPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836824D29AA9862005AB64B /* CommentsPostTableViewCell.swift */; };
 		D836825229ABBF06005AB64B /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836825129ABBF06005AB64B /* CommentModel.swift */; };
 		D836825429B4808F005AB64B /* CoredataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836825329B4808F005AB64B /* CoredataModel.swift */; };
-		D836825729B49644005AB64B /* UserPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836825529B49644005AB64B /* UserPostTableViewCell.swift */; };
 		D8544B0E29A6654D00B63EF8 /* ConverterLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8544B0D29A6654D00B63EF8 /* ConverterLinks.swift */; };
-		D86F5822299C3101000A9170 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */; };
-		D87BF5F129E67109008FCD71 /* AlertInDevelop.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87BF5EF29E67109008FCD71 /* AlertInDevelop.xib */; };
 		D87BF5F229E67109008FCD71 /* AlertInDevelop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87BF5F029E67109008FCD71 /* AlertInDevelop.swift */; };
+		D87BF5F629E6748C008FCD71 /* AlertInDevelop.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87BF5F529E6748C008FCD71 /* AlertInDevelop.xib */; };
+		D87BF5FA29E6F969008FCD71 /* NoPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87BF5F829E6F969008FCD71 /* NoPostTableViewCell.swift */; };
+		D87BF5FB29E6F969008FCD71 /* NoPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87BF5F929E6F969008FCD71 /* NoPostTableViewCell.xib */; };
+		D87BF5FF29E89460008FCD71 /* AdvertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87BF5FD29E8945F008FCD71 /* AdvertTableViewCell.swift */; };
+		D87BF60029E89460008FCD71 /* AdvertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87BF5FE29E89460008FCD71 /* AdvertTableViewCell.xib */; };
 		D885275D29E48701007CEFEF /* Pods_TakeMeHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0944295DDEA66127DD51E253 /* Pods_TakeMeHome.framework */; };
-		D89640E0299C43F400DF968C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640DF299C43F400DF968C /* ProfileViewController.swift */; };
 		D89640E4299CCE3B00DF968C /* AdvertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640E3299CCE3B00DF968C /* AdvertModel.swift */; };
 		D89640E7299CCF0700DF968C /* CreateAdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */; };
 		D8979E5629C112DC0083F8D6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8979E5529C112DC0083F8D6 /* Protocols.swift */; };
-		D8A0FBA729943E8E0051C9F7 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A0FBA529943E8E0051C9F7 /* SideMenuViewController.swift */; };
 		D8C9615529D80B2E00D931F8 /* Geocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C9615429D80B2E00D931F8 /* Geocoder.swift */; };
 		D8C9615B29D8302500D931F8 /* Geoposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C9615A29D8302500D931F8 /* Geoposition.swift */; };
 		D8D1EA0B299D272800F24D34 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EA0A299D272800F24D34 /* TimeManager.swift */; };
@@ -66,8 +60,6 @@
 		D820C6AC298EA0CC001B11B7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D820C6AE298EA13B001B11B7 /* AdvertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvertViewController.xib; sourceTree = "<group>"; };
 		D820C6B0298EA157001B11B7 /* AdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertViewController.swift; sourceTree = "<group>"; };
-		D820C6B6298EAC90001B11B7 /* AdvertTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvertTableViewCell.xib; sourceTree = "<group>"; };
-		D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertTableViewCell.swift; sourceTree = "<group>"; };
 		D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertCollectionViewCell.swift; sourceTree = "<group>"; };
 		D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvertCollectionViewCell.xib; sourceTree = "<group>"; };
 		D836824929AA8DD3005AB64B /* ImagePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePostCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -76,24 +68,21 @@
 		D836824E29AA9862005AB64B /* CommentsPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsPostTableViewCell.xib; sourceTree = "<group>"; };
 		D836825129ABBF06005AB64B /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		D836825329B4808F005AB64B /* CoredataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataModel.swift; sourceTree = "<group>"; };
-		D836825529B49644005AB64B /* UserPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostTableViewCell.swift; sourceTree = "<group>"; };
-		D836825629B49644005AB64B /* UserPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserPostTableViewCell.xib; sourceTree = "<group>"; };
 		D8544B0D29A6654D00B63EF8 /* ConverterLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterLinks.swift; sourceTree = "<group>"; };
-		D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
-		D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
-		D87BF5EF29E67109008FCD71 /* AlertInDevelop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertInDevelop.xib; sourceTree = "<group>"; };
 		D87BF5F029E67109008FCD71 /* AlertInDevelop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertInDevelop.swift; sourceTree = "<group>"; };
+		D87BF5F529E6748C008FCD71 /* AlertInDevelop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertInDevelop.xib; sourceTree = "<group>"; };
+		D87BF5F829E6F969008FCD71 /* NoPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPostTableViewCell.swift; sourceTree = "<group>"; };
+		D87BF5F929E6F969008FCD71 /* NoPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoPostTableViewCell.xib; sourceTree = "<group>"; };
+		D87BF5FC29E73065008FCD71 /* TakeMeHome.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TakeMeHome.entitlements; sourceTree = "<group>"; };
+		D87BF5FD29E8945F008FCD71 /* AdvertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvertTableViewCell.swift; sourceTree = "<group>"; };
+		D87BF5FE29E89460008FCD71 /* AdvertTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvertTableViewCell.xib; sourceTree = "<group>"; };
 		D885275529E48412007CEFEF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D89640DF299C43F400DF968C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		D89640E1299C440D00DF968C /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		D89640E3299CCE3B00DF968C /* AdvertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertModel.swift; sourceTree = "<group>"; };
 		D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdvertViewController.swift; sourceTree = "<group>"; };
 		D89640E6299CCF0700DF968C /* CreateAdvertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateAdvertViewController.xib; sourceTree = "<group>"; };
 		D8979E5529C112DC0083F8D6 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		D8A0FB992992558C0051C9F7 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D8A0FB9F299279BB0051C9F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D8A0FBA529943E8E0051C9F7 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
-		D8A0FBA629943E8E0051C9F7 /* SideMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
 		D8C9615429D80B2E00D931F8 /* Geocoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoder.swift; sourceTree = "<group>"; };
 		D8C9615A29D8302500D931F8 /* Geoposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geoposition.swift; sourceTree = "<group>"; };
 		D8D1EA0A299D272800F24D34 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
@@ -104,7 +93,6 @@
 		D8D1EA1329A0C49C00F24D34 /* AdvertPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvertPageViewController.xib; sourceTree = "<group>"; };
 		D8EA7EBD29E31FBD00D27E90 /* GeocoderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocoderModel.swift; sourceTree = "<group>"; };
 		D8EA7EC129E31FF200D27E90 /* GeocoderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocoderProtocol.swift; sourceTree = "<group>"; };
-		D8FA23E129E5A9FD00EB5C64 /* TakeMeHome.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = TakeMeHome.entitlements; path = ../../TakeMeHome.entitlements; sourceTree = "<group>"; };
 		DB30E3F0652F68E81AB8BC6A /* Pods-TakeMeHome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome.debug.xcconfig"; path = "Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,7 +139,7 @@
 		D820C684298C24DA001B11B7 /* TakeMeHome */ = {
 			isa = PBXGroup;
 			children = (
-				D8FA23E129E5A9FD00EB5C64 /* TakeMeHome.entitlements */,
+				D87BF5FC29E73065008FCD71 /* TakeMeHome.entitlements */,
 				D8D1EA09299D270E00F24D34 /* Managers */,
 				D820C6AB298C4000001B11B7 /* Controller */,
 				D820C6AA298C3F72001B11B7 /* Model */,
@@ -207,8 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				D820C6AE298EA13B001B11B7 /* AdvertViewController.xib */,
-				D89640E1299C440D00DF968C /* ProfileViewController.xib */,
-				D8A0FBA629943E8E0051C9F7 /* SideMenuViewController.xib */,
 				D89640E6299CCF0700DF968C /* CreateAdvertViewController.xib */,
 				D8D1EA1329A0C49C00F24D34 /* AdvertPageViewController.xib */,
 			);
@@ -218,20 +204,18 @@
 		D820C6A7298C3F4B001B11B7 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				D820C6B6298EAC90001B11B7 /* AdvertTableViewCell.xib */,
+				D87BF5FD29E8945F008FCD71 /* AdvertTableViewCell.swift */,
+				D87BF5FE29E89460008FCD71 /* AdvertTableViewCell.xib */,
 				D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */,
-				D820C6B8298EACA5001B11B7 /* AdvertTableViewCell.swift */,
 				D820C6BB298F96E3001B11B7 /* AdvertCollectionViewCell.xib */,
-				D86F5820299C3101000A9170 /* SideMenuTableViewCell.swift */,
-				D86F5821299C3101000A9170 /* SideMenuTableViewCell.xib */,
 				D8D1EA0E299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift */,
 				D8D1EA0F299F6D5D00F24D34 /* AddPhotoCollectionViewCell.xib */,
 				D836824929AA8DD3005AB64B /* ImagePostCollectionViewCell.swift */,
 				D836824A29AA8DD3005AB64B /* ImagePostCollectionViewCell.xib */,
 				D836824D29AA9862005AB64B /* CommentsPostTableViewCell.swift */,
 				D836824E29AA9862005AB64B /* CommentsPostTableViewCell.xib */,
-				D836825529B49644005AB64B /* UserPostTableViewCell.swift */,
-				D836825629B49644005AB64B /* UserPostTableViewCell.xib */,
+				D87BF5F829E6F969008FCD71 /* NoPostTableViewCell.swift */,
+				D87BF5F929E6F969008FCD71 /* NoPostTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -271,11 +255,9 @@
 		D820C6AB298C4000001B11B7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D8A0FBA529943E8E0051C9F7 /* SideMenuViewController.swift */,
 				D820C6B0298EA157001B11B7 /* AdvertViewController.swift */,
 				D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */,
 				D8D1EA1229A0C49C00F24D34 /* AdvertPageViewController.swift */,
-				D89640DF299C43F400DF968C /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -284,7 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				D87BF5F029E67109008FCD71 /* AlertInDevelop.swift */,
-				D87BF5EF29E67109008FCD71 /* AlertInDevelop.xib */,
+				D87BF5F529E6748C008FCD71 /* AlertInDevelop.xib */,
 			);
 			path = "Alert Develop";
 			sourceTree = "<group>";
@@ -369,18 +351,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D87BF60029E89460008FCD71 /* AdvertTableViewCell.xib in Resources */,
 				D811A4A829E4A0E000F6DE02 /* GoogleService-Info.plist in Resources */,
-				D87BF5F129E67109008FCD71 /* AlertInDevelop.xib in Resources */,
-				D811A49929E4A0A800F6DE02 /* AdvertTableViewCell.xib in Resources */,
+				D87BF5F629E6748C008FCD71 /* AlertInDevelop.xib in Resources */,
+				D87BF5FB29E6F969008FCD71 /* NoPostTableViewCell.xib in Resources */,
 				D811A49A29E4A0A800F6DE02 /* AdvertCollectionViewCell.xib in Resources */,
-				D811A49B29E4A0A800F6DE02 /* SideMenuTableViewCell.xib in Resources */,
 				D811A49C29E4A0A800F6DE02 /* AddPhotoCollectionViewCell.xib in Resources */,
 				D811A49D29E4A0A800F6DE02 /* ImagePostCollectionViewCell.xib in Resources */,
 				D811A49E29E4A0A800F6DE02 /* CommentsPostTableViewCell.xib in Resources */,
-				D811A49F29E4A0A800F6DE02 /* UserPostTableViewCell.xib in Resources */,
 				D811A4A129E4A0A800F6DE02 /* AdvertViewController.xib in Resources */,
-				D811A4A329E4A0A800F6DE02 /* ProfileViewController.xib in Resources */,
-				D811A4A429E4A0A800F6DE02 /* SideMenuViewController.xib in Resources */,
 				D811A4A529E4A0A800F6DE02 /* CreateAdvertViewController.xib in Resources */,
 				D811A4A629E4A0A800F6DE02 /* AdvertPageViewController.xib in Resources */,
 				D820C695298C24DC001B11B7 /* LaunchScreen.storyboard in Resources */,
@@ -441,14 +420,14 @@
 				D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */,
 				D836824B29AA8DD3005AB64B /* ImagePostCollectionViewCell.swift in Sources */,
 				D8D1EA10299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift in Sources */,
+				D87BF5FA29E6F969008FCD71 /* NoPostTableViewCell.swift in Sources */,
 				D8D1EA1429A0C49C00F24D34 /* AdvertPageViewController.swift in Sources */,
 				D820C686298C24DA001B11B7 /* AppDelegate.swift in Sources */,
 				D8EA7EBE29E31FBD00D27E90 /* GeocoderModel.swift in Sources */,
-				D86F5822299C3101000A9170 /* SideMenuTableViewCell.swift in Sources */,
 				D820C688298C24DA001B11B7 /* SceneDelegate.swift in Sources */,
 				D8EA7EC229E31FF200D27E90 /* GeocoderProtocol.swift in Sources */,
+				D87BF5FF29E89460008FCD71 /* AdvertTableViewCell.swift in Sources */,
 				D8C9615529D80B2E00D931F8 /* Geocoder.swift in Sources */,
-				D8A0FBA729943E8E0051C9F7 /* SideMenuViewController.swift in Sources */,
 				D836825429B4808F005AB64B /* CoredataModel.swift in Sources */,
 				D87BF5F229E67109008FCD71 /* AlertInDevelop.swift in Sources */,
 				D836825229ABBF06005AB64B /* CommentModel.swift in Sources */,
@@ -456,15 +435,12 @@
 				D8D1EA0B299D272800F24D34 /* TimeManager.swift in Sources */,
 				D836824F29AA9862005AB64B /* CommentsPostTableViewCell.swift in Sources */,
 				D820C6B1298EA157001B11B7 /* AdvertViewController.swift in Sources */,
-				D820C6B9298EACA5001B11B7 /* AdvertTableViewCell.swift in Sources */,
 				D89640E7299CCF0700DF968C /* CreateAdvertViewController.swift in Sources */,
 				D8D1EA0D299D2AC900F24D34 /* FirebaseData.swift in Sources */,
 				D89640E4299CCE3B00DF968C /* AdvertModel.swift in Sources */,
-				D89640E0299C43F400DF968C /* ProfileViewController.swift in Sources */,
 				D820C690298C24DA001B11B7 /* TakeMeHome.xcdatamodeld in Sources */,
 				D8C9615B29D8302500D931F8 /* Geoposition.swift in Sources */,
 				D820C6AD298EA0CC001B11B7 /* Extensions.swift in Sources */,
-				D836825729B49644005AB64B /* UserPostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,7 +508,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -587,7 +563,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
