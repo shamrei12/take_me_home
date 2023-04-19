@@ -9,7 +9,6 @@ import UIKit
 import Kingfisher
 
 class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFieldDelegate {
-
     @IBOutlet weak var postID: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var postName: UILabel!
@@ -34,7 +33,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     private var adresForMap: String = ""
     
     @IBOutlet weak var mainView: UIView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -65,19 +64,24 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-            var contentInsets = scrollView.contentInset
-        contentInsets.bottom = -(textField.frame.maxY - scrollView.frame.height + 10) / 2
-            scrollView.contentInset = contentInsets
-            scrollView.scrollIndicatorInsets = contentInsets
-            scrollView.setContentOffset(CGPoint(x: 0, y: -contentInsets.bottom), animated: true)
-    }
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
         var contentInsets = scrollView.contentInset
-        contentInsets.bottom = 0
+        contentInsets.bottom = -(textField.frame.maxY - scrollView.frame.height + 10) / 2
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
-        scrollView.setContentOffset(CGPoint.zero, animated: true)
+        scrollView.setContentOffset(CGPoint(x: 0, y: -contentInsets.bottom), animated: true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField != messageField {
+            var contentInsets = scrollView.contentInset
+            contentInsets.bottom = 0
+            scrollView.contentInset = contentInsets
+            scrollView.scrollIndicatorInsets = contentInsets
+            if let lastTextField = scrollView.subviews.last as? UITextField, lastTextField == textField {
+                let bottomOffset = CGPoint(x: 0, y: max(scrollView.contentSize.height - scrollView.bounds.size.height, 0))
+                scrollView.setContentOffset(bottomOffset, animated: true)
+            }
+        }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -97,12 +101,13 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
             }
         }
     }
-
+    
     func scrollDown() {
         let numberOfROws = self.tableview.numberOfRows(inSection: 0)
         let indexPath = IndexPath(row: numberOfROws, section: 0)
         self.tableview.insertRows(at: [indexPath], with: .automatic)
         self.tableview.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        
     }
     
     func updateComments(comment: Comments) {
@@ -111,7 +116,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
             self.scrollDown()
         }
     }
-
+    
     
     @IBAction func sendMessageTapped(_ sender: UIButton) {
         if let message = messageField.text, !message.isEmpty {
@@ -141,7 +146,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
         
         present(alertController, animated: true, completion: nil)
     }
-
+    
     
     func updateUIElements(_ id: String) {
         var list = [String]()

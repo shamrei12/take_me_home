@@ -180,9 +180,16 @@ extension AdvertViewController: UITableViewDataSource {
             } else {
                 cell = NoPostTableViewCell()
             }
-            
             return configure(cell: cell, for: indexPath)
-        } else {
+        } else if filterMass.count == 0 && searching {
+            var cell: NoPostTableViewCell
+            if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "NoPostTableViewCell") as? NoPostTableViewCell {
+                cell = reuseCell
+            } else {
+                cell = NoPostTableViewCell()
+            }
+            return configure(cell: cell, for: indexPath)
+        }else {
             var cell: AdvertTableViewCell
             if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "AdvertTableViewCell") as? AdvertTableViewCell {
                 cell = reuseCell
@@ -200,24 +207,20 @@ extension AdvertViewController: UITableViewDataSource {
     
     private func configure(cell: AdvertTableViewCell, for indexPath: IndexPath) -> UITableViewCell {
         if searching {
-            DispatchQueue.global().async { [self] in
-                let resurse = ImageResource(downloadURL: URL(string: filterMass[indexPath.row].linkImage)!, cacheKey: filterMass[indexPath.row].linkImage)
-                //                let processor = DownsamplingImageProcessor(size: CGSize(width: 128, height: 128))
-                //                , options: [.processor(processor)]
-                DispatchQueue.main.async { [self] in
-                    cell.postImageView.kf.setImage(with: resurse)
-                    cell.postName.text = filterMass[indexPath.row].postName
-                    cell.oldPet.text = "Возраст: \(filterMass[indexPath.row].oldPet)"
-                    cell.breed.text = "Порода: \(filterMass[indexPath.row].breed)"
-                    cell.lostAdress.text = filterMass[indexPath.row].lostAdress
+                DispatchQueue.global().async { [self] in
+                    let resurse = ImageResource(downloadURL: URL(string: filterMass[indexPath.row].linkImage)!, cacheKey: filterMass[indexPath.row].linkImage)
+                    DispatchQueue.main.async { [self] in
+                        cell.postImageView.kf.setImage(with: resurse)
+                        cell.postName.text = filterMass[indexPath.row].postName
+                        cell.oldPet.text = "Возраст: \(filterMass[indexPath.row].oldPet)"
+                        cell.breed.text = "Порода: \(filterMass[indexPath.row].breed)"
+                        cell.lostAdress.text = filterMass[indexPath.row].lostAdress
+                    }
                 }
-            }
-            return cell
+                return cell
         } else {
             DispatchQueue.global().async { [self] in
                 let resurse = ImageResource(downloadURL: URL(string: advertMass[indexPath.row].linkImage)!, cacheKey: advertMass[indexPath.row].linkImage)
-                //                let processor = DownsamplingImageProcessor(size: CGSize(width: 128, height: 128))
-                //                , options: [.processor(processor)]
                 DispatchQueue.main.async { [self] in
                     cell.postImageView.kf.setImage(with: resurse)
                     cell.postName.text = advertMass[indexPath.row].postName

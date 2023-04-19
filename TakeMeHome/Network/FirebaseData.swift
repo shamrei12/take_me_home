@@ -54,23 +54,23 @@ class FirebaseData: FirebaseProtocol {
         }
     }
     
-    func loadUserPostsLinks(completion: @escaping (([String]) -> Void)) {
-        var list = [String]()
-        let login = storage.object(forKey: storageKey) as? String ?? ""
-        let userID = Auth.auth().currentUser?.uid
-        let ref = Database.database().reference().child("users").child(login).child("idPosts")
-        
-        ref.observe(.value) { snap in
-            if let snapshot = snap.children.allObjects as? [DataSnapshot] {
-                for idPost in snapshot {
-                    if idPost.value is String {
-                        list.append(idPost.value as! String)
-                    }
-                }
-                completion(list)
-            }
-        }
-    }
+//    func loadUserPostsLinks(completion: @escaping (([String]) -> Void)) {
+//        var list = [String]()
+//        let login = storage.object(forKey: storageKey) as? String ?? ""
+//        let userID = Auth.auth().currentUser?.uid
+//        let ref = Database.database().reference().child("users").child(login).child("idPosts")
+//
+//        ref.observe(.value) { snap in
+//            if let snapshot = snap.children.allObjects as? [DataSnapshot] {
+//                for idPost in snapshot {
+//                    if idPost.value is String {
+//                        list.append(idPost.value as! String)
+//                    }
+//                }
+//                completion(list)
+//            }
+//        }
+//    }
     
     func getUserName(completion: @escaping (String) -> Void) {
         let ref = Database.database().reference().child("users").child(storage.object(forKey: storageKey) as! String)
@@ -78,11 +78,11 @@ class FirebaseData: FirebaseProtocol {
             if let value = snapshot.value as? [String: Any], let name = value["name"] as? String {
                 completion(name)
             } else {
-                completion("")
+                completion("Пользователь")
             }
         } withCancel: { (error) in
             print("Error getting user name: \(error.localizedDescription)")
-            completion("")
+            completion("Пользователь")
         }
     }
     
