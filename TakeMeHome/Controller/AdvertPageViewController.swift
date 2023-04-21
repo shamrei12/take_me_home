@@ -31,7 +31,6 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     private var fbManager: FirebaseData!
     private var stringPostID: String = ""
     private var adresForMap: String = ""
-    
     @IBOutlet weak var mainView: UIView!
     
     override func viewDidLoad() {

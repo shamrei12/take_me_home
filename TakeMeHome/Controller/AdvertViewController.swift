@@ -10,7 +10,22 @@ import FirebaseAuth
 import FirebaseCore
 import Kingfisher
 
-class AdvertViewController: UIViewController {
+class AdvertViewController: UIViewController, FirstStartDelegate {
+    func cancelScene() {
+        
+        if alertView != nil {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.alertView!.view.alpha = 0
+            }) { (finished) in
+                self.alertView!.view.removeFromSuperview()
+                self.alertView!.removeFromParent()
+                self.alertView = nil
+            }
+            storage.set("\(coreData.getUUID())", forKey: storageKey)
+            fbManager.registrUser(login: storage.object(forKey: storageKey) as! String, name: "Пользователь")
+        }
+    }
+    
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var checkList: UIButton!
@@ -25,6 +40,7 @@ class AdvertViewController: UIViewController {
     private var searching = false
     private var storage = UserDefaults.standard
     private var storageKey = "login"
+    private var alertView: EULAViewController!
     
     private var countDog = 0
     private var countCat = 0
@@ -45,22 +61,27 @@ class AdvertViewController: UIViewController {
         collectionView.register(UINib(nibName: "AdvertCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AdvertCollectionViewCell")
         self.hideKeyboardWhenTappedAround()
         navigationItem.title = "Объявления"
-
-
+        
     }
     
+    func showAlert() {
+        alertView = EULAViewController.instantiate()
+        alertView.delegate = self
+        view.addSubview(alertView!.view)
+        addChild(alertView!)
+        alertView.didMove(toParent: self)
+    }
     
     @objc func buttonTapped() {
         tableView.reloadData()
     }
     
+    
     func firstStart() {
         if storage.object(forKey: storageKey) == nil {
-            storage.set("\(coreData.getUUID())", forKey: storageKey)
-            fbManager.registrUser(login: storage.object(forKey: storageKey) as! String, name: "Пользователь")
+            showAlert()
         }
     }
-    
     
     @IBAction func showCreateAdvert(_ sender: UIButton) {
         let createVC = CreateAdvertViewController.instantiate()
@@ -112,7 +133,6 @@ class AdvertViewController: UIViewController {
         }
         collectionView.reloadData()
     }
-    
 }
 
 extension AdvertViewController: UISearchBarDelegate {
@@ -134,19 +154,22 @@ extension AdvertViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searching {
-            let adverpage = AdvertPageViewController.instantiate()
-            let navigationController = UINavigationController(rootViewController: adverpage)
-            navigationController.modalPresentationStyle = .fullScreen
-            adverpage.updateUIElements(filterMass[indexPath.row].postId)
-            present(navigationController, animated: true)
+            if filterMass.indices.contains(indexPath.row) {
+                let adverpage = AdvertPageViewController.instantiate()
+                let navigationController = UINavigationController(rootViewController: adverpage)
+                navigationController.modalPresentationStyle = .fullScreen
+                adverpage.updateUIElements(filterMass[indexPath.row].postId)
+                present(navigationController, animated: true)
+            }
         } else {
-            let adverpage = AdvertPageViewController.instantiate()
-            let navigationController = UINavigationController(rootViewController: adverpage)
-            navigationController.modalPresentationStyle = .fullScreen
-            adverpage.updateUIElements(advertMass[indexPath.row].postId)
-            present(navigationController, animated: true)
+            if advertMass.indices.contains(indexPath.row) {
+                let adverpage = AdvertPageViewController.instantiate()
+                let navigationController = UINavigationController(rootViewController: adverpage)
+                navigationController.modalPresentationStyle = .fullScreen
+                adverpage.updateUIElements(advertMass[indexPath.row].postId)
+                present(navigationController, animated: true)
+            }
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -207,17 +230,17 @@ extension AdvertViewController: UITableViewDataSource {
     
     private func configure(cell: AdvertTableViewCell, for indexPath: IndexPath) -> UITableViewCell {
         if searching {
-                DispatchQueue.global().async { [self] in
-                    let resurse = ImageResource(downloadURL: URL(string: filterMass[indexPath.row].linkImage)!, cacheKey: filterMass[indexPath.row].linkImage)
-                    DispatchQueue.main.async { [self] in
-                        cell.postImageView.kf.setImage(with: resurse)
-                        cell.postName.text = filterMass[indexPath.row].postName
-                        cell.oldPet.text = "Возраст: \(filterMass[indexPath.row].oldPet)"
-                        cell.breed.text = "Порода: \(filterMass[indexPath.row].breed)"
-                        cell.lostAdress.text = filterMass[indexPath.row].lostAdress
-                    }
+            DispatchQueue.global().async { [self] in
+                let resurse = ImageResource(downloadURL: URL(string: filterMass[indexPath.row].linkImage)!, cacheKey: filterMass[indexPath.row].linkImage)
+                DispatchQueue.main.async { [self] in
+                    cell.postImageView.kf.setImage(with: resurse)
+                    cell.postName.text = filterMass[indexPath.row].postName
+                    cell.oldPet.text = "Возраст: \(filterMass[indexPath.row].oldPet)"
+                    cell.breed.text = "Порода: \(filterMass[indexPath.row].breed)"
+                    cell.lostAdress.text = filterMass[indexPath.row].lostAdress
                 }
-                return cell
+            }
+            return cell
         } else {
             DispatchQueue.global().async { [self] in
                 let resurse = ImageResource(downloadURL: URL(string: advertMass[indexPath.row].linkImage)!, cacheKey: advertMass[indexPath.row].linkImage)

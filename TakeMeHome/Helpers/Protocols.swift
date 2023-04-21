@@ -10,3 +10,7 @@ import Foundation
 protocol AlertDelegate {
  func cancelScene()
 }
+
+protocol FirstStartDelegate {
+    func cancelScene()
+}

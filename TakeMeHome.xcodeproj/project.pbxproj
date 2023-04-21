@@ -34,6 +34,8 @@
 		D87BF5FB29E6F969008FCD71 /* NoPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87BF5F929E6F969008FCD71 /* NoPostTableViewCell.xib */; };
 		D87BF5FF29E89460008FCD71 /* AdvertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87BF5FD29E8945F008FCD71 /* AdvertTableViewCell.swift */; };
 		D87BF60029E89460008FCD71 /* AdvertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87BF5FE29E89460008FCD71 /* AdvertTableViewCell.xib */; };
+		D87BF65829F28D7A008FCD71 /* EULAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87BF65629F28D7A008FCD71 /* EULAViewController.swift */; };
+		D87BF65929F28D7A008FCD71 /* EULAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87BF65729F28D7A008FCD71 /* EULAViewController.xib */; };
 		D885275D29E48701007CEFEF /* Pods_TakeMeHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0944295DDEA66127DD51E253 /* Pods_TakeMeHome.framework */; };
 		D89640E4299CCE3B00DF968C /* AdvertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640E3299CCE3B00DF968C /* AdvertModel.swift */; };
 		D89640E7299CCF0700DF968C /* CreateAdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */; };
@@ -76,6 +78,8 @@
 		D87BF5FC29E73065008FCD71 /* TakeMeHome.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TakeMeHome.entitlements; sourceTree = "<group>"; };
 		D87BF5FD29E8945F008FCD71 /* AdvertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvertTableViewCell.swift; sourceTree = "<group>"; };
 		D87BF5FE29E89460008FCD71 /* AdvertTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvertTableViewCell.xib; sourceTree = "<group>"; };
+		D87BF65629F28D7A008FCD71 /* EULAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAViewController.swift; sourceTree = "<group>"; };
+		D87BF65729F28D7A008FCD71 /* EULAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EULAViewController.xib; sourceTree = "<group>"; };
 		D885275529E48412007CEFEF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D89640E3299CCE3B00DF968C /* AdvertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertModel.swift; sourceTree = "<group>"; };
 		D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdvertViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +220,8 @@
 				D836824E29AA9862005AB64B /* CommentsPostTableViewCell.xib */,
 				D87BF5F829E6F969008FCD71 /* NoPostTableViewCell.swift */,
 				D87BF5F929E6F969008FCD71 /* NoPostTableViewCell.xib */,
+				D87BF65629F28D7A008FCD71 /* EULAViewController.swift */,
+				D87BF65729F28D7A008FCD71 /* EULAViewController.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -362,6 +368,7 @@
 				D811A4A129E4A0A800F6DE02 /* AdvertViewController.xib in Resources */,
 				D811A4A529E4A0A800F6DE02 /* CreateAdvertViewController.xib in Resources */,
 				D811A4A629E4A0A800F6DE02 /* AdvertPageViewController.xib in Resources */,
+				D87BF65929F28D7A008FCD71 /* EULAViewController.xib in Resources */,
 				D820C695298C24DC001B11B7 /* LaunchScreen.storyboard in Resources */,
 				D820C692298C24DC001B11B7 /* Assets.xcassets in Resources */,
 			);
@@ -417,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8544B0E29A6654D00B63EF8 /* ConverterLinks.swift in Sources */,
+				D87BF65829F28D7A008FCD71 /* EULAViewController.swift in Sources */,
 				D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */,
 				D836824B29AA8DD3005AB64B /* ImagePostCollectionViewCell.swift in Sources */,
 				D8D1EA10299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift in Sources */,
