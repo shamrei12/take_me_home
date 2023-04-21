@@ -36,6 +36,8 @@
 		D87BF60029E89460008FCD71 /* AdvertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87BF5FE29E89460008FCD71 /* AdvertTableViewCell.xib */; };
 		D87BF65829F28D7A008FCD71 /* EULAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87BF65629F28D7A008FCD71 /* EULAViewController.swift */; };
 		D87BF65929F28D7A008FCD71 /* EULAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87BF65729F28D7A008FCD71 /* EULAViewController.xib */; };
+		D87BF65B29F2F105008FCD71 /* CimplainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87BF65A29F2F105008FCD71 /* CimplainView.swift */; };
+		D87BF65D29F2F114008FCD71 /* CimplainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87BF65C29F2F114008FCD71 /* CimplainView.xib */; };
 		D885275D29E48701007CEFEF /* Pods_TakeMeHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0944295DDEA66127DD51E253 /* Pods_TakeMeHome.framework */; };
 		D89640E4299CCE3B00DF968C /* AdvertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640E3299CCE3B00DF968C /* AdvertModel.swift */; };
 		D89640E7299CCF0700DF968C /* CreateAdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */; };
@@ -80,6 +82,8 @@
 		D87BF5FE29E89460008FCD71 /* AdvertTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvertTableViewCell.xib; sourceTree = "<group>"; };
 		D87BF65629F28D7A008FCD71 /* EULAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAViewController.swift; sourceTree = "<group>"; };
 		D87BF65729F28D7A008FCD71 /* EULAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EULAViewController.xib; sourceTree = "<group>"; };
+		D87BF65A29F2F105008FCD71 /* CimplainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CimplainView.swift; sourceTree = "<group>"; };
+		D87BF65C29F2F114008FCD71 /* CimplainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CimplainView.xib; sourceTree = "<group>"; };
 		D885275529E48412007CEFEF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D89640E3299CCE3B00DF968C /* AdvertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertModel.swift; sourceTree = "<group>"; };
 		D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdvertViewController.swift; sourceTree = "<group>"; };
@@ -273,6 +277,8 @@
 			children = (
 				D87BF5F029E67109008FCD71 /* AlertInDevelop.swift */,
 				D87BF5F529E6748C008FCD71 /* AlertInDevelop.xib */,
+				D87BF65A29F2F105008FCD71 /* CimplainView.swift */,
+				D87BF65C29F2F114008FCD71 /* CimplainView.xib */,
 			);
 			path = "Alert Develop";
 			sourceTree = "<group>";
@@ -358,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D87BF60029E89460008FCD71 /* AdvertTableViewCell.xib in Resources */,
+				D87BF65D29F2F114008FCD71 /* CimplainView.xib in Resources */,
 				D811A4A829E4A0E000F6DE02 /* GoogleService-Info.plist in Resources */,
 				D87BF5F629E6748C008FCD71 /* AlertInDevelop.xib in Resources */,
 				D87BF5FB29E6F969008FCD71 /* NoPostTableViewCell.xib in Resources */,
@@ -430,6 +437,7 @@
 				D8D1EA10299F6D5D00F24D34 /* AddPhotoCollectionViewCell.swift in Sources */,
 				D87BF5FA29E6F969008FCD71 /* NoPostTableViewCell.swift in Sources */,
 				D8D1EA1429A0C49C00F24D34 /* AdvertPageViewController.swift in Sources */,
+				D87BF65B29F2F105008FCD71 /* CimplainView.swift in Sources */,
 				D820C686298C24DA001B11B7 /* AppDelegate.swift in Sources */,
 				D8EA7EBE29E31FBD00D27E90 /* GeocoderModel.swift in Sources */,
 				D820C688298C24DA001B11B7 /* SceneDelegate.swift in Sources */,

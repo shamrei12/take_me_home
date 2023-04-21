@@ -54,23 +54,23 @@ class FirebaseData: FirebaseProtocol {
         }
     }
     
-//    func loadUserPostsLinks(completion: @escaping (([String]) -> Void)) {
-//        var list = [String]()
-//        let login = storage.object(forKey: storageKey) as? String ?? ""
-//        let userID = Auth.auth().currentUser?.uid
-//        let ref = Database.database().reference().child("users").child(login).child("idPosts")
-//
-//        ref.observe(.value) { snap in
-//            if let snapshot = snap.children.allObjects as? [DataSnapshot] {
-//                for idPost in snapshot {
-//                    if idPost.value is String {
-//                        list.append(idPost.value as! String)
-//                    }
-//                }
-//                completion(list)
-//            }
-//        }
-//    }
+    //    func loadUserPostsLinks(completion: @escaping (([String]) -> Void)) {
+    //        var list = [String]()
+    //        let login = storage.object(forKey: storageKey) as? String ?? ""
+    //        let userID = Auth.auth().currentUser?.uid
+    //        let ref = Database.database().reference().child("users").child(login).child("idPosts")
+    //
+    //        ref.observe(.value) { snap in
+    //            if let snapshot = snap.children.allObjects as? [DataSnapshot] {
+    //                for idPost in snapshot {
+    //                    if idPost.value is String {
+    //                        list.append(idPost.value as! String)
+    //                    }
+    //                }
+    //                completion(list)
+    //            }
+    //        }
+    //    }
     
     func getUserName(completion: @escaping (String) -> Void) {
         let ref = Database.database().reference().child("users").child(storage.object(forKey: storageKey) as! String)
@@ -93,10 +93,10 @@ class FirebaseData: FirebaseProtocol {
         ref.getData { (err, snap) in
             ref.child("comments").child("\(count)").setValue([key:value])
             ref.child("countComments").setValue("\(count)")
-
+            
         }
     }
-
+    
     func loadComments(id: String, completion: @escaping ([Comments]) -> Void) {
         let ref = Database.database().reference().child("posts").child("\(id)").child("comments")
         var commentsUser = [Comments]()
@@ -126,7 +126,7 @@ class FirebaseData: FirebaseProtocol {
     }
     
     func saveImage(_ storage: [Data],_ userID: String,  completion: @escaping (String) -> Void) {
-        let storageRef = Storage.storage().reference().child("postImages").child(userID)        
+        let storageRef = Storage.storage().reference().child("postImages").child(userID)
         if  storage.count > 0 {
             for data in 0...storage.count - 1 {
                 storageRef.child("\(userID)_\(data)").putData(storage[data]) { (metadata, err) in
@@ -146,6 +146,32 @@ class FirebaseData: FirebaseProtocol {
             }
         }
     }
+    
+    func saveComplainUser(postID: String, UserID: String) {
+        let ref = Database.database().reference().child("posts").child(postID).child("Complains")
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            if var complains = snapshot.value as? [String]  {
+                if !complains.contains(UserID) {
+                    complains.append(UserID)
+                    ref.setValue(complains)
+                }
+            } else {
+                ref.setValue([UserID])
+            }
+        }
+    }
+    
+    func loadComplainUser(postID: String, completion: @escaping ([String]) -> Void) {
+        let ref = Database.database().reference().child("posts").child(postID).child("Complains")
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            if var complains = snapshot.value as? [String]  {
+                completion(complains)
+            } else {
+                completion([])
+            }
+        }
+    }
+    
     
     func save(posts: [AdvertProtocol], id: String,  stroage: [Data]) {
         let ref = Database.database().reference().child("posts")

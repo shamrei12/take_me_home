@@ -14,3 +14,9 @@ protocol AlertDelegate {
 protocol FirstStartDelegate {
     func cancelScene()
 }
+
+protocol Complain {
+    func complain(_ index: Int)
+    func cancel()
+    func agree()
+}

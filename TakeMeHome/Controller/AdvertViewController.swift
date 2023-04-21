@@ -10,25 +10,10 @@ import FirebaseAuth
 import FirebaseCore
 import Kingfisher
 
-class AdvertViewController: UIViewController, FirstStartDelegate {
-    func cancelScene() {
-        
-        if alertView != nil {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.alertView!.view.alpha = 0
-            }) { (finished) in
-                self.alertView!.view.removeFromSuperview()
-                self.alertView!.removeFromParent()
-                self.alertView = nil
-            }
-            storage.set("\(coreData.getUUID())", forKey: storageKey)
-            fbManager.registrUser(login: storage.object(forKey: storageKey) as! String, name: "Пользователь")
-        }
-    }
+class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var checkList: UIButton!
     private var sideMenuShadowView: UIView!
     private var sideMenuTrailingConstraint: NSLayoutConstraint!
     private var revealSideMenuOnTop: Bool = true
@@ -36,12 +21,13 @@ class AdvertViewController: UIViewController, FirstStartDelegate {
     private var coreData: CoreDataClass!
     private var filterMass:  [AdvertProtocol] = []
     private var advertMass: [AdvertProtocol] = []
-    private var reloadTableView: Bool = true
     private var searching = false
     private var storage = UserDefaults.standard
     private var storageKey = "login"
     private var alertView: EULAViewController!
-    
+    private var advertTableVC: AdvertTableViewCell!
+    private var complainVC: CimplainView!
+    private var idPost = String()
     private var countDog = 0
     private var countCat = 0
     private var countOther = 0
@@ -61,7 +47,6 @@ class AdvertViewController: UIViewController, FirstStartDelegate {
         collectionView.register(UINib(nibName: "AdvertCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AdvertCollectionViewCell")
         self.hideKeyboardWhenTappedAround()
         navigationItem.title = "Объявления"
-        
     }
     
     func showAlert() {
@@ -72,15 +57,57 @@ class AdvertViewController: UIViewController, FirstStartDelegate {
         alertView.didMove(toParent: self)
     }
     
+    func cancelScene() {
+        if alertView != nil {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.alertView!.view.alpha = 0
+            }) { (finished) in
+                self.alertView!.view.removeFromSuperview()
+                self.alertView!.removeFromParent()
+                self.alertView = nil
+            }
+            storage.set("\(coreData.getUUID())", forKey: storageKey)
+            fbManager.registrUser(login: storage.object(forKey: storageKey) as! String, name: "Пользователь")
+        }
+    }
+    
     @objc func buttonTapped() {
         tableView.reloadData()
     }
-    
     
     func firstStart() {
         if storage.object(forKey: storageKey) == nil {
             showAlert()
         }
+    }
+    
+    func complain(_ index: Int) {
+        if searching {
+            idPost = filterMass[index].postId
+            print("Searching: \(idPost)")
+        } else {
+            idPost = advertMass[index].postId
+            print("Advert: \(idPost)")
+        }
+        complainViewShow()
+    }
+    
+    func complainViewShow() {
+        complainVC = CimplainView.loadFromNib()
+        complainVC.delegate = self
+        UIApplication.shared.keyWindow?.addSubview(complainVC)
+        complainVC.center = CGPoint(x: mainView.frame.size.width  / 2,
+                                    y: mainView.frame.size.height / 2)
+    }
+    
+    func cancel() {
+        complainVC.removeFromSuperview()
+    }
+    
+    func agree() {
+        fbManager.saveComplainUser(postID: idPost, UserID: storage.object(forKey: storageKey) as! String)
+        getData()
+        complainVC.removeFromSuperview()
     }
     
     @IBAction func showCreateAdvert(_ sender: UIButton) {
@@ -92,8 +119,8 @@ class AdvertViewController: UIViewController, FirstStartDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         getData()
-        reloadTableView = true
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
@@ -105,18 +132,19 @@ class AdvertViewController: UIViewController, FirstStartDelegate {
     func getData() {
         fbManager.load() { [self] data in
             if data.count > advertMass.count {
-                if reloadTableView {
-                    reloadTableView = false
-                    DispatchQueue.main.async {
-                        self.advertMass.removeAll()
-                        self.countDog = 0
-                        self.countCat = 0
-                        self.countOther = 0
-                        for i in 0...data.count - 1 {
-                            self.advertMass.append(AdvertPost(countComments: data[i].countComments, postId: data[i].postId, phoneNumber: data[i].phoneNumber, linkImage:  ConverterLinks.shared.getFirstLinks(data[i].linkImage), typePost: data[i].typePost, breed: data[i].breed, postName: data[i].postName, descriptionName: data[i].descriptionName, typePet: data[i].typePet, oldPet: data[i].oldPet, lostAdress: data[i].lostAdress, curentDate: data[i].curentDate))
-                            self.countingType(data[i].typePet)
+                DispatchQueue.main.async { [self] in
+                    self.advertMass.removeAll()
+                    self.countDog = 0
+                    self.countCat = 0
+                    self.countOther = 0
+                    for i in 0...data.count - 1 {
+                        fbManager.loadComplainUser(postID: data[i].postId) { [self] complain in
+                            if complain.isEmpty || !complain.contains(storage.object(forKey: storageKey) as! String) {
+                                self.advertMass.append(AdvertPost(countComments: data[i].countComments, postId: data[i].postId, phoneNumber: data[i].phoneNumber, linkImage:  ConverterLinks.shared.getFirstLinks(data[i].linkImage), typePost: data[i].typePost, breed: data[i].breed, postName: data[i].postName, descriptionName: data[i].descriptionName, typePet: data[i].typePet, oldPet: data[i].oldPet, lostAdress: data[i].lostAdress, curentDate: data[i].curentDate))
+                                self.countingType(data[i].typePet)
+                            }
+                            self.tableView.reloadData()
                         }
-                        self.tableView.reloadData()
                     }
                 }
             }
@@ -133,6 +161,7 @@ class AdvertViewController: UIViewController, FirstStartDelegate {
         }
         collectionView.reloadData()
     }
+    
 }
 
 extension AdvertViewController: UISearchBarDelegate {
@@ -238,6 +267,8 @@ extension AdvertViewController: UITableViewDataSource {
                     cell.oldPet.text = "Возраст: \(filterMass[indexPath.row].oldPet)"
                     cell.breed.text = "Порода: \(filterMass[indexPath.row].breed)"
                     cell.lostAdress.text = filterMass[indexPath.row].lostAdress
+                    cell.button.tag = indexPath.row
+                    cell.delegate = self
                 }
             }
             return cell
@@ -250,6 +281,8 @@ extension AdvertViewController: UITableViewDataSource {
                     cell.oldPet.text = "Возраст: \(advertMass[indexPath.row].oldPet)"
                     cell.breed.text = "Порода: \(advertMass[indexPath.row].breed)"
                     cell.lostAdress.text = advertMass[indexPath.row].lostAdress
+                    cell.button.tag = indexPath.row
+                    cell.delegate = self
                 }
             }
             return cell
