@@ -50,11 +50,11 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        getData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -80,6 +80,7 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
             }
             storage.set("\(coreData.getUUID())", forKey: storageKey)
             fbManager.registrUser(login: storage.object(forKey: storageKey) as! String, name: "Пользователь")
+            getData()
         }
     }
     
@@ -105,6 +106,10 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     }
     
     func complainViewShow() {
+        UIView.animate(withDuration: 0.4) {
+            self.view.alpha = 0.6
+            self.view.isUserInteractionEnabled = false
+        }
         complainVC = CimplainView.loadFromNib()
         complainVC.delegate = self
         UIApplication.shared.keyWindow?.addSubview(complainVC)
@@ -113,10 +118,16 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     }
     
     func cancel() {
+        UIView.animate(withDuration: 0.1) {
+            self.view.alpha = 1.0
+            self.view.isUserInteractionEnabled = true
+        }
+
         complainVC.removeFromSuperview()
     }
     
     func agree() {
+        self.view.alpha = 1
         fbManager.saveComplainUser(postID: idPost, UserID: storage.object(forKey: storageKey) as! String)
         getData()
         complainVC.removeFromSuperview()
@@ -130,40 +141,42 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     }
     
     func getData() {
-        fbManager.load() { [self] data in
-            DispatchQueue.main.async { [self] in
-                var tempAdvertMass = [AdvertPost]()
-                let group = DispatchGroup()
-                for i in 0..<data.count {
-                    group.enter()
-                    fbManager.loadComplainUser(postID: data[i].postId) { [self] complain in
-                        if complain.isEmpty || !complain.contains(storage.object(forKey: storageKey) as! String) {
-                            let advertPost = AdvertPost(
-                                countComments: data[i].countComments,
-                                postId: data[i].postId,
-                                phoneNumber: data[i].phoneNumber,
-                                linkImage: ConverterLinks.shared.getFirstLinks(data[i].linkImage),
-                                typePost: data[i].typePost,
-                                breed: data[i].breed,
-                                postName: data[i].postName,
-                                descriptionName: data[i].descriptionName,
-                                typePet: data[i].typePet,
-                                oldPet: data[i].oldPet,
-                                lostAdress: data[i].lostAdress,
-                                curentDate: data[i].curentDate
-                            )
-                            tempAdvertMass.append(advertPost)
+        if storage.object(forKey: storageKey) != nil {
+            fbManager.load() { [self] data in
+                DispatchQueue.main.async { [self] in
+                    var tempAdvertMass = [AdvertPost]()
+                    let group = DispatchGroup()
+                    for i in 0..<data.count {
+                        group.enter()
+                        fbManager.loadComplainUser(postID: data[i].postId) { [self] complain in
+                            if complain.isEmpty || !complain.contains(storage.object(forKey: storageKey) as! String) {
+                                let advertPost = AdvertPost(
+                                    countComments: data[i].countComments,
+                                    postId: data[i].postId,
+                                    phoneNumber: data[i].phoneNumber,
+                                    linkImage: ConverterLinks.shared.getFirstLinks(data[i].linkImage),
+                                    typePost: data[i].typePost,
+                                    breed: data[i].breed,
+                                    postName: data[i].postName,
+                                    descriptionName: data[i].descriptionName,
+                                    typePet: data[i].typePet,
+                                    oldPet: data[i].oldPet,
+                                    lostAdress: data[i].lostAdress,
+                                    curentDate: data[i].curentDate
+                                )
+                                tempAdvertMass.append(advertPost)
+                            }
+                            group.leave()
                         }
-                        group.leave()
                     }
-                }
-                group.notify(queue: DispatchQueue.main) { [self] in
-                    self.advertMass = tempAdvertMass
-                    self.countDog = advertMass.filter { $0.typePet == "Собака" }.count
-                    self.countCat = advertMass.filter { $0.typePet == "Кошка" }.count
-                    self.countOther = advertMass.filter { $0.typePet == "Другое" }.count
-                    self.tableView.reloadData()
-                    collectionView.reloadData()
+                    group.notify(queue: DispatchQueue.main) { [self] in
+                        self.advertMass = tempAdvertMass
+                        self.countDog = advertMass.filter { $0.typePet == "Собака" }.count
+                        self.countCat = advertMass.filter { $0.typePet == "Кошка" }.count
+                        self.countOther = advertMass.filter { $0.typePet == "Другое" }.count
+                        self.tableView.reloadData()
+                        collectionView.reloadData()
+                    }
                 }
             }
         }
