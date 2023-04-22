@@ -49,6 +49,18 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
         navigationItem.title = "Объявления"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     func showAlert() {
         alertView = EULAViewController.instantiate()
         alertView.delegate = self
@@ -117,39 +129,47 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
         present(navigationController, animated: true)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        getData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
     func getData() {
         fbManager.load() { [self] data in
-            if data.count > advertMass.count {
-                DispatchQueue.main.async { [self] in
-                    self.advertMass.removeAll()
-                    self.countDog = 0
-                    self.countCat = 0
-                    self.countOther = 0
-                    for i in 0...data.count - 1 {
-                        fbManager.loadComplainUser(postID: data[i].postId) { [self] complain in
-                            if complain.isEmpty || !complain.contains(storage.object(forKey: storageKey) as! String) {
-                                self.advertMass.append(AdvertPost(countComments: data[i].countComments, postId: data[i].postId, phoneNumber: data[i].phoneNumber, linkImage:  ConverterLinks.shared.getFirstLinks(data[i].linkImage), typePost: data[i].typePost, breed: data[i].breed, postName: data[i].postName, descriptionName: data[i].descriptionName, typePet: data[i].typePet, oldPet: data[i].oldPet, lostAdress: data[i].lostAdress, curentDate: data[i].curentDate))
-                                self.countingType(data[i].typePet)
-                            }
-                            self.tableView.reloadData()
+            DispatchQueue.main.async { [self] in
+                var tempAdvertMass = [AdvertPost]()
+                let group = DispatchGroup()
+                for i in 0..<data.count {
+                    group.enter()
+                    fbManager.loadComplainUser(postID: data[i].postId) { [self] complain in
+                        if complain.isEmpty || !complain.contains(storage.object(forKey: storageKey) as! String) {
+                            let advertPost = AdvertPost(
+                                countComments: data[i].countComments,
+                                postId: data[i].postId,
+                                phoneNumber: data[i].phoneNumber,
+                                linkImage: ConverterLinks.shared.getFirstLinks(data[i].linkImage),
+                                typePost: data[i].typePost,
+                                breed: data[i].breed,
+                                postName: data[i].postName,
+                                descriptionName: data[i].descriptionName,
+                                typePet: data[i].typePet,
+                                oldPet: data[i].oldPet,
+                                lostAdress: data[i].lostAdress,
+                                curentDate: data[i].curentDate
+                            )
+                            tempAdvertMass.append(advertPost)
                         }
+                        group.leave()
                     }
+                }
+                group.notify(queue: DispatchQueue.main) { [self] in
+                    self.advertMass = tempAdvertMass
+                    self.countDog = advertMass.filter { $0.typePet == "Собака" }.count
+                    self.countCat = advertMass.filter { $0.typePet == "Кошка" }.count
+                    self.countOther = advertMass.filter { $0.typePet == "Другое" }.count
+                    self.tableView.reloadData()
+                    collectionView.reloadData()
                 }
             }
         }
     }
+
+
     
     func countingType(_ type: String) {
         if type == "Собака" {
@@ -159,9 +179,7 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
         } else if type == "Другое" {
             countOther += 1
         }
-        collectionView.reloadData()
     }
-    
 }
 
 extension AdvertViewController: UISearchBarDelegate {
