@@ -15,9 +15,8 @@ class ConverterLinks {
     
     private init() {}
     
-    func getFirstLinks(_ strLinks: String) -> String {
-        let result = strLinks.components(separatedBy: [" "])
-        return result.first ?? ""
+    func getFirstLinks(_ strLinks: [String]) -> String {
+        return strLinks.first ?? ""
     }
     
     func getCountLinks (_ strLinks: String) -> Int {
@@ -26,7 +25,7 @@ class ConverterLinks {
     }
     
     func getListLinks (_ strLinks: String) -> [String] {
-        var result: [String] = strLinks.components(separatedBy: [" "]).dropLast()
+        var result: [String] = strLinks.components(separatedBy: [" "])
         return result
     }
     

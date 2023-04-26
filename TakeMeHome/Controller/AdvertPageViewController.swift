@@ -116,7 +116,6 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
         }
     }
     
-    
     @IBAction func sendMessageTapped(_ sender: UIButton) {
         if let message = messageField.text, !message.isEmpty {
             fbManager.getUserName(completion: { [self] user in
@@ -132,7 +131,6 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     
     func showCallMenu(phoneNumber: String) {
         let alertController = UIAlertController(title: nil, message: "Позвонить по номеру \(phoneNumber)?", preferredStyle: .actionSheet)
-        
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         
@@ -142,19 +140,18 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
             }
         }
         alertController.addAction(callAction)
-        
         present(alertController, animated: true, completion: nil)
     }
-    
     
     func updateUIElements(_ id: String) {
         var list = [String]()
         idPost = id
         fbManager.loadSinglePost(id: id) { data in
             DispatchQueue.global().async { [self] in
-                list = ConverterLinks.shared.getListLinks(data.first?.linkImage ?? "")
+                list = data.first?.linkImage ?? [""]
                 for i in list {
-                    self.listResourse.append(ImageResource(downloadURL: URL(string: i)!))
+                    guard let urlLink = URL(string: i) else { continue }
+                    self.listResourse.append(ImageResource(downloadURL: urlLink))
                 }
             }
             DispatchQueue.main.async { [self] in

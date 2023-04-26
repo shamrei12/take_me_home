@@ -30,7 +30,7 @@ class FirebaseData: FirebaseProtocol {
             if let snapshots = snap.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
                     if let post = snap.value as? Dictionary<String, AnyObject> {
-                        resultMass.append(AdvertPost(countComments: post["countComments"] as? String ?? "", postId: post["postID"] as? String ?? "", phoneNumber: post["phoneNumber"] as? String ?? "", linkImage: post["listLinks"] as? String ?? "", typePost: post["typePost"] as? String ?? "", breed: post["breed"] as? String ?? "", postName: post["postName"] as? String ?? "", descriptionName: post["description"] as? String ?? "", typePet: post["typePet"] as? String ?? "", oldPet: post["oldPet"] as? String ?? "", lostAdress: post["lostAdress"] as? String ?? "", curentDate: post["curentDate"] as? String ?? ""))
+                        resultMass.append(AdvertPost(countComments: post["countComments"] as? String ?? "", postId: post["postID"] as? String ?? "", phoneNumber: post["phoneNumber"] as? String ?? "", linkImage: post["listLinks"] as? [String] ?? [""], typePost: post["typePost"] as? String ?? "", breed: post["breed"] as? String ?? "", postName: post["postName"] as? String ?? "", descriptionName: post["description"] as? String ?? "", typePet: post["typePet"] as? String ?? "", oldPet: post["oldPet"] as? String ?? "", lostAdress: post["lostAdress"] as? String ?? "", curentDate: post["curentDate"] as? String ?? ""))
                     }
                 }
                 completion(resultMass)
@@ -116,9 +116,9 @@ class FirebaseData: FirebaseProtocol {
         var resultMass: [AdvertProtocol] = []
         let ref = Database.database().reference().child("posts").child(id)
         ref.observe(.value) { snap in
-            if let snapshots = snap.children.allObjects as? [DataSnapshot] {
+            if snap.children.allObjects is [DataSnapshot] {
                 if let post = snap.value as? Dictionary<String, AnyObject>  {
-                    resultMass.append(AdvertPost(countComments: post["countComments"] as? String ?? "", postId: post["postID"] as? String ?? "", phoneNumber: post["phoneNumber"] as? String ?? "", linkImage: post["listLinks"] as? String ?? "", typePost: post["typePost"] as? String ?? "", breed: post["breed"] as? String ?? "", postName: post["postName"] as? String ?? "", descriptionName: post["description"] as? String ?? "", typePet: post["typePet"] as? String ?? "", oldPet: post["oldPet"] as? String ?? "", lostAdress: post["lostAdress"] as? String ?? "", curentDate: post["curentDate"] as? String ?? ""))
+                    resultMass.append(AdvertPost(countComments: post["countComments"] as? String ?? "", postId: post["postID"] as? String ?? "", phoneNumber: post["phoneNumber"] as? String ?? "", linkImage: post["listLinks"] as? [String] ?? [""], typePost: post["typePost"] as? String ?? "", breed: post["breed"] as? String ?? "", postName: post["postName"] as? String ?? "", descriptionName: post["description"] as? String ?? "", typePet: post["typePet"] as? String ?? "", oldPet: post["oldPet"] as? String ?? "", lostAdress: post["lostAdress"] as? String ?? "", curentDate: post["curentDate"] as? String ?? ""))
                 }
                 completion(resultMass)
             }
@@ -164,7 +164,7 @@ class FirebaseData: FirebaseProtocol {
     func loadComplainUser(postID: String, completion: @escaping ([String]) -> Void) {
         let ref = Database.database().reference().child("posts").child(postID).child("Complains")
         ref.observeSingleEvent(of: .value) { (snapshot) in
-            if var complains = snapshot.value as? [String]  {
+            if let complains = snapshot.value as? [String]  {
                 completion(complains)
             } else {
                 completion([])
@@ -172,21 +172,22 @@ class FirebaseData: FirebaseProtocol {
         }
     }
     
-    func save(posts: [AdvertProtocol], id: String,  stroage: [Data]) {
+    func save(posts: [AdvertProtocol], id: String,  stroage: [Data], completion: @escaping (Bool) -> Void) {
         let ref = Database.database().reference().child("posts")
-        var list = String()
+        var list = [String]()
         ref.getData { (err, snap) in
             guard err == nil else {
-                print (err)
+                completion(false)
                 return
             }
             self.saveImage(stroage, "\(id)") { data in
                 DispatchQueue.global().async {
-                    list += "\(data)"
+                    list.append(data)
                     DispatchQueue.main.async {
                         ref.child("\(id)").setValue(["postName": posts.first?.postName, "description": posts.first?.descriptionName, "typePet": posts.first?.typePet, "oldPet": posts.first?.oldPet, "lostAdress": posts.first?.lostAdress, "curentDate": posts.first?.curentDate, "breed": posts.first?.breed, "typePost": posts.first?.typePost, "listLinks": list, "phoneNumber": posts.first?.phoneNumber, "postID": "\(id)", "countComments": posts.first?.countComments])
                     }
                 }
+                completion(true)
             }
         }
     }

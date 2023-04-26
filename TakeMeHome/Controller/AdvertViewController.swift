@@ -93,10 +93,8 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     func complain(_ index: Int) {
         if searching {
             idPost = filterMass[index].postId
-            print("Searching: \(idPost)")
         } else {
             idPost = advertMass[index].postId
-            print("Advert: \(idPost)")
         }
         complainViewShow()
     }
@@ -152,7 +150,7 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
                                     countComments: data[i].countComments,
                                     postId: data[i].postId,
                                     phoneNumber: data[i].phoneNumber,
-                                    linkImage: ConverterLinks.shared.getFirstLinks(data[i].linkImage),
+                                    linkImage: data[i].linkImage,
                                     typePost: data[i].typePost,
                                     breed: data[i].breed,
                                     postName: data[i].postName,
@@ -287,7 +285,7 @@ extension AdvertViewController: UITableViewDataSource {
     private func configure(cell: AdvertTableViewCell, for indexPath: IndexPath) -> UITableViewCell {
         if searching {
             DispatchQueue.global().async { [self] in
-                let resurse = ImageResource(downloadURL: URL(string: filterMass[indexPath.row].linkImage)!, cacheKey: filterMass[indexPath.row].linkImage)
+                let resurse = ImageResource(downloadURL: URL(string: filterMass[indexPath.row].linkImage.first!)!, cacheKey: filterMass[indexPath.row].linkImage.first)
                 DispatchQueue.main.async { [self] in
                     cell.postImageView.kf.setImage(with: resurse)
                     cell.postName.text = filterMass[indexPath.row].postName
@@ -301,7 +299,7 @@ extension AdvertViewController: UITableViewDataSource {
             return cell
         } else {
             DispatchQueue.global().async { [self] in
-                let resurse = ImageResource(downloadURL: URL(string: advertMass[indexPath.row].linkImage)!, cacheKey: advertMass[indexPath.row].linkImage)
+                let resurse = ImageResource(downloadURL: URL(string: advertMass[indexPath.row].linkImage.first!)!, cacheKey: advertMass[indexPath.row].linkImage.first!)
                 DispatchQueue.main.async { [self] in
                     cell.postImageView.kf.setImage(with: resurse)
                     cell.postName.text = advertMass[indexPath.row].postName

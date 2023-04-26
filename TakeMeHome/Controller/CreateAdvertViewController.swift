@@ -26,6 +26,9 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     @IBOutlet weak var choiseAge: UISegmentedControl!
     @IBOutlet weak var adressBlock: UIStackView!
     @IBOutlet weak var breedBlock: UIStackView!
+    @IBOutlet weak var mainView: UIView!
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
     private var height: Double = 0.0
     private var userDefaults: UserDefaults?
     private var key: String = "id"
@@ -35,16 +38,12 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     private var agePet: String = ""
     private var typePet: String = ""
     private var alertView: AlertInDevelop!
-    @IBOutlet private weak var scrollView: UIScrollView!
     private var imageStorage: [Data] = []
-    var geoCoder: SessionManager!
+    private var geoCoder: SessionManager!
     private var adressElement: [Geocoder] = []
-    @IBOutlet weak var loader: UIActivityIndicatorView!
     private var storage = UserDefaults.standard
     private var storageKey = "login"
-    
-    
-    @IBOutlet weak var mainView: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -57,7 +56,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         askPermision()
         scrollView.setContentOffset(CGPoint.zero, animated: true)
         navigationItem.title = "Создать объявление"
-        navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
+        navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelTapped))
         navigationItem.rightBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
     }
     
@@ -67,16 +66,13 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     
     @objc func  saveTapped() {
         let user = storage.object(forKey: storageKey) as? String ?? ""
-        
         if checkCorrectPost() {
             var posts: [AdvertProtocol] = []
-            
             if imageStorage.isEmpty {
                 if let image = UIImage(named: "no_image.png"), let imageData = image.pngData() {
                     imageStorage.append(imageData)
                 }
             }
-            
             if typePostText == "" {
                 typePostText = "Пропажа"
             }
@@ -86,11 +82,20 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             if typePet == "" {
                 typePet = "Собака"
             }
-            posts.append(AdvertPost(countComments: "0", postId: "", phoneNumber: phoneNumber.text ?? "", linkImage: "", typePost: typePostText , breed: breed.text ?? "", postName: postName.text ?? "", descriptionName: descriptionText.text ?? "", typePet: typePet, oldPet: agePet , lostAdress: createAdress() , curentDate: TimeManager.shared.currentDate()))
+            posts.append(AdvertPost(countComments: "0", postId: "", phoneNumber: phoneNumber.text ?? "", linkImage: [""], typePost: typePostText , breed: breed.text ?? "", postName: postName.text ?? "", descriptionName: descriptionText.text ?? "", typePet: typePet, oldPet: agePet , lostAdress: createAdress() , curentDate: TimeManager.shared.currentDate()))
             let postID = coreData.getUUID()
-            fireBase?.save(posts: posts, id: postID, stroage: imageStorage)
-            fireBase?.saveIDPostUser(id: postID, login: user)
-            dismiss(animated: true)
+            fireBase?.save(posts: posts, id: postID, stroage: imageStorage) { [self] response in
+                if response {
+                    DispatchQueue.global().async { [self] in
+                        fireBase?.saveIDPostUser(id: postID, login: user)
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true)
+                        }
+                    }
+                } else {
+                    showAlert(message: "Произошла ошибка. Проверьте соиденение с Интернетом и повторите попытку.")
+                }
+            }
         } else {
             showAlert(message: "Проверьте заполнены ли все поля и попробуйте еще раз:)")
         }
