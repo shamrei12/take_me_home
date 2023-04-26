@@ -67,7 +67,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     
     @objc func  saveTapped() {
         let user = storage.object(forKey: storageKey) as? String ?? ""
-        print("user: \(user)")
         
         if checkCorrectPost() {
             var posts: [AdvertProtocol] = []
@@ -250,9 +249,9 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
                         DispatchQueue.main.async { [self] in
                             let country = completion.address.country
                             let city = completion.address.city
-                            let street = adressFormated(street: completion.address.road)
+                            let street = adressFormated(street: completion.address.road ?? "")
                             let houseNumber = completion.address.houseNumber
-                            adressElement.append(Geocoder(country: country, city: city, street: street, houseNumber: houseNumber, buildingNumber: ""))
+                            adressElement.append(Geocoder(country: country ?? "", city: city ?? "", street: street, houseNumber: houseNumber ?? "", buildingNumber: ""))
                             getAdress(type: 0)
                         }
                         self.loader.stopAnimating()

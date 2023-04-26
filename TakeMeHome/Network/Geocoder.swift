@@ -11,7 +11,6 @@ class SessionManager {
     
     func countryRequest(common: (Double, Double), dataResponse: @escaping (GeocoderModel) -> Void) {
         let urlString = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=\(common.0)&lon=\(common.1)&accept-language=ru"
-        print(urlString)
         AF.request(urlString).responseDecodable(of: GeocoderModel.self) { response in
             switch response.result {
             case .success(let model):

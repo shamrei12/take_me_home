@@ -172,17 +172,17 @@ class FirebaseData: FirebaseProtocol {
         }
     }
     
-    
     func save(posts: [AdvertProtocol], id: String,  stroage: [Data]) {
         let ref = Database.database().reference().child("posts")
         var list = String()
         ref.getData { (err, snap) in
             guard err == nil else {
+                print (err)
                 return
             }
             self.saveImage(stroage, "\(id)") { data in
                 DispatchQueue.global().async {
-                    list += "\(data) "
+                    list += "\(data)"
                     DispatchQueue.main.async {
                         ref.child("\(id)").setValue(["postName": posts.first?.postName, "description": posts.first?.descriptionName, "typePet": posts.first?.typePet, "oldPet": posts.first?.oldPet, "lostAdress": posts.first?.lostAdress, "curentDate": posts.first?.curentDate, "breed": posts.first?.breed, "typePost": posts.first?.typePost, "listLinks": list, "phoneNumber": posts.first?.phoneNumber, "postID": "\(id)", "countComments": posts.first?.countComments])
                     }

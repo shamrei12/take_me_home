@@ -14,9 +14,7 @@ struct GeocoderModel: Codable {
     let placeRank: Int
     let category, type: String
     let importance: Double
-    let addresstype: String
-    let name: JSONNull?
-    let displayName: String
+    let addresstype, name, displayName: String
     let address: Address
     let boundingbox: [String]
 
@@ -35,44 +33,16 @@ struct GeocoderModel: Codable {
 
 // MARK: - Address
 struct Address: Codable {
-    let houseNumber, road, cityDistrict, city: String
-    let state, iso31662Lvl4, postcode, country: String
-    let countryCode: String
+    let building, houseNumber, road, city: String?
+    let county, state, iso31662Lvl4, postcode: String?
+    let country, countryCode: String?
 
     enum CodingKeys: String, CodingKey {
+        case building
         case houseNumber = "house_number"
-        case road
-        case cityDistrict = "city_district"
-        case city, state
+        case road, city, county, state
         case iso31662Lvl4 = "ISO3166-2-lvl4"
         case postcode, country
         case countryCode = "country_code"
-    }
-}
-
-// MARK: - Encode/decode helpers
-
-class JSONNull: Codable, Hashable {
-
-    public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
-        return true
-    }
-
-    public var hashValue: Int {
-        return 0
-    }
-
-    public init() {}
-
-    public required init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if !container.decodeNil() {
-            throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
-        }
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encodeNil()
     }
 }
