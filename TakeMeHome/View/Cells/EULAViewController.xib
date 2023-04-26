@@ -51,7 +51,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKN-JH-FbL">
                                         <rect key="frame" x="5" y="10" width="383" height="1050"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <mutableString key="text">
+                                        <string key="text">
 1. Права и ограничения использования
 1.1. Приложение "Take Me Home" предназначено для использования только в личных целях.
 1.2. Запрещается передавать, распространять, продавать или использовать приложение для любых коммерческих целей.
@@ -73,7 +73,7 @@
 5.1. Запрещается создавать оскорбительные посты, комментарии и прочее, используя приложение "Take Me Home".
 5.2. Запрещается использовать приложение для распространения ненормативной лексики и любой другой контент, который может быть оскорбительным.
 
-Пожалуйста, ознакомьтесь с нашими условиями использования приложения "Take Me Home" перед использованием приложения. Если вы согласны с условиями договора, нажмите кнопку "Принять и продолжить". Если вы не согласны с условиями договора, не используйте приложение</mutableString>
+Пожалуйста, ознакомьтесь с нашими условиями использования приложения "Take Me Home" перед использованием приложения. Если вы согласны с условиями договора, нажмите кнопку "Принять и продолжить". Если вы не согласны с условиями договора, не используйте приложение</string>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

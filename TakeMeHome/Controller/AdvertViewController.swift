@@ -11,12 +11,6 @@ import FirebaseCore
 import Kingfisher
 
 class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
-    
-    @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var collectionView: UICollectionView!
-    private var sideMenuShadowView: UIView!
-    private var sideMenuTrailingConstraint: NSLayoutConstraint!
-    private var revealSideMenuOnTop: Bool = true
     private var fbManager: FirebaseData!
     private var coreData: CoreDataClass!
     private var filterMass:  [AdvertProtocol] = []
@@ -35,6 +29,8 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     @IBOutlet weak var createAdvertButton: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak private var mainView: UIView!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,12 +118,14 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
             self.view.alpha = 1.0
             self.view.isUserInteractionEnabled = true
         }
-
         complainVC.removeFromSuperview()
     }
     
     func agree() {
-        self.view.alpha = 1
+        UIView.animate(withDuration: 0.1) {
+            self.view.alpha = 1.0
+            self.view.isUserInteractionEnabled = true
+        }
         fbManager.saveComplainUser(postID: idPost, UserID: storage.object(forKey: storageKey) as! String)
         getData()
         complainVC.removeFromSuperview()
@@ -136,7 +134,7 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     @IBAction func showCreateAdvert(_ sender: UIButton) {
         let createVC = CreateAdvertViewController.instantiate()
         let navigationController = UINavigationController(rootViewController: createVC)
-        createVC.modalPresentationStyle = .fullScreen
+        navigationController.modalPresentationStyle = .fullScreen
         present(navigationController, animated: true)
     }
     
@@ -181,8 +179,6 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
             }
         }
     }
-
-
     
     func countingType(_ type: String) {
         if type == "Собака" {

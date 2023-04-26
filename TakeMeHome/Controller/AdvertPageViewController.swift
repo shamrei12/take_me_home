@@ -181,7 +181,6 @@ extension AdvertPageViewController: UICollectionViewDelegate, UICollectionViewDa
         listResourse.count
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell: ImagePostCollectionViewCell
         if let reuseCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImagePostCollectionViewCell", for: indexPath) as? ImagePostCollectionViewCell {
