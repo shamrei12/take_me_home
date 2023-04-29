@@ -14,7 +14,7 @@ struct GeocoderModel: Codable {
     let placeRank: Int
     let category, type: String
     let importance: Double
-    let addresstype, name, displayName: String
+    let addresstype, name, displayName: String?
     let address: Address
     let boundingbox: [String]
 

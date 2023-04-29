@@ -25,19 +25,25 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     private var countDog = 0
     private var countCat = 0
     private var countOther = 0
+    let createButton = UIButton(type: .system)
+
     
-    @IBOutlet weak var createAdvertButton: UIButton!
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak private var mainView: UIView!
+    @IBOutlet private weak var createAdvertButton: UIButton!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak  var mainView: UIView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
+    
+    override func loadView() {
+        super.loadView()
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         fbManager = FirebaseData()
         coreData = CoreDataClass()
         firstStart()
-        createAdvertButton.layer.cornerRadius = 10
         tableView.register(UINib(nibName: "AdvertTableViewCell", bundle: nil), forCellReuseIdentifier: "AdvertTableViewCell")
         tableView.register(UINib(nibName: "NoPostTableViewCell", bundle: nil), forCellReuseIdentifier: "NoPostTableViewCell")
         collectionView.register(UINib(nibName: "AdvertCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AdvertCollectionViewCell")
@@ -46,15 +52,18 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        getData()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+
+    @IBAction func showCreateAdvert(_ sender: UIButton) {
+        let createVC = CreateAdvertViewController.instantiate()
+        let navigationController = UINavigationController(rootViewController: createVC)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true)
     }
     
     func showAlert() {
@@ -87,6 +96,8 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     func firstStart() {
         if storage.object(forKey: storageKey) == nil {
             showAlert()
+        } else {
+            getData()
         }
     }
     
@@ -127,13 +138,6 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
         fbManager.saveComplainUser(postID: idPost, UserID: storage.object(forKey: storageKey) as! String)
         getData()
         complainVC.removeFromSuperview()
-    }
-    
-    @IBAction func showCreateAdvert(_ sender: UIButton) {
-        let createVC = CreateAdvertViewController.instantiate()
-        let navigationController = UINavigationController(rootViewController: createVC)
-        navigationController.modalPresentationStyle = .fullScreen
-        present(navigationController, animated: true)
     }
     
     func getData() {
@@ -345,7 +349,4 @@ extension AdvertViewController: UICollectionViewDataSource {
         }
         return cell
     }
-    
 }
-
-

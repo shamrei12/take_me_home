@@ -35,7 +35,7 @@ class AdvertTableViewCell: UITableViewCell {
         self.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             button.topAnchor.constraint(equalTo: self.topAnchor, constant: 16)
         ])
 

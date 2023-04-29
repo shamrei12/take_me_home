@@ -15,10 +15,10 @@ class AlertInDevelop: UIView {
     @IBOutlet weak var textAlert: UILabel!
     
     override func awakeFromNib() {
-          super.awakeFromNib()
+        super.awakeFromNib()
         buttonTapped.layer.cornerRadius = 10
         self.layer.cornerRadius = 10
-      }
+    }
     
     
     @IBAction func cancelSceneTapped(_ sender: UIButton) {

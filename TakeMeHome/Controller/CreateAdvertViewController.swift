@@ -9,16 +9,17 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import PhotosUI
+import PhoneNumberKit
 
 class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPickerViewControllerDelegate, AlertDelegate {
     @IBOutlet weak private var postName: UITextField!
     @IBOutlet weak private var breed: UITextField!
     @IBOutlet weak private var cityName: UITextField!
-    @IBOutlet weak private var countryPicker: UIButton!
+    @IBOutlet weak var countryName: UITextField!
     @IBOutlet weak private var streetName: UITextField!
     @IBOutlet weak private var houseNumber: UITextField!
     @IBOutlet weak private var buildLabel: UITextField!
-    @IBOutlet weak private var phoneNumber: UITextField!
+    @IBOutlet weak var userNumber: PhoneNumberTextField!
     @IBOutlet weak private var descriptionText: UITextField!
     @IBOutlet weak private var collectionView: UICollectionView!
     @IBOutlet weak private var postType: UISegmentedControl!
@@ -29,6 +30,8 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     @IBOutlet weak var mainView: UIView!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
+    
+    private var activityIndicator: UIActivityIndicatorView?
     private var height: Double = 0.0
     private var userDefaults: UserDefaults?
     private var key: String = "id"
@@ -43,15 +46,21 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     private var adressElement: [Geocoder] = []
     private var storage = UserDefaults.standard
     private var storageKey = "login"
+    private let phoneNumberKit = PhoneNumberKit()
+    private var checkSavePost = false
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        phoneNumber.delegate = self
+        userNumber.withFlag = true
+        userNumber.withExamplePlaceholder = true
+        userNumber.withPrefix = true
+        userNumber.addTarget(self, action: #selector(phoneNumberTextFieldDidChange), for: .editingChanged)
+        userNumber.delegate = self
         addPhothoButton.layer.cornerRadius = 10
         fireBase = FirebaseData()
         coreData = CoreDataClass()
-        choiceType()
         collectionView.register(UINib(nibName: "AddPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AddPhotoCollectionViewCell")
         askPermision()
         scrollView.setContentOffset(CGPoint.zero, animated: true)
@@ -60,47 +69,100 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         navigationItem.rightBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
     }
     
+    @objc func phoneNumberTextFieldDidChange() {
+        do {
+            let phoneNumber = try phoneNumberKit.parse(userNumber.text!)
+            let formattedNumber = phoneNumberKit.format(phoneNumber, toType: .international)
+            userNumber.text = formattedNumber
+        } catch {
+            print("Invalid phone number")
+        }
+    }
+    
     @objc func  cancelTapped() {
         self.dismiss(animated: true)
     }
     
-    @objc func  saveTapped() {
+    @objc func saveTapped() {
+        guard !checkSavePost else { return }
+        checkSavePost = true
+        
         let user = storage.object(forKey: storageKey) as? String ?? ""
-        if checkCorrectPost() {
-            var posts: [AdvertProtocol] = []
-            if imageStorage.isEmpty {
-                if let image = UIImage(named: "no_image.png"), let imageData = image.pngData() {
-                    imageStorage.append(imageData)
-                }
+        guard checkCorrectPost() else {
+            showAlert(message: "Проверьте заполнены ли все поля и попробуйте еще раз:)")
+            checkSavePost = false
+            return
+        }
+        
+        var posts: [AdvertProtocol] = []
+        if imageStorage.isEmpty {
+            if let image = UIImage(named: "no_image.png"), let imageData = image.pngData() {
+                imageStorage.append(imageData)
             }
-            if typePostText == "" {
-                typePostText = "Пропажа"
-            }
-            if agePet == "" {
-                agePet = "До 1 года"
-            }
-            if typePet == "" {
-                typePet = "Собака"
-            }
-            posts.append(AdvertPost(countComments: "0", postId: "", phoneNumber: phoneNumber.text ?? "", linkImage: [""], typePost: typePostText , breed: breed.text ?? "", postName: postName.text ?? "", descriptionName: descriptionText.text ?? "", typePet: typePet, oldPet: agePet , lostAdress: createAdress() , curentDate: TimeManager.shared.currentDate()))
-            let postID = coreData.getUUID()
-            fireBase?.save(posts: posts, id: postID, stroage: imageStorage) { [self] response in
+        }
+        
+        typePostText = typePostText.isEmpty ? "Пропажа" : typePostText
+        agePet = agePet.isEmpty ? "До 1 года" : agePet
+        typePet = typePet.isEmpty ? "Собака" : typePet
+        
+        let post = AdvertPost(
+            countComments: "0",
+            postId: "",
+            phoneNumber: userNumber.text ?? "",
+            linkImage: [""],
+            typePost: typePostText,
+            breed: breed.text ?? "",
+            postName: postName.text ?? "",
+            descriptionName: descriptionText.text ?? "",
+            typePet: typePet,
+            oldPet: agePet,
+            lostAdress: createAdress(),
+            curentDate: TimeManager.shared.currentDate()
+        )
+        posts.append(post)
+        
+        let postID = coreData.getUUID()
+        fireBase?.save(posts: posts, id: postID, stroage: imageStorage) { [self] response in
+            DispatchQueue.main.async { [self] in
+                showActivityIndicator()
+                startLongOperation()
                 if response {
                     DispatchQueue.global().async { [self] in
                         fireBase?.saveIDPostUser(id: postID, login: user)
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.async { [self] in
+                            endLongOperation()
                             self.dismiss(animated: true)
                         }
                     }
                 } else {
-                    showAlert(message: "Произошла ошибка. Проверьте соиденение с Интернетом и повторите попытку.")
+                    showAlert(message: "Произошла ошибка. Проверьте соединение с Интернетом и повторите попытку.")
                 }
             }
-        } else {
-            showAlert(message: "Проверьте заполнены ли все поля и попробуйте еще раз:)")
         }
-        
     }
+    
+    
+    func showActivityIndicator() -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = view.center
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
+        return activityIndicator
+    }
+
+
+    func startLongOperation() {
+        activityIndicator = showActivityIndicator()
+    }
+
+    func endLongOperation() {
+        activityIndicator?.stopAnimating()
+        activityIndicator?.removeFromSuperview()
+        activityIndicator = nil
+    }
+
+
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         var contentInsets = scrollView.contentInset
         contentInsets.bottom = -(textField.frame.maxY - scrollView.frame.height + 10) / 2
@@ -143,37 +205,29 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         })
     }
     
-    func formattedNumber(number: String) -> String {
-        let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-        let mask = "+###(##)#######"
-        var result = ""
-        var index = cleanPhoneNumber.startIndex
-        for ch in mask where index < cleanPhoneNumber.endIndex {
-            if ch == "#" {
-                result.append(cleanPhoneNumber[index])
-                index = cleanPhoneNumber.index(after: index)
-            } else {
-                result.append(ch)
-            }
-        }
-        return result
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string:  String) -> Bool {
-        if phoneNumber.isEditing {
-            let  char = string.cString(using: String.Encoding.utf8)!
-            let isBackSpace = strcmp(char, "\\b")
-            guard let text = textField.text else { return false }
-            let newString = (text as NSString).replacingCharacters(in: range, with: string)
-            if ((isBackSpace == -92) && (textField.text?.count)! > 0) {
-                textField.text!.removeLast()
-            } else {
-                textField.text = formattedNumber(number: newString)
-            }
-            return false
-        }
-        return true
-    }
+    //    func formattedNumber(number: String) -> String {
+    //        do {
+    //            let phoneNumber = try phoneNumberKit.parse(number, ignoreType: true)
+    //            self.parsedNumberLabel.text = self.phoneNumberKit.format(phoneNumber, toType: .international)
+    //            self.parsedCountryCodeLabel.text = String(phoneNumber.countryCode)
+    //            if let regionCode = phoneNumberKit.mainCountry(forCode: phoneNumber.countryCode) {
+    //                let country = Locale.current.localizedString(forRegionCode: regionCode)
+    //                self.parsedCountryLabel.text = country
+    //            }
+    //        } catch {
+    //            self.clearResults()
+    //            print("Something went wrong")
+    //        }
+    //    }
+    //
+    //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string:  String) -> Bool {
+    //        if userNumber.isEditing {
+    //                textField.text = formattedNumber(number: newString)
+    //            }
+    //        }
+    //        return true
+    ////    }
+    //}
     
     func showAlert(message: String) {
         alertView = AlertInDevelop.loadFromNib()
@@ -189,7 +243,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     }
     
     func checkCorrectPost() -> Bool {
-        
         if cityName.text?.count == 0 || streetName.text?.count == 0 || houseNumber.text?.count == 0 {
             return false
         } else if breed.text?.count == 0 {
@@ -198,7 +251,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             return false
         } else if descriptionText.text?.count == 0 {
             return false
-        } else if phoneNumber.text?.count == 0 {
+        } else if userNumber.text?.count == 0 {
             return false
         } else {
             return true
@@ -212,6 +265,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     func getAdress(type: Int) {
         switch type {
         case 0:
+            countryName.text = adressElement.first?.country
             cityName.text = adressElement.first?.city
             streetName.text = adressElement.first?.street
             houseNumber.text = adressElement.first?.houseNumber
@@ -232,15 +286,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         str = str.trimmingCharacters(in: .whitespaces)
         return str
     }
-    
-    func setPullDownButtonValue(button: UIButton, condition: Bool) {
-        if condition {
-            button.setTitle("Беларусь", for: .normal)
-        } else {
-            button.setTitle("Значение 2", for: .normal)
-        }
-    }
-    
     
     @IBAction func getAdress(_ sender: UISwitch) {
         if sender.isOn {
@@ -305,9 +350,9 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     
     func createAdress() -> String {
         if buildLabel.text!.count > 0 {
-            return "\(countryPicker.titleLabel?.text ?? ""), \(cityName.text ?? ""), ул. \(streetName.text ?? ""), \(houseNumber.text ?? ""), к\(buildLabel.text ?? "")"
+            return "\(countryName.text ?? ""), \(cityName.text ?? ""), ул. \(streetName.text ?? ""), \(houseNumber.text ?? ""), к\(buildLabel.text ?? "")"
         } else {
-            return "\(countryPicker.titleLabel?.text ?? ""), \(cityName.text ?? ""), ул. \(streetName.text ?? ""), \(houseNumber.text ?? "")"
+            return "\(countryName.text ?? ""), \(cityName.text ?? ""), ул. \(streetName.text ?? ""), \(houseNumber.text ?? "")"
         }
     }
     
@@ -333,17 +378,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             }
         }
         dismiss(animated: true)
-    }
-    
-    func choiceType() {
-        let optionClousure = {(action: UIAction) in
-            print(action.title)
-        }
-        countryPicker.menu = UIMenu(children: [
-            UIAction(title: "Беларусь", state: .on, handler: optionClousure)
-        ])
-        countryPicker.showsMenuAsPrimaryAction = true
-        countryPicker.changesSelectionAsPrimaryAction = true
     }
 }
 

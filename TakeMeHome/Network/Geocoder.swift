@@ -22,18 +22,4 @@ class SessionManager {
             }
         }
     }
-
-    func parseJSON(data: Data) -> GeocoderModel? {
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-        do {
-            let main = try decoder.decode(GeocoderModel.self, from: data)
-            return main
-        } catch let error {
-            print("Ошибка при парсинге JSON: \(error.localizedDescription)")
-            print(String(data: data, encoding: .utf8) ?? "")
-            return nil
-        }
-    }
 }
