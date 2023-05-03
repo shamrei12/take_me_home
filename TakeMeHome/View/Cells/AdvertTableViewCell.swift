@@ -35,10 +35,11 @@ class AdvertTableViewCell: UITableViewCell {
         self.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            button.topAnchor.constraint(equalTo: self.topAnchor, constant: 16)
+            button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
+            button.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+            button.widthAnchor.constraint(equalToConstant: 20),
+            button.heightAnchor.constraint(equalToConstant: 20)
         ])
-
     }
     
     @objc func buttonTapped(_ sender: UIButton) {

@@ -24,9 +24,6 @@
 		D820C6AD298EA0CC001B11B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6AC298EA0CC001B11B7 /* Extensions.swift */; };
 		D820C6B1298EA157001B11B7 /* AdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6B0298EA157001B11B7 /* AdvertViewController.swift */; };
 		D820C6BC298F96E3001B11B7 /* AdvertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D820C6BA298F96E3001B11B7 /* AdvertCollectionViewCell.swift */; };
-		D8351AD729FBDF62002A0205 /* PhoneNumberKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D8351AD429FBDF62002A0205 /* PhoneNumberKit-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		D8351ADB29FBE528002A0205 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = D8351ADA29FBE528002A0205 /* PhoneNumberKit */; };
-		D8351ADD29FBE528002A0205 /* PhoneNumberKit-Static in Frameworks */ = {isa = PBXBuildFile; productRef = D8351ADC29FBE528002A0205 /* PhoneNumberKit-Static */; };
 		D836824B29AA8DD3005AB64B /* ImagePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836824929AA8DD3005AB64B /* ImagePostCollectionViewCell.swift */; };
 		D836824F29AA9862005AB64B /* CommentsPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836824D29AA9862005AB64B /* CommentsPostTableViewCell.swift */; };
 		D836825229ABBF06005AB64B /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836825129ABBF06005AB64B /* CommentModel.swift */; };
@@ -45,6 +42,8 @@
 		D89640E4299CCE3B00DF968C /* AdvertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640E3299CCE3B00DF968C /* AdvertModel.swift */; };
 		D89640E7299CCF0700DF968C /* CreateAdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */; };
 		D8979E5629C112DC0083F8D6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8979E5529C112DC0083F8D6 /* Protocols.swift */; };
+		D899961A29FD86E5008D9599 /* PhoneNumberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D899961929FD86E5008D9599 /* PhoneNumberKit.framework */; };
+		D899961C2A02856A008D9599 /* UserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D899961B2A02856A008D9599 /* UserDefaultsModel.swift */; };
 		D8C9615529D80B2E00D931F8 /* Geocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C9615429D80B2E00D931F8 /* Geocoder.swift */; };
 		D8C9615B29D8302500D931F8 /* Geoposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C9615A29D8302500D931F8 /* Geoposition.swift */; };
 		D8D1EA0B299D272800F24D34 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EA0A299D272800F24D34 /* TimeManager.swift */; };
@@ -54,20 +53,6 @@
 		D8EA7EBE29E31FBD00D27E90 /* GeocoderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA7EBD29E31FBD00D27E90 /* GeocoderModel.swift */; };
 		D8EA7EC229E31FF200D27E90 /* GeocoderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA7EC129E31FF200D27E90 /* GeocoderProtocol.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		D8351AD629FBDF62002A0205 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D8351AD729FBDF62002A0205 /* PhoneNumberKit-Dynamic in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		09EF582A2AB78EDA9A600900 /* Pods_TakeMeHome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TakeMeHome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +92,8 @@
 		D89640E5299CCF0700DF968C /* CreateAdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdvertViewController.swift; sourceTree = "<group>"; };
 		D89640E6299CCF0700DF968C /* CreateAdvertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateAdvertViewController.xib; sourceTree = "<group>"; };
 		D8979E5529C112DC0083F8D6 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		D899961929FD86E5008D9599 /* PhoneNumberKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PhoneNumberKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D899961B2A02856A008D9599 /* UserDefaultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsModel.swift; sourceTree = "<group>"; };
 		D8A0FB992992558C0051C9F7 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D8A0FB9F299279BB0051C9F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D8C9615429D80B2E00D931F8 /* Geocoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoder.swift; sourceTree = "<group>"; };
@@ -126,8 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8351ADB29FBE528002A0205 /* PhoneNumberKit in Frameworks */,
-				D8351ADD29FBE528002A0205 /* PhoneNumberKit-Static in Frameworks */,
+				D899961A29FD86E5008D9599 /* PhoneNumberKit.framework in Frameworks */,
 				0D9E67E098F500079B41CA6A /* Pods_TakeMeHome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +133,7 @@
 		8E0F32BE128FB2C8D2DBE8D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D899961929FD86E5008D9599 /* PhoneNumberKit.framework */,
 				09EF582A2AB78EDA9A600900 /* Pods_TakeMeHome.framework */,
 			);
 			name = Frameworks;
@@ -285,6 +272,7 @@
 				D8EA7EC129E31FF200D27E90 /* GeocoderProtocol.swift */,
 				D836825329B4808F005AB64B /* CoredataModel.swift */,
 				D8EA7EBD29E31FBD00D27E90 /* GeocoderModel.swift */,
+				D899961B2A02856A008D9599 /* UserDefaultsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -329,7 +317,6 @@
 				D820C67E298C24DA001B11B7 /* Sources */,
 				D820C67F298C24DA001B11B7 /* Frameworks */,
 				D820C680298C24DA001B11B7 /* Resources */,
-				D8351AD629FBDF62002A0205 /* Embed Frameworks */,
 				11BFE9FEB049C22DBB6B319B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -338,9 +325,6 @@
 			);
 			name = TakeMeHome;
 			packageProductDependencies = (
-				D8351AD429FBDF62002A0205 /* PhoneNumberKit-Dynamic */,
-				D8351ADA29FBE528002A0205 /* PhoneNumberKit */,
-				D8351ADC29FBE528002A0205 /* PhoneNumberKit-Static */,
 			);
 			productName = TakeMeHome;
 			productReference = D820C682298C24DA001B11B7 /* TakeMeHome.app */;
@@ -371,7 +355,7 @@
 			);
 			mainGroup = D820C679298C24DA001B11B7;
 			packageReferences = (
-				D8351ACA29FB0EA0002A0205 /* XCRemoteSwiftPackageReference "PhoneNumberKit.git" */,
+				D8351ACA29FB0EA0002A0205 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
 			);
 			productRefGroup = D820C683298C24DA001B11B7 /* Products */;
 			projectDirPath = "";
@@ -468,6 +452,7 @@
 				D8EA7EC229E31FF200D27E90 /* GeocoderProtocol.swift in Sources */,
 				D87BF5FF29E89460008FCD71 /* AdvertTableViewCell.swift in Sources */,
 				D8C9615529D80B2E00D931F8 /* Geocoder.swift in Sources */,
+				D899961C2A02856A008D9599 /* UserDefaultsModel.swift in Sources */,
 				D836825429B4808F005AB64B /* CoredataModel.swift in Sources */,
 				D87BF5F229E67109008FCD71 /* AlertInDevelop.swift in Sources */,
 				D836825229ABBF06005AB64B /* CommentModel.swift in Sources */,
@@ -621,7 +606,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TakeMeHome/TakeMeHome.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 285RFT4HL7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TakeMeHome/Info.plist;
@@ -638,7 +623,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = alexshamrey.TakeMeHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -658,7 +643,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TakeMeHome/TakeMeHome.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 285RFT4HL7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TakeMeHome/Info.plist;
@@ -675,7 +660,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = alexshamrey.TakeMeHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -711,7 +696,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D8351ACA29FB0EA0002A0205 /* XCRemoteSwiftPackageReference "PhoneNumberKit.git" */ = {
+		D8351ACA29FB0EA0002A0205 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/PhoneNumberKit.git";
 			requirement = {
@@ -720,24 +705,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D8351AD429FBDF62002A0205 /* PhoneNumberKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D8351ACA29FB0EA0002A0205 /* XCRemoteSwiftPackageReference "PhoneNumberKit.git" */;
-			productName = "PhoneNumberKit-Dynamic";
-		};
-		D8351ADA29FBE528002A0205 /* PhoneNumberKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D8351ACA29FB0EA0002A0205 /* XCRemoteSwiftPackageReference "PhoneNumberKit.git" */;
-			productName = PhoneNumberKit;
-		};
-		D8351ADC29FBE528002A0205 /* PhoneNumberKit-Static */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D8351ACA29FB0EA0002A0205 /* XCRemoteSwiftPackageReference "PhoneNumberKit.git" */;
-			productName = "PhoneNumberKit-Static";
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D820C68E298C24DA001B11B7 /* TakeMeHome.xcdatamodeld */ = {

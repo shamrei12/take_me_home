@@ -9,6 +9,7 @@ import UIKit
 import Kingfisher
 
 class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFieldDelegate {
+    
     @IBOutlet weak var postID: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var postName: UILabel!
@@ -23,16 +24,16 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var pageControl: UIPageControl!
-    private var moveTextField = true
-    private var idPost = ""
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var mainView: UIView!
     private var listResourse = [ImageResource]()
     private var commentsPost = [Comments]()
     private var fbManager: FirebaseData!
+    private var idPost = ""
     private var stringPostID: String = ""
     private var adresForMap: String = ""
-    @IBOutlet weak var mainView: UIView!
-    
+    private var moveTextField = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -45,11 +46,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
         navigationItem.title = "Объявление"
         navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelTapped))
     }
-    
-    @objc func cancelTapped() {
-        self.dismiss(animated: true)
-    }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
@@ -62,6 +59,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
         super.viewDidAppear(animated)
     }
     
+    //MARK: Настройка и работа textField
     func textFieldDidBeginEditing(_ textField: UITextField) {
         var contentInsets = scrollView.contentInset
         contentInsets.bottom = -(textField.frame.maxY - scrollView.frame.height + 10) / 2
@@ -81,6 +79,10 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
                 scrollView.setContentOffset(bottomOffset, animated: true)
             }
         }
+    }
+    
+    @objc func cancelTapped() {
+        self.dismiss(animated: true)
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -171,6 +173,8 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
             }
         }
     }
+    
+    
 }
 
 extension AdvertPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,13 +21,13 @@
                         <rect key="frame" x="10" y="10" width="356" height="175"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="huI-tm-g0C">
-                                <rect key="frame" x="5" y="10" width="346" height="155"/>
+                                <rect key="frame" x="5" y="10" width="341" height="155"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ugV-6t-vgz">
-                                        <rect key="frame" x="0.0" y="0.0" width="168" height="155"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="165.66666666666666" height="155"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aSS-0Z-hdg">
-                                                <rect key="frame" x="-10" y="-10" width="178" height="175"/>
+                                                <rect key="frame" x="-10" y="-10" width="175.66666666666666" height="175"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -38,28 +39,28 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6F3-GK-pFj">
-                                        <rect key="frame" x="178" y="0.0" width="168" height="155"/>
+                                        <rect key="frame" x="175.66666666666663" y="0.0" width="165.33333333333337" height="155"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Верните воду на 3 фото или привезите новую, а то скучно" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CP-GD-2Ww">
-                                                <rect key="frame" x="0.0" y="0.0" width="168" height="77"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="165.33333333333334" height="68.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Возраст: до 1 года" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8Q-ML-uLf">
-                                                <rect key="frame" x="0.0" y="82" width="168" height="19.666666666666671"/>
+                                                <rect key="frame" x="0.0" y="73.333333333333329" width="165.33333333333334" height="17.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Порода: Смешанная" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cs6-FL-zOk">
-                                                <rect key="frame" x="0.0" y="106.66666666666667" width="168" height="19.666666666666671"/>
+                                                <rect key="frame" x="0.0" y="96" width="165.33333333333334" height="17.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="г. Лида, ул. Мицкевича, 38, к1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqe-1e-dXf">
-                                                <rect key="frame" x="0.0" y="131.33333333333334" width="168" height="23.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="118.33333333333336" width="165.33333333333334" height="36.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -74,7 +75,7 @@
                             <constraint firstItem="huI-tm-g0C" firstAttribute="leading" secondItem="edM-Va-qPy" secondAttribute="leading" constant="5" id="94q-Rs-NqI"/>
                             <constraint firstAttribute="bottom" secondItem="huI-tm-g0C" secondAttribute="bottom" constant="10" id="9im-ek-S5f"/>
                             <constraint firstItem="huI-tm-g0C" firstAttribute="top" secondItem="edM-Va-qPy" secondAttribute="top" constant="10" id="OLd-AH-uUc"/>
-                            <constraint firstAttribute="trailing" secondItem="huI-tm-g0C" secondAttribute="trailing" constant="5" id="XWu-wb-OLZ"/>
+                            <constraint firstAttribute="trailing" secondItem="huI-tm-g0C" secondAttribute="trailing" constant="10" id="XWu-wb-OLZ"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWp-j6-KZb">

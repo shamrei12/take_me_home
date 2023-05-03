@@ -205,30 +205,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         })
     }
     
-    //    func formattedNumber(number: String) -> String {
-    //        do {
-    //            let phoneNumber = try phoneNumberKit.parse(number, ignoreType: true)
-    //            self.parsedNumberLabel.text = self.phoneNumberKit.format(phoneNumber, toType: .international)
-    //            self.parsedCountryCodeLabel.text = String(phoneNumber.countryCode)
-    //            if let regionCode = phoneNumberKit.mainCountry(forCode: phoneNumber.countryCode) {
-    //                let country = Locale.current.localizedString(forRegionCode: regionCode)
-    //                self.parsedCountryLabel.text = country
-    //            }
-    //        } catch {
-    //            self.clearResults()
-    //            print("Something went wrong")
-    //        }
-    //    }
-    //
-    //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string:  String) -> Bool {
-    //        if userNumber.isEditing {
-    //                textField.text = formattedNumber(number: newString)
-    //            }
-    //        }
-    //        return true
-    ////    }
-    //}
-    
     func showAlert(message: String) {
         alertView = AlertInDevelop.loadFromNib()
         alertView.delegate = self

@@ -11,13 +11,24 @@ import FirebaseCore
 import Kingfisher
 
 class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
+    @IBOutlet weak var allButton: UIButton!
+    @IBOutlet weak var catButton: UIButton!
+    @IBOutlet weak var otherButton: UIButton!
+    @IBOutlet weak var dogButton: UIButton!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak  var mainView: UIView!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var countAllLabel: UILabel!
+    @IBOutlet weak var countDogLabel: UILabel!
+    @IBOutlet weak var countCatLabel: UILabel!
+    @IBOutlet weak var countOtherLabel: UILabel!
+    private var userDefaults: UserDefaultsModel!
     private var fbManager: FirebaseData!
     private var coreData: CoreDataClass!
     private var filterMass:  [AdvertProtocol] = []
     private var advertMass: [AdvertProtocol] = []
+    private var samplingMass: [AdvertProtocol] = []
     private var searching = false
-    private var storage = UserDefaults.standard
-    private var storageKey = "login"
     private var alertView: EULAViewController!
     private var advertTableVC: AdvertTableViewCell!
     private var complainVC: CimplainView!
@@ -25,20 +36,14 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     private var countDog = 0
     private var countCat = 0
     private var countOther = 0
-    let createButton = UIButton(type: .system)
-
-    
-    @IBOutlet private weak var createAdvertButton: UIButton!
-    @IBOutlet private weak var searchBar: UISearchBar!
-    @IBOutlet private weak  var mainView: UIView!
-    @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var collectionView: UICollectionView!
-    
+    private let createButton = UIButton(type: .system)
+    private var checkCtriteria: Bool = false
     
     override func loadView() {
         super.loadView()
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fbManager = FirebaseData()
@@ -46,26 +51,26 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
         firstStart()
         tableView.register(UINib(nibName: "AdvertTableViewCell", bundle: nil), forCellReuseIdentifier: "AdvertTableViewCell")
         tableView.register(UINib(nibName: "NoPostTableViewCell", bundle: nil), forCellReuseIdentifier: "NoPostTableViewCell")
-        collectionView.register(UINib(nibName: "AdvertCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AdvertCollectionViewCell")
         self.hideKeyboardWhenTappedAround()
         navigationItem.title = "Объявления"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-
+    
     @IBAction func showCreateAdvert(_ sender: UIButton) {
         let createVC = CreateAdvertViewController.instantiate()
         let navigationController = UINavigationController(rootViewController: createVC)
         navigationController.modalPresentationStyle = .fullScreen
         present(navigationController, animated: true)
     }
-    
+
     func showAlert() {
         alertView = EULAViewController.instantiate()
         alertView.delegate = self
@@ -83,18 +88,14 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
                 self.alertView!.removeFromParent()
                 self.alertView = nil
             }
-            storage.set("\(coreData.getUUID())", forKey: storageKey)
-            fbManager.registrUser(login: storage.object(forKey: storageKey) as! String, name: "Пользователь")
+//            storage.set("\(coreData.getUUID())", forKey: storageKey)
+            fbManager.registrUser(login: "\(coreData.getUUID())", name: "Пользователь")
             getData()
         }
     }
     
-    @objc func buttonTapped() {
-        tableView.reloadData()
-    }
-    
     func firstStart() {
-        if storage.object(forKey: storageKey) == nil {
+        if UserDefaultsModel.shared.checkUserLoggin() {
             showAlert()
         } else {
             getData()
@@ -135,21 +136,21 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
             self.view.alpha = 1.0
             self.view.isUserInteractionEnabled = true
         }
-        fbManager.saveComplainUser(postID: idPost, UserID: storage.object(forKey: storageKey) as! String)
+        fbManager.saveComplainUser(postID: idPost, UserID: UserDefaultsModel.shared.getUserUUID())
         getData()
         complainVC.removeFromSuperview()
     }
     
     func getData() {
-        if storage.object(forKey: storageKey) != nil {
+        if !UserDefaultsModel.shared.checkUserLoggin() {
             fbManager.load() { [self] data in
                 DispatchQueue.main.async { [self] in
                     var tempAdvertMass = [AdvertPost]()
                     let group = DispatchGroup()
                     for i in 0..<data.count {
                         group.enter()
-                        fbManager.loadComplainUser(postID: data[i].postId) { [self] complain in
-                            if complain.isEmpty || !complain.contains(storage.object(forKey: storageKey) as! String) {
+                        fbManager.loadComplainUser(postID: data[i].postId) { complain in
+                            if complain.isEmpty || !complain.contains(UserDefaultsModel.shared.getUserUUID()) {
                                 let advertPost = AdvertPost(
                                     countComments: data[i].countComments,
                                     postId: data[i].postId,
@@ -171,24 +172,51 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
                     }
                     group.notify(queue: DispatchQueue.main) { [self] in
                         self.advertMass = tempAdvertMass
-                        self.countDog = advertMass.filter { $0.typePet == "Собака" }.count
-                        self.countCat = advertMass.filter { $0.typePet == "Кошка" }.count
-                        self.countOther = advertMass.filter { $0.typePet == "Другое" }.count
+                        self.countAllLabel.text = "\(advertMass.count)"
+                        self.countCatLabel.text = "\(advertMass.filter { $0.typePet == "Кошка" }.count)"
+                        self.countDogLabel.text = "\(advertMass.filter { $0.typePet == "Собака" }.count)"
+                        self.countOtherLabel.text = "\(advertMass.filter { $0.typePet == "Другое" }.count)"
                         self.tableView.reloadData()
-                        collectionView.reloadData()
                     }
                 }
             }
         }
     }
     
-    func countingType(_ type: String) {
-        if type == "Собака" {
-            countDog += 1
-        } else if type == "Кошка" {
-            countCat += 1
-        } else if type == "Другое" {
-            countOther += 1
+    @IBAction func choiseTypePet(_ sender: UIButton) {
+        for button in [allButton, catButton, dogButton, otherButton] as [UIButton?] {
+            if button?.tag == sender.tag {
+                button?.tintColor = UIColor.systemBlue
+                switch sender.tag {
+                case 0:
+                    getMassiveCriteria(type: "all")
+                case 1:
+                    getMassiveCriteria(type: "Собака")
+                case 2:
+                    getMassiveCriteria(type: "Кошка")
+                default:
+                    getMassiveCriteria(type: "Другое")
+                }
+            } else {
+                button?.tintColor = UIColor.label
+            }
+        }
+    }
+    
+    func getMassiveCriteria(type: String) {
+        if type == "all" {
+            samplingMass.removeAll()
+            checkCtriteria = false
+            getData()
+        } else {
+            samplingMass.removeAll()
+            checkCtriteria = true
+            for i in advertMass {
+                if i.typePet == type {
+                    samplingMass.append(i)
+                }
+            }
+            tableView.reloadData()
         }
     }
 }
@@ -201,10 +229,18 @@ extension AdvertViewController: UISearchBarDelegate {
             tableView.reloadData()
             return
         }
-        let text = searchText.lowercased()
-        filterMass = advertMass.filter { $0.postName.lowercased().contains(text) }
-        searching = true
-        tableView.reloadData()
+        if !checkCtriteria {
+            let text = searchText.lowercased()
+            filterMass = advertMass.filter { $0.postName.lowercased().contains(text) }
+            searching = true
+            tableView.reloadData()
+        } else {
+            let text = searchText.lowercased()
+            filterMass = samplingMass.filter { $0.postName.lowercased().contains(text) }
+            searching = true
+            tableView.reloadData()
+        }
+
     }
 }
 
@@ -219,6 +255,12 @@ extension AdvertViewController: UITableViewDelegate {
                 adverpage.updateUIElements(filterMass[indexPath.row].postId)
                 present(navigationController, animated: true)
             }
+        } else if checkCtriteria {
+            let adverpage = AdvertPageViewController.instantiate()
+            let navigationController = UINavigationController(rootViewController: adverpage)
+            navigationController.modalPresentationStyle = .fullScreen
+            adverpage.updateUIElements(samplingMass[indexPath.row].postId)
+            present(navigationController, animated: true)
         } else {
             if advertMass.indices.contains(indexPath.row) {
                 let adverpage = AdvertPageViewController.instantiate()
@@ -244,6 +286,12 @@ extension AdvertViewController: UITableViewDataSource {
             } else {
                 return filterMass.count
             }
+        } else if checkCtriteria {
+            if samplingMass.isEmpty {
+                return 1
+            } else {
+                return samplingMass.count
+            }
         } else {
             if advertMass.count == 0 {
                 return 1
@@ -254,7 +302,7 @@ extension AdvertViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if advertMass.count == 0 && filterMass.count == 0 {
+        if advertMass.isEmpty && filterMass.isEmpty && samplingMass.isEmpty {
             var cell: NoPostTableViewCell
             if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "NoPostTableViewCell") as? NoPostTableViewCell {
                 cell = reuseCell
@@ -262,7 +310,7 @@ extension AdvertViewController: UITableViewDataSource {
                 cell = NoPostTableViewCell()
             }
             return configure(cell: cell, for: indexPath)
-        } else if filterMass.count == 0 && searching {
+        } else if (filterMass.count == 0 && searching) || (samplingMass.isEmpty && checkCtriteria) {
             var cell: NoPostTableViewCell
             if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "NoPostTableViewCell") as? NoPostTableViewCell {
                 cell = reuseCell
@@ -270,7 +318,7 @@ extension AdvertViewController: UITableViewDataSource {
                 cell = NoPostTableViewCell()
             }
             return configure(cell: cell, for: indexPath)
-        }else {
+        } else {
             var cell: AdvertTableViewCell
             if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "AdvertTableViewCell") as? AdvertTableViewCell {
                 cell = reuseCell
@@ -300,7 +348,19 @@ extension AdvertViewController: UITableViewDataSource {
                     cell.delegate = self
                 }
             }
-            return cell
+        } else if checkCtriteria {
+            DispatchQueue.global().async { [self] in
+                let resurse = ImageResource(downloadURL: URL(string: samplingMass[indexPath.row].linkImage.first!)!, cacheKey: samplingMass[indexPath.row].linkImage.first!)
+                DispatchQueue.main.async { [self] in
+                    cell.postImageView.kf.setImage(with: resurse)
+                    cell.postName.text = samplingMass[indexPath.row].postName
+                    cell.oldPet.text = "Возраст: \(samplingMass[indexPath.row].oldPet)"
+                    cell.breed.text = "Порода: \(samplingMass[indexPath.row].breed)"
+                    cell.lostAdress.text = samplingMass[indexPath.row].lostAdress
+                    cell.button.tag = indexPath.row
+                    cell.delegate = self
+                }
+            }
         } else {
             DispatchQueue.global().async { [self] in
                 let resurse = ImageResource(downloadURL: URL(string: advertMass[indexPath.row].linkImage.first!)!, cacheKey: advertMass[indexPath.row].linkImage.first!)
@@ -314,38 +374,7 @@ extension AdvertViewController: UITableViewDataSource {
                     cell.delegate = self
                 }
             }
-            return cell
-        }
-    }
-}
-
-extension AdvertViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell: AdvertCollectionViewCell
-        if let reuseCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdvertCollectionViewCell", for: indexPath) as? AdvertCollectionViewCell {
-            cell = reuseCell
-        } else {
-            cell = AdvertCollectionViewCell()
-        }
-        return configure(cell: cell, for: indexPath)
-    }
-    
-    private func configure(cell: AdvertCollectionViewCell, for indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if indexPath.row == 0 {
-            cell.categoryImage.image = UIImage(named: "dog")
-            cell.categoryLabel.text = "Собаки: \(countDog)"
-        } else if indexPath.row == 1 {
-            cell.categoryImage.image = UIImage(named: "cat")
-            cell.categoryLabel.text = "Кошки: \(countCat)"
-        } else {
-            cell.categoryImage.image = UIImage(named: "owl")
-            cell.categoryLabel.text = "Прочее: \(countOther)"
+            
         }
         return cell
     }
