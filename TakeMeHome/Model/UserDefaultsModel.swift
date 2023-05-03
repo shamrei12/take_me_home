@@ -32,4 +32,10 @@ class UserDefaultsModel {
     func getUserUUID() -> String {
         return storage.object(forKey: storageKey) as! String
     }
+    
+    func saveUserID(id: String) {
+        storage.set(id, forKey: storageKey)
+    }
+
+    
 }

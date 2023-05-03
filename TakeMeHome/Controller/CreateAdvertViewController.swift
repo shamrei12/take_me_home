@@ -49,7 +49,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     private let phoneNumberKit = PhoneNumberKit()
     private var checkSavePost = false
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -106,6 +106,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         typePet = typePet.isEmpty ? "Собака" : typePet
         
         let post = AdvertPost(
+            author: UserDefaultsModel.shared.getUserUUID(),
             countComments: "0",
             postId: "",
             phoneNumber: userNumber.text ?? "",
@@ -149,19 +150,19 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         view.addSubview(activityIndicator)
         return activityIndicator
     }
-
-
+    
+    
     func startLongOperation() {
         activityIndicator = showActivityIndicator()
     }
-
+    
     func endLongOperation() {
         activityIndicator?.stopAnimating()
         activityIndicator?.removeFromSuperview()
         activityIndicator = nil
     }
-
-
+    
+    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         var contentInsets = scrollView.contentInset

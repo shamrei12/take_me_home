@@ -17,7 +17,7 @@ struct GeocoderModel: Codable {
     let addresstype, name, displayName: String?
     let address: Address
     let boundingbox: [String]
-
+    
     enum CodingKeys: String, CodingKey {
         case placeID = "place_id"
         case licence
@@ -36,7 +36,7 @@ struct Address: Codable {
     let building, houseNumber, road, city: String?
     let county, state, iso31662Lvl4, postcode: String?
     let country, countryCode: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case building
         case houseNumber = "house_number"

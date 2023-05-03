@@ -33,7 +33,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     private var stringPostID: String = ""
     private var adresForMap: String = ""
     private var moveTextField = true
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -46,7 +46,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
         navigationItem.title = "Объявление"
         navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelTapped))
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
@@ -173,8 +173,6 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
             }
         }
     }
-    
-    
 }
 
 extension AdvertPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {

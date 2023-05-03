@@ -30,7 +30,7 @@ class FirebaseData: FirebaseProtocol {
             if let snapshots = snap.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
                     if let post = snap.value as? Dictionary<String, AnyObject> {
-                        resultMass.append(AdvertPost(countComments: post["countComments"] as? String ?? "", postId: post["postID"] as? String ?? "", phoneNumber: post["phoneNumber"] as? String ?? "", linkImage: post["listLinks"] as? [String] ?? [""], typePost: post["typePost"] as? String ?? "", breed: post["breed"] as? String ?? "", postName: post["postName"] as? String ?? "", descriptionName: post["description"] as? String ?? "", typePet: post["typePet"] as? String ?? "", oldPet: post["oldPet"] as? String ?? "", lostAdress: post["lostAdress"] as? String ?? "", curentDate: post["curentDate"] as? String ?? ""))
+                        resultMass.append(AdvertPost(author: post["author"] as? String ?? "", countComments: post["countComments"] as? String ?? "", postId: post["postID"] as? String ?? "", phoneNumber: post["phoneNumber"] as? String ?? "", linkImage: post["listLinks"] as? [String] ?? [""], typePost: post["typePost"] as? String ?? "", breed: post["breed"] as? String ?? "", postName: post["postName"] as? String ?? "", descriptionName: post["description"] as? String ?? "", typePet: post["typePet"] as? String ?? "", oldPet: post["oldPet"] as? String ?? "", lostAdress: post["lostAdress"] as? String ?? "", curentDate: post["curentDate"] as? String ?? ""))
                     }
                 }
                 completion(resultMass)
@@ -118,7 +118,7 @@ class FirebaseData: FirebaseProtocol {
         ref.observe(.value) { snap in
             if snap.children.allObjects is [DataSnapshot] {
                 if let post = snap.value as? Dictionary<String, AnyObject>  {
-                    resultMass.append(AdvertPost(countComments: post["countComments"] as? String ?? "", postId: post["postID"] as? String ?? "", phoneNumber: post["phoneNumber"] as? String ?? "", linkImage: post["listLinks"] as? [String] ?? [""], typePost: post["typePost"] as? String ?? "", breed: post["breed"] as? String ?? "", postName: post["postName"] as? String ?? "", descriptionName: post["description"] as? String ?? "", typePet: post["typePet"] as? String ?? "", oldPet: post["oldPet"] as? String ?? "", lostAdress: post["lostAdress"] as? String ?? "", curentDate: post["curentDate"] as? String ?? ""))
+                    resultMass.append(AdvertPost(author: post["author"] as? String ?? "", countComments: post["countComments"] as? String ?? "", postId: post["postID"] as? String ?? "", phoneNumber: post["phoneNumber"] as? String ?? "", linkImage: post["listLinks"] as? [String] ?? [""], typePost: post["typePost"] as? String ?? "", breed: post["breed"] as? String ?? "", postName: post["postName"] as? String ?? "", descriptionName: post["description"] as? String ?? "", typePet: post["typePet"] as? String ?? "", oldPet: post["oldPet"] as? String ?? "", lostAdress: post["lostAdress"] as? String ?? "", curentDate: post["curentDate"] as? String ?? ""))
                 }
                 completion(resultMass)
             }

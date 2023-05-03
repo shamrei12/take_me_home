@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol CoreDataProtocol {
-        func getUUID() -> String
+    func getUUID() -> String
 }
 
 
@@ -18,5 +18,5 @@ class CoreDataClass: CoreDataProtocol {
     func getUUID() -> String {
         return UUID().uuidString
     }
-
+    
 }

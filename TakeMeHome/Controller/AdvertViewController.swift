@@ -41,7 +41,6 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     
     override func loadView() {
         super.loadView()
-        
     }
     
     override func viewDidLoad() {
@@ -70,7 +69,7 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
         navigationController.modalPresentationStyle = .fullScreen
         present(navigationController, animated: true)
     }
-
+    
     func showAlert() {
         alertView = EULAViewController.instantiate()
         alertView.delegate = self
@@ -88,8 +87,8 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
                 self.alertView!.removeFromParent()
                 self.alertView = nil
             }
-//            storage.set("\(coreData.getUUID())", forKey: storageKey)
-            fbManager.registrUser(login: "\(coreData.getUUID())", name: "Пользователь")
+            UserDefaultsModel.shared.saveUserID(id: coreData.getUUID())
+            fbManager.registrUser(login: UserDefaultsModel.shared.getUserUUID(), name: "Пользователь")
             getData()
         }
     }
@@ -152,6 +151,7 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
                         fbManager.loadComplainUser(postID: data[i].postId) { complain in
                             if complain.isEmpty || !complain.contains(UserDefaultsModel.shared.getUserUUID()) {
                                 let advertPost = AdvertPost(
+                                    author: data[i].author,
                                     countComments: data[i].countComments,
                                     postId: data[i].postId,
                                     phoneNumber: data[i].phoneNumber,
@@ -240,7 +240,7 @@ extension AdvertViewController: UISearchBarDelegate {
             searching = true
             tableView.reloadData()
         }
-
+        
     }
 }
 
