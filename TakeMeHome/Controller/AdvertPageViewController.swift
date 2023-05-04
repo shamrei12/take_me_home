@@ -47,18 +47,6 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
         navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelTapped))
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     //MARK: Настройка и работа textField
     func textFieldDidBeginEditing(_ textField: UITextField) {
         var contentInsets = scrollView.contentInset
@@ -69,23 +57,23 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField != messageField {
             var contentInsets = scrollView.contentInset
             contentInsets.bottom = 0
             scrollView.contentInset = contentInsets
             scrollView.scrollIndicatorInsets = contentInsets
+            
             if let lastTextField = scrollView.subviews.last as? UITextField, lastTextField == textField {
                 let bottomOffset = CGPoint(x: 0, y: max(scrollView.contentSize.height - scrollView.bounds.size.height, 0))
                 scrollView.setContentOffset(bottomOffset, animated: true)
             }
-        }
     }
     
-    @objc func cancelTapped() {
+    @objc
+    func cancelTapped() {
         self.dismiss(animated: true)
     }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
+    func keyboardWillHide(notification: NSNotification) {
         moveTextField = true
         scrollView.scrollToDown()
     }
@@ -149,7 +137,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
         var list = [String]()
         idPost = id
         fbManager.loadSinglePost(id: id) { data in
-            DispatchQueue.global().async { [self] in
+            DispatchQueue.global(qos: .userInitiated).async { [self] in
                 list = data.first?.linkImage ?? [""]
                 for i in list {
                     guard let urlLink = URL(string: i) else { continue }

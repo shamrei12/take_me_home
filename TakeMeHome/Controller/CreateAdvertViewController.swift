@@ -162,8 +162,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         activityIndicator = nil
     }
     
-    
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         var contentInsets = scrollView.contentInset
         contentInsets.bottom = -(textField.frame.maxY - scrollView.frame.height + 10) / 2
