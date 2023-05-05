@@ -11,10 +11,13 @@ class CommentsPostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameUser: UILabel!
     
+    
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var textComment: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        mainView.layer.cornerRadius = 10
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

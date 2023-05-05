@@ -47,6 +47,13 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
         navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelTapped))
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let bottomOffset = CGPoint(x: 0, y: self.tableview.contentSize.height - self.tableview.bounds.size.height)
+        self.tableview.setContentOffset(bottomOffset, animated: false)
+    }
+
+    
     //MARK: Настройка и работа textField
     func textFieldDidBeginEditing(_ textField: UITextField) {
         var contentInsets = scrollView.contentInset
@@ -57,23 +64,21 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-            var contentInsets = scrollView.contentInset
-            contentInsets.bottom = 0
-            scrollView.contentInset = contentInsets
-            scrollView.scrollIndicatorInsets = contentInsets
-            
-            if let lastTextField = scrollView.subviews.last as? UITextField, lastTextField == textField {
-                let bottomOffset = CGPoint(x: 0, y: max(scrollView.contentSize.height - scrollView.bounds.size.height, 0))
-                scrollView.setContentOffset(bottomOffset, animated: true)
-            }
+        var contentInsets = scrollView.contentInset
+        contentInsets.bottom = 0
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+        if let lastTextField = scrollView.subviews.last as? UITextField, lastTextField == textField {
+            let bottomOffset = CGPoint(x: 0, y: max(scrollView.contentSize.height - scrollView.bounds.size.height, 0))
+            scrollView.setContentOffset(bottomOffset, animated: true)
+        }
     }
     
-    @objc
-    func cancelTapped() {
+    @objc func cancelTapped() {
         self.dismiss(animated: true)
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         moveTextField = true
         scrollView.scrollToDown()
     }
@@ -96,7 +101,6 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
         let indexPath = IndexPath(row: numberOfROws, section: 0)
         self.tableview.insertRows(at: [indexPath], with: .automatic)
         self.tableview.scrollToRow(at: indexPath, at: .bottom, animated: true)
-        
     }
     
     func updateComments(comment: Comments) {

@@ -34,7 +34,7 @@
                             <constraint firstAttribute="trailing" secondItem="y05-Ut-IJY" secondAttribute="trailing" id="zSp-wn-pLE"/>
                         </constraints>
                     </stackView>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abo-Hn-ujJ">
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" springLoaded="YES" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abo-Hn-ujJ">
                         <rect key="frame" x="0.0" y="188.66666666666669" width="430" height="743.33333333333326"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <connections>
