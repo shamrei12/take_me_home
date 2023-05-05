@@ -37,22 +37,17 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        collectionView.delegate = self
         pageControl.hidesForSinglePage = true
         messageField.delegate = self
         fbManager = FirebaseData()
         collectionView.register(UINib(nibName: "ImagePostCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ImagePostCollectionViewCell")
         tableview.register(UINib(nibName: "CommentsPostTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentsPostTableViewCell")
+        tableview.register(UINib(nibName: "PlaceholderCommentViewCell", bundle: nil), forCellReuseIdentifier: "PlaceholderCommentViewCell")
         pageControl.isEnabled = false
         navigationItem.title = "Объявление"
         navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelTapped))
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let bottomOffset = CGPoint(x: 0, y: self.tableview.contentSize.height - self.tableview.bounds.size.height)
-        self.tableview.setContentOffset(bottomOffset, animated: false)
-    }
-
     
     //MARK: Настройка и работа textField
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -92,6 +87,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
             self.commentsPost = comments
             DispatchQueue.main.async {
                 self.tableview.reloadData()
+                self.tableview.scrollToDown()
             }
         }
     }
@@ -101,12 +97,16 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
         let indexPath = IndexPath(row: numberOfROws, section: 0)
         self.tableview.insertRows(at: [indexPath], with: .automatic)
         self.tableview.scrollToRow(at: indexPath, at: .bottom, animated: true)
-    }
+       }
     
     func updateComments(comment: Comments) {
-        DispatchQueue.main.async {
-            self.commentsPost.append(comment)
-            self.scrollDown()
+        DispatchQueue.main.async { [self] in
+            if !commentsPost.isEmpty {
+                commentsPost.append(comment)
+                scrollDown()
+            } else {
+                loadComments()
+            }
         }
     }
     
@@ -167,7 +167,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     }
 }
 
-extension AdvertPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension AdvertPageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         listResourse.count
     }
@@ -183,7 +183,6 @@ extension AdvertPageViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     private func configure(cell: ImagePostCollectionViewCell, for indexPath: IndexPath) -> UICollectionViewCell {
-        
         cell.imagePost.kf.setImage(with: listResourse[indexPath.row])
         return cell
     }
@@ -199,14 +198,24 @@ extension AdvertPageViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
+
+}
+
+extension AdvertPageViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView == collectionView else {
+            return
+        }
+
         let pageWidth = collectionView.frame.size.width
         let currentPage = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
         pageControl.currentPage = currentPage
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard scrollView == collectionView else {
+            return
+        }
         let cellWidth = collectionView.bounds.width / 2
         let visibleCellsCount = Int(collectionView.bounds.width / cellWidth)
         let centerCellIndex = Int(collectionView.contentOffset.x / cellWidth) + visibleCellsCount / 2
@@ -215,20 +224,42 @@ extension AdvertPageViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 }
 
+
 extension AdvertPageViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        commentsPost.count
+        
+        if commentsPost.isEmpty {
+            return 1
+        } else {
+            return commentsPost.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: CommentsPostTableViewCell
-        if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "CommentsPostTableViewCell") as? CommentsPostTableViewCell {
-            cell = reuseCell
-        } else {
-            cell = CommentsPostTableViewCell()
-        }
         
-        return configure(cell: cell, for: indexPath)
+        if commentsPost.isEmpty {
+            var cell: PlaceholderCommentViewCell
+            if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "PlaceholderCommentViewCell") as? PlaceholderCommentViewCell {
+                cell = reuseCell
+            } else {
+                cell = PlaceholderCommentViewCell()
+            }
+            return configure(cell: cell, for: indexPath)
+        } else {
+            var cell: CommentsPostTableViewCell
+            if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "CommentsPostTableViewCell") as? CommentsPostTableViewCell {
+                cell = reuseCell
+            } else {
+                cell = CommentsPostTableViewCell()
+            }
+            
+            return configure(cell: cell, for: indexPath)
+        }
+
+    }
+    
+    func configure(cell: PlaceholderCommentViewCell, for indexPath: IndexPath) -> UITableViewCell {
+        return cell
     }
     
     func configure(cell: CommentsPostTableViewCell, for indexPath: IndexPath) -> UITableViewCell {

@@ -29,6 +29,8 @@
 		D836825229ABBF06005AB64B /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836825129ABBF06005AB64B /* CommentModel.swift */; };
 		D836825429B4808F005AB64B /* CoredataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836825329B4808F005AB64B /* CoredataModel.swift */; };
 		D8544B0E29A6654D00B63EF8 /* ConverterLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8544B0D29A6654D00B63EF8 /* ConverterLinks.swift */; };
+		D865FEB42A054C9B00F6ABF9 /* PlaceholderCommentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D865FEB32A054C9B00F6ABF9 /* PlaceholderCommentViewCell.xib */; };
+		D865FEB82A054D5D00F6ABF9 /* PlaceholderCommentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D865FEB72A054D5D00F6ABF9 /* PlaceholderCommentViewCell.swift */; };
 		D87BF5F229E67109008FCD71 /* AlertInDevelop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87BF5F029E67109008FCD71 /* AlertInDevelop.swift */; };
 		D87BF5F629E6748C008FCD71 /* AlertInDevelop.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87BF5F529E6748C008FCD71 /* AlertInDevelop.xib */; };
 		D87BF5FA29E6F969008FCD71 /* NoPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87BF5F829E6F969008FCD71 /* NoPostTableViewCell.swift */; };
@@ -76,6 +78,8 @@
 		D836825129ABBF06005AB64B /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		D836825329B4808F005AB64B /* CoredataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataModel.swift; sourceTree = "<group>"; };
 		D8544B0D29A6654D00B63EF8 /* ConverterLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterLinks.swift; sourceTree = "<group>"; };
+		D865FEB32A054C9B00F6ABF9 /* PlaceholderCommentViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceholderCommentViewCell.xib; sourceTree = "<group>"; };
+		D865FEB72A054D5D00F6ABF9 /* PlaceholderCommentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderCommentViewCell.swift; sourceTree = "<group>"; };
 		D87BF5F029E67109008FCD71 /* AlertInDevelop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertInDevelop.swift; sourceTree = "<group>"; };
 		D87BF5F529E6748C008FCD71 /* AlertInDevelop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertInDevelop.xib; sourceTree = "<group>"; };
 		D87BF5F829E6F969008FCD71 /* NoPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPostTableViewCell.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 				D87BF5F929E6F969008FCD71 /* NoPostTableViewCell.xib */,
 				D87BF65629F28D7A008FCD71 /* EULAViewController.swift */,
 				D87BF65729F28D7A008FCD71 /* EULAViewController.xib */,
+				D865FEB32A054C9B00F6ABF9 /* PlaceholderCommentViewCell.xib */,
+				D865FEB72A054D5D00F6ABF9 /* PlaceholderCommentViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -376,6 +382,7 @@
 				D811A4A829E4A0E000F6DE02 /* GoogleService-Info.plist in Resources */,
 				D87BF5F629E6748C008FCD71 /* AlertInDevelop.xib in Resources */,
 				D87BF5FB29E6F969008FCD71 /* NoPostTableViewCell.xib in Resources */,
+				D865FEB42A054C9B00F6ABF9 /* PlaceholderCommentViewCell.xib in Resources */,
 				D811A49A29E4A0A800F6DE02 /* AdvertCollectionViewCell.xib in Resources */,
 				D811A49C29E4A0A800F6DE02 /* AddPhotoCollectionViewCell.xib in Resources */,
 				D811A49D29E4A0A800F6DE02 /* ImagePostCollectionViewCell.xib in Resources */,
@@ -448,6 +455,7 @@
 				D87BF65B29F2F105008FCD71 /* CimplainView.swift in Sources */,
 				D820C686298C24DA001B11B7 /* AppDelegate.swift in Sources */,
 				D8EA7EBE29E31FBD00D27E90 /* GeocoderModel.swift in Sources */,
+				D865FEB82A054D5D00F6ABF9 /* PlaceholderCommentViewCell.swift in Sources */,
 				D820C688298C24DA001B11B7 /* SceneDelegate.swift in Sources */,
 				D8EA7EC229E31FF200D27E90 /* GeocoderProtocol.swift in Sources */,
 				D87BF5FF29E89460008FCD71 /* AdvertTableViewCell.swift in Sources */,

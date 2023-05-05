@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaceholderCommentViewCell" rowHeight="149" id="MTl-yB-ljo" userLabel="PlaceholderCommentViewCell" customClass="PlaceholderCommentViewCell" customModule="TakeMeHome" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="482" height="149"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MTl-yB-ljo" id="HyM-Wa-7Ni">
+                <rect key="frame" x="0.0" y="0.0" width="482" height="149"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На данный смомент комментариев нет" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Euz-QR-Xra">
+                        <rect key="frame" x="5" y="5" width="472" height="139"/>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="25"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="Euz-QR-Xra" firstAttribute="centerX" secondItem="HyM-Wa-7Ni" secondAttribute="centerX" id="5dx-Sr-EGX"/>
+                    <constraint firstItem="Euz-QR-Xra" firstAttribute="centerY" secondItem="HyM-Wa-7Ni" secondAttribute="centerY" id="Pas-fR-bq9"/>
+                    <constraint firstItem="Euz-QR-Xra" firstAttribute="leading" secondItem="HyM-Wa-7Ni" secondAttribute="leading" constant="5" id="ShS-sf-J1T"/>
+                    <constraint firstAttribute="bottom" secondItem="Euz-QR-Xra" secondAttribute="bottom" constant="5" id="TZH-ZJ-38F"/>
+                    <constraint firstItem="Euz-QR-Xra" firstAttribute="top" secondItem="HyM-Wa-7Ni" secondAttribute="top" constant="5" id="Vga-fi-Y7e"/>
+                    <constraint firstAttribute="trailing" secondItem="Euz-QR-Xra" secondAttribute="trailing" constant="5" id="wJd-26-Oc9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="10.687022900763358" y="16.549295774647888"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
