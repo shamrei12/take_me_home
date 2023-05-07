@@ -24,7 +24,7 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     @IBOutlet weak var countOtherLabel: UILabel!
     private var userDefaults: UserDefaultsModel!
     private var fbManager: FirebaseData!
-    private var coreData: CoreDataClass!
+    private var coreData: CoreDataStruct!
     private var filterMass:  [AdvertProtocol] = []
     private var advertMass: [AdvertProtocol] = []
     private var samplingMass: [AdvertProtocol] = []
@@ -46,7 +46,7 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     override func viewDidLoad() {
         super.viewDidLoad()
         fbManager = FirebaseData()
-        coreData = CoreDataClass()
+        coreData = CoreDataStruct()
         firstStart()
         tableView.register(UINib(nibName: "AdvertTableViewCell", bundle: nil), forCellReuseIdentifier: "AdvertTableViewCell")
         tableView.register(UINib(nibName: "NoPostTableViewCell", bundle: nil), forCellReuseIdentifier: "NoPostTableViewCell")
@@ -374,7 +374,6 @@ extension AdvertViewController: UITableViewDataSource {
                     cell.delegate = self
                 }
             }
-            
         }
         return cell
     }

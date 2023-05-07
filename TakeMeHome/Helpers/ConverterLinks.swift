@@ -20,13 +20,10 @@ class ConverterLinks {
     }
     
     func getCountLinks (_ strLinks: String) -> Int {
-        let result = strLinks.components(separatedBy: [" "])
-        return result.count
+        return strLinks.components(separatedBy: [" "]).count
     }
     
     func getListLinks (_ strLinks: String) -> [String] {
-        var result: [String] = strLinks.components(separatedBy: [" "])
-        return result
-    }
+        return strLinks.components(separatedBy: [" "])    }
     
 }

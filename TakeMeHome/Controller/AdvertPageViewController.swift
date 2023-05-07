@@ -9,7 +9,6 @@ import UIKit
 import Kingfisher
 
 class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFieldDelegate {
-    
     @IBOutlet weak var postID: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var postName: UILabel!
@@ -33,11 +32,14 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     private var stringPostID: String = ""
     private var adresForMap: String = ""
     private var moveTextField = true
+    private var startPage = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        collectionView.dataSource = self
         collectionView.delegate = self
+        tableview.dataSource = self
         pageControl.hidesForSinglePage = true
         messageField.delegate = self
         fbManager = FirebaseData()
@@ -69,6 +71,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
         }
     }
     
+    
     @objc func cancelTapped() {
         self.dismiss(animated: true)
     }
@@ -84,10 +87,14 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     
     func loadComments() {
         fbManager.loadComments(id: stringPostID) { comments in
-            self.commentsPost = comments
-            DispatchQueue.main.async {
-                self.tableview.reloadData()
-                self.tableview.scrollToDown()
+            DispatchQueue.main.async { [self] in
+                self.commentsPost.removeAll()
+                self.commentsPost = comments
+                if !commentsPost.isEmpty {
+                    self.tableview.reloadData()
+                    let indexPath = IndexPath(row: self.commentsPost.count - 1, section: 0)
+                    self.tableview.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                }
             }
         }
     }
@@ -97,7 +104,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
         let indexPath = IndexPath(row: numberOfROws, section: 0)
         self.tableview.insertRows(at: [indexPath], with: .automatic)
         self.tableview.scrollToRow(at: indexPath, at: .bottom, animated: true)
-       }
+    }
     
     func updateComments(comment: Comments) {
         DispatchQueue.main.async { [self] in
@@ -149,23 +156,26 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
                 }
             }
             DispatchQueue.main.async { [self] in
-                collectionView.reloadData()
-                pageControl.numberOfPages = listResourse.count
-                self.postID.text = data.first?.typePost
-                self.date.text = data.first?.curentDate
-                self.postName.text = data.first?.postName
-                self.descriptionPost.text = data.first?.descriptionName
-                self.oldPet.text = "Возраст: \(data.first?.oldPet ?? "")"
-                self.breedPet.text = "Порода: \(data.first?.breed ?? "")"
-                self.lostAdress.text = "Адрес: \(data.first?.lostAdress ?? "")"
-                self.numberPhone.text = data.first?.phoneNumber
-                stringPostID = data.first?.postId ?? ""
+                if !startPage {
+                    startPage = true
+                    collectionView.reloadData()
+                    pageControl.numberOfPages = listResourse.count
+                    self.postID.text = data.first?.typePost
+                    self.date.text = data.first?.curentDate
+                    self.postName.text = data.first?.postName
+                    self.descriptionPost.text = data.first?.descriptionName
+                    self.oldPet.text = "Возраст: \(data.first?.oldPet ?? "")"
+                    self.breedPet.text = "Порода: \(data.first?.breed ?? "")"
+                    self.lostAdress.text = "Адрес: \(data.first?.lostAdress ?? "")"
+                    self.numberPhone.text = data.first?.phoneNumber
+                    stringPostID = data.first?.postId ?? ""
+                    adresForMap = data.first?.lostAdress ?? ""
+                }
                 loadComments()
-                adresForMap = data.first?.lostAdress ?? ""
+                }
             }
         }
     }
-}
 
 extension AdvertPageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -198,14 +208,11 @@ extension AdvertPageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-
+    
 }
 
 extension AdvertPageViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard scrollView == collectionView else {
-            return
-        }
 
         let pageWidth = collectionView.frame.size.width
         let currentPage = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
@@ -225,7 +232,7 @@ extension AdvertPageViewController: UICollectionViewDelegate {
 }
 
 
-extension AdvertPageViewController: UITableViewDataSource, UITableViewDelegate {
+extension AdvertPageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if commentsPost.isEmpty {
@@ -255,7 +262,6 @@ extension AdvertPageViewController: UITableViewDataSource, UITableViewDelegate {
             
             return configure(cell: cell, for: indexPath)
         }
-
     }
     
     func configure(cell: PlaceholderCommentViewCell, for indexPath: IndexPath) -> UITableViewCell {
@@ -268,5 +274,3 @@ extension AdvertPageViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 }
-
-

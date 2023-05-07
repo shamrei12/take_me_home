@@ -8,13 +8,7 @@
 import CoreData
 import UIKit
 
-
-protocol CoreDataProtocol {
-    func getUUID() -> String
-}
-
-
-class CoreDataClass: CoreDataProtocol {
+struct CoreDataStruct {
     func getUUID() -> String {
         return UUID().uuidString
     }

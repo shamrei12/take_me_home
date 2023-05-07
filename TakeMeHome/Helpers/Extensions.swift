@@ -18,14 +18,24 @@ extension UIViewController {
     }
     
     func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
+
+    @objc func dismissKeyboard(_ sender: Any) {
+        guard let tapGesture = sender as? UITapGestureRecognizer else {
+            // Если sender не является UITapGestureRecognizer, закрываем клавиатуру
+            view.endEditing(true)
+            return
+        }
+        let tappedView = tapGesture.view
+        if !(tappedView is UIControl) {
+            // Если нажато на любое представление, кроме элементов управления, закрываем клавиатуру
+            view.endEditing(false)
+        }
     }
+
 }
 
 extension UIScrollView {

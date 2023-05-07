@@ -36,7 +36,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     private var userDefaults: UserDefaults?
     private var key: String = "id"
     private var fireBase: FirebaseData?
-    private var coreData: CoreDataClass!
+    private var coreData: CoreDataStruct!
     private var typePostText: String = ""
     private var agePet: String = ""
     private var typePet: String = ""
@@ -60,7 +60,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         userNumber.delegate = self
         addPhothoButton.layer.cornerRadius = 10
         fireBase = FirebaseData()
-        coreData = CoreDataClass()
+        coreData = CoreDataStruct()
         collectionView.register(UINib(nibName: "AddPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AddPhotoCollectionViewCell")
         askPermision()
         scrollView.setContentOffset(CGPoint.zero, animated: true)
@@ -125,7 +125,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         let postID = coreData.getUUID()
         fireBase?.save(posts: posts, id: postID, stroage: imageStorage) { [self] response in
             DispatchQueue.main.async { [self] in
-                showActivityIndicator()
                 startLongOperation()
                 if response {
                     DispatchQueue.global().async { [self] in

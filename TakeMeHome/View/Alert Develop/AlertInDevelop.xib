@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,17 +12,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AlertInDevelop" customModule="TakeMeHome" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="200"/>
+            <rect key="frame" x="0.0" y="0.0" width="346" height="193"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Данная функция находится на стадии разработки и появится в следущем обновлении" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UB8-zh-Cqg">
-                    <rect key="frame" x="5" y="5" width="340" height="81"/>
-                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                    <rect key="frame" x="5" y="5" width="336" height="74"/>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Thin" family="Apple SD Gothic Neo" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXL-Yl-RAE">
-                    <rect key="frame" x="10" y="91" width="330" height="60"/>
+                    <rect key="frame" x="10" y="84" width="326" height="60"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="CdF-gP-acu"/>
@@ -50,7 +51,7 @@
                 <outlet property="buttonTapped" destination="UXL-Yl-RAE" id="w2v-0k-U3e"/>
                 <outlet property="textAlert" destination="UB8-zh-Cqg" id="6Tm-Lg-U5W"/>
             </connections>
-            <point key="canvasLocation" x="103" y="39"/>
+            <point key="canvasLocation" x="99.236641221374043" y="36.267605633802816"/>
         </view>
     </objects>
     <resources>
