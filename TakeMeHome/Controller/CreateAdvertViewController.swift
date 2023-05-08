@@ -72,17 +72,23 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     @objc func phoneNumberTextFieldDidChange() {
         do {
             let phoneNumber = try phoneNumberKit.parse(userNumber.text!)
-            let formattedNumber = phoneNumberKit.format(phoneNumber, toType: .international)
-            userNumber.text = formattedNumber
+            let formattedNumber = phoneNumberKit.format(phoneNumber, toType: .e164, withPrefix: false)
+            userNumber.text = formattedNumber.replacingOccurrences(of: "[-\\s]", with: "", options: .regularExpression)
         } catch {
             print("Invalid phone number")
         }
     }
+
     
     @objc func  cancelTapped() {
         self.dismiss(animated: true)
     }
     
+    
+    func changneNumber(phoneNumber: String) -> String {
+        return phoneNumber.replacingOccurrences(of: "[-\\s]", with: "", options: .regularExpression)
+
+    }
     @objc func saveTapped() {
         guard !checkSavePost else { return }
         checkSavePost = true
@@ -109,7 +115,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             author: UserDefaultsModel.shared.getUserUUID(),
             countComments: "0",
             postId: "",
-            phoneNumber: userNumber.text ?? "",
+            phoneNumber: changneNumber(phoneNumber: userNumber.text ?? ""),
             linkImage: [""],
             typePost: typePostText,
             breed: breed.text ?? "",

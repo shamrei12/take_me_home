@@ -16,7 +16,6 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     @IBOutlet weak var descriptionPost: UILabel!
     @IBOutlet weak var breedPet: UILabel!
     @IBOutlet weak var lostAdress: UILabel!
-    @IBOutlet weak var numberPhone: UILabel!
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var sendMessage: UIButton!
@@ -25,12 +24,16 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mainView: UIView!
+    
+    @IBOutlet weak var contactUserView: UIView!
+    
     private var listResourse = [ImageResource]()
     private var commentsPost = [Comments]()
     private var fbManager: FirebaseData!
-    private var idPost = ""
-    private var stringPostID: String = ""
-    private var adresForMap: String = ""
+    private var phoneNumber: String? = nil
+    private var idPost = String()
+    private var stringPostID = String()
+    private var adresForMap = String ()
     private var moveTextField = true
     private var startPage = false
     
@@ -49,8 +52,18 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
         pageControl.isEnabled = false
         navigationItem.title = "Объявление"
         navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelTapped))
+        updateStyleUIView()
     }
     
+    
+    func updateStyleUIView() {
+        contactUserView.layer.cornerRadius = 10
+        contactUserView.layer.borderColor = UIColor.gray.cgColor
+        contactUserView.layer.shadowColor = UIColor.black.cgColor
+        contactUserView.layer.shadowOpacity = 0.1
+        contactUserView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        contactUserView.layer.shadowRadius = 2
+    }
     //MARK: Настройка и работа textField
     func textFieldDidBeginEditing(_ textField: UITextField) {
         var contentInsets = scrollView.contentInset
@@ -82,7 +95,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     }
     
     @IBAction func callTapped(_ sender: UIButton) {
-        showCallMenu(phoneNumber: numberPhone.text ?? "")
+        showCallMenu(phoneNumber: phoneNumber ?? "")
     }
     
     func loadComments() {
@@ -167,7 +180,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
                     self.oldPet.text = "Возраст: \(data.first?.oldPet ?? "")"
                     self.breedPet.text = "Порода: \(data.first?.breed ?? "")"
                     self.lostAdress.text = "Адрес: \(data.first?.lostAdress ?? "")"
-                    self.numberPhone.text = data.first?.phoneNumber
+                    phoneNumber = data.first?.phoneNumber ?? ""
                     stringPostID = data.first?.postId ?? ""
                     adresForMap = data.first?.lostAdress ?? ""
                 }
