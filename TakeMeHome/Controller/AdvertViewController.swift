@@ -283,7 +283,7 @@ extension AdvertViewController: UITableViewDataSource {
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if advertMass.isEmpty && filterMass.isEmpty && samplingMass.isEmpty {
+        if advertMass.isEmpty && filterMass.isEmpty {
             var cell: NoPostTableViewCell
             if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "NoPostTableViewCell") as? NoPostTableViewCell {
                 cell = reuseCell
@@ -316,7 +316,8 @@ extension AdvertViewController: UITableViewDataSource {
     }
     
     private func configure(cell: AdvertTableViewCell, for indexPath: IndexPath) -> UITableViewCell {
-        if searching {
+        switch (searching, checkCtriteria) {
+        case (true,_):
             DispatchQueue.global().async { [self] in
                 let resurse = ImageResource(downloadURL: URL(string: filterMass[indexPath.row].linkImage.first!)!, cacheKey: filterMass[indexPath.row].linkImage.first)
                 DispatchQueue.main.async { [self] in
@@ -329,7 +330,7 @@ extension AdvertViewController: UITableViewDataSource {
                     cell.delegate = self
                 }
             }
-        } else if checkCtriteria {
+        case (_, true):
             DispatchQueue.global().async { [self] in
                 let resurse = ImageResource(downloadURL: URL(string: samplingMass[indexPath.row].linkImage.first!)!, cacheKey: samplingMass[indexPath.row].linkImage.first!)
                 DispatchQueue.main.async { [self] in
@@ -342,7 +343,7 @@ extension AdvertViewController: UITableViewDataSource {
                     cell.delegate = self
                 }
             }
-        } else {
+        default:
             DispatchQueue.global().async { [self] in
                 let resurse = ImageResource(downloadURL: URL(string: advertMass[indexPath.row].linkImage.first!)!, cacheKey: advertMass[indexPath.row].linkImage.first!)
                 DispatchQueue.main.async { [self] in
@@ -356,6 +357,7 @@ extension AdvertViewController: UITableViewDataSource {
                 }
             }
         }
+    
         return cell
     }
 }
