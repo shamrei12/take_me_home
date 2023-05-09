@@ -78,7 +78,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             print("Invalid phone number")
         }
     }
-
+    
     
     @objc func  cancelTapped() {
         self.dismiss(animated: true)
@@ -87,7 +87,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     
     func changneNumber(phoneNumber: String) -> String {
         return phoneNumber.replacingOccurrences(of: "[-\\s]", with: "", options: .regularExpression)
-
+        
     }
     
     @objc func saveTapped() {
@@ -132,12 +132,10 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         let postID = coreData.getUUID()
         fireBase?.save(posts: posts, id: postID, stroage: imageStorage) { [self] response in
             DispatchQueue.main.async { [self] in
-                startLongOperation()
                 if response {
                     DispatchQueue.global().async { [self] in
                         fireBase?.saveIDPostUser(id: postID, login: user)
                         DispatchQueue.main.async { [self] in
-                            endLongOperation()
                             self.dismiss(animated: true)
                         }
                     }
@@ -146,25 +144,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
                 }
             }
         }
-    }
-    
-    func showActivityIndicator() -> UIActivityIndicatorView {
-        let activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.center = view.center
-        activityIndicator.startAnimating()
-        view.addSubview(activityIndicator)
-        return activityIndicator
-    }
-    
-    
-    func startLongOperation() {
-        activityIndicator = showActivityIndicator()
-    }
-    
-    func endLongOperation() {
-        activityIndicator?.stopAnimating()
-        activityIndicator?.removeFromSuperview()
-        activityIndicator = nil
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -224,13 +203,13 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     
     func checkCorrectPost() -> Bool {
         guard cityName.text?.count != 0,
-            streetName.text?.count != 0,
-            houseNumber.text?.count != 0,
-            breed.text?.count != 0,
-            postName.text?.count != 0,
-            descriptionText.text?.count != 0,
-            userNumber.text?.count != 0 else {
-                return false
+              streetName.text?.count != 0,
+              houseNumber.text?.count != 0,
+              breed.text?.count != 0,
+              postName.text?.count != 0,
+              descriptionText.text?.count != 0,
+              userNumber.text?.count != 0 else {
+            return false
         }
         return true
     }
@@ -292,41 +271,28 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     }
     
     @IBAction func choseTipePost(_ sender: UISegmentedControl) {
-        
         switch sender.selectedSegmentIndex {
-        case 0:
-            typePostText = "Пропажа"
-        case 1:
-            typePostText = "Находка"
-        default:
-            typePostText = "Из рук в Руки"
+        case 0: typePostText = "Пропажа"
+        case 1: typePostText = "Находка"
+        default: typePostText = "Из рук в Руки"
         }
-//        if sender.selectedSegmentIndex == 0 {
-//            typePostText = "Пропажа"
-//        } else if sender.selectedSegmentIndex == 1 {
-//            typePostText = "Находка"
-//        } else {
-//            typePostText = "Из рук в Руки"
-//        }
     }
     
     @IBAction func choiseTypePet(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            typePet = "Собака"
-        } else if sender.selectedSegmentIndex == 1 {
-            typePet = "Кошка"
-        } else if sender.selectedSegmentIndex == 2 {
-            typePet = "Другое"
+        switch sender.selectedSegmentIndex {
+        case 0: typePet = "Собака"
+        case 1: typePet = "Кошка"
+        case 2: typePet = "Другое"
+        default: break
         }
     }
     
     @IBAction func choiseAge(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            agePet = "До 1 года"
-        } else if sender.selectedSegmentIndex == 1 {
-            agePet = "От 1 до 3 лет"
-        } else if sender.selectedSegmentIndex == 2 {
-            agePet = "3 года и старше"
+        switch sender.selectedSegmentIndex {
+        case 0: agePet = "До 1 года"
+        case 1: agePet = "От 1 до 3 лет"
+        case 2: agePet = "3 года и старше"
+        default: break
         }
     }
     
@@ -340,9 +306,10 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         for item in results {
-            item.itemProvider.loadFileRepresentation(forTypeIdentifier: "public.image") { (url, error) in
-                if let fileUrl = url {
-                    let imageData = try! Data(contentsOf: fileUrl)
+            item.itemProvider.loadFileRepresentation(forTypeIdentifier: "public.image") { [weak self] (url, error) in
+                guard let self = self, let fileUrl = url else { return }
+                do {
+                    let imageData = try Data(contentsOf: fileUrl)
                     let imageSource = CGImageSourceCreateWithData(imageData as CFData, nil)!
                     let options: [NSString: Any] = [
                         kCGImageSourceCreateThumbnailFromImageAlways: true,
@@ -350,17 +317,23 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
                         kCGImageSourceCreateThumbnailWithTransform: true,
                     ]
                     guard let cgImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, options as CFDictionary) else { return }
-                    DispatchQueue.global().async {
-                        self.imageStorage.append(UIImage(cgImage: cgImage).pngData()!)
-                        DispatchQueue.main.async {
-                            self.collectionView.reloadData()
+                    DispatchQueue.global(qos: .background).async {
+                        let image = UIImage(cgImage: cgImage)
+                        if let imageData = image.pngData() {
+                            self.imageStorage.append(imageData)
+                            DispatchQueue.main.async {
+                                self.collectionView.reloadData()
+                            }
                         }
                     }
+                } catch {
+                    print("Error loading image: \(error.localizedDescription)")
                 }
             }
         }
         dismiss(animated: true)
     }
+    
 }
 
 extension CreateAdvertViewController: UICollectionViewDataSource {

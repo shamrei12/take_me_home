@@ -204,18 +204,14 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     }
     
     func getMassiveCriteria(type: String) {
-        if type == "all" {
-            samplingMass.removeAll()
+        switch type {
+        case "all":
+            samplingMass = []
             checkCtriteria = false
             getData()
-        } else {
-            samplingMass.removeAll()
+        default:
+            samplingMass = advertMass.filter { $0.typePet == type }
             checkCtriteria = true
-            for i in advertMass {
-                if i.typePet == type {
-                    samplingMass.append(i)
-                }
-            }
             tableView.reloadData()
         }
     }
@@ -247,30 +243,25 @@ extension AdvertViewController: UISearchBarDelegate {
 extension AdvertViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let postId: String
         if searching {
-            if filterMass.indices.contains(indexPath.row) {
-                let adverpage = AdvertPageViewController.instantiate()
-                let navigationController = UINavigationController(rootViewController: adverpage)
-                navigationController.modalPresentationStyle = .fullScreen
-                adverpage.updateUIElements(filterMass[indexPath.row].postId)
-                present(navigationController, animated: true)
-            }
+            guard filterMass.indices.contains(indexPath.row) else { return }
+            postId = filterMass[indexPath.row].postId
         } else if checkCtriteria {
-            let adverpage = AdvertPageViewController.instantiate()
-            let navigationController = UINavigationController(rootViewController: adverpage)
-            navigationController.modalPresentationStyle = .fullScreen
-            adverpage.updateUIElements(samplingMass[indexPath.row].postId)
-            present(navigationController, animated: true)
+            guard samplingMass.indices.contains(indexPath.row) else { return }
+            postId = samplingMass[indexPath.row].postId
         } else {
-            if advertMass.indices.contains(indexPath.row) {
-                let adverpage = AdvertPageViewController.instantiate()
-                let navigationController = UINavigationController(rootViewController: adverpage)
-                navigationController.modalPresentationStyle = .fullScreen
-                adverpage.updateUIElements(advertMass[indexPath.row].postId)
-                present(navigationController, animated: true)
-            }
+            guard advertMass.indices.contains(indexPath.row) else { return }
+            postId = advertMass[indexPath.row].postId
         }
+        
+        let adverpage = AdvertPageViewController.instantiate()
+        let navigationController = UINavigationController(rootViewController: adverpage)
+        navigationController.modalPresentationStyle = .fullScreen
+        adverpage.updateUIElements(postId)
+        present(navigationController, animated: true)
     }
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
@@ -280,26 +271,16 @@ extension AdvertViewController: UITableViewDelegate {
 extension AdvertViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searching {
-            if filterMass.count == 0 {
-                return 1
-            } else {
-                return filterMass.count
-            }
-        } else if checkCtriteria {
-            if samplingMass.isEmpty {
-                return 1
-            } else {
-                return samplingMass.count
-            }
-        } else {
-            if advertMass.count == 0 {
-                return 1
-            } else {
-                return advertMass.count
-            }
+        switch (searching, checkCtriteria) {
+        case (true, _):
+            return filterMass.isEmpty ? 1 : filterMass.count
+        case (_, true):
+            return samplingMass.isEmpty ? 1 : samplingMass.count
+        default:
+            return advertMass.isEmpty ? 1 : advertMass.count
         }
     }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if advertMass.isEmpty && filterMass.isEmpty && samplingMass.isEmpty {
