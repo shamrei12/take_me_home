@@ -53,17 +53,17 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        userNumber.withFlag = true
-        userNumber.withExamplePlaceholder = true
-        userNumber.withPrefix = true
+        fireBase = FirebaseData()
+        coreData = CoreDataStruct()
         userNumber.addTarget(self, action: #selector(phoneNumberTextFieldDidChange), for: .editingChanged)
         userNumber.delegate = self
         addPhothoButton.layer.cornerRadius = 10
-        fireBase = FirebaseData()
-        coreData = CoreDataStruct()
         collectionView.register(UINib(nibName: "AddPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AddPhotoCollectionViewCell")
-        askPermision()
         scrollView.setContentOffset(CGPoint.zero, animated: true)
+        askPermision()
+        userNumber.withFlag = true
+        userNumber.withExamplePlaceholder = true
+        userNumber.withPrefix = true
         navigationItem.title = "Создать объявление"
         navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelTapped))
         navigationItem.rightBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
@@ -72,7 +72,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     @objc func phoneNumberTextFieldDidChange() {
         do {
             let phoneNumber = try phoneNumberKit.parse(userNumber.text!)
-            let formattedNumber = phoneNumberKit.format(phoneNumber, toType: .e164, withPrefix: false)
+            let formattedNumber = phoneNumberKit.format(phoneNumber, toType: .international, withPrefix: true)
             userNumber.text = formattedNumber.replacingOccurrences(of: "[-\\s]", with: "", options: .regularExpression)
         } catch {
             print("Invalid phone number")
@@ -89,6 +89,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         return phoneNumber.replacingOccurrences(of: "[-\\s]", with: "", options: .regularExpression)
 
     }
+    
     @objc func saveTapped() {
         guard !checkSavePost else { return }
         checkSavePost = true
@@ -146,7 +147,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             }
         }
     }
-    
     
     func showActivityIndicator() -> UIActivityIndicatorView {
         let activityIndicator = UIActivityIndicatorView(style: .large)
@@ -223,19 +223,16 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     }
     
     func checkCorrectPost() -> Bool {
-        if cityName.text?.count == 0 || streetName.text?.count == 0 || houseNumber.text?.count == 0 {
-            return false
-        } else if breed.text?.count == 0 {
-            return false
-        } else if postName.text?.count == 0 {
-            return false
-        } else if descriptionText.text?.count == 0 {
-            return false
-        } else if userNumber.text?.count == 0 {
-            return false
-        } else {
-            return true
+        guard cityName.text?.count != 0,
+            streetName.text?.count != 0,
+            houseNumber.text?.count != 0,
+            breed.text?.count != 0,
+            postName.text?.count != 0,
+            descriptionText.text?.count != 0,
+            userNumber.text?.count != 0 else {
+                return false
         }
+        return true
     }
     
     @IBAction func addPhotoTapped(_ sender: UIButton) {
@@ -249,10 +246,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
             cityName.text = adressElement.first?.city
             streetName.text = adressElement.first?.street
             houseNumber.text = adressElement.first?.houseNumber
-        case 1:
-            cityName.text = ""
-            streetName.text = ""
-            houseNumber.text = ""
         default:
             cityName.text = ""
             streetName.text = ""
@@ -299,13 +292,22 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
     }
     
     @IBAction func choseTipePost(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
             typePostText = "Пропажа"
-        } else if sender.selectedSegmentIndex == 1 {
+        case 1:
             typePostText = "Находка"
-        } else {
+        default:
             typePostText = "Из рук в Руки"
         }
+//        if sender.selectedSegmentIndex == 0 {
+//            typePostText = "Пропажа"
+//        } else if sender.selectedSegmentIndex == 1 {
+//            typePostText = "Находка"
+//        } else {
+//            typePostText = "Из рук в Руки"
+//        }
     }
     
     @IBAction func choiseTypePet(_ sender: UISegmentedControl) {
