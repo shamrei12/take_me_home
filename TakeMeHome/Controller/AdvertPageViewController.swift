@@ -24,8 +24,14 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var typePet: UILabel!
     
+    
+    @IBOutlet weak var typePetView: UIView!
+    @IBOutlet weak var breedPetView: UIView!
+    @IBOutlet weak var agePetView: UIView!
     @IBOutlet weak var contactUserView: UIView!
+    @IBOutlet weak var adressPetView: UIView!
     
     private var listResourse = [ImageResource]()
     private var commentsPost = [Comments]()
@@ -57,6 +63,16 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     
     
     func updateStyleUIView() {
+        
+        let viewMass = [typePetView, breedPetView, agePetView, adressPetView, contactUserView]
+        for view in viewMass {
+            view?.layer.cornerRadius = 10
+            view?.layer.borderColor = UIColor.gray.cgColor
+            view?.layer.shadowColor = UIColor.black.cgColor
+            view?.layer.shadowOpacity = 0.1
+            view?.layer.shadowOffset = CGSize(width: 0, height: 1)
+            view?.layer.shadowRadius = 2
+        }
         contactUserView.layer.cornerRadius = 10
         contactUserView.layer.borderColor = UIColor.gray.cgColor
         contactUserView.layer.shadowColor = UIColor.black.cgColor
@@ -177,12 +193,13 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
                     self.date.text = data.first?.curentDate
                     self.postName.text = data.first?.postName
                     self.descriptionPost.text = data.first?.descriptionName
-                    self.oldPet.text = "Возраст: \(data.first?.oldPet ?? "")"
-                    self.breedPet.text = "Порода: \(data.first?.breed ?? "")"
-                    self.lostAdress.text = "Адрес: \(data.first?.lostAdress ?? "")"
+                    self.oldPet.text = "\(data.first?.oldPet ?? "")"
+                    self.breedPet.text = "\(data.first?.breed ?? "")"
+                    self.lostAdress.text = "\(data.first?.lostAdress ?? "")"
                     phoneNumber = data.first?.phoneNumber ?? ""
                     stringPostID = data.first?.postId ?? ""
                     adresForMap = data.first?.lostAdress ?? ""
+                    typePet.text = data.first?.typePet ?? ""
                 }
                 loadComments()
                 }

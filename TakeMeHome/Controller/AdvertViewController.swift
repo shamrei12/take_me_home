@@ -56,7 +56,6 @@ class AdvertViewController: UIViewController, FirstStartDelegate, Complain {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -283,6 +282,7 @@ extension AdvertViewController: UITableViewDataSource {
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if advertMass.isEmpty && filterMass.isEmpty {
             var cell: NoPostTableViewCell
             if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "NoPostTableViewCell") as? NoPostTableViewCell {
@@ -357,7 +357,6 @@ extension AdvertViewController: UITableViewDataSource {
                 }
             }
         }
-    
         return cell
     }
 }
