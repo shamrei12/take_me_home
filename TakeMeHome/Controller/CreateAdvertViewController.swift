@@ -107,7 +107,6 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
                 imageStorage.append(imageData)
             }
         }
-        
         typePostText = typePostText.isEmpty ? "Пропажа" : typePostText
         agePet = agePet.isEmpty ? "До 1 года" : agePet
         typePet = typePet.isEmpty ? "Собака" : typePet
@@ -130,7 +129,7 @@ class CreateAdvertViewController: UIViewController, UITextFieldDelegate, PHPicke
         posts.append(post)
         
         let postID = coreData.getUUID()
-        fireBase?.save(posts: posts, id: postID, stroage: imageStorage) { [self] response in
+        fireBase?.save(posts: posts, id: postID, storage: imageStorage) { [self] response in
             DispatchQueue.main.async { [self] in
                 if response {
                     DispatchQueue.global().async { [self] in

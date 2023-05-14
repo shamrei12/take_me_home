@@ -21,17 +21,15 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     @IBOutlet weak var sendMessage: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var typePet: UILabel!
-    
-    
     @IBOutlet weak var typePetView: UIView!
     @IBOutlet weak var breedPetView: UIView!
     @IBOutlet weak var agePetView: UIView!
     @IBOutlet weak var contactUserView: UIView!
     @IBOutlet weak var adressPetView: UIView!
+    @IBOutlet weak var imageView: UIView!
     
     private var listResourse = [ImageResource]()
     private var commentsPost = [Comments]()
@@ -42,6 +40,7 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     private var adresForMap = String ()
     private var moveTextField = true
     private var startPage = false
+    var pageControl = UIPageControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +62,6 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
     
     
     func updateStyleUIView() {
-        
         let viewMass = [typePetView, breedPetView, agePetView, adressPetView, contactUserView]
         for view in viewMass {
             view?.layer.cornerRadius = 10
@@ -73,12 +71,11 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
             view?.layer.shadowOffset = CGSize(width: 0, height: 1)
             view?.layer.shadowRadius = 2
         }
-        contactUserView.layer.cornerRadius = 10
-        contactUserView.layer.borderColor = UIColor.gray.cgColor
-        contactUserView.layer.shadowColor = UIColor.black.cgColor
-        contactUserView.layer.shadowOpacity = 0.1
-        contactUserView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        contactUserView.layer.shadowRadius = 2
+        pageControl.currentPageIndicatorTintColor = UIColor.white
+        pageControl.pageIndicatorTintColor = UIColor.gray
+        pageControl.frame = CGRect(x: 0, y: 0, width: mainView.frame.size.width, height: 50)
+        pageControl.center = CGPoint(x: mainView.frame.size.width / 2, y: imageView.frame.size.height - 15)
+        imageView.addSubview(pageControl)
     }
     //MARK: Настройка и работа textField
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -202,10 +199,10 @@ class AdvertPageViewController: UIViewController, UIAlertViewDelegate, UITextFie
                     typePet.text = data.first?.typePet ?? ""
                 }
                 loadComments()
-                }
             }
         }
     }
+}
 
 extension AdvertPageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -224,6 +221,10 @@ extension AdvertPageViewController: UICollectionViewDataSource {
     
     private func configure(cell: ImagePostCollectionViewCell, for indexPath: IndexPath) -> UICollectionViewCell {
         cell.imagePost.kf.setImage(with: listResourse[indexPath.row])
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = cell.imagePost.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return cell
     }
     
@@ -243,7 +244,7 @@ extension AdvertPageViewController: UICollectionViewDataSource {
 
 extension AdvertPageViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
+        
         let pageWidth = collectionView.frame.size.width
         let currentPage = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
         pageControl.currentPage = currentPage
